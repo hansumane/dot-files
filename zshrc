@@ -23,6 +23,8 @@ alias lx="exa --icons -alh --no-user --group-directories-first"
 
 alias cla="c;la"
 alias rrc="rm -rf out_*"
+alias fetch="c;neofetch"
+alias discord="c;flatpak run com.discordapp.Discord"
 
 alias vim="nvim"
 alias py="python3"
