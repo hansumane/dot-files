@@ -1,0 +1,11 @@
+JetBrains Mono Fonts
+FiraCode Nerd Font (for icons to appear)
+
+ohmyzsh (zsh framework)
+zsh-syntax-highlighting
+zsh-autosuggestions (optional)
+pure.zsh-theme
+
+alacritty (terminal emulator)
+
+exa (modern ls replacement with icons)
