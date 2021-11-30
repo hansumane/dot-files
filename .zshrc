@@ -6,6 +6,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="pure"
 
 # Plugins
+# plugins=(git zsh-syntax-highlighting) # zsh-autosuggestions
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
@@ -15,20 +16,20 @@ source $ZSH/oh-my-zsh.sh
 
 alias c="clear"
 alias rr="rm -rf"
-alias q="c;exit"
+alias q="clear; exit"
 
 alias ls="exa --icons"
 alias la="exa --icons -a"
 alias lx="exa --icons -alh --no-user --group-directories-first"
 
-alias cla="c;la"
+alias cla="clear; exa --icons -a"
 alias rrc="rm -rf out_*"
-alias fetch="c;neofetch"
-alias discord="c;flatpak run com.discordapp.Discord"
+alias fetch="clear; neofetch"
+alias discord="clear; flatpak run com.discordapp.Discord"
 
 alias vim="nvim"
 alias py="python3"
-alias miet="sudo openvpn --config $HOME/Others/Files/miet.ovpn"
+alias movpn="sudo openvpn --config $HOME/Others/Files/file.ovpn"
 
 lt ()
 {
@@ -67,4 +68,4 @@ cbm ()
   fi
 }
 
-cd;c;la
+cd; clear; exa --icons -a

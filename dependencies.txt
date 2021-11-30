@@ -1,5 +1,5 @@
 JetBrains Mono Fonts
-FiraCode Nerd Font (for icons to appear)
+any nerd font installed for icons to appear
 
 ohmyzsh (zsh framework)
 zsh-syntax-highlighting

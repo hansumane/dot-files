@@ -8,7 +8,7 @@ bindsym $mod+Shift+x exec "i3lock --color=121B21"
 
 assign [class="Firefox"] $ws2
 for_window [class="feh"] floating enable
-for_window [class="nemo"] floating enable
+for_window [class="Nemo"] floating enable
 
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
@@ -144,9 +144,6 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# assign
-assign [class="Firefox"] $ws2
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -183,6 +180,27 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+
+set $bg-color		#2f343f
+set $inactive-bg	#2f343f
+set $text-color		#f3f4f5
+set $inactive-text	#676E7D
+set $urgent-bg		#E53935
+
+client.focused		$bg-color		$bg-color		$text-color		#ffffff
+client.unfocused	$inactive-bg		$inactive-bg		$inactive-text		#ffffff
+client.focused_inactive	$inactive-bg		$inactive-bg		$inactive-text		#ffffff
+client.urgent		$urgent-bg		$urgent-bg		$text-color		#ffffff
+
+hide_edge_borders both
+
 bar {
         status_command i3status
+	colors {
+		background	$bg-color
+		separator	#757575
+		focused_workspace	$bg-color	$bg-color	$text-color
+		inactive_workspace	$inactive-bg	$inactive-bg	$inactive-text
+		urgent_workspace	$urgent-bg	$urgent-bg	$text-color
+	}
 }
