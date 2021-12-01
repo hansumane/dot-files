@@ -25,10 +25,9 @@ alias lx="exa --icons -alh --no-user --group-directories-first"
 alias cla="clear; exa --icons -a"
 alias rrc="rm -rf out_*"
 alias fetch="clear; neofetch"
-alias discord="clear; flatpak run com.discordapp.Discord"
 
 alias vim="nvim"
-alias py="python3"
+alias py="python"
 alias movpn="sudo openvpn --config $HOME/Others/Files/file.ovpn"
 
 lt ()
