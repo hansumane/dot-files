@@ -25,7 +25,6 @@ alias cla="clear; exa --icons -a"
 alias rrc="rm -rf out_*"
 alias fetch="clear; neofetch"
 
-alias vim="nvim"
 alias py="python"
 alias movpn="sudo openvpn --config $HOME/Others/Files/file.ovpn"
 
