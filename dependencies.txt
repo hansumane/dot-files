@@ -1,9 +1,10 @@
 JetBrains Mono Fonts
 any nerd font installed for icons to appear
+(i prefer to use either Hack or Meslo)
 
 ohmyzsh (zsh framework)
 zsh-syntax-highlighting
-zsh-autosuggestions (optional)
+zsh-autosuggestions
 pure.zsh-theme
 
 alacritty (terminal emulator)
