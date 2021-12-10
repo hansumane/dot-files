@@ -1,12 +1,9 @@
 JetBrains Mono Fonts
 any nerd font installed for icons to appear
-(i prefer to use either Hack or Meslo)
-
-ohmyzsh (zsh framework)
-zsh-syntax-highlighting
-zsh-autosuggestions
-pure.zsh-theme
+(I prefer to use either Hack or Meslo)
 
 alacritty (terminal emulator)
 
 exa (modern ls replacement with icons)
+
+zsh (shell; bash replacement)

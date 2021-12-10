@@ -1,0 +1,107 @@
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &&
+cd ~/.oh-my-zsh/custom/plugins &&
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git &&
+git clone https://github.com/zsh-users/zsh-autosuggestions.git;
+cd; git clone https://github.com/sindresorhus/pure.git &&
+cd pure &&
+cat pure.zsh > ~/.oh-my-zsh/custom/themes/pure.zsh-theme &&
+mkdir ~/.oh-my-zsh/functions &&
+cat async.zsh > ~/.oh-my-zsh/functions/async &&
+cd && rm -rf pure;
+mkdir ~/.config/nvim -p &&
+echo 'filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set number
+set relativenumber' > ~/.config/nvim/init.vim &&
+echo 'export TERM="xterm-256color"
+
+export ZSH="$HOME/.oh-my-zsh"
+
+# Theme
+ZSH_THEME="pure"
+
+# Plugins
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+
+source $ZSH/oh-my-zsh.sh
+
+
+# Aliases
+
+alias c="clear"
+alias rr="rm -rf"
+alias q="clear; exit"
+
+alias ls="exa"
+alias la="exa -a"
+alias lx="exa -alh --no-user --group-directories-first"
+
+alias cla="clear; exa -a"
+alias rrc="rm -rf out_*"
+alias fetch="clear; neofetch"
+
+alias py="python3"
+alias movpn="sudo openvpn --config $HOME/Others/Files/file.ovpn"
+
+lt ()
+{
+  if (( $# == 0 ))
+  then
+    exa -aT --level=2
+  else
+    if [[ $1 == a ]]
+    then
+      exa -aT
+    else
+      exa -aT --level=$1
+    fi
+  fi
+}
+
+cb ()
+{
+  if (( $# == 0 ))
+  then
+    echo "Wrong CBuild args"
+  else
+    res="out_$(basename $1 .c)"
+    clang -std=c99 $1 -o $res && echo "Done"
+  fi
+}
+
+cpb ()
+{
+  if (( $# == 0 ))
+  then
+    echo "Wrong C++Build args"
+  else
+    res="out_$(basename $1 .cpp)"
+    clang++ $1 -o $res && echo "Done"
+  fi
+}
+
+cbm ()
+{
+  if (( $# == 0 ))
+  then
+    echo "Wrong CBuild args"
+  else
+    res="out_$(basename $1 .c)"
+    clang -std=c99 -lm $1 -o $res && echo "Done"
+  fi
+}
+
+cpbm ()
+{
+  if (( $# == 0 ))
+  then
+    echo "Wrong C++Build args"
+  else
+    res="out_$(basename $1 .cpp)"
+    clang++ -lm $1 -o $res && echo "Done"
+  fi
+}
+
+cd; clear; exa -a' >> ~/.zshrc;
