@@ -32,15 +32,15 @@ source $ZSH/oh-my-zsh.sh
 
 alias c="clear"
 alias rr="rm -rf"
-alias q="clear; exit"
+alias q="c;exit"
 
-alias ls="exa"
-alias la="exa -a"
-alias lx="exa -alh --no-user --group-directories-first"
+alias ls="exa --icons"
+alias la="exa --icons -a"
+alias lx="exa --icons -alh --no-user --group-directories-first"
 
-alias cla="clear; exa -a"
-alias rrc="rm -rf out_*"
-alias fetch="clear; neofetch"
+alias cla="c;la"
+alias rrc="rr out_*"
+alias fetch="c;neofetch"
 
 alias py="python3"
 alias movpn="sudo openvpn --config $HOME/Others/Files/file.ovpn"
@@ -49,13 +49,13 @@ lt ()
 {
   if (( $# == 0 ))
   then
-    exa -aT --level=2
+    exa --icons -aT --level=2
   else
     if [[ $1 == a ]]
     then
-      exa -aT
+      exa --icons -aT
     else
-      exa -aT --level=$1
+      exa --icons -aT --level=$1
     fi
   fi
 }
@@ -104,4 +104,4 @@ cpbm ()
   fi
 }
 
-cd; clear; exa -a' >> ~/.zshrc;
+cd;cla' >> ~/.zshrc;
