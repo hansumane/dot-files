@@ -16,7 +16,7 @@ set expandtab
 set number
 set relativenumber' > ~/.config/nvim/init.vim &&
 echo 'export TERM="xterm-256color"
-
+export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
 
 # Theme
@@ -105,3 +105,13 @@ cpbm ()
 }
 
 cd;cla' >> ~/.zshrc;
+cd; mkdir Desktop Downloads Others && cd Others &&
+mkdir Templates Shared Documents Music Pictures Videos &&
+echo 'XDG_DESKTOP_DIR="$HOME/Desktop"
+XDG_DOWNLOAD_DIR="$HOME/Downloads"
+XDG_TEMPLATES_DIR="$HOME/Others/Templates"
+XDG_PUBLICSHARE_DIR="$HOME/Others/Shared"
+XDG_DOCUMENTS_DIR="$HOME/Others/Documents"
+XDG_MUSIC_DIR="$HOME/Others/Music"
+XDG_PICTURES_DIR="$HOME/Others/Pictures"
+XDG_VIDEOS_DIR="$HOME/Others/Videos"' > ~/.config/user-dirs.dirs
