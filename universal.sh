@@ -106,7 +106,7 @@ cpbm ()
 
 cd;cla' >> ~/.zshrc;
 cd; mkdir Desktop Downloads Others && cd Others &&
-mkdir Templates Shared Documents Music Pictures Videos &&
+mkdir -p Templates Shared Documents Music Pictures/Screenshots Videos &&
 echo 'XDG_DESKTOP_DIR="$HOME/Desktop"
 XDG_DOWNLOAD_DIR="$HOME/Downloads"
 XDG_TEMPLATES_DIR="$HOME/Others/Templates"
