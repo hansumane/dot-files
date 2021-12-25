@@ -19,4 +19,6 @@ zsh (shell; bash replacement)
 
 compton (picom, screen composer for transparency etc)
 
-pcmanfm (file manager)
+Arc theme
+Arc theme icons
+Twilight-cursors (ArcMidnight-cursors; LyraQ-cursors)
