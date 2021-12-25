@@ -6,6 +6,9 @@ any nerd font installed for icons to appear
 you can even download JetBrains Nerd Font)
 
 noto-fonts*
+(I suggest installing all noto-fonts
+packages if you want all characters and
+emoji to be shown)
 
 i3 (i3-gaps i3status i3lock dmenu)
 
