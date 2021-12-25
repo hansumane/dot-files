@@ -39,10 +39,12 @@ alias la="exa --icons -a"
 alias lx="exa --icons -alh --no-user --group-directories-first"
 
 alias cla="c;la"
+alias clx="c;lx"
 alias rrc="rr out_*"
 alias fetch="c;neofetch"
 
-alias py="python3"
+alias flas="c;startx &"
+
 alias movpn="sudo openvpn --config $HOME/Others/Files/file.ovpn"
 
 lt ()
@@ -114,4 +116,5 @@ XDG_PUBLICSHARE_DIR="$HOME/Others/Shared"
 XDG_DOCUMENTS_DIR="$HOME/Others/Documents"
 XDG_MUSIC_DIR="$HOME/Others/Music"
 XDG_PICTURES_DIR="$HOME/Others/Pictures"
-XDG_VIDEOS_DIR="$HOME/Others/Videos"' > ~/.config/user-dirs.dirs
+XDG_VIDEOS_DIR="$HOME/Others/Videos"' > ~/.config/user-dirs.dirs &&
+echo 'en_US' > ~/.config/user-dirs.locale
