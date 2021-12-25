@@ -1,10 +1,15 @@
 JetBrains Mono Fonts
 (ttf-jetbrains-mono)
+
 any nerd font installed for icons to appear
 (I prefer to use either Hack or Meslo or
 you can even download JetBrains Nerd Font)
 
+noto-fonts*
+
 i3 (i3-gaps i3status i3lock dmenu)
+
+nvim (modern vim replacement)
 
 alacritty (terminal emulator)
 
@@ -12,6 +17,6 @@ exa (modern ls replacement with icons)
 
 zsh (shell; bash replacement)
 
-compton (picomm, composer for transparency etc)
+compton (picom, screen composer for transparency etc)
 
 pcmanfm (file manager)
