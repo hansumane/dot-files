@@ -12,6 +12,8 @@ emoji to be shown)
 
 i3 (i3-gaps i3status i3lock dmenu)
 
+dwm (dwm st dmenu surf [maybe])
+
 nvim (modern vim replacement)
 
 alacritty (terminal emulator)
@@ -22,6 +24,8 @@ zsh (shell; bash replacement)
 
 compton (picom, screen composer for transparency etc)
 
+xdg-user-dirs
+
 Arc theme
 Arc theme icons
-Twilight-cursors (ArcMidnight-cursors; LyraQ-cursors)
+Twilight-cursors (ArcMidnight-cursors LyraQ-cursors)

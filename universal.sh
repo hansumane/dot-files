@@ -47,7 +47,7 @@ alias clx="c;lx"
 alias rrc="rr out_*"
 alias fetch="c;neofetch"
 
-alias flas="c;startx &"
+alias flas="c;startx"
 
 alias movpn="sudo openvpn --config $HOME/Others/Files/file.ovpn"
 
