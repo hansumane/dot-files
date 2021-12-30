@@ -14,7 +14,11 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set number
-set relativenumber' > ~/.config/nvim/init.vim &&
+set relativenumber
+
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch=0' > ~/.config/nvim/init.vim &&
 echo 'export TERM="xterm-256color"
 export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
