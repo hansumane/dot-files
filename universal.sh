@@ -46,6 +46,7 @@ alias cla="c;la"
 alias clx="c;lx"
 alias rrc="rr out_*"
 alias fetch="c;neofetch"
+alias nviM="nvim Makefile"
 
 alias flas="c;startx"
 
@@ -108,9 +109,7 @@ cpbm ()
     res="out_$(basename $1 .cpp)"
     clang++ -lm $1 -o $res && echo "Done"
   fi
-}
-
-cd;cla' >> ~/.zshrc;
+}' >> ~/.zshrc;
 cd; mkdir Desktop Downloads Others && cd Others &&
 mkdir -p Templates Shared Documents Music Pictures/Screenshots Videos &&
 echo 'XDG_DESKTOP_DIR="$HOME/Desktop"
