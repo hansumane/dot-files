@@ -74,7 +74,7 @@ cb ()
     echo "Wrong CBuild args"
   else
     res="out_$(basename $1 .c)"
-    clang -std=c99 $1 -o $res && echo "Done"
+    gcc -g -std=c99 $1 -o $res && echo "Done"
   fi
 }
 
@@ -85,7 +85,7 @@ cpb ()
     echo "Wrong C++Build args"
   else
     res="out_$(basename $1 .cpp)"
-    clang++ $1 -o $res && echo "Done"
+    g++ -g $1 -o $res && echo "Done"
   fi
 }
 
@@ -96,7 +96,7 @@ cbm ()
     echo "Wrong CBuild args"
   else
     res="out_$(basename $1 .c)"
-    clang -std=c99 -lm $1 -o $res && echo "Done"
+    gcc -g -std=c99 -lm $1 -o $res && echo "Done"
   fi
 }
 
@@ -107,7 +107,7 @@ cpbm ()
     echo "Wrong C++Build args"
   else
     res="out_$(basename $1 .cpp)"
-    clang++ -lm $1 -o $res && echo "Done"
+    g++ -g -lm $1 -o $res && echo "Done"
   fi
 }' >> ~/.zshrc;
 cd; mkdir Desktop Downloads Others && cd Others &&
