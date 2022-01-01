@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/sh
 
 fdate(){
     date +"%d/%m %H:%M"
