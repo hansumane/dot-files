@@ -26,6 +26,8 @@ compton (picom, screen composer for transparency etc)
 
 xdg-user-dirs
 
+yay (to use with doas: yay --sudo doas --sudoflags -- --save)
+
 Arc theme
 Arc theme icons
 Twilight-cursors (ArcMidnight-cursors LyraQ-cursors)
