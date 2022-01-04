@@ -1,7 +1,7 @@
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &&
 cd ~/.oh-my-zsh/custom/plugins &&
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git &&
-git clone https://github.com/zsh-users/zsh-autosuggestions.git;
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git;
+# git clone https://github.com/zsh-users/zsh-autosuggestions.git;
 cd; git clone https://github.com/sindresorhus/pure.git &&
 cd pure &&
 cat pure.zsh > ~/.oh-my-zsh/custom/themes/pure.zsh-theme &&
