@@ -1,33 +1,53 @@
-JetBrains Mono Fonts
-(ttf-jetbrains-mono)
+Fonts:
 
-any nerd font installed for icons to appear
-(I prefer to use either Hack or Meslo or
-you can even download JetBrains Nerd Font)
+    JetBrains Mono Fonts (ttf-jetbrains-mono)
+    
+    any nerd font installed for icons to appear
+    [I prefer to use either Hack or Meslo or
+    you can even download JetBrains Nerd Font
+    but I prefer JetBrains Mono being installed
+    with package manager and not manually]
+    
+    noto-fonts*
+    [I suggest installing all noto-fonts
+    packages if you want all characters and
+    emoji to be shown]
 
-noto-fonts*
-(I suggest installing all noto-fonts
-packages if you want all characters and
-emoji to be shown)
+WMs:
 
-i3 (i3-gaps i3status i3lock dmenu)
+    i3 (i3-gaps i3status i3lock rofi)
+    [rofi is not done yet tho]
+    -- or --
+    dwm (dwm st dmenu)
+    [dwm is never done lol]
 
-dwm (dwm st dmenu surf [maybe])
+Terminals:
 
-nvim (modern vim replacement)
+    st (suckless terminal)
+    [also not done yet tho]
 
-alacritty (terminal emulator)
+    alacritty (terminal emulator)
 
-exa (modern ls replacement with icons)
+Console Applications:
 
-zsh (shell; bash replacement)
+    nvim (neovim: modern vim replacement)
 
-compton (picom, screen composer for transparency etc)
+    exa (modern ls replacement with icons)
 
-xdg-user-dirs
+    zsh (better bash replacement)
 
-yay (to use with doas: yay --sudo doas --sudoflags -- --save)
+Utils:
 
-Arc theme
-Arc theme icons
-Twilight-cursors (ArcMidnight-cursors LyraQ-cursors)
+    picom (compton fork: screen compositor for shadows transparency, etc)
+
+    xdg-user-dirs (Desktop, Downloads, etc folders support)
+
+Themes:
+
+    arc-gtk-theme
+
+    Arc theme icons (manually from git)
+
+    Twilight-cursors (ArcMidnight-cursors, LyraQ-cursors)
+    (manually from wherever)
+
