@@ -4,43 +4,49 @@ Fonts:
     
     any nerd font installed for icons to appear
     [I prefer to use either Hack or Meslo or
-    you can even download JetBrains Nerd Font
-    but I prefer JetBrains Mono being installed
-    with package manager and not manually]
+     you can even download JetBrains Nerd Font
+     but I prefer JetBrains Mono being installed
+     with package manager and not manually]
     
     noto-fonts*
     [I suggest installing all noto-fonts
-    packages if you want all characters and
-    emoji to be shown]
+     packages if you want all characters and
+     emoji to be shown]
 
 WMs:
 
     i3 (i3-gaps i3status i3lock rofi)
     [rofi is not done yet tho]
     -- or --
-    dwm (dwm st dmenu)
-    [dwm is never done lol]
+    dwm (dwm dmenu)
 
 Terminals:
 
-    st (suckless terminal)
-    [also not done yet tho]
+    st
+    [suckless terminal: also not done yet tho]
 
-    alacritty (terminal emulator)
+    alacritty
+    [terminal emulator I still currently use]
 
 Console Applications:
 
-    nvim (neovim: modern vim replacement)
+    nvim (neovim)
+    [modern vim replacement]
 
-    exa (modern ls replacement with icons)
+    exa
+    [modern ls replacement with icons]
 
-    zsh (better bash replacement)
+    zsh
+    [better bash replacement]
 
 Utils:
 
-    picom (compton fork: screen compositor for shadows transparency, etc)
+    picom
+    [compton fork: screen compositor for shadows transparency, etc;
+     I haven't done much changes on it yet too]
 
-    xdg-user-dirs (Desktop, Downloads, etc folders support)
+    xdg-user-dirs
+    [Desktop, Downloads, etc folders support]
 
 Themes:
 
