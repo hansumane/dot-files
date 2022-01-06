@@ -1,7 +1,6 @@
 # Pre-executed
 #
 exec_always --no-startup-id picom
-exec_awlays --no-startup-id ~/.config/i3/xrandr.sh
 exec_always --no-startup-id ~/.fehbg
 default_border pixel 1
 default_floating_border pixel 1
@@ -28,13 +27,13 @@ gaps outer 6
 # Colors
 #
 
-set $focused-border #e3f4fe
-set $unfocused-border #28354b
-set $edge-color #e3f4fe
+set $focused-border #fec93d
+set $unfocused-border #1d2225
+set $edge-color #fec93d
 
-set $bg-color #28354b
-set $urgent-bg #ecbcb2
-set $text-color #fff9fd
+set $bg-color #1d2225
+set $urgent-bg #485159
+set $text-color #b3b8c3
 
 # Main settings
 #
@@ -70,9 +69,9 @@ bindsym $mod+Return exec alacritty
 
 bindsym $mod+q kill
 
-# bindsym $mod+p exec --no-startup-id dmenu_run -fn "JetBrains Mono:13" -nb "$bg-color" -nf "$text-color" -sb "$focused-border" -sf "$bg-color"
+bindsym $mod+p exec --no-startup-id dmenu_run -fn "JetBrains Mono:13" -nb "$bg-color" -nf "$text-color" -sb "$focused-border" -sf "$bg-color"
 # A more modern dmenu replacement is rofi:
-bindsym $mod+p exec --no-startup-id rofi -show combi
+# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop

@@ -3,7 +3,7 @@ Fonts:
     JetBrains Mono Fonts (ttf-jetbrains-mono)
     
     any nerd font installed for icons to appear
-    [I prefer to use either Hack or Meslo or
+    [I prefer to use either Hack, Meslo, Iosevka or
      you can even download JetBrains Nerd Font
      but I prefer JetBrains Mono being installed
      with package manager and not manually]
@@ -16,17 +16,16 @@ Fonts:
 WMs:
 
     i3 (i3-gaps i3status i3lock rofi)
-    [rofi is not done yet tho]
     -- or --
     dwm (dwm dmenu)
 
 Terminals:
 
     st
-    [suckless terminal: also not done yet tho]
+    [suckless terminal: not done yet tho]
 
     alacritty
-    [terminal emulator I still currently use]
+    [terminal emulator I currently use]
 
 Console Applications:
 
@@ -42,18 +41,26 @@ Console Applications:
 Utils:
 
     picom
-    [compton fork: screen compositor for shadows transparency, etc;
-     I haven't done much changes on it yet too]
+    [compton fork:
+     screen compositor for shadows, transitions, transparency, etc;
+     I haven't done much changes on it yet too
+     except for turning off shadows]
 
     xdg-user-dirs
     [Desktop, Downloads, etc folders support]
 
-Themes:
+Theming:
+
+    lxappearance
+    [GUI-based utility for setting up themes]
 
     arc-gtk-theme
+    [available in Arch repositories]
 
-    Arc theme icons (manually from git)
+    Arc theme icons
+    [download manually from git]
 
     Twilight-cursors (ArcMidnight-cursors, LyraQ-cursors)
-    (manually from wherever)
+    [download manually from wherever
+     and put into ~/.icons folder along with icon themes]
 
