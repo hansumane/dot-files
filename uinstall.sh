@@ -44,7 +44,7 @@ alias lx="exa --icons -alh --no-user --group-directories-first"
 
 alias cla="c;la"
 alias clx="c;lx"
-alias rrc="rr out_* out-*"
+alias rrc="rr out_*;rr out-*"
 alias fetch="c;neofetch"
 alias nviM="nvim Makefile"
 
@@ -74,7 +74,7 @@ cb ()
     echo "Wrong CBuild args"
   else
     res="out_$(basename $1 .c)"
-    gcc -g -std=c99 $1 -o $res && echo "Done"
+    gcc -g -Wall -std=c99 $1 -o $res && echo "Done"
   fi
 }
 
@@ -85,7 +85,7 @@ cpb ()
     echo "Wrong C++Build args"
   else
     res="out_$(basename $1 .cpp)"
-    g++ -g $1 -o $res && echo "Done"
+    g++ -g -Wall $1 -o $res && echo "Done"
   fi
 }
 
@@ -96,7 +96,7 @@ cbm ()
     echo "Wrong CBuild args"
   else
     res="out_$(basename $1 .c)"
-    gcc -g -std=c99 -lm $1 -o $res && echo "Done"
+    gcc -g -Wall -std=c99 -lm $1 -o $res && echo "Done"
   fi
 }
 
@@ -107,7 +107,7 @@ cpbm ()
     echo "Wrong C++Build args"
   else
     res="out_$(basename $1 .cpp)"
-    g++ -g -lm $1 -o $res && echo "Done"
+    g++ -g -Wall -lm $1 -o $res && echo "Done"
   fi
 }' >> ~/.zshrc;
 cd; mkdir Desktop Downloads Others && cd Others &&
