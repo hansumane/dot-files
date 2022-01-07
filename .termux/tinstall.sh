@@ -7,9 +7,9 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 cd ~/.oh-my-zsh/custom/plugins &&
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git &&
 git clone https://github.com/zsh-users/zsh-autosuggestions.git;
-cp ~/dot-files/.termux/font.ttf ~/.termux &&
-cp ~/dot-files/.termux/colors.properties ~/.termux &&
-cp ~/dot-files/.termux/apple-custom.zsh-theme ~/.oh-my-zsh/custom/themes;
+cp ~/storage/dot-files/.termux/font.ttf ~/.termux &&
+cp ~/storage/dot-files/.termux/colors.properties ~/.termux &&
+cp ~/storage/dot-files/.termux/apple-custom.zsh-theme ~/.oh-my-zsh/custom/themes;
 mkdir ~/.config/nvim -p &&
 echo 'filetype plugin indent on
 set tabstop=4
@@ -42,7 +42,7 @@ alias lx="exa --icons -alh --no-user --group-directories-first"
 
 alias cla="c;la"
 alias clx="c;lx"
-alias rrc="rr out_* out-*"
+alias rrc="rr out_*;rr out-*"
 
 alias fetch="c;neofetch"
 alias py="python3"
@@ -75,7 +75,7 @@ cb ()
     echo "Wrong CBuild args"
   else
     res="out_$(basename $1 .c)"
-    clang -std=c99 $1 -o $res && echo "Done"
+    clang -g -Wall -std=c99 $1 -o $res && echo "Done"
   fi
 }
 
@@ -86,7 +86,7 @@ cpb ()
     echo "Wrong C++Build args"
   else
     res="out_$(basename $1 .cpp)"
-    clang++ $1 -o $res && echo "Done"
+    clang++ -g -Wall $1 -o $res && echo "Done"
   fi
 }
 
@@ -97,7 +97,7 @@ cbm ()
     echo "Wrong CBuild args"
   else
     res="out_$(basename $1 .c)"
-    clang -std=c99 -lm $1 -o $res && echo "Done"
+    clang -g -Wall -std=c99 -lm $1 -o $res && echo "Done"
   fi
 }
 
@@ -108,7 +108,7 @@ cpbm ()
     echo "Wrong C++Build args"
   else
     res="out_$(basename $1 .cpp)"
-    clang++ -lm $1 -o $res && echo "Done"
+    clang++ -g -Wall -lm $1 -o $res && echo "Done"
   fi
 }' > ~/.zshrc;
 cd && clear && echo "Done!"
