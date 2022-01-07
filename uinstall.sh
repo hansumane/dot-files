@@ -44,7 +44,7 @@ alias lx="exa --icons -alh --no-user --group-directories-first"
 
 alias cla="c;la"
 alias clx="c;lx"
-alias rrc="rr out_*"
+alias rrc="rr out_* out-*"
 alias fetch="c;neofetch"
 alias nviM="nvim Makefile"
 
