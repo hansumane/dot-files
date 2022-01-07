@@ -7,9 +7,9 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 cd ~/.oh-my-zsh/custom/plugins &&
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git &&
 git clone https://github.com/zsh-users/zsh-autosuggestions.git;
-cp ~/storage/Programming/backup/font.ttf ~/.termux &&
-cp ~/storage/Programming/backup/colors.properties ~/.termux &&
-cp ~/storage/Programming/backup/apple-custom.zsh-theme ~/.oh-my-zsh/custom/themes;
+cp ~/dot-files/.termux/font.ttf ~/.termux &&
+cp ~/dot-files/.termux/colors.properties ~/.termux &&
+cp ~/dot-files/.termux/apple-custom.zsh-theme ~/.oh-my-zsh/custom/themes;
 mkdir ~/.config/nvim -p &&
 echo 'filetype plugin indent on
 set tabstop=4
