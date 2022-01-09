@@ -1,8 +1,19 @@
+# Colors
+#
+set $focused-border #e3f4fe
+set $unfocused-border #28354b
+set $edge-color #e3f4fe
+
+set $bg-color #28354b
+set $urgent-bg #ecbcb2
+set $text-color #fff9fd
+
 # Pre-executed
 #
 exec_always --no-startup-id picom
-exec_awlays --no-startup-id ~/.config/i3/xrandr.sh
+# exec_awlays --no-startup-id ~/.config/i3/xrandr.sh
 exec_always --no-startup-id ~/.fehbg
+# exec --no-startup-id nm-applet
 default_border pixel 1
 default_floating_border pixel 1
 
@@ -53,10 +64,6 @@ font pango:JetBrains Mono Bold 13
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-# exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%

@@ -22,12 +22,13 @@ set imsearch=0' > ~/.config/nvim/init.vim &&
 echo 'export TERM="xterm-256color"
 export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
+export SUDOCMD="sudo"
 
 # Theme
 ZSH_THEME="pure"
 
 # Plugins
-plugins=(git zsh-syntax-highlighting) # zsh-autosuggestions)
+plugins=(git zsh-syntax-highlighting) # zsh-autosuggestions
 
 source $ZSH/oh-my-zsh.sh
 
@@ -41,16 +42,17 @@ alias q="c;exit"
 alias ls="exa --icons"
 alias la="exa --icons -a"
 alias lx="exa --icons -alh --no-user --group-directories-first"
-
 alias cla="c;la"
 alias clx="c;lx"
+
 alias rrc="rr out_*;rr out-*"
+alias rbn="$SUDOCMD reboot"
+alias sdn="$SUDOCMD shutdown now"
+
 alias fetch="c;neofetch"
 alias nviM="nvim Makefile"
-
 alias flas="c;startx"
-
-alias movpn="sudo openvpn --config $HOME/Others/Files/file.ovpn"
+alias movpn="$SUDOCMD openvpn --config $HOME/Others/Files/file.ovpn"
 
 lt ()
 {
