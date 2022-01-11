@@ -8,6 +8,7 @@ cat pure.zsh > ~/.oh-my-zsh/custom/themes/pure.zsh-theme &&
 mkdir ~/.oh-my-zsh/functions &&
 cat async.zsh > ~/.oh-my-zsh/functions/async &&
 cd && rm -rf pure;
+cp ~/dot-files/.termux/apple-custom-arch.zsh-theme ~/.oh-my-zsh/custom/themes;
 mkdir ~/.config/nvim -p &&
 echo 'filetype plugin indent on
 set tabstop=4
@@ -25,7 +26,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export SUDOCMD="sudo"
 
 # Theme
-ZSH_THEME="pure"
+ZSH_THEME="apple-custom-arch"
 
 # Plugins
 plugins=(git zsh-syntax-highlighting) # zsh-autosuggestions
@@ -111,7 +112,7 @@ cpbm ()
     res="out_$(basename $1 .cpp)"
     g++ -g -Wall -lm $1 -o $res && echo "Done"
   fi
-}' >> ~/.zshrc;
+}' > ~/.zshrc;
 cd; mkdir Desktop Downloads Others && cd Others &&
 mkdir -p Templates Shared Documents Music Pictures/Screenshots Videos &&
 echo 'XDG_DESKTOP_DIR="$HOME/Desktop"
