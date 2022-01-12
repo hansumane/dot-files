@@ -11,9 +11,9 @@ cd && rm -rf pure;
 cp ~/dot-files/.termux/apple-custom-arch.zsh-theme ~/.oh-my-zsh/custom/themes;
 mkdir ~/.config/nvim -p &&
 echo 'filetype plugin indent on
-set tabstop=4
 set shiftwidth=4
-set expandtab
+"set tabstop=4
+"set expandtab
 set number
 set relativenumber
 
@@ -60,13 +60,13 @@ lt ()
 {
   if (( $# == 0 ))
   then
-    exa --icons -aT --level=2
+    exa --icons --group-directories-first -aT --level=2
   else
     if [[ $1 == a ]]
     then
-      exa --icons -aT
+      exa --icons --group-directories-first -aT
     else
-      exa --icons -aT --level=$1
+      exa --icons --group-directories-first -aT --level=$1
     fi
   fi
 }
