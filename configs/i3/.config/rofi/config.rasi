@@ -1,0 +1,7 @@
+configuration {
+    modi: "drun,run,combi";
+    combi-modi: "drun,run";
+    font: "JetBrains Mono 13";
+    terminal: "alacritty";
+}
+@theme "mytheme"
