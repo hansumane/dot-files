@@ -45,6 +45,7 @@ alias la="exa --icons -a"
 alias lx="exa --icons -alh --no-user --group-directories-first"
 alias cla="c;la"
 alias clx="c;lx"
+alias clt="c;lt"
 
 alias rrc="rr out_*;rr out-*"
 alias rbn="$SUDOCMD reboot"

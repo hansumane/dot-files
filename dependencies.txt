@@ -1,12 +1,10 @@
 Fonts:
 
     JetBrains Mono Fonts (ttf-jetbrains-mono)
+    [not actually for dwm; in dwm setup I
+     use Iosevka Nerd Font in both terminal and wm]
     
-    any nerd font installed for icons to appear
-    [I prefer to use either Hack, Meslo, Iosevka or
-     you can even download JetBrains Nerd Font
-     but I prefer JetBrains Mono being installed
-     with package manager and not manually]
+    any patched nerd font installed for icons to appear
     
     noto-fonts*
     [I suggest installing all noto-fonts
@@ -16,14 +14,17 @@ Fonts:
 WMs:
 
     i3 (i3-gaps i3status i3lock rofi)
-!   [currently using]
     -- or --
     dwm (dwm dmenu)
+    [both dwm and dmenu are better
+     to be downloaded from suckless.org]
 
 Terminals:
 
     st
-    [suckless terminal: not done yet tho]
+    [suckless terminal: not done yet tho
+     and I still don't use it even in
+     dwm setup sorry]
 
     alacritty
     [terminal emulator I currently use]
