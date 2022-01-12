@@ -10,8 +10,7 @@ cat async.zsh > ~/.oh-my-zsh/functions/async &&
 cd && rm -rf pure;
 cp ~/dot-files/.termux/apple-custom-arch.zsh-theme ~/.oh-my-zsh/custom/themes;
 mkdir ~/.config/nvim -p &&
-echo 'filetype plugin indent on
-set shiftwidth=4
+echo '"set shiftwidth=4
 "set tabstop=4
 "set expandtab
 set number

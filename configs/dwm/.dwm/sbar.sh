@@ -5,7 +5,7 @@ fdate(){
 }
 
 generate_content(){
-        echo "  |  $(fdate)  |  "
+    echo " [ $(fdate) ] "
 }
  
 while true; do
