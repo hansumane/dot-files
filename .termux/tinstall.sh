@@ -11,10 +11,9 @@ cp ~/storage/dot-files/.termux/font.ttf ~/.termux &&
 cp ~/storage/dot-files/.termux/colors.properties ~/.termux &&
 cp ~/storage/dot-files/zshthemes/* ~/.oh-my-zsh/custom/themes;
 mkdir ~/.config/nvim -p &&
-echo 'filetype plugin indent on
-set tabstop=4
+echo 'set tabstop=4
 set shiftwidth=4
-set expandtab
+set expandtab &
 set number
 set relativenumber' > ~/.config/nvim/init.vim &&
 echo 'export TERM="xterm-256color"

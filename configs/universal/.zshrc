@@ -25,7 +25,7 @@ alias cla="c;la"
 alias clx="c;lx"
 alias clt="c;lt"
 
-alias rrc="rr out_*;rr out-*"
+alias rrb="rr out_*;rr out-*"
 alias sbn="$SUDOCMD reboot"
 alias sdn="$SUDOCMD shutdown now"
 
