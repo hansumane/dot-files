@@ -16,9 +16,7 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 
 alias c="clear"
-alias rr="rm -rf"
-alias rrs="shred -u"
-alias q="c;exit"
+alias q="exit"
 
 alias ls="exa --icons"
 alias la="exa --icons -a"
@@ -31,6 +29,7 @@ alias rrc="rr out_*;rr out-*"
 alias sbn="$SUDOCMD reboot"
 alias sdn="$SUDOCMD shutdown now"
 
+alias rr="ranger"
 alias fetch="c;neofetch"
 alias nviM="nvim Makefile"
 alias flas="c;startx"
