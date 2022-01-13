@@ -1,14 +1,27 @@
 #!/bin/sh
 
-fdate(){
+fdate()
+{
     date +"%d/%m %H:%M"
 }
 
-generate_content(){
-    echo " [ $(fdate) ] "
+flayout()
+{
+    if [ "$(xset -q | grep LED | awk '{print $10}')" == '00000000' ]
+    then
+        echo 'EN'
+    else
+        echo 'RU'
+    fi
 }
- 
-while true; do
+
+generate_content()
+{
+    echo " [ $(flayout) ] [ $(fdate) ] "
+}
+
+while true
+do
     xsetroot -name "$(generate_content)"
-    sleep 5s
+    sleep 2s
 done
