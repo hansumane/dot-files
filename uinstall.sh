@@ -1,6 +1,7 @@
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" &&
 cd ~/.oh-my-zsh/custom/plugins &&
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git;
+# I'm not using zsh-autosuggestions temporarily...
 # git clone https://github.com/zsh-users/zsh-autosuggestions.git;
 cd; git clone https://github.com/sindresorhus/pure.git &&
 cd pure &&
@@ -8,10 +9,11 @@ cat pure.zsh > ~/.oh-my-zsh/custom/themes/pure.zsh-theme &&
 mkdir ~/.oh-my-zsh/functions &&
 cat async.zsh > ~/.oh-my-zsh/functions/async &&
 cd && rm -rf pure;
-cp ~/dot-files/.termux/apple-custom-arch.zsh-theme ~/.oh-my-zsh/custom/themes;
+cp ~/dot-files/zshthemes/* ~/.oh-my-zsh/custom/themes &&
+rm -rf ~/.oh-my-zsh/custom/themes/example.zsh-theme;
 mkdir ~/.config/nvim -p &&
-echo '"set shiftwidth=4
-"set tabstop=4
+echo 'set shiftwidth=4
+set tabstop=4
 "set expandtab
 set number
 set relativenumber
@@ -25,7 +27,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export SUDOCMD="sudo"
 
 # Theme
-ZSH_THEME="apple-custom-arch"
+ZSH_THEME="simple"
 
 # Plugins
 plugins=(git zsh-syntax-highlighting) # zsh-autosuggestions
@@ -37,6 +39,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias c="clear"
 alias rr="rm -rf"
+alias rrs="shred -u"
 alias q="c;exit"
 
 alias ls="exa --icons"

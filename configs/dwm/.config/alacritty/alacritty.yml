@@ -281,7 +281,7 @@ colors:
     blue:    '#3daeea'
     magenta: '#c88ff0'
     cyan:    '#4afaed'
-    white:   '#b3b8c3'
+    white:   '#ffffff'
 
   bright:
     black:   '#363b3e'
@@ -291,7 +291,7 @@ colors:
     blue:    '#3daeea'
     magenta: '#c88ff0'
     cyan:    '#4afaed'
-    white:   '#b3b8c3'
+    white:   '#ffffff'
 
   # Dim colors
   #
