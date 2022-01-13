@@ -9,7 +9,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git &&
 git clone https://github.com/zsh-users/zsh-autosuggestions.git;
 cp ~/storage/dot-files/.termux/font.ttf ~/.termux &&
 cp ~/storage/dot-files/.termux/colors.properties ~/.termux &&
-cp ~/storage/dot-files/zshthemes/apple-custom-android.zsh-theme ~/.oh-my-zsh/custom/themes;
+cp ~/storage/dot-files/zshthemes/* ~/.oh-my-zsh/custom/themes;
 mkdir ~/.config/nvim -p &&
 echo 'filetype plugin indent on
 set tabstop=4
@@ -22,7 +22,7 @@ export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
 
 # Theme
-ZSH_THEME="pure"
+ZSH_THEME="apple-custom-android"
 
 # Plugins
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
@@ -33,21 +33,22 @@ source $ZSH/oh-my-zsh.sh
 # Aliases
 
 alias c="clear"
-alias rr="rm -rf"
 alias q="c;exit"
 
 alias ls="exa --icons"
 alias la="exa --icons -a"
 alias lx="exa --icons -alh --no-user --group-directories-first"
-
 alias cla="c;la"
 alias clx="c;lx"
-alias rrc="rr out_*;rr out-*"
+alias clt="c;lt"
+
+alias rr="rm -rf"
+alias rrb="rr out_*;rr out-*"
 
 alias fetch="c;neofetch"
 alias py="python3"
 alias nv="nvim"
-alias nvm="nv Makefile"
+alias nviM="nv Makefile"
 
 alias updg="pkg upgrade -y && apt update && apt full-upgrade -y"
 alias upcl="pkg autoclean -y && apt autoremove -y"
@@ -57,13 +58,13 @@ lt ()
 {
   if (( $# == 0 ))
   then
-    exa --icons -aT --level=2
+    exa --icons --group-directories-first -aT --level=2
   else
     if [[ $1 == a ]]
     then
-      exa --icons -aT
+      exa --icons --group-directories-first -aT
     else
-      exa --icons -aT --level=$1
+      exa --icons --group-directories-first -aT --level=$1
     fi
   fi
 }
@@ -110,5 +111,5 @@ cpbm ()
     res="out_$(basename $1 .cpp)"
     clang++ -g -Wall -lm $1 -o $res && echo "Done"
   fi
-}' > ~/.zshrc;
+}' >> ~/.zshrc;
 cd && clear && echo "Done!"
