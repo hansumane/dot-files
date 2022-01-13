@@ -9,7 +9,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git &&
 git clone https://github.com/zsh-users/zsh-autosuggestions.git;
 cp ~/storage/dot-files/.termux/font.ttf ~/.termux &&
 cp ~/storage/dot-files/.termux/colors.properties ~/.termux &&
-cp ~/storage/dot-files/.termux/apple-custom.zsh-theme ~/.oh-my-zsh/custom/themes;
+cp ~/storage/dot-files/zshthemes/apple-custom-android.zsh-theme ~/.oh-my-zsh/custom/themes;
 mkdir ~/.config/nvim -p &&
 echo 'filetype plugin indent on
 set tabstop=4
