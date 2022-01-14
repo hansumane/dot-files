@@ -25,15 +25,15 @@ alias cla="c;la"
 alias clx="c;lx"
 alias clt="c;lt"
 
+alias rr="rm -rf"
 alias rrb="rr out_*;rr out-*"
 alias sbn="$SUDOCMD reboot"
 alias sdn="$SUDOCMD shutdown now"
 
-alias rr="ranger"
+alias ranr="ranger"
 alias fetch="c;neofetch"
 alias nviM="nvim Makefile"
 alias flas="c;startx"
-alias movpn="$SUDOCMD openvpn --config $HOME/Others/Files/file.ovpn"
 
 killsbar ()
 {
