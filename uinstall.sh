@@ -6,8 +6,7 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git;
 git clone https://github.com/zsh-users/zsh-autosuggestions.git;
 
 cd; git clone https://github.com/sindresorhus/pure.git;
-cd pure;
-cat pure.zsh > ~/.oh-my-zsh/custom/themes/pure.zsh-theme;
+cd pure; cat pure.zsh > ~/.oh-my-zsh/custom/themes/pure.zsh-theme;
 mkdir ~/.oh-my-zsh/functions;
 cat async.zsh > ~/.oh-my-zsh/functions/async;
 cd && rm -rf pure;
