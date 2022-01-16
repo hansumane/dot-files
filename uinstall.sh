@@ -26,7 +26,7 @@ if [ -d "$(pwd)/Others" ]; then mv Others Others_old; fi;
 mkdir Others;
 
 cd ~/Others;
-mkdir -p Templates Shared Documents Music Pictures/Screenshots Videos;
+mkdir -p Coding Templates Shared Documents Music Pictures/Screenshots Videos;
 echo 'XDG_DESKTOP_DIR="$HOME/Desktop"
 XDG_DOWNLOAD_DIR="$HOME/Downloads"
 XDG_TEMPLATES_DIR="$HOME/Others/Templates"
