@@ -22,7 +22,8 @@ cp -rf ~/dot-files/configs/universal/.zshrc ~;
 
 cd; if [ ! -d "$(pwd)/Desktop" ]; then mkdir Desktop; fi;
 if [ ! -d "$(pwd)/Downloads" ]; then mkdir Downloads; fi;
-if [ ! -d "$(pwd)/Others" ]; then mkdir Others; fi;
+if [ -d "$(pwd)/Others" ]; then mv Others Others_old; fi;
+mkdir Others;
 
 cd ~/Others;
 mkdir -p Templates Shared Documents Music Pictures/Screenshots Videos;
