@@ -1,3 +1,5 @@
+#!/data/data/com.termux/files/usr/bin/sh
+
 echo "bell-character = ignore" > ~/.termux/termux.properties;
 
 pkg upgrade -y;
