@@ -1,8 +1,10 @@
 export TERM="xterm-256color"
 export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
-# export SUDOCMD="doas"
-export SUDOCMD="sudo"
+
+# Sudo command
+# SUDOCMD="doas"
+SUDOCMD="sudo"
 
 # Theme
 ZSH_THEME="simple"
@@ -25,12 +27,12 @@ alias cla="c;la"
 alias clx="c;lx"
 alias clt="c;lt"
 
-alias rr="rm -rf"
-alias rrb="rr out_*;rr out-*"
+alias rr="rm -fr"
+alias rrb="rr out_* out-*"
 alias sbn="$SUDOCMD reboot"
 alias sdn="$SUDOCMD shutdown now"
 
-alias ranr="ranger"
+alias ra="ranger"
 alias fetch="c;neofetch"
 alias nviM="nvim Makefile"
 alias flas="c;startx"
