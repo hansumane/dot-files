@@ -6,6 +6,10 @@ export ZSH="$HOME/.oh-my-zsh"
 # SUDOCMD="doas"
 SUDOCMD="sudo"
 
+# If exa shows icons it's '--icons'
+# else it's '--no-icons'
+EXAICONS="--no-icons"
+
 # Theme
 ZSH_THEME="simple"
 
@@ -20,9 +24,9 @@ source $ZSH/oh-my-zsh.sh
 alias c="clear"
 alias q="exit"
 
-alias ls="exa --icons"
-alias la="exa --icons -a"
-alias lx="exa --icons -alh --no-user --group-directories-first"
+alias ls="exa $EXAICONS"
+alias la="exa $EXAICONS -a"
+alias lx="exa $EXAICONS -alh --no-user --group-directories-first"
 alias cla="c;la"
 alias clx="c;lx"
 alias clt="c;lt"
@@ -37,22 +41,17 @@ alias fetch="c;neofetch"
 alias nviM="nvim Makefile"
 alias flas="c;startx"
 
-killsbar ()
-{
-    kill $(ps -aux | grep 'sbar' | grep '/bin/sh' | awk '{print $2}')
-}
-
 lt ()
 {
   if (( $# == 0 ))
   then
-    exa --icons --group-directories-first -aT --level=2
+    exa $EXAICONS --group-directories-first -aT --level=2
   else
     if [[ $1 == a ]]
     then
-      exa --icons --group-directories-first -aT
+      exa $EXAICONS --group-directories-first -aT
     else
-      exa --icons --group-directories-first -aT --level=$1
+      exa $EXAICONS --group-directories-first -aT --level=$1
     fi
   fi
 }
