@@ -10,7 +10,7 @@ Fonts:
                  nerd-fonts-victor-mono {aur})
     [for dwm setup; better to be downloaded
      from official website as I currently
-     use it with Font Awesome]
+     use it with Font Awesome (ttf-font-awesome)]
     
     noto-fonts*
     [I suggest installing all noto-fonts
