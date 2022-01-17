@@ -4,8 +4,8 @@ static const unsigned int snap      = 24;           /* shows how many pixels to 
                                                        a window to screen border etc */
 static const int showbar            = 1;            /* 0 means no bar */
 static const int topbar             = 1;            /* 0 means bottom bar */
-static const char *fonts[]          = { "Victor Mono:size=13:antialias=true:autohint=true" };
-static const char dmenufont[]       = "Victor Mono:size=13:antialias=true:autohint=true";
+static const char *fonts[]          = { "Victor Mono:size=13:style=Semibold:antialias=true:autohint=true" };
+static const char dmenufont[]       = "Victor Mono:size=13:style=Semibold:antialias=true:autohint=true";
 static const char col_gray1[]       = "#383c4a";    /* inactive background color */
 static const char col_gray2[]       = "#383c4a";    /* inactive border color */
 static const char col_gray3[]       = "#d3dae3";    /* inactive foreground color */
@@ -24,6 +24,7 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
+	{ "Pcmanfm",  NULL,       NULL,       0,            1,           -1 },
 	{ "Thunar",   NULL,       NULL,       0,            1,           -1 },
 	{ "Zathura",  NULL,       NULL,       1 << 3,       0,           -1 },
 	{ "Gimp",     NULL,       NULL,       1 << 8,       0,           -1 },
@@ -57,7 +58,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_accent, "-sf", col_gray1, NULL };
 static const char *termcmd[]  = { "kitty", NULL };
-static const char *screenshot[] = { "xfce4-screenshooter", "-r", NULL };
+static const char *screenshot[] = { "scrot", "-z", "/home/creasure/Others/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.png", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */

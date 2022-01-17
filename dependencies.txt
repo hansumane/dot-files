@@ -1,10 +1,9 @@
 Fonts:
 
     JetBrains Mono Fonts (ttf-jetbrains-mono)
+    [for i3 setup also download any nerd font]
     -- or --
     Iosevka (ttf-iosevka-nerd)
-    [for i3 setup; also download any nerd font
-     if you use JetBrains Mono]
 
     Victor Mono (font-victor-mono {aur} ||
                  nerd-fonts-victor-mono {aur})
@@ -12,16 +11,16 @@ Fonts:
      from official website as I currently
      use it with Font Awesome (ttf-font-awesome)]
     
-    noto-fonts*
+    -> noto-fonts (noto-fonts noto-fonts-cjk noto-fonts-emoji)
     [I suggest installing all noto-fonts
      packages if you want all characters and
      emoji to be shown]
 
 WMs:
 
-    i3 (i3-gaps i3status i3lock rofi)
+    -> i3 (i3-gaps i3status i3lock rofi)
     -- or --
-    dwm (dwm dmenu)
+    -> dwm (dwm dmenu)
     [both dwm and dmenu are better
      to be downloaded from suckless.org]
 
@@ -42,19 +41,33 @@ Console Applications:
      note: icons are shown properly
      only with nerd fonts so you either
      need to reject using icons or edit
-     them yourself in exa source code]
-    [I consider editing exa myself later]
+     them yourself in exa source code;
+     I consider editing exa myself later]
 
-    zsh (with ohmyzsh framework)
-    [better bash replacement]
+    ranger
+    [simple terminal file manager with vim keybindings]
+
+    zsh
+    [better shell; use with ohmyzsh framework]
 
 Utils:
 
+    pcmanfm
+    -- or --
+    thunar
+    [GUI file manager, if you need one]
+
+    scrot
+    [simple screenshot utility]
+
+    sxiv
+    [simple X image viewer]
+
+    -> zathura (zathura zathura-pdf-mupdf zathura-djvu)
+    [simple pdf and djvu reader with vim keybindings]
+
     picom
-    [compton fork:
-     screen compositor for shadows, transitions, transparency, etc;
-     I haven't done much changes on it yet tho
-     except for turning off shadows]
+    [compton fork; screen compositor]
 
     xdg-user-dirs
     [Desktop, Downloads, etc folders support]
