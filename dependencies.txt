@@ -1,10 +1,16 @@
 Fonts:
 
     JetBrains Mono Fonts (ttf-jetbrains-mono)
-    [not actually for dwm; in dwm setup I
-     use Iosevka Nerd Font in both terminal and wm]
-    
-    any patched nerd font installed for icons to appear
+    -- or --
+    Iosevka (ttf-iosevka-nerd)
+    [for i3 setup; also download any nerd font
+     if you use JetBrains Mono]
+
+    Victor Mono (font-victor-mono {aur} ||
+                 nerd-fonts-victor-mono {aur})
+    [for dwm setup; better to be downloaded
+     from official website as I currently
+     use it with Font Awesome]
     
     noto-fonts*
     [I suggest installing all noto-fonts
@@ -21,13 +27,10 @@ WMs:
 
 Terminals:
 
-    st
-    [suckless terminal: not done yet tho
-     and I still don't use it even in
-     dwm setup sorry]
-
-    alacritty
-    [terminal emulator I currently use]
+    kitty
+    [terminal emulator I'm using now
+     instead of alacritty as it seems
+     to work improperly with X11]
 
 Console Applications:
 
@@ -35,9 +38,14 @@ Console Applications:
     [modern vim replacement]
 
     exa
-    [modern ls replacement with icons]
+    [modern ls replacement with icons
+     note: icons are shown properly
+     only with nerd fonts so you either
+     need to reject using icons or edit
+     them yourself in exa source code]
+    [I consider editing exa myself later]
 
-    zsh
+    zsh (with ohmyzsh framework)
     [better bash replacement]
 
 Utils:
@@ -45,7 +53,7 @@ Utils:
     picom
     [compton fork:
      screen compositor for shadows, transitions, transparency, etc;
-     I haven't done much changes on it yet too
+     I haven't done much changes on it yet tho
      except for turning off shadows]
 
     xdg-user-dirs
@@ -54,15 +62,15 @@ Utils:
 Theming:
 
     lxappearance
-    [GUI-based utility for setting up themes]
+    [GUI-based utility for setting up gtk themes and fonts]
 
     arc-gtk-theme
-    [available in Arch repositories]
+    [available in Arch repos]
 
-    Arc theme icons
-    [download manually from git]
+    arc-icon-theme
+    [also available in Arch repos]
 
     Twilight-cursors (ArcMidnight-cursors, LyraQ-cursors)
-    [download manually from wherever
-     and put into ~/.icons folder along with icon themes]
+    [download manually from gnome-look for example
+     and put into ~/.icons folder]
 
