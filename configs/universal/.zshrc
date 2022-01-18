@@ -31,8 +31,8 @@ alias cla="c;la"
 alias clx="c;lx"
 alias clt="c;lt"
 
-alias rr="rm -fr"
-alias rrb="rr out_* out-*"
+alias rr="rm -rf"
+alias rrb="rm -f out_*;rm -f out-*"
 alias sbn="$SUDOCMD reboot"
 alias sdn="$SUDOCMD shutdown now"
 

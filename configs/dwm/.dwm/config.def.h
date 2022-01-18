@@ -58,7 +58,9 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_accent, "-sf", col_gray1, NULL };
 static const char *termcmd[]  = { "kitty", NULL };
-static const char *screenshot[] = { "scrot", "-z", "/home/creasure/Others/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.png", NULL };
+static const char *scrot_z[] = { "scrot", "-z", "/home/creasure/Others/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.png", NULL };
+static const char *scrot_zs[] = { "scrot", "-z", "-s", "/home/creasure/Others/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.png", NULL };
+static const char *scrot_zsf[] = { "scrot", "-z", "-s", "-f", "/home/creasure/Others/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.png", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -77,7 +79,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
+	// { MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
@@ -95,7 +97,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
-	{ 0,                            XK_Print,  spawn,          { .v = screenshot } },
+	{ 0,                            XK_Print,  spawn,          { .v = scrot_z } },
+	{ ShiftMask,                    XK_Print,  spawn,          { .v = scrot_zs } },
+	{ ControlMask,                  XK_Print,  spawn,          { .v = scrot_zsf } },
 };
 
 /* button definitions */
