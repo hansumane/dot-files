@@ -17,7 +17,7 @@ flayout()
 
 generate_content()
 {
-    echo " [  $(flayout) ] [  $(fdate) ] "
+    echo " [  $(flayout) ] [  $(fdate) ] "
 }
 
 while true

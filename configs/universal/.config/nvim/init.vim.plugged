@@ -1,0 +1,72 @@
+" sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+" :PlugInstall
+
+set number
+set relativenumber
+
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch=0
+
+function! TabsFunc8()
+	set shiftwidth=8
+	set tabstop=8
+	set expandtab &
+	echom "indent: Tab"
+endfunction
+
+function! TabsFunc4()
+	set shiftwidth=4
+	set tabstop=4
+	set expandtab &
+	echom "indent: Tab"
+endfunction
+
+function! SpaceFunc4()
+	set shiftwidth=4
+	set tabstop=4
+	set expandtab
+	echom "indent: 4xSpace"
+endfunction
+
+function! SpaceFunc2()
+	set shiftwidth=2
+	set tabstop=2
+	set expandtab
+	echom "indent: 2xSpace"
+endfunction
+
+command Tab call TabsFunc8()
+command Tabs call TabsFunc4()
+command Spaces call SpaceFunc4()
+command Mark call SpaceFunc2()
+
+call plug#begin()
+Plug 'https://github.com/vim-airline/vim-airline' " Status bar
+call plug#end()
+
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+Spaces
+
+au BufEnter,Bufnew *.html Mark
+au BufEnter,Bufnew *.xml Mark
+au BufEnter,Bufnew *.yml Mark
+au BufEnter,Bufnew *.c Tab
+au BufEnter,Bufnew *.h Tab
+au BufEnter,Bufnew *.cpp Tab
+au BufEnter,Bufnew *.cxx Tab
+au BufEnter,Bufnew *.vim Tab
+au BufEnter,Bufnew Makefile Tab
