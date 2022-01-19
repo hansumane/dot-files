@@ -24,7 +24,7 @@ alias clx="c;lx"
 alias clt="c;lt"
 
 alias rr="rm -rf"
-alias rrb="rr out_*;rr out-*"
+alias rrb="rm -f out_*;rm -f out-*"
 
 alias fetch="c;neofetch"
 alias py="python3"
