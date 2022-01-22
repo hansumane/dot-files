@@ -1,3 +1,6 @@
+" sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+" :PlugInstall
+
 set number
 set relativenumber
 
@@ -37,6 +40,24 @@ command Tab call TabsFunc8()
 command Tabs call TabsFunc4()
 command Spaces call SpaceFunc4()
 command Mark call SpaceFunc2()
+
+call plug#begin()
+Plug 'vim-airline/vim-airline' " Status bar
+Plug 'vim-airline/vim-airline-themes' " Status bar themes
+call plug#end()
+
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+let g:airline_theme = 'base16'
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
 
 Spaces
 

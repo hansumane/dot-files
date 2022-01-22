@@ -3,7 +3,8 @@ Fonts:
     Victor Mono && VictorMono Nerd Font
     [both are included in .fonts directory;
      just copy its contents into
-     /usr/share/fonts or ~/.fonts]
+     /usr/share/fonts or ~/.fonts;
+     I'll try to update them on time]
 
 WMs:
 
@@ -28,10 +29,7 @@ Console Applications:
     exa
     [modern ls replacement with icons
      note: icons are shown properly
-     only with nerd fonts so you either
-     need to reject using icons or edit
-     them yourself in exa source code;
-     I consider editing exa myself later]
+     only with nerd fonts]
 
     ranger
     [simple terminal file manager with vim keybindings]
@@ -56,7 +54,7 @@ Utils:
     [simple pdf and djvu reader with vim keybindings]
 
     picom
-    [compton fork; screen compositor]
+    [compton fork; screen compositor; for i3 setup]
 
     xcompmgr
     [simple X compositor; for dwm setup]
