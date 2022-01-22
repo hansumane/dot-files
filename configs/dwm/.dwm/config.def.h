@@ -6,8 +6,6 @@ static const int showbar            = 1;            /* 0 means no bar */
 static const int topbar             = 1;            /* 0 means bottom bar */
 static const char *fonts[]          = { "VictorMono Nerd Font:size=13:style=SemiBold:antialias=true:autohint=true" };
 static const char dmenufont[]       = "VictorMono Nerd Font:size=13:style=SemiBold:antialias=true:autohint=true";
-// static const char *fonts[]          = { "Victor Mono:size=13:style=Semibold:antialias=true:autohint=true" };
-// static const char dmenufont[]       = "Victor Mono:size=13:style=Semibold:antialias=true:autohint=true";
 static const char col_gray1[]       = "#383c4a";    /* inactive background color */
 static const char col_gray2[]       = "#383c4a";    /* inactive border color */
 static const char col_gray3[]       = "#d3dae3";    /* inactive foreground color */
@@ -26,9 +24,8 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Pcmanfm",  NULL,       NULL,       0,            1,           -1 },
-	{ "Thunar",   NULL,       NULL,       0,            1,           -1 },
 	{ "Zathura",  NULL,       NULL,       1 << 3,       0,           -1 },
+	{ "Sxiv",     NULL,       NULL,       1 << 3,       0,           -1 },
 	{ "Gimp",     NULL,       NULL,       1 << 8,       0,           -1 },
 };
 

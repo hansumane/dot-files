@@ -3,12 +3,10 @@ export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
 
 # Sudo command
-# SUDOCMD="doas"
 SUDOCMD="sudo"
 
-# If exa shows icons it's '--icons'
-# else it's '--no-icons'
-EXAICONS="--no-icons"
+# If exa will show icons or not
+EXAICONS="--icons"
 
 # Theme
 ZSH_THEME="simple"
@@ -56,6 +54,7 @@ lt ()
   fi
 }
 
+# Unnecessary if you use Makefiles
 cb ()
 {
   if (( $# == 0 ))
