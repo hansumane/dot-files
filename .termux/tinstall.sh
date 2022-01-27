@@ -1,9 +1,8 @@
 #!/data/data/com.termux/files/usr/bin/sh
 
 pkg upgrade -y;
-apt update;
-apt full-upgrade -y;
 pkg install root-repo curl wget git zip unzip tar nano vim neovim binutils clang python zsh exa hexyl gnupg openssh -y;
+pkg install tsu -y;
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
 cd ~/.oh-my-zsh/custom/plugins;
