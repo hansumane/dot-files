@@ -47,3 +47,7 @@ lt ()
     fi
   fi
 }
+
+alias updg="pkg upgrade -y && apt update && apt full-upgrade -y"
+alias upcl="pkg autoclean -y && apt autoremove -y"
+alias updc="updg && upcl"
