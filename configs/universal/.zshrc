@@ -3,7 +3,7 @@ export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
 
 # Sudo command
-SUDOCMD="sudo"
+SUDOCMD="doas"
 
 # If exa will show icons or not
 EXAICONS="--icons"
