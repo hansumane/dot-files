@@ -1,5 +1,4 @@
 " sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-" :PlugInstall
 
 set number
 set relativenumber
@@ -36,8 +35,8 @@ function! SpaceFunc2()
 	echom "indent: 2xSpace"
 endfunction
 
-command Tab call TabsFunc8()
-command Tabs call TabsFunc4()
+command Tabs call TabsFunc8()
+command Tabx call TabsFunc4()
 command Spaces call SpaceFunc4()
 command Mark call SpaceFunc2()
 
@@ -65,9 +64,9 @@ Spaces
 au BufEnter,Bufnew *.html Mark
 au BufEnter,Bufnew *.xml Mark
 au BufEnter,Bufnew *.yml Mark
-au BufEnter,Bufnew *.c Tab
-au BufEnter,Bufnew *.h Tab
-au BufEnter,Bufnew *.cpp Tab
-au BufEnter,Bufnew *.cxx Tab
-au BufEnter,Bufnew *.vim Tab
-au BufEnter,Bufnew Makefile Tab
+au BufEnter,Bufnew *.c Tabs
+au BufEnter,Bufnew *.h Tabs
+au BufEnter,Bufnew *.cpp Tabs
+au BufEnter,Bufnew *.cxx Tabs
+au BufEnter,Bufnew *.vim Tabs
+au BufEnter,Bufnew Makefile Tabs
