@@ -3,7 +3,7 @@ export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
 
 # Sudo command
-SUDOCMD="doas"
+SUDOCMD="sudo"
 
 # If exa will show icons or not
 EXAICONS="--icons"
@@ -36,6 +36,7 @@ alias sdn="$SUDOCMD shutdown now"
 alias ra="ranger"
 alias fetch="c;pfetch"
 alias nviM="nvim Makefile"
+alias flas="c;startx"
 
 lt ()
 {
