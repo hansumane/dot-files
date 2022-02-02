@@ -11,7 +11,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git;
 
 cp ~/storage/dot-files/.termux/font.ttf ~/.termux;
 cp ~/storage/dot-files/.termux/*.properties ~/.termux;
-cp ~/storage/dot-files/zshthemes/* ~/.oh-my-zsh/custom/themes;
+cp ~/storage/dot-files/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
 rm ~/.oh-my-zsh/custom/themes/example.zsh-theme;
 
 if [ ! -d "$HOME/.config" ]; then mkdir ~/.config; fi;

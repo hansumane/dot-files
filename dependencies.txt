@@ -68,12 +68,19 @@ Theming:
     [GUI-based utility for setting up gtk themes and fonts]
 
     arc-gtk-theme
-    [available in Arch repos]
 
     arc-icon-theme
-    [also available in Arch repos]
+
+    papirus-icon-theme
 
     Twilight-cursors (ArcMidnight-cursors, LyraQ-cursors)
-    [download manually from gnome-look for example
-     and put into ~/.icons folder]
+    [included in themes folder]
+
+Other:
+
+    pfetch (https://github.com/dylanaraps/pfetch.git)
+    [simple alternative to screenfetch or neofetch]
+
+    font-patcher (https://github.com/ryanoasis/nerd-fonts.git)
+    [utility to patch any font with nerd fonts icons]
 
