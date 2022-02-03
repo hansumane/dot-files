@@ -138,7 +138,7 @@ patches
  					attachstack(c);
  				}
  				if (m == selmon)
---- /dev/null	2022-02-02 09:47:56.751727241 +0300
+--- /dev/null		2022-02-02 09:47:56.751727241 +0300
 +++ vanitygaps.c	2022-02-02 10:31:53.177259997 +0300
 @@ -0,0 +1,809 @@
 +/* Key binding functions */
