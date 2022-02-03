@@ -12,7 +12,7 @@ cat async.zsh > ~/.oh-my-zsh/functions/async;
 cd && rm -rf pure;
 
 cp ~/dot-files/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
-rm -rf ~/.oh-my-zsh/custom/themes/example.zsh-theme;
+rm ~/.oh-my-zsh/custom/themes/example.zsh-theme;
 
 cd; if [ ! -d "$(pwd)/.config" ]; then mkdir ~/.config; fi;
 
