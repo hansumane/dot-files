@@ -69,8 +69,6 @@ Theming:
 
     arc-gtk-theme
 
-    arc-icon-theme
-
     papirus-icon-theme
 
     Twilight-cursors (ArcMidnight-cursors, LyraQ-cursors)
