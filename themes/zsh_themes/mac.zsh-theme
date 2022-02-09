@@ -1,2 +1,2 @@
 # Default Mac prompt
-PROMPT="%m:%1~ %n$ "
+PROMPT="%m:%B%1~%b %n$ "
