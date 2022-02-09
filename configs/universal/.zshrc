@@ -3,16 +3,16 @@ export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
 
 # Sudo command
-SUDOCMD="sudo"
+SUDOCMD="doas"
 
 # If exa will show icons or not
 EXAICONS="--icons"
 
 # Theme
-ZSH_THEME="simple"
+ZSH_THEME="mac"
 
 # Plugins
-plugins=(git zsh-syntax-highlighting) # zsh-autosuggestions
+plugins=() #git zsh-syntax-highlighting zsh-autosuggestions
 
 source $ZSH/oh-my-zsh.sh
 

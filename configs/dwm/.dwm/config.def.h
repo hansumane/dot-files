@@ -1,5 +1,5 @@
 /* appearance */
-static const unsigned int borderpx  = 1;            /* border pixel of windows */
+static const unsigned int borderpx  = 3;            /* border pixel of windows */
 static const unsigned int snap      = 24;           /* shows how many pixels to stick
                                                        a window to screen border etc */
 
@@ -7,12 +7,12 @@ static const unsigned int gappih    = 10;           /* horiz inner gap between w
 static const unsigned int gappiv    = 10;           /* vert inner gap between windows */
 static const unsigned int gappoh    = 10;           /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov    = 10;           /* vert outer gap between windows and screen edge */
-static int smartgaps                = 1;            /* 1 means no outer gap when there is only one window */
+static int smartgaps                = 0;            /* 1 means no outer gap when there is only one window */
 
 static const int showbar            = 1;            /* 0 means no bar */
 static const int topbar             = 1;            /* 0 means bottom bar */
-static const char *fonts[]          = { "VictorMono Nerd Font:size=13:style=SemiBold:antialias=true:autohint=true" };
-static const char dmenufont[]       = "VictorMono Nerd Font:size=13:style=SemiBold:antialias=true:autohint=true";
+static const char *fonts[]          = { "VictorMono Nerd Font:size=13:style=Bold:antialias=true:autohint=true" };
+static const char dmenufont[]       = "VictorMono Nerd Font:size=13:style=Bold:antialias=true:autohint=true";
 static const char col_gray1[]       = "#383c4a";    /* inactive background color */
 static const char col_gray2[]       = "#383c4a";    /* inactive border color */
 static const char col_gray3[]       = "#d3dae3";    /* inactive foreground color */
@@ -26,7 +26,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
