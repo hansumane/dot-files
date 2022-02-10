@@ -11,8 +11,8 @@ static int smartgaps                = 0;            /* 1 means no outer gap when
 
 static const int showbar            = 1;            /* 0 means no bar */
 static const int topbar             = 1;            /* 0 means bottom bar */
-static const char *fonts[]          = { "VictorMono Nerd Font:size=13:style=Bold:antialias=true:autohint=true" };
-static const char dmenufont[]       = "VictorMono Nerd Font:size=13:style=Bold:antialias=true:autohint=true";
+static const char *fonts[]          = { "VictorMono Nerd Font:size=14:style=Bold:antialias=true:autohint=true" };
+static const char dmenufont[]       = "VictorMono Nerd Font:size=14:style=Bold:antialias=true:autohint=true";
 static const char col_gray1[]       = "#383c4a";    /* inactive background color */
 static const char col_gray2[]       = "#383c4a";    /* inactive border color */
 static const char col_gray3[]       = "#d3dae3";    /* inactive foreground color */
@@ -30,9 +30,9 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Zathura",  NULL,       NULL,       1 << 4,       0,           -1 },
-	{ "Sxiv",     NULL,       NULL,       1 << 4,       0,           -1 },
-	{ "Gimp",     NULL,       NULL,       1 << 6,       0,           -1 },
+	{ "Zathura",  NULL,       NULL,       1 << 3,       0,           -1 },
+	{ "Sxiv",     NULL,       NULL,       1 << 3,       0,           -1 },
+	{ "Gimp",     NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */
@@ -133,8 +133,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
 	{ 0,                            XK_Print,  spawn,          { .v = scrot_z } },
-	{ ShiftMask,                    XK_Print,  spawn,          { .v = scrot_zs } },
-	{ ControlMask,                  XK_Print,  spawn,          { .v = scrot_zsf } },
+	{ ControlMask,                  XK_Print,  spawn,          { .v = scrot_zs } },
+	{ ShiftMask,                    XK_Print,  spawn,          { .v = scrot_zsf } },
 };
 
 /* button definitions */

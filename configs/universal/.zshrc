@@ -22,7 +22,7 @@ source $ZSH/oh-my-zsh.sh
 alias c="clear"
 alias q="exit"
 
-alias t="tmux"
+alias t="c;tmux"
 alias ls="exa $EXAICONS"
 alias la="exa $EXAICONS -a"
 alias lx="exa $EXAICONS -alh --no-user --group-directories-first"
