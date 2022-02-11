@@ -7,17 +7,19 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git;
 
 cd; git clone https://github.com/sindresorhus/pure.git;
 cd pure; cat pure.zsh > ~/.oh-my-zsh/custom/themes/pure.zsh-theme;
-mkdir ~/.oh-my-zsh/functions;
+mkdir -p ~/.oh-my-zsh/functions;
 cat async.zsh > ~/.oh-my-zsh/functions/async;
 cd && rm -rf pure;
 
-cp ~/dot-files/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
+cp -f ~/dot-files/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
 rm ~/.oh-my-zsh/custom/themes/example.zsh-theme;
 
 cd; if [ ! -d "$(pwd)/.config" ]; then mkdir ~/.config; fi;
+if [ ! -d "$(pwd)/.config/kitty" ]; then mkdir ~/.config/kitty; fi;
 
 cp -rf ~/dot-files/configs/universal/.config/nvim ~/.config;
-cp -rf ~/dot-files/configs/universal/.zshrc ~;
+cp -f ~/dot-files/configs/universal/.config/kitty/kitty.conf ~/.config/kitty;
+cp -f ~/dot-files/configs/universal/.zshrc ~;
 
 cd; if [ ! -d "$(pwd)/Desktop" ]; then mkdir Desktop; fi;
 if [ ! -d "$(pwd)/Downloads" ]; then mkdir Downloads; fi;
