@@ -2,8 +2,14 @@ export TERM="xterm-256color"
 export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
 
-# Sudo command
-SUDOCMD="doas"
+# Sudo and Shutdown command
+SUDOCMD="sudo"
+if [[ $SUDOCMD == "sudo" ]]
+then
+    POWEROFFCMD="shutdown now"
+else
+    POWEROFFCMD="poweroff"
+fi
 
 # If exa will show icons or not
 EXAICONS="--icons"
@@ -32,7 +38,7 @@ alias clt="c;lt"
 
 alias rr="rm -rf"
 alias sbn="$SUDOCMD reboot"
-alias sdn="$SUDOCMD shutdown now"
+alias sdn="$SUDOCMD $POWEROFFCMD"
 
 alias ra="ranger"
 alias fetch="c;pfetch"
