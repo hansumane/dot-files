@@ -69,4 +69,5 @@ au BufEnter,Bufnew *.h Tabs
 au BufEnter,Bufnew *.cpp Tabs
 au BufEnter,Bufnew *.cxx Tabs
 au BufEnter,Bufnew *.vim Tabs
+au BufEnter,Bufnew .gitconfig Tabs
 au BufEnter,Bufnew Makefile Tabs
