@@ -11,8 +11,8 @@ mkdir -p ~/.oh-my-zsh/functions;
 cat async.zsh > ~/.oh-my-zsh/functions/async;
 cd && rm -rf pure;
 
+rm -f ~/.oh-my-zsh/custom/themes/example.zsh-theme;
 cp -f ~/dot-files/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
-rm ~/.oh-my-zsh/custom/themes/example.zsh-theme;
 
 cd; if [ ! -d "$(pwd)/.config" ]; then mkdir ~/.config; fi;
 if [ ! -d "$(pwd)/.config/kitty" ]; then mkdir ~/.config/kitty; fi;
@@ -27,7 +27,7 @@ if [ -d "$(pwd)/Others" ]; then mv Others Others_old; fi;
 mkdir Others;
 
 cd ~/Others;
-mkdir -p Coding Templates Shared Documents Music Pictures/Screenshots Videos;
+mkdir -p Coding Documents Music Pictures/Screenshots Shared Templates Videos;
 echo 'XDG_DESKTOP_DIR="$HOME/Desktop"
 XDG_DOWNLOAD_DIR="$HOME/Downloads"
 XDG_TEMPLATES_DIR="$HOME/Others/Templates"
