@@ -4,18 +4,13 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # Sudo and Shutdown command
 SUDOCMD="sudo"
-if [[ $SUDOCMD == "sudo" ]]
-then
-    POWEROFFCMD="shutdown now"
-else
-    POWEROFFCMD="poweroff"
-fi
+POWEROFFCMD="shutdown now"
 
 # If exa will show icons or not
 EXAICONS="--icons"
 
 # Theme
-ZSH_THEME="mac"
+ZSH_THEME="round"
 
 # Plugins
 plugins=() #git zsh-syntax-highlighting zsh-autosuggestions
@@ -32,6 +27,7 @@ alias t="c;tmux"
 alias ls="exa $EXAICONS"
 alias la="exa $EXAICONS -a"
 alias lx="exa $EXAICONS -alh --no-user --group-directories-first"
+alias cls="c;ls"
 alias cla="c;la"
 alias clx="c;lx"
 alias clt="c;lt"
