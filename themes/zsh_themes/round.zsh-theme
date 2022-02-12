@@ -18,4 +18,4 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%} "
 # ----------------------------------
 PROMPT='$truncated_path $user_symbol'
 RPROMPT=' $background_jobs $non_zero_return_value $(git_prompt_info)'
-zle_highlight=(default:bold)
+# zle_highlight=(default:bold)
