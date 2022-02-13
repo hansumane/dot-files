@@ -1,3 +1,5 @@
+# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
 export TERM="xterm-256color"
 export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
@@ -6,7 +8,8 @@ export ZSH="$HOME/.oh-my-zsh"
 EXAICONS="--icons"
 
 # Theme
-ZSH_THEME="extra-simple"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="round"
 
 # Plugins
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
@@ -19,15 +22,16 @@ source $ZSH/oh-my-zsh.sh
 alias c="clear"
 alias q="exit"
 
+alias t="c;tmux"
 alias ls="exa $EXAICONS"
 alias la="exa $EXAICONS -a"
 alias lx="exa $EXAICONS -alh --no-user --group-directories-first"
+alias cls="c;ls"
 alias cla="c;la"
 alias clx="c;lx"
 alias clt="c;lt"
 
 alias rr="rm -rf"
-alias rrb="rm -f out_*;rm -f out-*"
 
 alias ra="ranger"
 alias fetch="c;pfetch"
@@ -47,7 +51,3 @@ lt ()
     fi
   fi
 }
-
-alias updg="pkg upgrade -y && apt update && apt full-upgrade -y"
-alias upcl="pkg autoclean -y && apt autoremove -y"
-alias updc="updg && upcl"

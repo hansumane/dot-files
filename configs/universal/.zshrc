@@ -1,3 +1,5 @@
+# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
 export TERM="xterm-256color"
 export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
@@ -10,6 +12,7 @@ POWEROFFCMD="shutdown now"
 EXAICONS="--icons"
 
 # Theme
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 ZSH_THEME="round"
 
 # Plugins
