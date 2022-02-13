@@ -1,4 +1,7 @@
-# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
+then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 export TERM="xterm-256color"
 export EDITOR="nvim"
@@ -12,11 +15,10 @@ POWEROFFCMD="shutdown now"
 EXAICONS="--icons"
 
 # Theme
-# ZSH_THEME="powerlevel10k/powerlevel10k"
-ZSH_THEME="round"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Plugins
-plugins=() #git zsh-syntax-highlighting zsh-autosuggestions
+plugins=(git zsh-syntax-highlighting) # zsh-autosuggestions
 
 source $ZSH/oh-my-zsh.sh
 
@@ -58,3 +60,6 @@ lt ()
     fi
   fi
 }
+
+# p10k configure || nvim .p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
