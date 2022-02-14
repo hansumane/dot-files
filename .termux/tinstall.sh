@@ -18,7 +18,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 if [ ! -d "$HOME/.config" ]; then mkdir ~/.config; fi;
 cp -r ~/storage/dot-files/.termux/.config/nvim ~/.config;
-cp -f ~/storage/dot-files/configs/universal/.p10k.zsh ~;
+cp -f ~/storage/dot-files/.termux/.p10k.zsh ~;
 cp ~/storage/dot-files/.termux/.zshrc ~;
 
 cd ~/.config/nvim;
