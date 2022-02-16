@@ -44,7 +44,13 @@ echo 'en_US' > ~/.config/user-dirs.locale;
 cd ~/.config/nvim;
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim';
 
-if [ "$(uname -a | awk '{print $2}')" == "arch" ];
-then
-  sudo pacman -S --needed curl git zip unzip tar vim neovim tcc zsh exa xdg-user-dirs tmux ranger;
+# if [ "$(uname -n)" == "arch" ];
+# then
+#   sudo pacman -Syyu &&
+#   sudo pacman -S --needed curl git zip unzip tar vim neovim tcc zsh exa xdg-user-dirs tmux ranger;
+if [ "$(uname -v | awk '{print $3}')" == "Debian" ];
+  sudo apt update &&
+  sudo apt full-upgrade -y &&
+  sudo apt autoremove -y &&
+  sudo apt install curl zip unzip tar vim neovim build-essential tcc zsh tmux ranger -y;
 fi;
