@@ -64,6 +64,9 @@ Utils:
 
 Theming:
 
+    qt5ct
+    [qui-based utility to set up qt themes in windows managers]
+
     lxappearance
     [GUI-based utility for setting up gtk themes and fonts]
 

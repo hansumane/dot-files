@@ -6,6 +6,7 @@ fi
 export TERM="xterm-256color"
 export EDITOR="nvim"
 export BROWSER="brave"
+export QT_QPA_PLATFORMTHEME="qt5ct"
 export ZSH="$HOME/.oh-my-zsh"
 
 # Sudo and Shutdown command
