@@ -134,7 +134,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
 	{ 0,                            XK_Print,  spawn,          { .v = scrot_z } },
 	{ ControlMask,                  XK_Print,  spawn,          { .v = scrot_zs } },
-	{ ShiftMask,                    XK_Print,  spawn,          { .v = scrot_zsf } },
+	{ ControlMask|ShiftMask,        XK_Print,  spawn,          { .v = scrot_zsf } },
 };
 
 /* button definitions */
