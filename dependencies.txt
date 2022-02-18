@@ -10,8 +10,8 @@ WMs:
 
     -> i3 (i3-gaps i3status i3lock rofi)
     -- or --
-    -> dwm (dwm dmenu)
-    [both dwm and dmenu are better
+    -> dwm (dwm dmenu slstatus)
+    [dwm, dmenu and slstatus are better
      to be downloaded from suckless.org]
 
 Terminals:
