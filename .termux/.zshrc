@@ -54,5 +54,9 @@ lt ()
   fi
 }
 
+alias updg="pkg upgrade -y && apt update && apt full-upgrade -y"
+alias upcl="pkg autoclean -y && apt autoremove -y"
+alias updc="updg && upcl"
+
 # p10k configure || nvim .p10k.zsh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
