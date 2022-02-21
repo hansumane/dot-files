@@ -1,26 +1,19 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
-then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 export TERM="xterm-256color"
 export EDITOR="nvim"
-export BROWSER="brave"
-export QT_QPA_PLATFORMTHEME="qt5ct"
 export ZSH="$HOME/.oh-my-zsh"
 
 # Sudo and Shutdown command
-SUDOCMD="sudo"
+SUDOCMD="doas"
 POWEROFFCMD="shutdown now"
 
 # If exa will show icons or not
-EXAICONS="--icons"
+EXAICONS="--no-icons"
 
 # Theme
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="simple"
 
 # Plugins
-plugins=(git zsh-syntax-highlighting) # zsh-autosuggestions
+plugins=() # git zsh-syntax-highlighting zsh-autosuggestions
 
 source $ZSH/oh-my-zsh.sh
 
@@ -62,6 +55,3 @@ lt ()
     fi
   fi
 }
-
-# p10k configure || nvim .p10k.zsh
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
