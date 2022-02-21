@@ -7,9 +7,12 @@
 # * https://github.com/ryanoasis/nerd-fonts.git
 # * fontforge package
 
-for FONT in /home/$(whoami)/Downloads/VictorMonoAll/TTF/*.ttf;
+FONTNAME="VictorMono"
+EXTENSION="ttf"
+
+for FONT in /home/$(whoami)/Downloads/$(FONTNAME)/*.$(EXTENSION);
 do
     /home/$(whoami)/Downloads/nerd-fonts/font-patcher \
     $FONT --mono --complete --progressbars --outputdir \
-    /home/$(whoami)/Downloads/VictorMonoPatched;
+    /home/$(whoami)/Downloads/$(FONTNAME)Patched;
 done;

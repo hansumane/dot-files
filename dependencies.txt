@@ -23,7 +23,7 @@ Terminals:
      instead of alacritty as it seems
      to work improperly with X11]
 
-    rxvt-unicode
+    urxvt (rxvt-unicode)
     [minimalistic alternative to kitty
      I decided to try]
 
@@ -61,7 +61,8 @@ Utils:
     [simple pdf and djvu reader with vim keybindings]
 
     picom
-    [compton fork; screen compositor; for i3 setup]
+    [compton fork; more powerful screen compositor
+     than xcompmgr; for i3 setup]
 
     xcompmgr
     [simple X compositor; for dwm setup]

@@ -44,14 +44,13 @@ URxvt.internalBorder: 0
 URxvt.externalBorder: 0
 
 URxvt.geometry: 84x22
-
 URxvt.antialias: true
 URxvt.letterSpace: 0
 
-URxvt.font: xft:Victor Mono:style=Semibold:size=13
-URxvt.boldFont: xft:Victor Mono:style=Bold:size=13
-URxvt.italicFont: xft:Victor Mono:style=Semibold Italic:size=13
-URxvt.boldItalicFont: xft:Victor Mono:style=Bold Italic:size=13
+URxvt.font: xft:VictorMono Nerd Font:size=14:style=Semibold
+URxvt.boldFont: xft:VictorMono Nerd Font:size=14:style=Bold
+URxvt.italicFont: xft:VictorMono Nerd Font:size=14:style=Semibold Italic
+URxvt.boldItalicFont: xft:VictorMono Nerd Font:size=14:style=Bold Italic
 
 URxvt.scrollBar: false
 
