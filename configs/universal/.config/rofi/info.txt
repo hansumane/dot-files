@@ -1,0 +1,1 @@
+command: rofi -show combi

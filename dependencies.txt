@@ -9,6 +9,8 @@ Fonts:
 WMs:
 
     -> i3 (i3-gaps i3status i3lock rofi)
+    [I haven't been using i3 for a while for now
+     so the config is pretty outdated]
     -- or --
     -> dwm (dwm dmenu slstatus)
     [dwm, dmenu and slstatus are better
@@ -42,7 +44,8 @@ Utils:
     pcmanfm
     -- or --
     thunar
-    [GUI file manager, if you need one]
+    [GUI file manager, if you need one
+     thunar comes with xfce4 or xfce4-goodies]
 
     scrot
     [simple screenshot utility]
@@ -65,17 +68,20 @@ Utils:
 Theming:
 
     qt5ct
-    [qui-based utility to set up qt themes in windows managers]
+    [qui-based utility to set up qt themes in windows managers
+     you should append 'export export QT_QPA_PLATFORMTHEME="qt5ct"'
+     to /etc/profile]
+    [you only need it if you don't use KDE or LXQT]
 
     lxappearance
     [GUI-based utility for setting up gtk themes and fonts]
+    [you only need it if you don't have theme configurer
+     in your desktop environment]
 
     arc-gtk-theme
-
     papirus-icon-theme
 
-    Twilight-cursors (ArcMidnight-cursors, LyraQ-cursors)
-    [included in themes folder]
+    [cursors are included in ./themes folder]
 
 Other:
 
