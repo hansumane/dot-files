@@ -20,7 +20,9 @@ cd; if [ ! -d "$(pwd)/.config" ]; then mkdir ~/.config; fi;
 if [ ! -d "$(pwd)/.config/kitty" ]; then mkdir ~/.config/kitty; fi;
 
 cp -rf ~/dot-files/configs/universal/.config/nvim ~/.config;
-cp -f ~/dot-files/configs/universal/.config/kitty/kitty.conf ~/.config/kitty;
+# cp -f ~/dot-files/configs/universal/.config/kitty/kitty.conf ~/.config/kitty;
+# cp -rf ~/dot-files/configs/universal/.config/rofi ~/.config;
+cp -f ~/dot-files/configs/universal/.Xresources ~;
 # cp -f ~/dot-files/configs/universal/.p10k.zsh ~;
 cp -f ~/dot-files/configs/universal/.zshrc ~;
 

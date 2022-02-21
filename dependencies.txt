@@ -23,6 +23,10 @@ Terminals:
      instead of alacritty as it seems
      to work improperly with X11]
 
+    rxvt-unicode
+    [minimalistic alternative to kitty
+     I decided to try]
+
 Console Applications:
 
     nvim (neovim)

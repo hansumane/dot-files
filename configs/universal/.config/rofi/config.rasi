@@ -1,7 +1,7 @@
 configuration {
     modi: "drun,run,combi";
     combi-modi: "drun,run";
-    font: "VictorMono Nerd Font Semibold 16";
-    terminal: "kitty";
+    font: "Victor Mono Semibold 16";
+    terminal: "urxvt";
 }
 @theme "mytheme-xfce"
