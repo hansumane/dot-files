@@ -43,14 +43,14 @@ URxvt.background: [85]#383c4a
 URxvt.internalBorder: 0
 URxvt.externalBorder: 0
 
-URxvt.geometry: 84x22
+URxvt.geometry: 200x100
 URxvt.antialias: true
 URxvt.letterSpace: 0
 
-URxvt.font: xft:VictorMono Nerd Font:size=14:style=Semibold
-URxvt.boldFont: xft:VictorMono Nerd Font:size=14:style=Bold
-URxvt.italicFont: xft:VictorMono Nerd Font:size=14:style=Semibold Italic
-URxvt.boldItalicFont: xft:VictorMono Nerd Font:size=14:style=Bold Italic
+URxvt.font: xft:VictorMono Nerd Font:size=16:style=Semibold
+URxvt.boldFont: xft:VictorMono Nerd Font:size=16:style=Bold
+URxvt.italicFont: xft:VictorMono Nerd Font:size=16:style=Semibold Italic
+URxvt.boldItalicFont: xft:VictorMono Nerd Font:size=16:style=Bold Italic
 
 URxvt.scrollBar: false
 
