@@ -88,6 +88,3 @@ Other:
     pfetch (https://github.com/dylanaraps/pfetch.git)
     [simple alternative to screenfetch or neofetch]
 
-    font-patcher (https://github.com/ryanoasis/nerd-fonts.git)
-    [utility to patch any font with nerd fonts icons]
-
