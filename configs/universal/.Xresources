@@ -43,6 +43,7 @@ URxvt.background: [85]#383c4a
 URxvt.internalBorder: 0
 URxvt.externalBorder: 0
 
+! URxvt.geometry: 84x22
 URxvt.geometry: 200x100
 URxvt.antialias: true
 URxvt.letterSpace: 0
