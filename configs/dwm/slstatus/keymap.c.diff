@@ -1,0 +1,11 @@
+--- components/keymap.c	2022-02-02 10:44:00.353269658 +0300
++++ components/keymap.c	2022-02-02 09:40:04.795754892 +0300
+@@ -83,5 +83,8 @@
+ 		warn("XCloseDisplay: Failed to close display");
+ 	}
+ 
++	for (size_t i = 0; i < strlen(layout); i++) {
++		layout[i] = toupper(layout[i]);
++	}
+ 	return layout;
+ }

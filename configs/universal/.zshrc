@@ -4,7 +4,6 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # Sudo and Shutdown command
 SUDOCMD="doas"
-POWEROFFCMD="shutdown now"
 
 # If exa will show icons or not
 EXAICONS="--no-icons"
@@ -34,7 +33,7 @@ alias clt="c;lt"
 
 alias rr="rm -rf"
 alias sbn="$SUDOCMD reboot"
-alias sdn="$SUDOCMD $POWEROFFCMD"
+alias sdn="$SUDOCMD poweroff"
 
 alias ra="ranger"
 alias fetch="c;pfetch"
