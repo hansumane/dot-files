@@ -10,22 +10,21 @@ WMs:
 
     -> i3 (i3-gaps i3status i3lock rofi)
     [I haven't been using i3 for a while for now
-     so the config is pretty outdated]
+     so the config is pretty outdated
+     soon maybe I will update it with polybar
+     or some other fancy bar]
+
     -- or --
+
     -> dwm (dwm dmenu slstatus)
     [dwm, dmenu and slstatus are better
      to be downloaded from suckless.org]
 
 Terminals:
 
-    kitty
-    [terminal emulator I'm using now
-     instead of alacritty as it seems
-     to work improperly with X11]
-
-    urxvt (rxvt-unicode)
-    [minimalistic alternative to kitty
-     I decided to try]
+    alacritty
+    [I went back to alacritty as it
+     works fine with X11 again]
 
 Console Applications:
 
@@ -48,8 +47,7 @@ Utils:
     pcmanfm
     -- or --
     thunar
-    [GUI file manager, if you need one
-     thunar comes with xfce4 or xfce4-goodies]
+    [GUI file manager, if you need one]
 
     scrot
     [simple screenshot utility]
@@ -72,11 +70,12 @@ Utils:
 
 Theming:
 
-    qt5ct
-    [qui-based utility to set up qt themes in windows managers
-     you should append 'export export QT_QPA_PLATFORMTHEME="qt5ct"'
+    qt5ct && kvantum
+    [qui-based utility to set up qt themes in window managers
+     you should append 'export QT_QPA_PLATFORMTHEME="qt5ct"'
      to /etc/profile]
-    [you only need it if you don't use KDE or LXQT]
+    [you only need it if you don't use KDE, LXQT
+     or other QT-based DE]
 
     lxappearance
     [GUI-based utility for setting up gtk themes and fonts]
@@ -86,7 +85,8 @@ Theming:
     arc-gtk-theme
     papirus-icon-theme
 
-    [cursors are included in ./themes folder]
+    [cursors are included in ./themes/.icons folder]
+    [kvantum (qt) themes are included in ./themes/kvantum-themes folder]
 
 Other:
 

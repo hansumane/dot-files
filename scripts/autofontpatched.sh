@@ -10,9 +10,9 @@
 FONTNAME="VictorMono"
 EXTENSION="ttf"
 
-for FONT in /home/$(whoami)/Downloads/$(FONTNAME)/*.$(EXTENSION);
+for FONT in ~/Downloads/$(FONTNAME)/*.$(EXTENSION);
 do
-    /home/$(whoami)/Downloads/nerd-fonts/font-patcher \
-    $FONT --mono --complete --progressbars --outputdir \
-    /home/$(whoami)/Downloads/$(FONTNAME)Patched;
+    ~/Downloads/nerd-fonts/font-patcher \
+    $FONT --complete --progressbars --outputdir \
+    ~/Downloads/$(FONTNAME)Patched;
 done;

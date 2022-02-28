@@ -1,0 +1,77 @@
+window:
+
+  opacity: 0.85
+  startup_mode: Maximized
+
+
+font:
+
+  normal:
+    family: VictorMono Nerd Font
+    style: Semibold
+
+  bold:
+    family: VictorMono Nerd Font
+    style: Bold
+
+  italic:
+    family: VictorMono Nerd Font
+    style: Semibold Italic
+
+  bold_italic:
+    family: VictorMono Nerd Font
+    style: Bold Italic
+
+  size: 16.0
+
+
+colors:
+
+  primary:
+    background: '#383c4a'
+    foreground: '#d3dae3'
+
+  cursor:
+    text: CellBackground
+    cursor: CellForeground
+
+  normal:
+    black:   '#383c4a'
+    red:     '#bf616a'
+    green:   '#a3be8c'
+    yellow:  '#ebcb8b'
+    blue:    '#81a1c1'
+    magenta: '#b48ead'
+    cyan:    '#88c0d0'
+    white:   '#e5e9f0'
+
+  bright:
+    black:   '#3b4252'
+    red:     '#bf616a'
+    green:   '#a3be8c'
+    yellow:  '#ebcb8b'
+    blue:    '#81a1c1'
+    magenta: '#b48ead'
+    cyan:    '#88c0d0'
+    white:   '#e5e9f0'
+
+  transparent_background_colors: false
+
+
+cursor:
+  style:
+    # Values for `shape`:
+    #   - ▇ Block
+    #   - _ Underline
+    #   - | Beam
+    shape: Block
+
+    blinking: Off
+
+  #blink_interval: 750
+
+  # Thickness of the cursor relative to the cell width as floating point number
+  # from `0.0` to `1.0`.
+  #thickness: 0.15
+
+live_config_reload: true

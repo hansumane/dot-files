@@ -17,11 +17,12 @@ cp -f ~/dot-files/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
 # git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 cd; if [ ! -d "$(pwd)/.config" ]; then mkdir ~/.config; fi;
-if [ ! -d "$(pwd)/.config/kitty" ]; then mkdir ~/.config/kitty; fi;
+if [ -d "$(pwd)/.config/kitty" ]; then rm -rf ~/.config/kitty; fi;
 
 cp -rf ~/dot-files/configs/universal/.config/nvim ~/.config;
+cp -rf ~/dot-files/configs/universal/.config/alacritty ~/.config;
 # cp -f ~/dot-files/configs/universal/.config/kitty/kitty.conf ~/.config/kitty;
-cp -f ~/dot-files/configs/universal/.Xresources ~;
+# cp -f ~/dot-files/configs/universal/.Xresources ~;
 cp -f ~/dot-files/configs/universal/.zshrc ~;
 
 cd; if [ ! -d "$(pwd)/Desktop" ]; then mkdir Desktop; fi;
