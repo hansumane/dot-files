@@ -50,8 +50,10 @@ Utils:
     thunar
     [GUI file manager, if you need one]
 
-    xfce4-screenshooter
-    [easy to use screenshot application]
+    xfce4-screenshooter & xfce4-clipman
+    [easy to use screenshot application;
+     copying to clipboard doesn't work
+     without xfce4-clipman]
 
     sxiv
     [simple X image viewer]
