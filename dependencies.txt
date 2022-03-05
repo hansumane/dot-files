@@ -8,11 +8,10 @@ Fonts:
 
 WMs:
 
-    -> i3 (i3-gaps i3status i3lock rofi)
-    [I haven't been using i3 for a while for now
-     so the config is pretty outdated
-     soon maybe I will update it with polybar
-     or some other fancy bar]
+    -> i3 (i3-gaps i3lock polybar rofi)
+    [I have updated i3 config with polybar!
+     but I haven't made many changes to
+     polybar config yet]
 
     -- or --
 
@@ -22,9 +21,11 @@ WMs:
 
 Terminals:
 
-    alacritty
-    [I went back to alacritty as it
-     works fine with X11 again]
+    kitty
+    [and again I went back to kitty
+     as when I turned off shell-integration
+     it seems to work better, and it shows
+     font ligatures]
 
 Console Applications:
 
@@ -49,8 +50,8 @@ Utils:
     thunar
     [GUI file manager, if you need one]
 
-    scrot
-    [simple screenshot utility]
+    xfce4-screenshooter
+    [easy to use screenshot application]
 
     sxiv
     [simple X image viewer]
@@ -58,12 +59,8 @@ Utils:
     -> zathura (zathura zathura-pdf-mupdf zathura-djvu)
     [simple pdf and djvu reader with vim keybindings]
 
-    picom
-    [compton fork; more powerful screen compositor
-     than xcompmgr; for i3 setup]
-
     xcompmgr
-    [simple X compositor; for dwm setup]
+    [simple X compositor]
 
     xdg-user-dirs
     [Desktop, Downloads, etc folders support]

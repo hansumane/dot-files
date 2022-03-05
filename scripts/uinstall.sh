@@ -5,7 +5,7 @@ cd ~/.oh-my-zsh/custom/plugins;
 git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git;
 git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git;
 
-# cd; git clone https://github.com/sindresorhus/pure.git;
+# cd; git clone --depth=1 https://github.com/sindresorhus/pure.git;
 # cd pure; cat pure.zsh > ~/.oh-my-zsh/custom/themes/pure.zsh-theme;
 # mkdir -p ~/.oh-my-zsh/functions;
 # cat async.zsh > ~/.oh-my-zsh/functions/async;
@@ -20,7 +20,7 @@ cd; if [ ! -d "$(pwd)/.config" ]; then mkdir ~/.config; fi;
 if [ -d "$(pwd)/.config/kitty" ]; then rm -rf ~/.config/kitty; fi;
 
 cp -rf ~/dot-files/configs/universal/.config/nvim ~/.config;
-cp -rf ~/dot-files/configs/universal/.config/alacritty ~/.config;
+cp -rf ~/dot-files/configs/universal/.config/kitty ~/.config;
 # cp -f ~/dot-files/configs/universal/.Xresources ~;
 cp -f ~/dot-files/configs/universal/.zshrc ~;
 cp -f ~/dot-files/configs/universal/.p10k.zsh ~;
