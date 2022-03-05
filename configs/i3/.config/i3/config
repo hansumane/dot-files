@@ -26,7 +26,8 @@ bindsym --release Print exec xfce4-screenshooter
 bindsym --release Shift+Control+Print exec xfce4-screenshooter -r -c
 bindsym $mod+Shift+x exec --no-startup-id i3lock --color=$bg-color
 
-assign [class="Brave"] $ws2
+# assign [class="Brave"] $ws2
+for_window [class="Sxiv"] floating enable
 for_window [class="Pcmanfm"] floating enable
 for_window [class="TelegramDesktop"] floating enable
 
@@ -145,7 +146,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-client.focused           $focused-border   $focused-border   $text-color $focused-border
-client.unfocused         $unfocused-border $unfocused-border $text-color $focused-border
-client.focused_inactive  $unfocused-border $unfocused-border $text-color $focused-border
-client.urgent            $urgent-bg        $urgent-bg        $text-color $focused-border
+client.focused           $focused-border   $focused-border   $text-color $edge-color
+client.unfocused         $unfocused-border $unfocused-border $text-color $edge-color
+client.focused_inactive  $unfocused-border $unfocused-border $text-color $edge-color
+client.urgent            $urgent-bg        $urgent-bg        $text-color $edge-color
