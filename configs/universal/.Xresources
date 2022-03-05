@@ -49,10 +49,10 @@ URxvt.geometry: 200x100
 URxvt.antialias: true
 URxvt.letterSpace: 0
 
-URxvt.font: xft:VictorMono Nerd Font:size=16:style=Semibold
-URxvt.boldFont: xft:VictorMono Nerd Font:size=16:style=Bold
-URxvt.italicFont: xft:VictorMono Nerd Font:size=16:style=Semibold Italic
-URxvt.boldItalicFont: xft:VictorMono Nerd Font:size=16:style=Bold Italic
+URxvt.font: xft:JetBrainsMono Nerd Font:size=14:style=Regular
+URxvt.boldFont: xft:JetBrainsMono Nerd Font:size=14:style=Medium
+URxvt.italicFont: xft:JetBrainsMono Nerd Font:size=14:style=Italic
+URxvt.boldItalicFont: xft:JetBrainsMono Nerd Font:size=14:style=Medium Italic
 
 URxvt.scrollBar: false
 
