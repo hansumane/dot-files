@@ -1,6 +1,6 @@
 Fonts:
 
-    Victor Mono && VictorMono Nerd Font
+    JetBrains Mono && JetBrainsMono Nerd Font
     [both are included in .fonts directory;
      just copy its contents into
      /usr/share/fonts or ~/.fonts;
@@ -8,10 +8,13 @@ Fonts:
 
 WMs:
 
-    -> i3 (i3-gaps i3lock polybar rofi)
+    -> i3 (i3-gaps i3lock polybar/i3blocks rofi)
     [I have updated i3 config with polybar!
      but I haven't made many changes to
      polybar config yet]
+    [i3blocks dependencies:
+     xkblayout-state-git (AUR / https://github.com/nonpop/xkblayout-state)
+     sysstats]
 
     -- or --
 

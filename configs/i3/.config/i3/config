@@ -1,17 +1,20 @@
 # Colors
 #
-set $focused-border #88c0d0
-set $unfocused-border #383c4b
-set $edge-color #88c0d0
-
-set $bg-color #383c4b
-set $urgent-bg #bf616a
-set $text-color #d3dae3
+set $foreground #d3dae3
+set $background #383c4a
+set $blackd     #383c4b
+set $blackl     #3b4252
+set $red        #bf616a
+set $green      #a3be8c
+set $yellow     #ebcb8b
+set $blue       #81a1c1
+set $magenta    #b48ead
+set $cyan       #88c0d0
+set $white      #e5e9f0
 
 # Pre-executed
 #
 exec --no-startup-id xcompmgr -r 0 -o 0 -l 0 -t 0 -I 0.0625 -O 0.0625 -c
-exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec_always --no-startup-id ~/.fehbg
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-clipman
@@ -24,7 +27,7 @@ bindsym $mod+i exec firefox
 bindsym $mod+o exec pcmanfm
 bindsym --release Print exec xfce4-screenshooter
 bindsym --release Shift+Control+Print exec xfce4-screenshooter -r -c
-bindsym $mod+Shift+x exec --no-startup-id i3lock --color=$bg-color
+bindsym $mod+Shift+x exec --no-startup-id i3lock --color=$background
 
 # assign [class="Brave"] $ws2
 for_window [class="Sxiv"] floating enable
@@ -42,7 +45,7 @@ gaps outer 4
 #
 set $mod Mod4
 
-font pango:JetBrains Mono Bold 14
+font pango:JetBrainsMono Nerd Font Medium 14
 
 # Volume adjust
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -146,7 +149,31 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-client.focused           $focused-border   $focused-border   $text-color $edge-color
-client.unfocused         $unfocused-border $unfocused-border $text-color $edge-color
-client.focused_inactive  $unfocused-border $unfocused-border $text-color $edge-color
-client.urgent            $urgent-bg        $urgent-bg        $text-color $edge-color
+client.focused           $cyan   $cyan   $foreground $cyan
+client.unfocused         $blackd $blackd $foreground $blackd
+client.focused_inactive  $blackd $blackd $foreground $blackd
+client.urgent            $red    $red    $foreground $red
+
+# Polybar
+# exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# i3blocks
+bar {
+        # font pango:JetBrains Mono Bold 14
+        i3bar_command i3bar
+        # output primary
+        position top
+        status_command i3blocks
+        # strip_workspace_numbers yes
+        # tray_output nonprimary
+
+        colors {
+                background $background
+
+                focused_workspace  $cyan $cyan $background
+                active_workspace   $magenta $magenta $cyan
+                inactive_workspace $background $background $foreground
+                urgent_workspace   $red $red $foreground
+                binding_mode       $green $green $background
+        }
+}
