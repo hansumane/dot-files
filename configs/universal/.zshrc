@@ -64,4 +64,6 @@ lt ()
 # run 'p10k configure' to configure
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+set -o vi
+
 # eval "$(starship init zsh)"
