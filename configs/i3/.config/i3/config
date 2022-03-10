@@ -18,6 +18,9 @@ exec --no-startup-id xcompmgr -r 0 -o 0 -l 0 -t 0 -I 0.0625 -O 0.0625 -c
 exec_always --no-startup-id ~/.fehbg
 exec --no-startup-id xfce4-clipman
 exec --no-startup-id nm-applet
+
+# Borders
+#
 default_border pixel 1
 default_floating_border pixel 1
 
@@ -159,13 +162,9 @@ client.urgent            $red    $red    $foreground $red
 
 # i3blocks
 bar {
-        # font pango:JetBrains Mono Bold 14
         i3bar_command i3bar
-        # output primary
         position top
         status_command i3blocks
-        # strip_workspace_numbers yes
-        # tray_output nonprimary
 
         colors {
                 background $background
