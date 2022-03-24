@@ -39,10 +39,11 @@ for_window [class="TelegramDesktop"] floating enable
 
 # Gaps
 #
+# gaps [inner|outer|horizontal|vertical|top|left|bottom|right] <px>
 # smart_gaps on
 # smart_borders on
-gaps inner 4
-gaps outer 4
+gaps inner 8
+gaps outer 0
 
 # Main settings
 #
@@ -51,8 +52,8 @@ set $mod Mod4
 font pango:JetBrainsMono Nerd Font Medium 14
 
 # Volume adjust
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
 # bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 # bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
