@@ -7,7 +7,7 @@ markup=pango
 [cpu_usage]
 command=mpstat | awk 'FNR==4{ printf "%s%\n", $12 }'
 interval=10
-label=<span color="#88c0d0"> free: </span>
+label=<span color="#88c0d0"> idle: </span>
 border=#88c0d0
 border_top=2
 border_right=0

@@ -35,7 +35,7 @@ Console Applications:
     nvim (neovim)
     [modern vim replacement]
 
-    exa
+    exa (https://github.com/ogham/exa.git)
     [modern ls replacement with icons
      note: icons are shown properly
      only with nerd fonts]
@@ -45,6 +45,9 @@ Console Applications:
 
     zsh
     [better shell; use with ohmyzsh framework]
+
+    starship (https://starship.rs/)
+    [fast & secure prompt created with Rust]
 
 Utils:
 
