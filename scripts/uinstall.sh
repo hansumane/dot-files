@@ -40,7 +40,6 @@ XDG_DOCUMENTS_DIR="$HOME/Others/Documents"
 XDG_MUSIC_DIR="$HOME/Others/Music"
 XDG_PICTURES_DIR="$HOME/Others/Pictures"
 XDG_VIDEOS_DIR="$HOME/Others/Videos"' > ~/.config/user-dirs.dirs;
-echo 'en_US' > ~/.config/user-dirs.locale;
 
 cd ~/.config/nvim;
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim';
