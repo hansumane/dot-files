@@ -10,15 +10,16 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # Sudo command
 SUDOCMD="doas"
+# alias doas="sudo"
 
 # If exa will show icons or not
 EXAICONS="--icons"
 
 # Theme
-ZSH_THEME="simple"
+ZSH_THEME="dollar"
 
 # Plugins
-plugins=(git zsh-syntax-highlighting) # zsh-autosuggestions
+plugins=() # git zsh-syntax-highlighting zsh-autosuggestions
 
 source $ZSH/oh-my-zsh.sh
 
