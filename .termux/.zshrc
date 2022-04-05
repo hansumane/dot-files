@@ -1,7 +1,7 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
-then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
+# then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 export TERM="xterm-256color"
 export EDITOR="nvim"
@@ -11,10 +11,10 @@ export ZSH="$HOME/.oh-my-zsh"
 EXAICONS="--icons"
 
 # Theme
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="dollar"
 
 # Plugins
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=() # git zsh-syntax-highlighting zsh-autosuggestions
 
 source $ZSH/oh-my-zsh.sh
 
@@ -59,4 +59,4 @@ alias upcl="pkg autoclean -y && apt autoremove -y"
 alias updc="updg && upcl"
 
 # p10k configure || nvim .p10k.zsh
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
