@@ -10,7 +10,8 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git;
 git clone https://github.com/zsh-users/zsh-autosuggestions.git;
 
 cp ~/storage/dot-files/.termux/font.ttf ~/.termux;
-cp ~/storage/dot-files/.termux/*.properties ~/.termux;
+cp ~/storage/dot-files/.termux/termux.properties ~/.termux;
+cp ~/storage/dot-files/.termux/colors.dark.properties ~/.termux/colors.properties;
 
 rm ~/.oh-my-zsh/custom/themes/example.zsh-theme;
 cp ~/storage/dot-files/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
