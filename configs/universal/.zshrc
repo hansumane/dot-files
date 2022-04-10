@@ -9,8 +9,8 @@ export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
 
 # Sudo command
-SUDOCMD="doas"
-# alias doas="sudo"
+SUDOCMD="sudo"
+# alias sudo="doas"
 
 # If exa will show icons or not
 EXAICONS="--icons"
