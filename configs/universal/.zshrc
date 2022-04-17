@@ -10,36 +10,54 @@ export TERM="xterm-256color"
 export EDITOR="nvim"
 
 SUDOCMD="sudo"
-
 EXAICONS="--icons"
+SYSFETCH="neofetch"
 
 alias c="clear"
 alias q="exit"
 
+alias t="tmux"
 alias ls="exa $EXAICONS"
 alias la="exa $EXAICONS -a"
+alias ll="exa $EXAICONS -alh --group-directories-first"
 alias lx="exa $EXAICONS -alh --no-user --group-directories-first"
 alias cls="c;ls"
 alias cla="c;la"
 alias clx="c;lx"
+alias cll="c;ll"
 alias clt="c;lt"
 
 alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ra="ranger"
 alias rr="rm -rf"
+alias fetch="c;$SYSFETCH"
 alias nviM="nvim Makefile"
+alias grep="grep --color=auto"
 
 lt ()
 {
-  if (( $# == 0 ))
-  then
+  if (( $# == 0 )); then
     exa $EXAICONS --group-directories-first -aT --level=2
   else
-    if [[ $1 == a ]]
-    then
+    if [[ $1 == a ]]; then
       exa $EXAICONS --group-directories-first -aT
     else
       exa $EXAICONS --group-directories-first -aT --level=$1
     fi
+  fi
+}
+
+gitup ()
+{
+  if (( $# == 0)); then
+    echo "No commit name given!"
+  else
+    git add -A
+    git commit -m$1
+    git push
   fi
 }
 
