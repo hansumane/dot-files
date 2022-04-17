@@ -17,7 +17,7 @@ cp -r ~/dot-files/configs/universal/.config/nvim ~/.config;
 # cp -r ~/dot-files/configs/universal/.config/kitty ~/.config;
 # cp ~/dot-files/configs/universal/.Xresources ~;
 cp ~/dot-files/configs/universal/.zshrc ~;
-cp ~/dot-files/configs/universal/.p10k.zsh ~;
+cp ~/dot-files/configs/universal/.p10k.zsh ~/.oh-my-zsh;
 
 if [ ! -d ~/Desktop ]; then mkdir ~/Desktop; fi;
 if [ ! -d ~/Downloads ]; then mkdir ~/Downloads; fi;
