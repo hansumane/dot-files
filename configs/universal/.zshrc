@@ -31,11 +31,14 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+
 alias ra="ranger"
 alias rr="rm -rf"
 alias fetch="c;$SYSFETCH"
 alias nviM="nvim Makefile"
 alias grep="grep --color=auto"
+
+alias gitget="git clone --depth=1"
 
 lt ()
 {
