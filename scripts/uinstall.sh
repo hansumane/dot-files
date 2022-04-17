@@ -1,11 +1,16 @@
-#!/usr/bin/sh
-set -e;
+#!/usr/bin/bash
+set -e
 
-mkdir ~/.zsh-things;
-cd ~/.zsh-things;
-
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git;
+cd;
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
+cd ~/.oh-my-zsh/custom/plugins;
 git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git;
+git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git;
+
+cd;
+rm ~/.oh-my-zsh/custom/themes/example.zsh-theme;
+cp ~/dot-files/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 cd; if [ ! -d "$(pwd)/.config" ]; then mkdir ~/.config; fi;
 # if [ -d "$(pwd)/.config/kitty" ]; then rm -rf ~/.config/kitty; fi;
@@ -14,7 +19,7 @@ cp -r ~/dot-files/configs/universal/.config/nvim ~/.config;
 # cp -r ~/dot-files/configs/universal/.config/kitty ~/.config;
 # cp ~/dot-files/configs/universal/.Xresources ~;
 cp ~/dot-files/configs/universal/.zshrc ~;
-cp ~/dot-files/configs/universal/.p10k.zsh ~/.zsh-things;
+cp ~/dot-files/configs/universal/.p10k.zsh ~;
 
 cd; if [ ! -d "$(pwd)/Desktop" ]; then mkdir Desktop; fi;
 if [ ! -d "$(pwd)/Downloads" ]; then mkdir Downloads; fi;

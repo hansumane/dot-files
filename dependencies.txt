@@ -44,7 +44,9 @@ Console Applications:
     [simple terminal file manager with vim keybindings]
 
     zsh
-    [better shell for using powerlevel10k]
+    [better shell; use with ohmyzsh framework
+     although you can use without ohmyzsh framework
+     with alt uinstall.sh]
 
 Utils:
 
