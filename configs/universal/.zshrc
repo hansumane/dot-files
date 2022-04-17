@@ -53,11 +53,18 @@ lt ()
 gitup ()
 {
   if (( $# == 0)); then
-    echo "No commit name given!"
+    if read -q "choice?No commit name given, git pull?"; then
+      git pull
+    else
+      echo "Exiting..."
   else
     git add -A
     git commit -m$1
-    git push
+    if read -q "choice?Commit name given, git push?"; then
+      git push
+    else
+      echo "Exiting..."
+    fi
   fi
 }
 
