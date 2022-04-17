@@ -44,10 +44,7 @@ Console Applications:
     [simple terminal file manager with vim keybindings]
 
     zsh
-    [better shell; use with ohmyzsh framework]
-
-    starship (https://starship.rs/)
-    [fast & secure prompt created with Rust]
+    [better shell for using powerlevel10k]
 
 Utils:
 
