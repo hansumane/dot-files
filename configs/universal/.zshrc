@@ -60,14 +60,14 @@ gitup ()
     if read -q "choice?No commit name given, git pull? "; then
       echo ""; git pull
     else
-      echo "Exiting..."
+      echo "\nExiting..."
     fi
   else
     git add -A; git commit -m$1
     if read -q "choice?Commit name given, git push? "; then
       echo ""; git push
     else
-      echo "Exiting..."
+      echo "\nExiting..."
     fi
   fi
 }
