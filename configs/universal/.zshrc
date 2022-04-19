@@ -1,6 +1,6 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 export TERM="xterm-256color"
 export EDITOR="nvim"
@@ -9,7 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 SUDOCMD="sudo"
 EXAICONS="--icons"
 SYSFETCH="neofetch"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="agnosterc"
 plugins=(git zsh-syntax-highlighting) #zsh-autosuggestions
 
 source $ZSH/oh-my-zsh.sh
@@ -43,21 +43,6 @@ alias gitget="git clone --depth=1"
 
 lt ()
 {
-  if (( $# == 0 ))
-  then
-    exa $EXAICONS --group-directories-first -aT --level=2
-  else
-    if [[ $1 == a ]]
-    then
-      exa $EXAICONS --group-directories-first -aT
-    else
-      exa $EXAICONS --group-directories-first -aT --level=$1
-    fi
-  fi
-}
-
-lt ()
-{
   if (( $# == 0 )); then
     exa $EXAICONS --group-directories-first -aT --level=2
   else
@@ -87,4 +72,4 @@ gitup ()
   fi
 }
 
-[[ ! -f ~/.oh-my-zsh/.p10k.zsh ]] || source ~/.oh-my-zsh/.p10k.zsh
+# [[ ! -f ~/.oh-my-zsh/.p10k.zsh ]] || source ~/.oh-my-zsh/.p10k.zsh
