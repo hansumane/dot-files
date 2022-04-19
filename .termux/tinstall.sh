@@ -13,13 +13,12 @@ cp ~/storage/dot-files/.termux/font.ttf ~/.termux;
 cp ~/storage/dot-files/.termux/termux.properties ~/.termux;
 cp ~/storage/dot-files/.termux/colors.dark.properties ~/.termux/colors.properties;
 
-rm ~/.oh-my-zsh/custom/themes/example.zsh-theme;
 cp ~/storage/dot-files/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
 
 if [ ! -d "$HOME/.config" ]; then mkdir ~/.config; fi;
 cp -r ~/storage/dot-files/.termux/.config/nvim ~/.config;
-cp -f ~/storage/dot-files/.termux/.p10k.zsh ~;
+# cp ~/storage/dot-files/.termux/.p10k.zsh ~/.oh-my-zsh;
 cp ~/storage/dot-files/.termux/.zshrc ~;
 
 cd ~/.config/nvim;
