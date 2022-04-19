@@ -1,5 +1,4 @@
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
-# then
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 #   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 # fi
 
@@ -7,19 +6,13 @@ export TERM="xterm-256color"
 export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
 
-# If exa will show icons or not
 EXAICONS="--icons"
-
-# Theme
-ZSH_THEME="dollar"
-
-# Plugins
-plugins=() # git zsh-syntax-highlighting zsh-autosuggestions
+SYSFETCH="neofetch"
+ZSH_THEME="agnosterc"
+plugins=(git zsh-syntax-highlighting) #zsh-autosuggestions
 
 source $ZSH/oh-my-zsh.sh
 
-
-# Aliases
 
 alias c="clear"
 alias q="exit"
@@ -27,17 +20,19 @@ alias q="exit"
 alias t="c;tmux"
 alias ls="exa $EXAICONS"
 alias la="exa $EXAICONS -a"
+alias ll="exa $EXAICONS -alh --group-directories-first"
 alias lx="exa $EXAICONS -alh --no-user --group-directories-first"
 alias cls="c;ls"
 alias cla="c;la"
 alias clx="c;lx"
+alias cll="c;ll"
 alias clt="c;lt"
 
-alias rr="rm -rf"
-
 alias ra="ranger"
-alias fetch="c;pfetch"
+alias rr="rm -rf"
+alias fetch="c;$SYSFETCH"
 alias nviM="nvim Makefile"
+alias grep="grep --color=auto"
 
 lt ()
 {
@@ -54,9 +49,26 @@ lt ()
   fi
 }
 
+gitup ()
+{
+  if (( $# == 0)); then
+    if read -q "choice?No commit name given, git pull? "; then
+      echo ""; git pull
+    else
+      echo "\nExiting..."
+    fi
+  else
+    git add -A; git commit -m$1
+    if read -q "choice?Commit name given, git push? "; then
+      echo ""; git push
+    else
+      echo "\nExiting..."
+    fi
+  fi
+}
+
 alias updg="pkg upgrade -y && apt update && apt full-upgrade -y"
-alias upcl="pkg autoclean -y && apt autoremove -y"
+alias upcl="pkg autoremove -y && apt autoclean -y"
 alias updc="updg && upcl"
 
-# p10k configure || nvim .p10k.zsh
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.oh-my-zsh/.p10k.zsh ]] || source ~/.oh-my-zsh/.p10k.zsh
