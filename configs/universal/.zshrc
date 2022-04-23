@@ -10,7 +10,7 @@ export ZSH="$HOME/.oh-my-zsh"
 SUDOCMD="sudo"
 EXAICONS="--icons"
 SYSFETCH="neofetch"
-ZSH_THEME="agnosterc"
+ZSH_THEME="agnoster-custom"
 plugins=(git zsh-syntax-highlighting) #zsh-autosuggestions
 
 source $ZSH/oh-my-zsh.sh
