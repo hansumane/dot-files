@@ -1,23 +1,27 @@
 # Colors
 #
-set $foreground #d3dae3
-set $background #383c4a
-set $blackd     #383c4b
-set $blackl     #3b4252
-set $red        #bf616a
-set $green      #a3be8c
-set $yellow     #ebcb8b
-set $blue       #81a1c1
-set $magenta    #b48ead
-set $cyan       #88c0d0
-set $white      #e5e9f0
+set $foreground  #d3dae3
+set $background  #383c4a
+set $blackd      #383c4b
+set $blackl      #3b4252
+set $red         #bf616a
+set $green       #a3be8c
+set $yellow      #ebcb8b
+set $blue        #81a1c1
+set $magenta     #b48ead
+set $cyan        #88c0d0
+set $white       #e5e9f0
+
+# Other variables
+#
+set $terminal    "kitty"
 
 # Autostart
 #
 exec --no-startup-id xcompmgr -r 0 -o 0 -l 0 -t 0 -I 0.0625 -O 0.0625 -c
 exec_always --no-startup-id ~/.fehbg
 exec --no-startup-id xfce4-clipman
-exec --no-startup-id nm-applet
+# exec --no-startup-id nm-applet
 
 # Borders
 #
@@ -26,13 +30,11 @@ default_floating_border pixel 1
 
 # Custom section
 #
-bindsym $mod+i exec firefox
-bindsym $mod+o exec pcmanfm
 bindsym --release Print exec xfce4-screenshooter
 bindsym --release Shift+Control+Print exec xfce4-screenshooter -r -c
 bindsym $mod+Shift+x exec --no-startup-id i3lock --color=$background
 
-# assign [class="Brave"] $ws2
+# assign [class="Browser"] $ws2
 for_window [class="Sxiv"] floating enable
 for_window [class="Thunar"] floating enable
 for_window [class="TelegramDesktop"] floating enable
@@ -59,7 +61,7 @@ font pango:JetBrainsMono Nerd Font Medium 14
 
 # Essential binds
 floating_modifier $mod
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec $terminal
 bindsym $mod+p exec --no-startup-id rofi -show combi
 bindsym $mod+q kill
 # bindsym $mod+Shift+c reload
@@ -82,6 +84,8 @@ bindsym $mod+Shift+l move right
 bindsym $mod+g split h
 # Split in vertical orientation
 bindsym $mod+v split v
+# Toggle split direction
+bindsym $mod+e layout toggle split
 
 # Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -89,7 +93,6 @@ bindsym $mod+f fullscreen toggle
 # Change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
 
 # Toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -162,18 +165,18 @@ client.urgent            $red    $red    $foreground $red
 # exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # i3blocks
-bar {
-        i3bar_command i3bar
-        position top
-        status_command i3blocks
-
-        colors {
-                background $background
-
-                focused_workspace  $cyan $cyan $background
-                active_workspace   $magenta $magenta $cyan
-                inactive_workspace $background $background $foreground
-                urgent_workspace   $red $red $foreground
-                binding_mode       $green $green $background
-        }
-}
+# bar {
+#         i3bar_command i3bar
+#         position top
+#         status_command i3blocks
+# 
+#         colors {
+#                 background $background
+# 
+#                 focused_workspace  $cyan $cyan $background
+#                 active_workspace   $magenta $magenta $cyan
+#                 inactive_workspace $background $background $foreground
+#                 urgent_workspace   $red $red $foreground
+#                 binding_mode       $green $green $background
+#         }
+# }
