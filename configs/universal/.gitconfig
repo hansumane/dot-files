@@ -1,0 +1,7 @@
+[user]
+	name = user
+	email = user@hostname.localdomain
+[credential]
+	helper = store
+[oh-my-zsh]
+	hide-dirty = 1
