@@ -10,12 +10,11 @@ cp ~/dot-files/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
 # git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
 
 if [ ! -d ~/.config ]; then mkdir ~/.config; fi;
-# if [ -d ~/.config/kitty ]; then rm -r ~/.config/kitty; fi;
 
+cp -r ~/dot-files/configs/universal/.gitconfig ~;
 cp -r ~/dot-files/configs/universal/.config/nvim ~/.config;
-# cp -r ~/dot-files/configs/universal/.config/kitty ~/.config;
-# cp ~/dot-files/configs/universal/.Xresources ~;
 cp ~/dot-files/configs/universal/.zshrc ~;
+# cp ~/dot-files/configs/universal/.Xresources ~;
 # cp ~/dot-files/configs/universal/.p10k.zsh ~/.oh-my-zsh;
 
 if [ ! -d ~/Desktop ]; then mkdir ~/Desktop; fi;
