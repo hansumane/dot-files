@@ -11,7 +11,7 @@ SUDOCMD="sudo"
 EXAICONS="--icons"
 SYSFETCH="neofetch"
 ZSH_THEME="awesomepanda"
-plugins=(zsh-syntax-highlighting) #git zsh-autosuggestions
+plugins=(git svn zsh-syntax-highlighting) # zsh-autosuggestions
 
 source $ZSH/oh-my-zsh.sh
 
