@@ -40,7 +40,7 @@ alias fetch="c;$SYSFETCH"
 alias nviM="nvim Makefile"
 alias grep="grep --color=auto"
 
-alias gitget="git clone --depth=1"
+alias gitget="git clone --depth=1 --recursive"
 
 lt ()
 {
