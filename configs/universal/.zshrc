@@ -40,8 +40,6 @@ alias fetch="c;$SYSFETCH"
 alias nviM="nvim Makefile"
 alias grep="grep --color=auto"
 
-alias gitget="git clone --depth=1 --recursive"
-
 lt ()
 {
   if (( $# == 0 )); then
@@ -70,6 +68,15 @@ gitup ()
     else
       echo "\nExiting..."
     fi
+  fi
+}
+
+fcp ()
+{
+  if (( $# == 0)); then
+    echo "No input file given!"
+  else
+    c++ -Wall $1 -o out-$(basename $1 .cpp)
   fi
 }
 
