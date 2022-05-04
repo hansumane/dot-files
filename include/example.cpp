@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#define BUFFER 1024
+#define BUFSIZE 1024
 #define ul unsigned long long
 #define ll long long
 #define dd double
