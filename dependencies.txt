@@ -13,8 +13,8 @@ WMs:
      but I haven't made many changes to
      polybar config yet]
     [i3blocks dependencies:
-     xkblayout-state-git (AUR / https://github.com/nonpop/xkblayout-state)
-     sysstats]
+     - xkblayout-state-git (AUR / https://github.com/nonpop/xkblayout-state)
+     - sysstats]
 
     -- or --
 

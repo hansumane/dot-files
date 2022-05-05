@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 cd; sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
 if [ ! -d ~/.oh-my-zsh/custom/plugins ]; then mkdir ~/.oh-my-zsh/custom/plugins; fi;
@@ -14,7 +14,6 @@ if [ ! -d ~/.config ]; then mkdir ~/.config; fi;
 cp -r ~/dot-files/configs/universal/.gitconfig ~;
 cp -r ~/dot-files/configs/universal/.config/nvim ~/.config;
 cp ~/dot-files/configs/universal/.zshrc ~;
-# cp ~/dot-files/configs/universal/.Xresources ~;
 # cp ~/dot-files/configs/universal/.p10k.zsh ~/.oh-my-zsh;
 
 if [ ! -d ~/Desktop ]; then mkdir ~/Desktop; fi;

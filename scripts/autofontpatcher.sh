@@ -1,8 +1,10 @@
-#!/usr/bin/sh
+#!/bin/bash
 
-for FONT in ~/Downloads/FONTNAMEAll/*.EXTENSION;
+FONTNAME="JetBrainsMono"
+
+for FONT in ~/Downloads/${FONTNAME}All/*.EXTENSION;
 do
     ~/Downloads/nerd-fonts/font-patcher \
     $FONT --complete --progressbars --outputdir \
-    ~/Downloads/FONTNAMEPatched;
+    ~/Downloads/${FONTNAME}Patched;
 done;
