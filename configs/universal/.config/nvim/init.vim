@@ -9,14 +9,14 @@ function! TabsFunc8()
 	set shiftwidth=8
 	set tabstop=8
 	set expandtab &
-	echom "indent: Tab"
+	echom "indent: 8xTab"
 endfunction
 
 function! TabsFunc4()
 	set shiftwidth=4
 	set tabstop=4
 	set expandtab &
-	echom "indent: Tab"
+	echom "indent: 4xTab"
 endfunction
 
 function! SpaceFunc4()
@@ -44,18 +44,8 @@ Plug 'vim-airline/vim-airline-themes' " Status bar themes
 call plug#end()
 
 let g:airline_powerline_fonts = 1
-if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
-endif
-let g:airline_theme = 'base16'
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-let b:airline_whitespace_checks = []
+let g:airline_theme = 'base16_grayscale'
+let g:airline_extensions = []
 
 Spaces
 
@@ -66,5 +56,6 @@ au BufEnter,Bufnew *.yml Mark
 " au BufEnter,Bufnew *.h Tabs
 " au BufEnter,Bufnew *.cpp Tabs
 au BufEnter,Bufnew *.vim Tabs
+au BufEnter,Bufnew *.vimrc Tabs
 au BufEnter,Bufnew .gitconfig Tabs
 au BufEnter,Bufnew Makefile Tabs
