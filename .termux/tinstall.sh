@@ -11,7 +11,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git;
 
 cp ~/storage/dot-files/.termux/font.ttf ~/.termux;
 cp ~/storage/dot-files/.termux/termux.properties ~/.termux;
-cp ~/storage/dot-files/.termux/colors.dark.properties ~/.termux/colors.properties;
+cp ~/storage/dot-files/.termux/colors.properties ~/.termux;
 
 cp ~/storage/dot-files/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
 # git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
