@@ -1,7 +1,6 @@
 Fonts:
 
-    JetBrains Mono && JetBrainsMono Nerd Font
-    [both are included in .fonts directory;
+    [all fonts are included in .fonts directory;
      just copy its contents into
      /usr/share/fonts or ~/.fonts;
      I'll try to update them on time]
