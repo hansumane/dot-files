@@ -36,7 +36,6 @@ alias sbn="$SUDOCMD reboot"
 alias sdn="$SUDOCMD poweroff"
 
 alias ra="ranger"
-alias rr="rm -rf"
 alias fetch="c;$SYSFETCH"
 alias nviM="nvim Makefile"
 alias grep="grep --color=auto"

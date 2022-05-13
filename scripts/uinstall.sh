@@ -16,8 +16,8 @@ cp -r ~/dot-files/configs/universal/.config/nvim ~/.config;
 cp ~/dot-files/configs/universal/.zshrc ~;
 # cp ~/dot-files/configs/universal/.p10k.zsh ~/.oh-my-zsh;
 
-cd; mkdir -p Desktop Downloads Others;
-cd Others;
+mkdir -p ~/Desktop ~/Downloads ~/Others;
+cd ~/Others;
 mkdir -p etc Coding Documents Music Pictures Shared Templates Videos;
 echo 'XDG_DESKTOP_DIR="$HOME/Desktop"
 XDG_DOWNLOAD_DIR="$HOME/Downloads"
