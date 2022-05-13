@@ -9,28 +9,24 @@ function! TabsFunc8()
 	set shiftwidth=8
 	set tabstop=8
 	set expandtab &
-	echom "indent: 8xTab"
 endfunction
 
 function! TabsFunc4()
 	set shiftwidth=4
 	set tabstop=4
 	set expandtab &
-	echom "indent: 4xTab"
 endfunction
 
 function! SpaceFunc4()
 	set shiftwidth=4
 	set tabstop=4
 	set expandtab
-	echom "indent: 4xSpace"
 endfunction
 
 function! SpaceFunc2()
 	set shiftwidth=2
 	set tabstop=2
 	set expandtab
-	echom "indent: 2xSpace"
 endfunction
 
 command Tabs call TabsFunc8()
@@ -39,15 +35,20 @@ command Spaces call SpaceFunc4()
 command Mark call SpaceFunc2()
 
 call plug#begin()
-Plug 'vim-airline/vim-airline' " Status bar
-Plug 'vim-airline/vim-airline-themes' " Status bar themes
+	Plug 'vim-airline/vim-airline' " Status bar
+	Plug 'vim-airline/vim-airline-themes' " Status bar themes
+	Plug 'preservim/nerdtree' " File browser
 call plug#end()
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'base16_grayscale'
 let g:airline_extensions = []
 
-Spaces
+nmap <C-f> :NERDTreeToggle<CR>
+
+au VimEnter * Spaces
+au VimEnter * NERDTree
+au VimEnter * NERDTreeToggle<CR>
 
 au BufEnter,Bufnew *.html Mark
 au BufEnter,Bufnew *.xml Mark
@@ -59,3 +60,5 @@ au BufEnter,Bufnew *.vim Tabs
 au BufEnter,Bufnew *.vimrc Tabs
 au BufEnter,Bufnew .gitconfig Tabs
 au BufEnter,Bufnew Makefile Tabs
+
+au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
