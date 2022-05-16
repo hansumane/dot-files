@@ -46,7 +46,7 @@ let g:airline_extensions = []
 
 nmap <C-f> :NERDTreeToggle<CR>
 
-au VimEnter * Spaces
+Spaces
 au VimEnter * NERDTree
 au VimEnter * NERDTreeToggle<CR>
 
