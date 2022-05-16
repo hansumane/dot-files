@@ -42,7 +42,7 @@ let g:airline_extensions = []
 " 	let g:airline_symbols = {}
 " endif
 
-au VimEnter * Spaces
+Spaces
 
 au BufEnter,Bufnew *.html Mark
 au BufEnter,Bufnew *.xml Mark
