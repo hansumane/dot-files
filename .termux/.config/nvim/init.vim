@@ -42,8 +42,7 @@ let g:airline_extensions = []
 " 	let g:airline_symbols = {}
 " endif
 
-Spaces
-
+au BufEnter,Bufnew * Spaces
 au BufEnter,Bufnew *.html Mark
 au BufEnter,Bufnew *.xml Mark
 au BufEnter,Bufnew *.yml Mark

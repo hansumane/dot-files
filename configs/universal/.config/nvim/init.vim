@@ -46,10 +46,10 @@ let g:airline_extensions = []
 
 nmap <C-f> :NERDTreeToggle<CR>
 
-Spaces
 au VimEnter * NERDTree
 au VimEnter * NERDTreeToggle<CR>
 
+au BufEnter,Bufnew * Spaces
 au BufEnter,Bufnew *.html Mark
 au BufEnter,Bufnew *.xml Mark
 au BufEnter,Bufnew *.yml Mark
