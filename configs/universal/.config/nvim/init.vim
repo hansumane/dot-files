@@ -1,9 +1,16 @@
-set number
-set relativenumber
-
 set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
+
+function! SetNumbersFunction()
+	set number
+	set relativenumber
+endfunction
+
+function! UnsetNumbersFunction()
+	set number &
+	set relativenumber &
+endfunction
 
 function! TabsFunc8()
 	set shiftwidth=8
@@ -33,6 +40,8 @@ command Tabs call TabsFunc8()
 command Tabx call TabsFunc4()
 command Spaces call SpaceFunc4()
 command Mark call SpaceFunc2()
+command SetNumber call SetNumbersFunction()
+command UnsetNumber call UnsetNumbersFunction()
 
 call plug#begin()
 	Plug 'vim-airline/vim-airline' " Status bar
@@ -46,6 +55,7 @@ let g:airline_extensions = []
 
 nmap <C-f> :NERDTreeToggle<CR>
 
+au VimEnter * SetNumber
 au VimEnter * NERDTree
 au VimEnter * NERDTreeToggle<CR>
 

@@ -14,7 +14,6 @@ mkdir -p ~/.config
 cp -r ~/dot-files/configs/universal/.gitconfig ~;
 cp -r ~/dot-files/configs/universal/.config/nvim ~/.config;
 cp ~/dot-files/configs/universal/.zshrc ~;
-# cp ~/dot-files/configs/universal/.p10k.zsh ~/.oh-my-zsh;
 
 mkdir -p ~/Desktop ~/Downloads ~/Others;
 cd ~/Others;
