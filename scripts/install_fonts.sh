@@ -1,13 +1,6 @@
 #!/bin/bash
 set -e;
 
-RUNNER=$(echo $UID);
-
-if [ ! $RUNNER = '0' ]; then
-  echo "please, run this script as a root!";
-  exit;
-fi;
-
 if [ ! $(pwd | rev | cut -d"/" -f2 | rev) = 'dot-files' ] ||
     [ ! $(pwd | rev | cut -d"/" -f1 | rev) = 'scripts' ]; then
   echo "please go to ?/dot-files/scripts folder";
@@ -21,5 +14,6 @@ if [ ! -d $(pwd)/../.fonts ]; then
 fi;
 
 cd $(pwd)/../.fonts;
-mkdir -p /usr/share/fonts/ManuallyInstalled;
-cp -rf * /usr/share/fonts/ManuallyInstalled;
+sudo mkdir -p /usr/share/fonts/ManuallyInstalled;
+sudo cp -rf * /usr/share/fonts/ManuallyInstalled;
+fc-cache -r;
