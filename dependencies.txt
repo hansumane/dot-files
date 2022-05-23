@@ -1,11 +1,11 @@
 Fonts:
 
-    [all fonts are included in .fonts directory;
-     just copy its contents into
-     /usr/share/fonts or ~/.fonts;
-     I'll try to update them on time]
+    [all fonts are included in .fonts directory,
+     an installation script is in the scrips folder]
 
 WMs:
+
+    [I haven't been updating WMs configs for a while...]
 
     -> i3 (i3-gaps i3lock polybar/i3blocks rofi)
     [I have updated i3 config with polybar!
@@ -19,15 +19,13 @@ WMs:
 
     -> dwm (dwm dmenu slstatus)
     [dwm, dmenu and slstatus are better
-     to be downloaded from suckless.org]
+     to be downloaded from suckless.org,
+     as you may want to recompile them]
 
 Terminals:
 
     kitty
-    [and again I went back to kitty
-     as when I turned off shell-integration
-     it seems to work better, and it shows
-     font ligatures]
+    [it works the best with X11 sessions]
 
 Console Applications:
 
@@ -35,38 +33,31 @@ Console Applications:
     [modern vim replacement]
 
     exa (https://github.com/ogham/exa.git)
-    [modern ls replacement with icons
-     note: icons are shown properly
-     only with nerd fonts]
-
-    ranger
-    [simple terminal file manager with vim keybindings]
+    [modern ls replacement with icons,
+     which are shown properly only
+     with nerd fonts]
 
     zsh
-    [better shell; use with ohmyzsh framework
-     although you can use without ohmyzsh framework
-     with alt uinstall.sh]
+    [better shell to use with ohmyzsh framework]
 
 Utils:
 
-    pcmanfm
-    -- or --
-    thunar
+    pcmanfm/thunar
     [GUI file manager, if you need one]
 
-    xfce4-screenshooter & xfce4-clipman
-    [easy to use screenshot application;
+    xfce4-screenshooter & xfce4-clipman-plugin
+    [easy to use screenshot application, but
      copying to clipboard doesn't work
-     without xfce4-clipman]
+     without xfce4-clipman-plugin]
 
     sxiv
-    [simple X image viewer]
+    [simple X11 image viewer]
 
-    -> zathura (zathura zathura-pdf-mupdf zathura-djvu)
+    -> zathura (zathura-pdf-mupdf zathura-djvu)
     [simple pdf and djvu reader with vim keybindings]
 
     xcompmgr
-    [simple X compositor]
+    [simple X11 compositor]
 
     xdg-user-dirs
     [Desktop, Downloads, etc folders support]
@@ -76,23 +67,22 @@ Theming:
     qt5ct && kvantum
     [qui-based utility to set up qt themes in window managers
      you should append 'export QT_QPA_PLATFORMTHEME="qt5ct"'
-     to /etc/profile]
-    [you only need it if you don't use KDE, LXQT
+     to /etc/profile,
+     you only need it if you don't use KDE, LXQT
      or other QT-based DE]
 
     lxappearance
-    [GUI-based utility for setting up gtk themes and fonts]
-    [you only need it if you don't have theme configurer
+    [GUI-based utility for setting up gtk themes and fonts,
+     you only need it if you don't have theme configurer
      in your desktop environment]
 
     arc-gtk-theme
+
     papirus-icon-theme
 
-    [cursors are included in ./themes/.icons folder]
-    [kvantum (qt) themes are included in ./themes/kvantum-themes folder]
+    [all cursors are included in dot-files/themes/.icons folder]
 
 Other:
 
     pfetch (https://github.com/dylanaraps/pfetch.git)
-    [simple alternative to screenfetch or neofetch]
-
+    [simple and lightweight alternative to neofetch]
