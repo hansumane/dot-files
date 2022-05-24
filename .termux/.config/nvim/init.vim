@@ -1,5 +1,12 @@
-set number
-set relativenumber
+function! SetNumbersFunction()
+	set number
+	set relativenumber
+endfunction
+
+function! UnsetNumbersFunction()
+	set number &
+	set relativenumber &
+endfunction
 
 function! TabsFunc8()
 	set shiftwidth=8
@@ -29,6 +36,8 @@ command Tabs call TabsFunc8()
 command Tabx call TabsFunc4()
 command Spaces call SpaceFunc4()
 command Mark call SpaceFunc2()
+command SetNumber call SetNumbersFunction()
+command UnsetNumber call UnsetNumbersFunction()
 
 call plug#begin()
 	Plug 'vim-airline/vim-airline' " Status bar
@@ -41,6 +50,8 @@ let g:airline_extensions = []
 " if !exists('g:airline_symbols')
 " 	let g:airline_symbols = {}
 " endif
+
+au VimEnter * SetNumber
 
 au BufEnter,Bufnew * Spaces
 au BufEnter,Bufnew *.html Mark

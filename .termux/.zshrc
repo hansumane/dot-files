@@ -28,6 +28,7 @@ alias clt="c;lt"
 alias rr="rm -rf"
 
 alias ra="ranger"
+alias gits="git status"
 alias fetch="c;$SYSFETCH"
 alias nviM="nvim Makefile"
 alias grep="grep --color=auto"
@@ -63,10 +64,19 @@ gitup ()
   fi
 }
 
+fcc ()
+{
+  if (( $# == 0)); then
+    echo "No source file given!"
+  else
+    cc -Wall -std=c99 $1 -o out-$(basename $1 .c)
+  fi
+}
+
 fcp ()
 {
   if (( $# == 0)); then
-    echo "No input file given!"
+    echo "No source file given!"
   else
     c++ -Wall $1 -o out-$(basename $1 .cpp)
   fi

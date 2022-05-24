@@ -1,9 +1,9 @@
 #!/bin/bash
-set -e
+set -e;
 
-FONTNAME="mononoki"
-EXTENSION=".ttf"
-DIRNAME="$(pwd)"
+FONTNAME="mononoki";
+EXTENSION=".ttf";
+DIRNAME="$(pwd)";
 
 if [ ! -d ${DIRNAME}/nerd-fonts ]; then
     git clone --depth=1 --recursive https://github.com/ryanoasis/nerd-fonts.git;
