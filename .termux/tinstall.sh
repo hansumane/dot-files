@@ -1,4 +1,4 @@
-#!/data/data/com.termux/files/usr/bin/sh
+#!/data/data/com.termux/files/usr/bin/bash
 
 pkg upgrade -y;
 pkg install root-repo curl wget git zip unzip tar vim neovim binutils clang python zsh exa hexyl gnupg openssh ranger tmux -y;
@@ -22,4 +22,4 @@ cp -r ~/storage/dot-files/.termux/.config/nvim ~/.config;
 cp ~/storage/dot-files/.termux/.zshrc ~;
 
 cd ~/.config/nvim;
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim';
+sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim';
