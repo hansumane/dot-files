@@ -13,6 +13,9 @@ if [ ! -d $(pwd)/../.fonts ]; then
   exit;
 fi;
 
+echo "you'll need to grant root access to copy";
+echo "fonts to /usr/share/fonts/ManuallyInstalled";
+
 cd $(pwd)/../.fonts;
 sudo mkdir -p /usr/share/fonts/ManuallyInstalled;
 sudo cp -rf * /usr/share/fonts/ManuallyInstalled;
