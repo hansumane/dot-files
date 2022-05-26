@@ -12,7 +12,9 @@ cp ~/dot-files/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
 mkdir -p ~/.config
 
 cp -r ~/dot-files/configs/universal/.gitconfig ~;
-cp -r ~/dot-files/configs/universal/.config/nvim ~/.config;
+cp -r ~/dot-files/configs/universal/.vimrc ~;
+# cp -r ~/dot-files/configs/universal/.config/nvim ~/.config;
+# cp -r ~/dot-files/configs/universal/.p10k.zsh ~;
 cp ~/dot-files/configs/universal/.zshrc ~;
 
 mkdir -p ~/Desktop ~/Downloads ~/Others;
@@ -27,5 +29,8 @@ XDG_MUSIC_DIR="$HOME/Others/Music"
 XDG_PICTURES_DIR="$HOME/Others/Pictures"
 XDG_VIDEOS_DIR="$HOME/Others/Videos"' > ~/.config/user-dirs.dirs;
 
-cd ~/.config/nvim;
-sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim';
+# vim-plug for nvim (neovim)
+# sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim';
+
+# vim-plug for classic vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
