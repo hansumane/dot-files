@@ -16,10 +16,11 @@ cp ~/storage/dot-files/.termux/colors.properties ~/.termux;
 cp ~/storage/dot-files/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
 # git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
 
-if [ ! -d "$HOME/.config" ]; then mkdir ~/.config; fi;
-cp -r ~/storage/dot-files/.termux/.config/nvim ~/.config;
+mkdir -p ~/.config;
+cp -r ~/storage/dot-files/.termux/.vimrc ~;
+# cp -r ~/storage/dot-files/.termux/.config/nvim ~/.config;
 # cp ~/storage/dot-files/.termux/.p10k.zsh ~/.oh-my-zsh;
 cp ~/storage/dot-files/.termux/.zshrc ~;
 
-cd ~/.config/nvim;
-sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim';
+# sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim';
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
