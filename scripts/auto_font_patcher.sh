@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e;
 
-FONTNAME="mononoki";
+FONTNAME="JetBrainsMono";
 EXTENSION=".ttf";
 DIRNAME="$(pwd)";
 
