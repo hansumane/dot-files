@@ -61,5 +61,5 @@ autocmd BufEnter,Bufnew *.sh* Mark
 autocmd BufEnter,Bufnew *.zsh* Mark
 autocmd BufEnter,Bufnew *.bash* Mark
 autocmd BufEnter,Bufnew *.vim* Tabs
-autocmd BufEnter,Bufnew .gitconfig Tabs
+autocmd BufEnter,Bufnew *.git* Tabs
 autocmd BufEnter,Bufnew Makefile Tabs
