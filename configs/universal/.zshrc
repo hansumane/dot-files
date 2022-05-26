@@ -4,7 +4,7 @@
 # fi
 
 export TERM="xterm-256color"
-export EDITOR="nvim"
+export EDITOR="vim"
 export ZSH="$HOME/.oh-my-zsh"
 export EXA_COLORS="di=1;35:da=0;35"
 
