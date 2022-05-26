@@ -71,7 +71,7 @@ autocmd BufEnter,Bufnew *.bash* Mark
 " autocmd BufEnter,Bufnew *.h Tabs
 " autocmd BufEnter,Bufnew *.cpp Tabs
 autocmd BufEnter,Bufnew *.vim* Tabs
-autocmd BufEnter,Bufnew .gitconfig Tabs
+autocmd BufEnter,Bufnew *.git* Tabs
 autocmd BufEnter,Bufnew Makefile Tabs
 
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
