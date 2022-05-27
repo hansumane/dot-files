@@ -36,6 +36,12 @@ XDG_VIDEOS_DIR="$HOME/Others/Videos"' > ~/.config/user-dirs.dirs;
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # installing update-grub
-if [ ! -f /usr/sbin/update-grub ];
-then sudo cp -r ~/dot-files/scripts/update-grub /usr/sbin;
+if [ -d /usr/sbin ]; then
+  if [ ! -f /usr/sbin/update-grub ]; then
+    sudo cp -r ~/dot-files/scripts/update-grub /usr/sbin;
+  fi;
+else
+  if [ ! -f /usr/bin/update-grub ]; then
+    sudo cp -r ~/dot-files/scripts/update-grub /usr/bin;
+  fi;
 fi;
