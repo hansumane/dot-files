@@ -18,24 +18,28 @@ endfunction
 function! TabsFunc8()
 	set shiftwidth=8
 	set tabstop=8
+	set softtabstop=8
 	set expandtab &
 endfunction
 
 function! TabsFunc4()
 	set shiftwidth=4
 	set tabstop=4
+	set softtabstop=4
 	set expandtab &
 endfunction
 
 function! SpaceFunc4()
 	set shiftwidth=4
 	set tabstop=4
+	set softtabstop=4
 	set expandtab
 endfunction
 
 function! SpaceFunc2()
 	set shiftwidth=2
 	set tabstop=2
+	set softtabstop=2
 	set expandtab
 endfunction
 
