@@ -32,13 +32,19 @@ Console Applications:
     nvim (neovim)
     [modern vim replacement]
 
+    zsh
+    [better shell to use with ohmyzsh framework]
+
     exa (https://github.com/ogham/exa.git)
     [modern ls replacement with icons,
      which are shown properly only
      with nerd fonts]
 
-    zsh
-    [better shell to use with ohmyzsh framework]
+    bat
+    [cat with wings]
+
+    hexyl
+    [lightweight hex viewer]
 
 Utils:
 
