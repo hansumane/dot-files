@@ -32,7 +32,10 @@ Terminals:
 Console Applications:
 
     vim
-    [Vi IMproved]
+    [Vi IMproved, currently using instead of nvim]
+
+    nvim (neovim)
+    [better vim]
 
     zsh
     [better shell to use with ohmyzsh framework]
