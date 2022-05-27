@@ -8,9 +8,7 @@ WMs:
     [I haven't been updating WMs configs for a while...]
 
     -> i3 (i3-gaps i3lock polybar/i3blocks rofi)
-    [I have updated i3 config with polybar!
-     but I haven't made many changes to
-     polybar config yet]
+    [I have updated i3 with both polybar and i3blocks bars]
     [i3blocks dependencies:
      - xkblayout-state-git (AUR / https://github.com/nonpop/xkblayout-state)
      - sysstats]
@@ -27,10 +25,14 @@ Terminals:
     kitty
     [it works the best with X11 sessions]
 
+    urxvt (rxvt-unicode)
+    [is much more simple terminal, but it has
+     the best compatibility]
+
 Console Applications:
 
-    nvim (neovim)
-    [modern vim replacement]
+    vim
+    [Vi IMproved]
 
     zsh
     [better shell to use with ohmyzsh framework]
