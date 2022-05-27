@@ -38,6 +38,7 @@ alias sdn="$SUDOCMD poweroff"
 alias ra="ranger"
 alias gits="git status"
 alias fetch="c;$SYSFETCH"
+alias viM="vim Makefile"
 alias nviM="nvim Makefile"
 alias grep="grep --color=auto"
 
