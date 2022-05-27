@@ -14,24 +14,28 @@ endfunction
 function! TabsFunc8()
 	set shiftwidth=8
 	set tabstop=8
+	set softtabstop=8
 	set expandtab &
 endfunction
 
 function! TabsFunc4()
 	set shiftwidth=4
 	set tabstop=4
+	set softtabstop=4
 	set expandtab &
 endfunction
 
 function! SpaceFunc4()
 	set shiftwidth=4
 	set tabstop=4
+	set softtabstop=4
 	set expandtab
 endfunction
 
 function! SpaceFunc2()
 	set shiftwidth=2
 	set tabstop=2
+	set softtabstop=2
 	set expandtab
 endfunction
 
@@ -60,6 +64,9 @@ autocmd BufEnter,Bufnew *.yml Mark
 autocmd BufEnter,Bufnew *.sh* Mark
 autocmd BufEnter,Bufnew *.zsh* Mark
 autocmd BufEnter,Bufnew *.bash* Mark
+" autocmd BufEnter,Bufnew *.c Tabs
+" autocmd BufEnter,Bufnew *.h Tabs
+" autocmd BufEnter,Bufnew *.cpp Tabs
 autocmd BufEnter,Bufnew *.vim* Tabs
 autocmd BufEnter,Bufnew *.git* Tabs
 autocmd BufEnter,Bufnew Makefile Tabs
