@@ -56,6 +56,7 @@ gaps outer 0
 # Main settings
 #
 set $mod Mod4
+set $mod2 Shift
 
 font pango:Hack Nerd Font Regular 14
 
@@ -71,8 +72,8 @@ bindsym $mod+Return exec $terminal
 bindsym $mod+p exec --no-startup-id rofi -show combi
 bindsym $mod+q kill
 #bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec i3-msg exit
+bindsym $mod+$mod2+r restart
+bindsym $mod+$mod2+e exec i3-msg exit
 
 # Change focus
 bindsym $mod+h focus left
@@ -81,10 +82,10 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # Move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+$mod2+h move left
+bindsym $mod+$mod2+j move down
+bindsym $mod+$mod2+k move up
+bindsym $mod+$mod2+l move right
 
 # Split in horizontal orientation
 bindsym $mod+g split h
@@ -101,7 +102,7 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 
 # Toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+$mod2+space floating toggle
 
 # Change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -137,16 +138,16 @@ bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
 # Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+$mod2+1 move container to workspace number $ws1
+bindsym $mod+$mod2+2 move container to workspace number $ws2
+bindsym $mod+$mod2+3 move container to workspace number $ws3
+bindsym $mod+$mod2+4 move container to workspace number $ws4
+bindsym $mod+$mod2+5 move container to workspace number $ws5
+bindsym $mod+$mod2+6 move container to workspace number $ws6
+bindsym $mod+$mod2+7 move container to workspace number $ws7
+bindsym $mod+$mod2+8 move container to workspace number $ws8
+bindsym $mod+$mod2+9 move container to workspace number $ws9
+bindsym $mod+$mod2+0 move container to workspace number $ws10
 
 # Resize window
 mode "resize" {
