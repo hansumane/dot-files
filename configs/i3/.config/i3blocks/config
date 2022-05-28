@@ -35,8 +35,8 @@ border_bottom=0
 border_left=0
 
 [time]
-command=date +%T
-interval=1
+command=date +%H:%M
+interval=2
 label=<span color="#37BA70"> </span>
 border=#37BA70
 border_top=2
