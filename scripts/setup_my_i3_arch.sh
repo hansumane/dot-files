@@ -13,6 +13,7 @@ cp -f       ~/dot-files/configs/i3/.xinitrc ~;
 cp -rf      ~/dot-files/configs/i3/.config/i3 ~/.config;
 cp -rf      ~/dot-files/configs/i3/.config/i3blocks ~/.config;
 cp -rf      ~/dot-files/configs/i3/.config/rofi ~/.config;
+cp -f       ~/dot-files/configs/universal/.Xdefaults ~;
 cp -rf      ~/dot-files/configs/universal/.config/kitty ~/.config;
 cp -rf      ~/dot-files/configs/universal/.config/neofetch ~/.config;
 
