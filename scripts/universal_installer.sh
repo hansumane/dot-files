@@ -45,3 +45,6 @@ else
     sudo cp -r ~/dot-files/scripts/update-grub /usr/bin;
   fi;
 fi;
+
+# change .gitconfig
+vim ~/.gitconfig;
