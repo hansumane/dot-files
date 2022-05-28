@@ -1,27 +1,34 @@
 # Colors
 #
-set $foreground  #d3dae3
-set $background  #383c4a
-set $blackd      #383c4b
-set $blackl      #3b4252
-set $red         #bf616a
-set $green       #a3be8c
-set $yellow      #ebcb8b
-set $blue        #81a1c1
-set $magenta     #b48ead
-set $cyan        #88c0d0
-set $white       #e5e9f0
+set $foreground  #E0E0E0
+set $background  #1E1E1E
+set $black_d     #1E1E1E
+set $black_l     #383838
+set $red_d       #E33A3A
+set $red_l       #F94040
+set $green_d     #37BA70
+set $green_l     #3DCC7B
+set $yellow_d    #E7C930
+set $yellow_l    #FDDC35
+set $blue_d      #3882CC
+set $blue_l      #3B8FED
+set $magenta_d   #9446E3
+set $magenta_l   #A34DF9
+set $cyan_d      #51B4CC
+set $cyan_l      #59C5E0
+set $white_d     #D1D1D1
+set $white_l     #F4F4F4
 
 # Other variables
 #
-set $terminal    "kitty"
+set $terminal "kitty"
 
 # Autostart
 #
 exec --no-startup-id xcompmgr -r 0 -o 0 -l 0 -t 0 -I 0.0625 -O 0.0625 -c
 exec_always --no-startup-id ~/.fehbg
 exec --no-startup-id xfce4-clipman
-# exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet
 
 # Borders
 #
@@ -40,10 +47,9 @@ for_window [class="Thunar"] floating enable
 for_window [class="TelegramDesktop"] floating enable
 
 # Gaps
-#
-# gaps [inner|outer|horizontal|vertical|top|left|bottom|right] <px>
-# smart_gaps on
-# smart_borders on
+# [inner|outer|horizontal|vertical|top|left|bottom|right] <px>
+#smart_gaps on
+#smart_borders on
 gaps inner 8
 gaps outer 0
 
@@ -51,20 +57,20 @@ gaps outer 0
 #
 set $mod Mod4
 
-font pango:JetBrainsMono Nerd Font Medium 14
+font pango:Hack Nerd Font Regular 14
 
 # Volume adjust
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+#bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Essential binds
 floating_modifier $mod
 bindsym $mod+Return exec $terminal
 bindsym $mod+p exec --no-startup-id rofi -show combi
 bindsym $mod+q kill
-# bindsym $mod+Shift+c reload
+#bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec i3-msg exit
 
@@ -101,7 +107,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # Focus the parent container
-# bindsym $mod+a focus parent
+#bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -144,39 +150,38 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # Resize window
 mode "resize" {
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+    bindsym h resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym l resize grow width 10 px or 10 ppt
 
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
-client.focused           $cyan   $cyan   $foreground $cyan
-client.unfocused         $blackd $blackd $foreground $blackd
-client.focused_inactive  $blackd $blackd $foreground $blackd
-client.urgent            $red    $red    $foreground $red
+client.focused           $cyan_d   $cyan_d   $foreground $cyan_d
+client.unfocused         $black_d  $black_d  $foreground $black_d
+client.focused_inactive  $black_d  $black_d  $foreground $black_d
+client.urgent            $red_d    $red_d    $foreground $red_d
 
 # Polybar
-# exec_always --no-startup-id ~/.config/polybar/launch.sh
+#exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # i3blocks
-# bar {
-#         i3bar_command i3bar
-#         position top
-#         status_command i3blocks
-# 
-#         colors {
-#                 background $background
-# 
-#                 focused_workspace  $cyan $cyan $background
-#                 active_workspace   $magenta $magenta $cyan
-#                 inactive_workspace $background $background $foreground
-#                 urgent_workspace   $red $red $foreground
-#                 binding_mode       $green $green $background
-#         }
-# }
+bar {
+    i3bar_command i3bar
+    position top
+    status_command i3blocks
+
+    colors {
+        background          $background
+        focused_workspace   $cyan_d      $cyan_d      $background
+        active_workspace    $magenta_d   $magenta_d   $cyan_d
+        inactive_workspace  $background  $background  $foreground
+        urgent_workspace    $red_d       $red_d       $foreground
+        binding_mode        $green_d     $green_d     $background
+    }
+}
