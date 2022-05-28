@@ -76,7 +76,7 @@ gitup ()
 fcc ()
 {
   if (( $# == 0)); then
-    echo "No source file given!"
+    echo "No source file(s) given!"
   else
     cc -Wall -std=c99 $@ -o out-$(basename $1 .c)
   fi
@@ -85,7 +85,7 @@ fcc ()
 fcp ()
 {
   if (( $# == 0)); then
-    echo "No source file given!"
+    echo "No source file(s) given!"
   else
     c++ -Wall $@ -o out-$(basename $1 .cpp)
   fi
