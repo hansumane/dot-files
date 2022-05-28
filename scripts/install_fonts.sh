@@ -18,5 +18,6 @@ echo "fonts to /usr/share/fonts/ManuallyInstalled";
 
 cd $(pwd)/../.fonts;
 sudo mkdir -p /usr/share/fonts/ManuallyInstalled;
-sudo cp -rf * /usr/share/fonts/ManuallyInstalled;
+sudo cp -rf HackAll /usr/share/fonts/ManuallyInstalled;
+sudo cp -rf JetBrainsMonoAll /usr/share/fonts/ManuallyInstalled;
 fc-cache -r;
