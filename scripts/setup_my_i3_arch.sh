@@ -5,6 +5,7 @@ sudo pacman -S --needed i3-gaps i3lock i3blocks rofi \
   kitty xcompmgr feh xfce4-clipman-plugin xfce4-screenshooter \
   network-manager-applet lxappearance pavucontrol \
   gnome-themes-extra papirus-icon-theme \
+  xdg-desktop-portal-gtk xdg-user-dirs flatpak \
   firefox firefox-i18n-ru firefox-ublock-origin;
 
 sudo cp -f  ~/dot-files/X11/xorg.conf.d/00-keyboard.conf /etc/X11/xord.conf.d;

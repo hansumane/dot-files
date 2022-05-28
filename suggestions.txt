@@ -5,13 +5,11 @@ Fonts:
 
 WMs:
 
-    [I haven't been updating WMs configs for a while...]
-
+    [There is an auto install and setup script for i3 on Arch Linux!]
     -> i3 (i3-gaps i3lock polybar/i3blocks rofi)
-    [I have updated i3 with both polybar and i3blocks bars]
-    [i3blocks dependencies:
-     - xkblayout-state-git (AUR / https://github.com/nonpop/xkblayout-state)
-     - sysstats]
+    [I have updated i3 with both polybar and i3blocks bars,
+     but I prefer i3blocks for its simplicity; its dependencies
+     are installed automatically with my script]
 
     -- or --
 
@@ -86,8 +84,6 @@ Theming:
     [GUI-based utility for setting up gtk themes and fonts,
      you only need it if you don't have theme configurer
      in your desktop environment]
-
-    arc-gtk-theme
 
     papirus-icon-theme
 
