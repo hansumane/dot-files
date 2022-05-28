@@ -37,7 +37,7 @@ default_floating_border pixel 1
 
 # Custom section
 #
-bindsym --release Print exec xfce4-screenshooter
+bindsym --release Print exec LC_ALL=en_US.UTF-8 xfce4-screenshooter
 bindsym --release Shift+Control+Print exec xfce4-screenshooter -r -c
 bindsym $mod+Shift+x exec --no-startup-id i3lock --color=$background
 
