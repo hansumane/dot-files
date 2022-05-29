@@ -163,7 +163,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-client.focused           $green_d  $green_d  $foreground $green_d
+client.focused           $cyan_d   $cyan_d   $foreground $green_d
 client.unfocused         $black_d  $black_d  $foreground $black_d
 client.focused_inactive  $black_l  $black_l  $foreground $black_l
 client.urgent            $red_d    $red_d    $foreground $red_d
@@ -179,10 +179,10 @@ bar {
 
     colors {
         background          $background
-        focused_workspace   $green_d     $green_d     $background
+        focused_workspace   $cyan_d      $cyan_d      $background
         active_workspace    $magenta_d   $magenta_d   $background
         inactive_workspace  $background  $background  $foreground
         urgent_workspace    $red_d       $red_d       $background
-        binding_mode        $cyan_d      $cyan_d      $background
+        binding_mode        $green_d     $green_d     $background
     }
 }
