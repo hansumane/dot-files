@@ -19,6 +19,7 @@ cp -rf      ~/dot-files/configs/universal/.config/neofetch ~/.config;
 sudo cp -f  ~/dot-files/X11/xorg.conf.d/00-keyboard.conf /etc/X11/xord.conf.d;
 sudo cp -rf ~/dot-files/themes/gtk_themes/Everforest_Dark /usr/share/themes;
 sudo cp -rf ~/dot-files/themes/icon_themes/Zafiro-Icons-Dark /usr/share/icons;
+sudo cp -rf ~/dot-files/themes/icon_themes/Simp1e-Gruvbox-* /usr/share/icons;
 
 mkdir -p ~/Downloads;
 cd ~/Downloads;
