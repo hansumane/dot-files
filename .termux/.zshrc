@@ -83,5 +83,5 @@ fcp ()
 }
 
 alias updg="pkg upgrade -y && apt update && apt full-upgrade -y"
-alias upcl="pkg autoremove -y && apt autoclean -y"
+alias upcl="pkg autoclean -y && apt autoremove -y && apt autoclean -y"
 alias updc="updg && upcl"
