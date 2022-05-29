@@ -4,7 +4,7 @@
 # fi
 
 export TERM="xterm-256color"
-export EDITOR="vim"
+export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
 export EXA_COLORS="di=1;35:da=0;35"
 
@@ -77,7 +77,7 @@ fcc ()
   if (( $# == 0)); then
     echo "No source file(s) given!"
   else
-    cc -Wall -std=c99 $@ -o out-$(basename $1 .c)
+    gcc -Wall -std=c99 $@ -o out-$(basename $1 .c)
   fi
 }
 
@@ -86,7 +86,7 @@ fcp ()
   if (( $# == 0)); then
     echo "No source file(s) given!"
   else
-    c++ -Wall $@ -o out-$(basename $1 .cpp)
+    g++ -Wall $@ -o out-$(basename $1 .cpp)
   fi
 }
 
