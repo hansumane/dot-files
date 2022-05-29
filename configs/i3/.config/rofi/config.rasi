@@ -4,4 +4,4 @@ configuration {
     font: "Hack Regular 14";
     terminal: "kitty";
 }
-@theme "mytheme-adw_dark"
+@theme "mytheme-everforest_dark"

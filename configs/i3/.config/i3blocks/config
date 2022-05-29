@@ -1,15 +1,15 @@
 # i3blocks config
 separator=false
-color=#E0E0E0
+color=#D3C6AA
 separator_block_width=12
 markup=pango
 
 # [cpu_usage]
 # command=mpstat | awk 'FNR==4{ printf "%s%\n", $12 }'
 # interval=10
-# label=<span color="#88c0d0"> idle: </span>
-# border=#88c0d0
-# border_top=2
+# label=<span color="#???"> idle: </span>
+# border=#???
+# border_top=1
 # border_right=0
 # border_bottom=0
 # border_left=0
@@ -17,9 +17,9 @@ markup=pango
 [memory]
 command=free -h | awk 'FNR==2{ print $3 }'
 interval=5
-label=<span color="#9446E3"> use: </span>
-border=#9446E3
-border_top=2
+label=<span color="#D699B6"> use: </span>
+border=#D699B6
+border_top=1
 border_right=0
 border_bottom=0
 border_left=0
@@ -27,9 +27,9 @@ border_left=0
 [xkblayout]
 command=xkblayout-state print "%s" | awk '{ print $1 }'
 interval=2
-label=<span color="#3882CC"> </span>
-border=#3882CC
-border_top=2
+label=<span color="#7FBBB3"> </span>
+border=#7FBBB3
+border_top=1
 border_right=0
 border_bottom=0
 border_left=0
@@ -37,19 +37,19 @@ border_left=0
 [time]
 command=date +%H:%M
 interval=2
-label=<span color="#37BA70"> </span>
-border=#37BA70
-border_top=2
+label=<span color="#83C092"> </span>
+border=#83C092
+border_top=1
 border_right=0
 border_bottom=0
 border_left=0
 
 [date]
-command=LC_ALL='en_US.UTF-8' date '+%Y 年 %B %d 日 %A' | awk '{ printf "%s<span color=\"#E33A3A\">%s%s</span>%s<span color=\"#E33A3A\">%s%s</span>\n", $1, $2, $3, $4, $5, $6 }'
+command=LC_ALL='en_US.UTF-8' date '+%Y 年 %B %d 日 %A' | awk '{ printf "%s<span color=\"#E67E80\">%s%s</span>%s<span color=\"#E67E80\">%s%s</span>\n", $1, $2, $3, $4, $5, $6 }'
 interval=60
-label=<span color="#E33A3A"> </span>
-border=#E33A3A
-border_top=2
+label=<span color="#E67E80"> </span>
+border=#E67E80
+border_top=1
 border_right=0
 border_bottom=0
 border_left=0
@@ -57,8 +57,8 @@ border_left=0
 [epoch]
 command=date +%s
 interval=1
-border=#E7C930
-border_top=2
+border=#DBBC7F
+border_top=1
 border_right=0
 border_bottom=0
 border_left=0

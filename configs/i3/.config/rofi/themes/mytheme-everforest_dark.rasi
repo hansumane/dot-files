@@ -1,0 +1,140 @@
+* {
+    m-light:                     rgba ( 211, 198, 170, 100 % );
+    m-dark:                      rgba ( 47, 56, 62, 100 % );
+    m-bg:                        rgba ( 47, 56, 62, 85 % );
+    m-transp:                    rgba ( 0, 0, 0, 0 % );
+    m-border:                    rgba ( 0, 0, 0, 0 % );
+
+    selected-normal-foreground:  rgba ( 0, 0, 0, 0 % );
+    foreground:                  rgba ( 0, 0, 0, 0 % );
+    normal-foreground:           rgba ( 0, 0, 0, 0 % );
+    alternate-normal-background: rgba ( 0, 0, 0, 0 % );
+    red:                         rgba ( 0, 0, 0, 0 % );
+    selected-urgent-foreground:  rgba ( 0, 0, 0, 0 % );
+    blue:                        rgba ( 0, 0, 0, 0 % );
+    urgent-foreground:           rgba ( 0, 0, 0, 0 % );
+    alternate-urgent-background: rgba ( 0, 0, 0, 0 % );
+    active-foreground:           rgba ( 0, 0, 0, 0 % );
+    lightbg:                     rgba ( 0, 0, 0, 0 % );
+    selected-active-foreground:  rgba ( 0, 0, 0, 0 % );
+    alternate-active-background: rgba ( 0, 0, 0, 0 % );
+    background:                  rgba ( 0, 0, 0, 0 % );
+    bordercolor:                 rgba ( 0, 0, 0, 0 % );
+    alternate-normal-foreground: rgba ( 0, 0, 0, 0 % );
+    normal-background:           rgba ( 0, 0, 0, 0 % );
+    lightfg:                     rgba ( 0, 0, 0, 0 % );
+    selected-normal-background:  rgba ( 0, 0, 0, 0 % );
+    border-color:                rgba ( 0, 0, 0, 0 % );
+    spacing:                     rgba ( 0, 0, 0, 0 % );
+    separatorcolor:              rgba ( 0, 0, 0, 0 % );
+    urgent-background:           rgba ( 0, 0, 0, 0 % );
+    selected-urgent-background:  rgba ( 0, 0, 0, 0 % );
+    alternate-urgent-foreground: rgba ( 0, 0, 0, 0 % );
+    background-color:            rgba ( 0, 0, 0, 0 % );
+    alternate-active-foreground: rgba ( 0, 0, 0, 0 % );
+    active-background:           rgba ( 0, 0, 0, 0 % );
+    selected-active-background:  rgba ( 0, 0, 0, 0 % );
+}
+window {
+    background-color: @m-bg;
+    border:           1;
+    padding:          5;
+}
+mainbox {
+    border:  0;
+    padding: 0;
+}
+message {
+    border:       1px dash 0px 0px ;
+    border-color: @m-border;
+    padding:      1px ;
+}
+textbox {
+    text-color: @m-light;
+}
+listview {
+    fixed-height: 0;
+    border:       1px dash 0px 0px ;
+    border-color: @m-border;
+    spacing:      1px ;
+    scrollbar:    false ;
+    padding:      1px 0px 0px ;
+}
+element {
+    border:  0;
+    padding: 1px ;
+}
+element-text {
+    background-color: inherit;
+    text-color:       inherit;
+}
+element.normal.normal {
+    background-color: @m-transp;
+    text-color:       @m-light;
+}
+element.normal.urgent {
+    background-color: @m-transp;
+    text-color:       @m-light;
+}
+element.normal.active {
+    background-color: @m-transp;
+    text-color:       @m-light;
+}
+element.selected.normal {
+    background-color: @m-light;
+    text-color:       @m-dark;
+}
+element.selected.urgent {
+    background-color: @m-light;
+    text-color:       @m-dark;
+}
+element.selected.active {
+    background-color: @m-light;
+    text-color:       @m-dark;
+}
+element.alternate.normal {
+    background-color: @m-transp;
+    text-color:       @m-light;
+}
+element.alternate.urgent {
+    background-color: @m-transp;
+    text-color:       @m-light;
+}
+element.alternate.active {
+    background-color: @m-transp;
+    text-color:       @m-light;
+}
+mode-switcher {
+    border:       2px dash 0px 0px ;
+    border-color: rgba ( 255, 0, 0, 100 % );
+}
+button.selected {
+    background-color: @m-light;
+    text-color:       @m-dark;
+}
+inputbar {
+    spacing:    0;
+    text-color: @m-light;
+    padding:    1px ;
+}
+case-indicator {
+    spacing:    0;
+    text-color: @m-light;
+}
+entry {
+    spacing:    0;
+    text-color: @m-light;
+}
+prompt {
+    spacing:    0;
+    text-color: @m-light;
+}
+inputbar {
+    children:   [ prompt, textbox-prompt-colon, entry, case-indicator ];
+}
+textbox-prompt-colon {
+    expand:     false;
+    str:        ":";
+    margin:     0px 0.3em 0em 0em ;
+    text-color: @m-light;
+}
