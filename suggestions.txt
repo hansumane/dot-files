@@ -21,7 +21,7 @@ WMs:
 Terminals:
 
     kitty
-    [it works the best with X11 sessions]
+    [it works the best with X11 sessions and gpu accelerating]
 
     urxvt (rxvt-unicode)
     [is much more simple terminal, but it has
@@ -29,11 +29,8 @@ Terminals:
 
 Console Applications:
 
-    vim
-    [Vi IMproved, currently using instead of nvim]
-
     nvim (neovim)
-    [better vim]
+    [better vim, currently using]
 
     zsh
     [better shell to use with ohmyzsh framework]
@@ -84,8 +81,6 @@ Theming:
     [GUI-based utility for setting up gtk themes and fonts,
      you only need it if you don't have theme configurer
      in your desktop environment]
-
-    papirus-icon-theme
 
     [all cursors are included in dot-files/themes/.icons folder]
 

@@ -1,23 +1,23 @@
 # Colors
 #
-set $foreground  #E0E0E0
-set $background  #1E1E1E
-set $black_d     #1E1E1E
-set $black_l     #383838
-set $red_d       #E33A3A
-set $red_l       #F94040
-set $green_d     #37BA70
-set $green_l     #3DCC7B
-set $yellow_d    #E7C930
-set $yellow_l    #FDDC35
-set $blue_d      #3882CC
-set $blue_l      #3B8FED
-set $magenta_d   #9446E3
-set $magenta_l   #A34DF9
-set $cyan_d      #51B4CC
-set $cyan_l      #59C5E0
-set $white_d     #D1D1D1
-set $white_l     #F4F4F4
+set $foreground  #D3C6AA
+set $background  #2F383E
+set $black_d     #2F383E
+set $black_l     #4A555B
+set $red_d       #E67E80
+set $red_l       #E67E80
+set $green_d     #A7C080
+set $green_l     #A7C080
+set $yellow_d    #DBBC7F
+set $yellow_l    #DBBC7F
+set $blue_d      #7FBBB3
+set $blue_l      #7FBBB3
+set $magenta_d   #D699B6
+set $magenta_l   #D699B6
+set $cyan_d      #83C092
+set $cyan_l      #83C092
+set $white_d     #E0E0E0
+set $white_l     #E0E0E0
 
 # Other variables
 #
@@ -163,9 +163,9 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-client.focused           $cyan_d   $cyan_d   $foreground $cyan_d
+client.focused           $green_d  $green_d  $foreground $green_d
 client.unfocused         $black_d  $black_d  $foreground $black_d
-client.focused_inactive  $black_d  $black_d  $foreground $black_d
+client.focused_inactive  $black_l  $black_l  $foreground $black_l
 client.urgent            $red_d    $red_d    $foreground $red_d
 
 # Polybar
@@ -179,10 +179,10 @@ bar {
 
     colors {
         background          $background
-        focused_workspace   $cyan_d      $cyan_d      $background
-        active_workspace    $magenta_d   $magenta_d   $cyan_d
+        focused_workspace   $green_d     $green_d     $background
+        active_workspace    $magenta_d   $magenta_d   $background
         inactive_workspace  $background  $background  $foreground
-        urgent_workspace    $red_d       $red_d       $foreground
-        binding_mode        $green_d     $green_d     $background
+        urgent_workspace    $red_d       $red_d       $background
+        binding_mode        $cyan_d      $cyan_d      $background
     }
 }
