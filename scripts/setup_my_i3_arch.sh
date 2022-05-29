@@ -3,7 +3,7 @@ set -e;
 
 sudo pacman -S --needed i3-gaps i3lock i3blocks rofi \
   kitty xcompmgr feh xfce4-clipman-plugin xfce4-screenshooter \
-  network-manager-applet lxappearance pavucontrol \
+  network-manager-applet networkmanager-openvpn lxappearance pavucontrol \
   gnome-themes-extra xdg-desktop-portal-gtk xdg-user-dirs \
   flatpak firefox firefox-i18n-ru firefox-ublock-origin \
   zathura zathura-pdf-mupdf zathura-djvu sxiv tmux;
