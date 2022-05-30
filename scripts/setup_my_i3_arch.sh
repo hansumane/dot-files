@@ -6,7 +6,7 @@ sudo pacman -S --needed i3-gaps i3lock i3blocks rofi \
   network-manager-applet networkmanager-openvpn lxappearance pavucontrol \
   gnome-themes-extra xdg-desktop-portal-gtk xdg-user-dirs \
   flatpak firefox firefox-i18n-ru firefox-ublock-origin \
-  zathura zathura-pdf-mupdf zathura-djvu sxiv tmux;
+  zathura zathura-pdf-mupdf zathura-djvu sxiv tmux subversion;
 
 cp -f       ~/dot-files/configs/i3/.xinitrc ~;
 cp -rf      ~/dot-files/configs/i3/.config/i3 ~/.config;
