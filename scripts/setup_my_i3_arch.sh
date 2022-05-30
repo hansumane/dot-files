@@ -33,3 +33,5 @@ cd ~/Downloads;
 git clone --depth=1 --recursive https://github.com/nonpop/xkblayout-state.git;
 cd ~/Downloads/xkblayout-state;
 sudo make install;
+
+flatpak update;

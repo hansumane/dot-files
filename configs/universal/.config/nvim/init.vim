@@ -78,6 +78,9 @@ au BufEnter,Bufnew * Spaces
 au BufEnter,Bufnew *.html Mark
 au BufEnter,Bufnew *.xml Mark
 au BufEnter,Bufnew *.yml Mark
+au BufEnter,Bufnew *.sh* Mark
+au BufEnter,Bufnew *.zsh* Mark
+au BufEnter,Bufnew *.bash* Mark
 " au BufEnter,Bufnew *.c Tabs
 " au BufEnter,Bufnew *.h Tabs
 " au BufEnter,Bufnew *.cpp Tabs

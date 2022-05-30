@@ -6,7 +6,7 @@ cd ~/.oh-my-zsh/custom/plugins;
 git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git;
 git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git;
 
-cp ~/dot-files/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
+cp -f ~/dot-files/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
 # git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
 
 mkdir -p ~/.config
@@ -14,8 +14,8 @@ mkdir -p ~/.config
 cp -f ~/dot-files/configs/universal/.gitconfig ~;
 cp -f ~/dot-files/configs/universal/.zshrc ~;
 cp -rf ~/dot-files/configs/universal/.config/nvim ~/.config;
-# cp -r ~/dot-files/configs/universal/.vimrc ~;
-# cp -r ~/dot-files/configs/universal/.p10k.zsh ~;
+# cp -f ~/dot-files/configs/universal/.vimrc ~;
+# cp -f ~/dot-files/configs/universal/.p10k.zsh ~;
 
 mkdir -p ~/Desktop ~/Downloads ~/Others;
 cd ~/Others;
