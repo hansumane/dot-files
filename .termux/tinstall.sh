@@ -9,11 +9,13 @@ cd ~/.oh-my-zsh/custom/plugins;
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git;
 git clone https://github.com/zsh-users/zsh-autosuggestions.git;
 
-cp -f ~/storage/dot-files/configs/universal/.gitconfig ~;
 cp -f ~/storage/dot-files/.termux/font.ttf ~/.termux;
 cp -f ~/storage/dot-files/.termux/termux.properties ~/.termux;
 cp -f ~/storage/dot-files/.termux/colors.properties ~/.termux;
 
+ln -sf ~/.termux/shell $(which zsh)
+
+cp -f ~/storage/dot-files/configs/universal/.gitconfig ~;
 cp -f ~/storage/dot-files/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
 
 mkdir -p ~/.config;
