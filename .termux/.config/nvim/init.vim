@@ -2,6 +2,9 @@ set termguicolors
 " set nocompatible " nvim is always nocompatible
 syntax enable
 
+set list
+set listchars=space:⋅,tab:>\ ,eol:↴
+
 function! SetNumbersFunction()
 	set number
 	set relativenumber
@@ -51,6 +54,7 @@ call plug#begin()
 	Plug 'sainnhe/everforest' " Theme
 	Plug 'vim-airline/vim-airline' " Status bar
 	Plug 'vim-airline/vim-airline-themes' " Status bar themes
+	Plug 'preservim/nerdtree' " File browser
 call plug#end()
 
 set background=dark
@@ -59,9 +63,10 @@ let g:everforest_better_performance=1
 colorscheme everforest
 
 let g:airline_powerline_fonts = 1
-" let g:airline_theme = 'base16_grayscale'
 let g:airline_theme = 'everforest'
 let g:airline_extensions = []
+
+nmap <C-h> :noh<CR>
 
 au VimEnter * SetNumber
 
