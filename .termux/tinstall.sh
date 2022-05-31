@@ -9,6 +9,7 @@ cd ~/.oh-my-zsh/custom/plugins;
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git;
 git clone https://github.com/zsh-users/zsh-autosuggestions.git;
 
+cp -f ~/storage/dot-files/configs/universal/.gitconfig ~;
 cp -f ~/storage/dot-files/.termux/font.ttf ~/.termux;
 cp -f ~/storage/dot-files/.termux/termux.properties ~/.termux;
 cp -f ~/storage/dot-files/.termux/colors.properties ~/.termux;
@@ -20,3 +21,5 @@ cp -rf ~/storage/dot-files/.termux/.config/nvim ~/.config;
 cp -f ~/storage/dot-files/.termux/.zshrc ~;
 
 sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim';
+
+nvim ~/.gitconfig;
