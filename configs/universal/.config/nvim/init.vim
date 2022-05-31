@@ -69,6 +69,7 @@ let g:airline_theme = 'everforest'
 let g:airline_extensions = []
 
 nmap <C-f> :NERDTreeToggle<CR>
+nmap <C-h> :noh<CR>
 
 au VimEnter * SetNumber
 au VimEnter * NERDTree
