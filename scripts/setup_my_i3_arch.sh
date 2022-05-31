@@ -1,12 +1,13 @@
 #!/bin/bash
 set -e;
 
-sudo pacman -S --needed i3-gaps i3lock i3blocks rofi \
-  kitty xcompmgr feh xfce4-clipman-plugin xfce4-screenshooter \
-  network-manager-applet networkmanager-openvpn lxappearance pavucontrol \
+sudo pacman -S --needed \
+  i3-gaps i3lock i3blocks rofi kitty xcompmgr feh sxiv \
+  xfce4-clipman-plugin xfce4-screenshooter lxappearance pavucontrol \
+  network-manager-applet networkmanager-openvpn \
   gnome-themes-extra xdg-desktop-portal-gtk xdg-user-dirs \
   flatpak firefox firefox-i18n-ru firefox-ublock-origin \
-  zathura zathura-pdf-mupdf zathura-djvu sxiv tmux subversion;
+  zathura zathura-pdf-mupdf zathura-djvu;
 
 cp -f       ~/dot-files/configs/i3/.xinitrc ~;
 cp -rf      ~/dot-files/configs/i3/.config/i3 ~/.config;

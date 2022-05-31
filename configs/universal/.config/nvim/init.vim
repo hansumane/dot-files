@@ -2,6 +2,9 @@ set termguicolors
 " set nocompatible " nvim is always nocompatible
 syntax enable
 
+set list
+set listchars=space:⋅,tab:>\ ,eol:↴
+
 set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
