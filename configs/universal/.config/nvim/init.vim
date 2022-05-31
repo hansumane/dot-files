@@ -72,6 +72,8 @@ nmap <C-f> :NERDTreeToggle<CR>
 nmap <C-h> :noh<CR>
 
 au VimEnter * SetNumber
+au VimEnter * NERDTree
+au VimEnter * NERDTreeToggle<CR>
 
 au BufEnter,Bufnew * Spaces
 au BufEnter,Bufnew *.html Mark
