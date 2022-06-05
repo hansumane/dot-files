@@ -1,3 +1,8 @@
+" this is still neovim configuration in vim script
+" but I wish I remake it with lua, as some plugins
+" do not work with vimscript, but perfectly work
+" with lua!
+
 set termguicolors
 " set nocompatible " nvim is always nocompatible
 syntax enable
@@ -79,6 +84,7 @@ au VimEnter * NERDTree
 au VimEnter * NERDTreeToggle<CR>
 
 au BufEnter,Bufnew * Spaces
+au BufEnter,Bufnew *.m Mark
 au BufEnter,Bufnew *.html Mark
 au BufEnter,Bufnew *.xml Mark
 au BufEnter,Bufnew *.yml Mark

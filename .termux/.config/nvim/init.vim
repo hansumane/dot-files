@@ -1,5 +1,4 @@
 set termguicolors
-" set nocompatible " nvim is always nocompatible
 syntax enable
 
 set list
@@ -54,7 +53,6 @@ call plug#begin()
 	Plug 'sainnhe/everforest' " Theme
 	Plug 'vim-airline/vim-airline' " Status bar
 	Plug 'vim-airline/vim-airline-themes' " Status bar themes
-	Plug 'preservim/nerdtree' " File browser
 call plug#end()
 
 set background=dark
@@ -66,20 +64,16 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = 'everforest'
 let g:airline_extensions = []
 
-nmap <C-h> :noh<CR>
-
 au VimEnter * SetNumber
 
 au BufEnter,Bufnew * Spaces
+au BufEnter,Bufnew *.m Mark
 au BufEnter,Bufnew *.html Mark
 au BufEnter,Bufnew *.xml Mark
 au BufEnter,Bufnew *.yml Mark
 au BufEnter,Bufnew *.sh* Mark
 au BufEnter,Bufnew *.zsh* Mark
 au BufEnter,Bufnew *.bash* Mark
-" au BufEnter,Bufnew *.c Tabs
-" au BufEnter,Bufnew *.h Tabs
-" au BufEnter,Bufnew *.cpp Tabs
 au BufEnter,Bufnew *.vim Tabs
 au BufEnter,Bufnew *.vimrc Tabs
 au BufEnter,Bufnew .gitconfig Tabs
