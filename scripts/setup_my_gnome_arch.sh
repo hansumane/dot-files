@@ -21,7 +21,7 @@ sudo pacman -S --needed \
 sudo pacman -S --needed \
   gnome gnome-tweaks gnome-themes-extra \
   firefox firefox-i18n-ru firefox-ublock-origin \
-  kitty pavucontrol helvum networkmanager-openvpn openssh;
+  pavucontrol helvum networkmanager-openvpn openssh;
 
 yay -S --needed \
   hunspell hunspell-en_us hunspell-ru \
