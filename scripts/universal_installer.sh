@@ -46,6 +46,6 @@ else
   fi;
 fi;
 
-# change .gitconfig and shell
+# change .gitconfig and default user shell
 nvim ~/.gitconfig;
 sudo nvim /etc/passwd;
