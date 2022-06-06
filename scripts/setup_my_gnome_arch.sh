@@ -29,7 +29,6 @@ yay -S --needed \
   libreoffice-still-ru \
   visual-studio-code-bin;
 
-cp -rf ~/dot-files/configs/universal/.config/kitty ~/.config;
 cp -rf ~/dot-files/configs/universal/.config/neofetch ~/.config;
 sudo cp -rf ~/dot-files/themes/icon_themes/Twilight-cursors /usr/share/icons;
 
