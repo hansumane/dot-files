@@ -20,4 +20,5 @@ cd $(pwd)/../.fonts;
 sudo mkdir -p /usr/share/fonts/ManuallyInstalled;
 sudo cp -rf HackAll /usr/share/fonts/ManuallyInstalled;
 sudo cp -rf JetBrainsMonoAll /usr/share/fonts/ManuallyInstalled;
+sudo cp -rf CascadiaCodeAll /usr/share/fonts/ManuallyInstalled;
 fc-cache -r;
