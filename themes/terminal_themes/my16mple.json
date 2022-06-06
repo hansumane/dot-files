@@ -1,0 +1,37 @@
+// my16mple colour scheme
+{
+    "foreground": "#E0E0E0",
+    "background": "#1E1E1E",
+    {
+        "black_D": "#1E1E1E",
+        "black_L": "#383838"
+    },
+    {
+        "red_D": "#E33A3A",
+        "red_L": "#F94040"
+    },
+    {
+        "green_D": "#37BA70",
+        "green_L": "#3DCC7B"
+    },
+    {
+        "yellow_D": "#E7C930",
+        "yellow_L": "#FDDC35"
+    },
+    {
+        "blue_D": "#3882CC",
+        "blue_L": "#3B8FED"
+    },
+    {
+        "magenta_D": "#9446E3",
+        "magenta_L": "#A34DF9"
+    },
+    {
+        "cyan_D": "#51B4CC",
+        "cyan_L": "#59C5E0"
+    },
+    {
+        "white_D": "#D1D1D1",
+        "white_L": "#F4F4F4"
+    }
+}
