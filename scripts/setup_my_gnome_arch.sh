@@ -33,10 +33,10 @@ cp -rf ~/dot-files/configs/universal/.config/neofetch ~/.config;
 sudo cp -rf ~/dot-files/themes/icon_themes/Twilight-cursors /usr/share/icons;
 
 flatpak update;
-flatpak install flathub com.mattjakeman.ExtensionManager;
-flatpak install flathub com.discordapp.Discord;
-flatpak install flathub org.telegram.desktop;
-flatpak update;
+# flatpak install flathub com.mattjakeman.ExtensionManager;
+# flatpak install flathub com.discordapp.Discord;
+# flatpak install flathub org.telegram.desktop;
+# flatpak update;
 # flatpak install flathub org.octave.Octave;
 
 sudo mkinitcpio -P; sudo update-grub;
