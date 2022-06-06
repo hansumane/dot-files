@@ -36,7 +36,6 @@ flatpak update;
 # flatpak install flathub com.mattjakeman.ExtensionManager;
 # flatpak install flathub com.discordapp.Discord;
 # flatpak install flathub org.telegram.desktop;
-# flatpak update;
 # flatpak install flathub org.octave.Octave;
 
 sudo mkinitcpio -P; sudo update-grub;
