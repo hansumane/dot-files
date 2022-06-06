@@ -2,12 +2,12 @@
 set -e;
 
 mkdir -p ~/Downloads; cd ~/Downloads;
-git clone --depth=1 --recusrsive https://aur.archlinux.org/yay.git;
+git clone --depth=1 --recursive https://aur.archlinux.org/yay.git;
 cd ~/Downloads/yay; makepkg -sic;
 cd; rm -rf ~/Downloads/yay;
 
 sudo pacman -Syy --needed \
-  wireplumber pipewire pipewire-alsa pipewire-pulse;
+  wireplumber pipewire pipewire-alsa pipewire-pulse pipewire-jack;
 
 sudo pacman -S --needed \
   xorg xorg-xwayland wayland;
@@ -33,6 +33,10 @@ cp -rf ~/dot-files/configs/universal/.config/neofetch ~/.config;
 sudo cp -rf ~/dot-files/themes/icon_themes/Twilight-cursors /usr/share/icons;
 
 flatpak update;
+flatpak install flathub com.mattjakeman.ExtensionManager;
+
+sudo mkinitcpio -P; sudo update-grub;
+sudo systemctl enable gdm;
 
 # /etc/default/grub : 
   # "nvidia nvidia_modeset nvidia_uvm nvidia_drm nvidia-drm.modeset=1"
