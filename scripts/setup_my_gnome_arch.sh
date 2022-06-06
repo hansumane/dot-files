@@ -16,7 +16,7 @@ sudo pacman -S --needed \
   noto-fonts noto-fonts-cjk noto-fonts-emoji;
 
 sudo pacman -S --needed \
-  mesa nvidia-open-dkms;
+  mesa nvidia-dkms;
 
 sudo pacman -S --needed \
   gnome gnome-tweaks gnome-themes-extra \
@@ -26,14 +26,18 @@ sudo pacman -S --needed \
 yay -S --needed \
   hunspell hunspell-en_us hunspell-ru \
   hyphen hyphen-en hyphen-ru \
-  libreoffice-still-ru;
+  libreoffice-still-ru \
+  visual-studio-code-bin;
 
 cp -rf ~/dot-files/configs/universal/.config/kitty ~/.config;
 cp -rf ~/dot-files/configs/universal/.config/neofetch ~/.config;
 sudo cp -rf ~/dot-files/themes/icon_themes/Twilight-cursors /usr/share/icons;
 
 flatpak update;
-flatpak install flathub com.mattjakeman.ExtensionManager;
+# flatpak install flathub com.mattjakeman.ExtensionManager;
+# flatpak install flathub com.discordapp.Discord;
+# flatpak install flathub org.telegram.desktop;
+# flatpak install flathub org.octave.Octave;
 
 sudo mkinitcpio -P; sudo update-grub;
 sudo systemctl enable gdm;
@@ -41,5 +45,4 @@ sudo systemctl enable gdm;
 # /etc/default/grub : 
   # "nvidia nvidia_modeset nvidia_uvm nvidia_drm nvidia-drm.modeset=1"
 # /usr/lib/udev/rules.d/61-gdm.rules :
-  # RUN+="/usr/lib/gdm-runtime-config set daemon PreferredDisplayServer xorg"
   # RUN+="/usr/lib/gdm-runtime-config set daemon WaylandEnable false"

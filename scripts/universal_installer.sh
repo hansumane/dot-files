@@ -47,6 +47,5 @@ else
 fi;
 
 # change .gitconfig and shell
-EDITOR=nvim
 nvim ~/.gitconfig;
-sudoedit /etc/passwd;
+sudo nvim /etc/passwd;
