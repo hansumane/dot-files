@@ -1,13 +1,11 @@
 " this is still neovim configuration in vim script
 " but I wish I remake it with lua, as some plugins
 " do not work with vimscript, but perfectly work
-" with lua!
+" with lua
 
 set termguicolors
 " set nocompatible " nvim is always nocompatible
 syntax enable
-
-set list
 set listchars=space:⋅,tab:>\ ,eol:↴
 
 set keymap=russian-jcukenwin
@@ -15,11 +13,13 @@ set iminsert=0
 set imsearch=0
 
 function! SetNumbersFunction()
+	set list
 	set number
 	set relativenumber
 endfunction
 
 function! UnsetNumbersFunction()
+	set list &
 	set number &
 	set relativenumber &
 endfunction
@@ -72,7 +72,6 @@ let g:everforest_better_performance=1
 colorscheme everforest
 
 let g:airline_powerline_fonts = 1
-" let g:airline_theme = 'base16_grayscale'
 let g:airline_theme = 'everforest'
 let g:airline_extensions = []
 
@@ -94,8 +93,7 @@ au BufEnter,Bufnew *.bash* Mark
 " au BufEnter,Bufnew *.c Tabs
 " au BufEnter,Bufnew *.h Tabs
 " au BufEnter,Bufnew *.cpp Tabs
-au BufEnter,Bufnew *.vim Tabs
-au BufEnter,Bufnew *.vimrc Tabs
+au BufEnter,Bufnew *.vim* Tabs
 au BufEnter,Bufnew .gitconfig Tabs
 au BufEnter,Bufnew Makefile Tabs
 
