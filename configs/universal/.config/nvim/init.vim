@@ -1,10 +1,8 @@
-" this is still neovim configuration in vim script
-" but I wish I remake it with lua, as some plugins
-" do not work with vimscript, but perfectly work
-" with lua
+" it is still in vim script
+" but I will remake it in lua soon...
+
 
 set termguicolors
-" set nocompatible " nvim is always nocompatible
 syntax enable
 set listchars=space:⋅,tab:>\ ,eol:↴
 
@@ -12,15 +10,14 @@ set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
 
+
 function! SetNumbersFunction()
-	" default one
 	set list
 	set number
 	set relativenumber
 endfunction
 
 function! UnsetNumbersFunction()
-	" good for copying text from nvim
 	set list &
 	set number &
 	set relativenumber &
@@ -61,11 +58,12 @@ command Mark call SpaceFunc2()
 command SetNumber call SetNumbersFunction()
 command UnsetNumber call UnsetNumbersFunction()
 
+
 call plug#begin()
-	Plug 'drewtempelmeyer/palenight.vim' " Palenight Theme (purple-sh)
-	" Plug 'sainnhe/everforest' " Everforest Theme (green-ish)
+	Plug 'drewtempelmeyer/palenight.vim' " Palenight Theme (purple)
+	" Plug 'sainnhe/everforest' " Everforest Theme (green)
 	Plug 'vim-airline/vim-airline' " Status bar
-	Plug 'vim-airline/vim-airline-themes' " Status bar themes
+	" Plug 'vim-airline/vim-airline-themes' " Status bar themes
 	Plug 'preservim/nerdtree' " File browser
 call plug#end()
 
@@ -81,23 +79,24 @@ let g:airline_extensions = []
 nmap <C-f> :NERDTreeToggle<CR>
 nmap <C-h> :noh<CR>
 
-au VimEnter * SetNumber
-" au VimEnter * NERDTree
-" au VimEnter * NERDTreeToggle<CR>
 
-au BufEnter,Bufnew * Spaces
-au BufEnter,Bufnew *.m Mark
-au BufEnter,Bufnew *.html Mark
-au BufEnter,Bufnew *.xml Mark
-au BufEnter,Bufnew *.yml Mark
-au BufEnter,Bufnew *.sh* Mark
-au BufEnter,Bufnew *.zsh* Mark
-au BufEnter,Bufnew *.bash* Mark
-" au BufEnter,Bufnew *.c Tabs
-" au BufEnter,Bufnew *.h Tabs
-" au BufEnter,Bufnew *.cpp Tabs
-au BufEnter,Bufnew *.vim* Tabs
-au BufEnter,Bufnew .gitconfig Tabs
-au BufEnter,Bufnew Makefile Tabs
+autocmd VimEnter * SetNumber
+" autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTreeToggle<CR>
 
-au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd BufEnter,Bufnew * Spaces
+autocmd BufEnter,Bufnew *.m Mark
+autocmd BufEnter,Bufnew *.html Mark
+autocmd BufEnter,Bufnew *.xml Mark
+autocmd BufEnter,Bufnew *.yml Mark
+autocmd BufEnter,Bufnew *.sh* Mark
+autocmd BufEnter,Bufnew *.zsh* Mark
+autocmd BufEnter,Bufnew *.bash* Mark
+" autocmd BufEnter,Bufnew *.c Tabs
+" autocmd BufEnter,Bufnew *.h Tabs
+" autocmd BufEnter,Bufnew *.cpp Tabs
+autocmd BufEnter,Bufnew *.vim* Tabs
+autocmd BufEnter,Bufnew .gitconfig Tabs
+autocmd BufEnter,Bufnew Makefile Tabs
+
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
