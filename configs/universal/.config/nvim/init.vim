@@ -13,12 +13,14 @@ set iminsert=0
 set imsearch=0
 
 function! SetNumbersFunction()
+	" default one
 	set list
 	set number
 	set relativenumber
 endfunction
 
 function! UnsetNumbersFunction()
+	" good for copying text from nvim
 	set list &
 	set number &
 	set relativenumber &
@@ -60,19 +62,20 @@ command SetNumber call SetNumbersFunction()
 command UnsetNumber call UnsetNumbersFunction()
 
 call plug#begin()
-	Plug 'sainnhe/everforest' " Theme
+	Plug 'drewtempelmeyer/palenight.vim' " Palenight Theme (purple-sh)
+	" Plug 'sainnhe/everforest' " Everforest Theme (green-ish)
 	Plug 'vim-airline/vim-airline' " Status bar
 	Plug 'vim-airline/vim-airline-themes' " Status bar themes
 	Plug 'preservim/nerdtree' " File browser
 call plug#end()
 
 set background=dark
-let g:everforest_background='medium'
-let g:everforest_better_performance=1
-colorscheme everforest
+" let g:everforest_background='medium'
+" let g:everforest_better_performance=1
+colorscheme palenight " {everforest}
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'everforest'
+let g:airline_theme = 'palenight' " {'everforest'}
 let g:airline_extensions = []
 
 nmap <C-f> :NERDTreeToggle<CR>
