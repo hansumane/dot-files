@@ -1,12 +1,14 @@
 #!/bin/bash
 set -e;
 
-FONTNAME="JetBrainsMono";
+FONTNAME="Iosevka";
 EXTENSION=".ttf";
 DIRNAME="$(pwd)";
 
 if [ ! -d ${DIRNAME}/nerd-fonts ]; then
   git clone --depth=1 --recursive https://github.com/ryanoasis/nerd-fonts.git;
+else
+  cd ${DIRNAME}/nerd-fonts; git pull --rebase;
 fi;
 
 if [ ! -d ${DIRNAME}/${FONTNAME}All ]; then
