@@ -7,6 +7,9 @@ cd ~/Downloads/yay; makepkg -sic;
 cd; rm -rf ~/Downloads/yay;
 
 sudo pacman -Syy --needed \
+  curl git zip unzip neovim zsh exa bat hexyl tmux calc;
+
+sudo pacman -Syy --needed \
   wireplumber pipewire pipewire-alsa pipewire-pulse pipewire-jack;
 
 sudo pacman -S --needed \
