@@ -1,10 +1,10 @@
 " it is still in vim script
-" but I will remake it in lua soon...
+" but I will remake it in lua soon... maybe...
 
 
 set termguicolors
 syntax enable
-set listchars=space:⋅,tab:>\ ,eol:↴
+set listchars=space:⋅,tab:>\ 
 
 set keymap=russian-jcukenwin
 set iminsert=0
