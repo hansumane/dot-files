@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e;
 
-FONTNAME="Iosevka";
+FONTNAME="IosevkaTerm";
 EXTENSION=".ttf";
 DIRNAME="$(pwd)";
 

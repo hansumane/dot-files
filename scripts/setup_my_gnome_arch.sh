@@ -1,11 +1,6 @@
 #!/bin/bash
 set -e;
 
-mkdir -p ~/Downloads; cd ~/Downloads;
-git clone --depth=1 --recursive https://aur.archlinux.org/yay.git;
-cd ~/Downloads/yay; makepkg -sic;
-cd; rm -rf ~/Downloads/yay;
-
 sudo pacman -Syy --needed \
   curl git zip unzip neovim zsh exa bat hexyl tmux calc;
 
@@ -26,6 +21,11 @@ sudo pacman -S --needed \
   firefox firefox-i18n-ru firefox-ublock-origin \
   pavucontrol helvum networkmanager-openvpn openssh;
 
+mkdir -p ~/Downloads; cd ~/Downloads;
+git clone --depth=1 https://aur.archlinux.org/yay.git;
+cd ~/Downloads/yay; makepkg -sic;
+cd; rm -rf ~/Downloads/yay;
+
 yay -S --needed \
   hunspell hunspell-en_us hunspell-ru \
   hyphen hyphen-en hyphen-ru \
@@ -34,6 +34,7 @@ yay -S --needed \
 
 cp -rf ~/dot-files/configs/universal/.config/neofetch ~/.config;
 sudo cp -rf ~/dot-files/themes/icon_themes/Twilight-cursors /usr/share/icons;
+sudo chown root:root -R /usr/share/icons/Twilight-cursors;
 
 flatpak update;
 # flatpak install flathub com.mattjakeman.ExtensionManager;

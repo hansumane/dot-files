@@ -7,10 +7,10 @@ git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git;
 git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git;
 
 cp -f ~/dot-files/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
-# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
+# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
+# ~/.oh-my-zsh/custom/themes/powerlevel10k
 
 mkdir -p ~/.config
-
 cp -f ~/dot-files/configs/universal/.gitconfig ~;
 cp -f ~/dot-files/configs/universal/.zshrc ~;
 cp -rf ~/dot-files/configs/universal/.config/nvim ~/.config;
@@ -39,10 +39,12 @@ sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https:
 if [ -d /usr/sbin ]; then
   if [ ! -f /usr/sbin/update-grub ]; then
     sudo cp -r ~/dot-files/scripts/update-grub /usr/sbin;
+    sudo chown root:root -R /usr/sbin/update-grub;
   fi;
 else
   if [ ! -f /usr/bin/update-grub ]; then
     sudo cp -r ~/dot-files/scripts/update-grub /usr/bin;
+    sudo chown root:root -R /usr/bin/update-grub;
   fi;
 fi;
 

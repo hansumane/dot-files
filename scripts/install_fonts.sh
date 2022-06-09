@@ -18,10 +18,9 @@ echo "fonts to /usr/share/fonts/ManuallyInstalled";
 
 cd $(pwd)/../.fonts;
 sudo mkdir -p /usr/share/fonts/ManuallyInstalled;
-  tar xf HackAll.txz;
-  sudo cp -rf HackAll /usr/share/fonts/ManuallyInstalled;
-  tar xf IosevkaAll.txz;
-  sudo cp -rf IosevkaAll /usr/share/fonts/ManuallyInstalled;
-  tar xf JetBrainsMonoAll.txz;
-  sudo cp -rf JetBrainsMonoAll /usr/share/fonts/ManuallyInstalled;
+  sudo tar -xf HackAll.txz -C /usr/share/fonts/ManuallyInstalled;
+  sudo tar -xf IosevkaAll.txz -C /usr/share/fonts/ManuallyInstalled;
+  sudo tar -xf IosevkaTermAll.txz -C /usr/share/fonts/ManuallyInstalled;
+  sudo tar -xf JetBrainsMonoAll.txz -C /usr/share/fonts/ManuallyInstalled;
+sudo chown root:root -R /usr/share/fonts/ManuallyInstalled;
 fc-cache -r;
