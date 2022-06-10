@@ -1,23 +1,39 @@
 #!/bin/bash
 set -e;
 
-mkdir -p ~/Downloads;
-cd ~/Downloads;
-git clone --depth=1 --recusrsive https://aur.archlinux.org/yay.git;
-cd ~/Downloads/yay;
-makepkg -sic;
-cd; rm -rf ~/Downloads/yay;
-
 sudo pacman -Syy --needed \
+  curl git zip unzip neovim zsh exa bat hexyl tmux calc;
+
+sudo pacman -S --needed \
+  wireplumber pipewire pipewire-alsa pipewire-pulse pipewire-jack;
+
+sudo pacman -S --needed \
+  xorg xorg-xinit xorg-xwayland wayland;
+
+sudo pacman -S --needed \
+  noto-fonts noto-fonts-cjk noto-fonts-emoji;
+
+sudo pacman -S --needed \
+  mesa nvidia-dkms;
+
+sudo pacman -S --needed \
   i3-gaps i3lock i3blocks rofi kitty xcompmgr feh sxiv \
   xfce4-clipman-plugin xfce4-screenshooter lxappearance pavucontrol \
   network-manager-applet networkmanager-openvpn \
   gnome-themes-extra xdg-desktop-portal-gtk xdg-user-dirs \
   flatpak firefox firefox-i18n-ru firefox-ublock-origin \
-  zathura zathura-pdf-mupdf zathura-djvu;
+  zathura zathura-pdf-mupdf zathura-djvu helvum;
 
-yay -Syy --needed hunspell hunspell-en_us hunspell-ru \
-                  hyphen hyphen-en hyphen-ru;
+mkdir -p ~/Downloads; cd ~/Downloads;
+git clone --depth=1 https://aur.archlinux.org/yay.git;
+cd ~/Downloads/yay; makepkg -sic;
+cd; rm -rf ~/Downloads/yay;
+
+yay -S --needed \
+  hunspell hunspell-en_us hunspell-ru \
+  hyphen hyphen-en hyphen-ru \
+  libreoffice-still-ru \
+  visual-studio-code-bin;
 
 cp -f   ~/dot-files/configs/i3/.xinitrc ~;
 cp -rf  ~/dot-files/configs/i3/.config/i3 ~/.config;

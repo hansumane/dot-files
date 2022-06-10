@@ -4,7 +4,7 @@ set -e;
 sudo pacman -Syy --needed \
   curl git zip unzip neovim zsh exa bat hexyl tmux calc;
 
-sudo pacman -Syy --needed \
+sudo pacman -S --needed \
   wireplumber pipewire pipewire-alsa pipewire-pulse pipewire-jack;
 
 sudo pacman -S --needed \

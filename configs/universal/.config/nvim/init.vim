@@ -4,7 +4,7 @@
 
 set termguicolors
 syntax enable
-set listchars=space:⋅,tab:>\ 
+set listchars=space:⋅,tab:>\ ,eol:↴
 
 set keymap=russian-jcukenwin
 set iminsert=0
@@ -60,20 +60,21 @@ command UnsetNumber call UnsetNumbersFunction()
 
 
 call plug#begin()
-	Plug 'drewtempelmeyer/palenight.vim' " Palenight Theme (purple)
-	" Plug 'sainnhe/everforest' " Everforest Theme (green)
 	Plug 'vim-airline/vim-airline' " Status bar
-	" Plug 'vim-airline/vim-airline-themes' " Status bar themes
 	Plug 'preservim/nerdtree' " File browser
+	Plug 'sonph/onehalf', { 'rtp': 'vim' } " OneHalf Theme (light/dark)
+	" Plug 'drewtempelmeyer/palenight.vim' " Palenight Theme (purple)
+	" Plug 'sainnhe/everforest' " Everforest Theme (green)
 call plug#end()
 
-set background=dark
+set cursorline
+" set background=dark
 " let g:everforest_background='medium'
 " let g:everforest_better_performance=1
-colorscheme palenight " {everforest}
+colorscheme onehalflight " {everforest, palenight}
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'palenight' " {'everforest'}
+let g:airline_theme = 'onehalflight' " {'everforest', 'palenight'}
 let g:airline_extensions = []
 
 nmap <C-f> :NERDTreeToggle<CR>
