@@ -2,35 +2,35 @@
 {
     "foreground": "#D3C6AA",
     "background": "#2F383E",
-    {
+    "black": {
         "black_D": "#2F383E",
         "black_L": "#4A555B"
     },
-    {
+    "red": {
         "red_D": "#E67E80",
         "red_L": "#E67E80"
     },
-    {
+    "green": {
         "green_D": "#A7C080",
         "green_L": "#A7C080"
     },
-    {
+    "yellow": {
         "yellow_D": "#DBBC7F",
         "yellow_L": "#DBBC7F"
     },
-    {
+    "blue": {
         "blue_D": "#7FBBB3",
         "blue_L": "#7FBBB3"
     },
-    {
+    "magenta": {
         "magenta_D": "#D699B6",
         "magenta_L": "#D699B6"
     },
-    {
+    "cyan": {
         "cyan_D": "#83C092",
         "cyan_L": "#83C092"
     },
-    {
+    "white": {
         "white_D": "#E0E0E0",
         "white_L": "#E0E0E0"
     }
