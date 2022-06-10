@@ -1,7 +1,9 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
 pkg upgrade -y;
-pkg install root-repo curl git zip unzip neovim binutils clang python zsh exa bat hexyl gnupg openssh tmux -y;
+pkg install root-repo curl git zip unzip neovim \
+  binutils clang python zsh exa bat hexyl gnupg \
+  openssh tmux calc -y;
 pkg install tsu -y;
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
