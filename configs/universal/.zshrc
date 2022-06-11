@@ -8,9 +8,9 @@ export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
 export EXA_COLORS="di=1;35:da=0;35"
 
-SUDOCMD="sudo"
-EXAICONS="--icons"
-SYSFETCH="neofetch"
+SUDO_CMD="sudo"
+EXA_ICONS="--icons"
+SYS_FETCH="neofetch"
 ZSH_THEME="awesomepanda"
 plugins=(git svn zsh-syntax-highlighting) # zsh-autosuggestions
 
@@ -21,10 +21,10 @@ alias c="clear"
 alias q="exit"
 
 alias t="tmux"
-alias ls="exa $EXAICONS"
-alias la="exa $EXAICONS -a"
-alias ll="exa $EXAICONS -alh --group-directories-first"
-alias lx="exa $EXAICONS -alh --no-user --group-directories-first"
+alias ls="exa $EXA_ICONS"
+alias la="exa $EXA_ICONS -a"
+alias ll="exa $EXA_ICONS -alh --group-directories-first"
+alias lx="exa $EXA_ICONS -alh --no-user --group-directories-first"
 alias cls="c;ls"
 alias cla="c;la"
 alias clx="c;lx"
@@ -32,11 +32,11 @@ alias cll="c;ll"
 alias clt="c;lt"
 
 alias rr="rm -rf"
-alias sbn="$SUDOCMD reboot"
-alias sdn="$SUDOCMD poweroff"
+alias sbn="$SUDO_CMD reboot"
+alias sdn="$SUDO_CMD poweroff"
 
 alias gits="git status"
-alias fetch="c;$SYSFETCH"
+alias fetch="c;$SYS_FETCH"
 alias viM="vim Makefile"
 alias nviM="nvim Makefile"
 alias grep="grep --color=auto"
@@ -44,12 +44,12 @@ alias grep="grep --color=auto"
 lt ()
 {
   if (( $# == 0 )); then
-    exa $EXAICONS --group-directories-first -aT --level=2
+    exa $EXA_ICONS --group-directories-first -aT --level=2
   else
     if [[ $1 == a ]]; then
-      exa $EXAICONS --group-directories-first -aT
+      exa $EXA_ICONS --group-directories-first -aT
     else
-      exa $EXAICONS --group-directories-first -aT --level=$1
+      exa $EXA_ICONS --group-directories-first -aT --level=$1
     fi
   fi
 }
