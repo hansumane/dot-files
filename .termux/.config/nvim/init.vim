@@ -54,14 +54,18 @@ command UnsetNumber call UnsetNumbersFunction()
 call plug#begin()
 	Plug 'vim-airline/vim-airline'
 	Plug 'preservim/nerdtree'
-	Plug 'sonph/onehalf', { 'rtp': 'vim' }
+	Plug 'sainnhe/everforest'
 call plug#end()
 
+
 set cursorline
-colorscheme onehalflight
+set background=dark
+let g:everforest_background='medium'
+let g:everforest_better_performance=1
+colorscheme everforest 
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'onehalflight'
+let g:airline_theme = 'everforest'
 let g:airline_extensions = []
 
 nmap <C-f> :NERDTreeToggle<CR>
@@ -77,6 +81,11 @@ autocmd BufEnter,Bufnew *.yml Mark
 autocmd BufEnter,Bufnew *.sh* Mark
 autocmd BufEnter,Bufnew *.zsh* Mark
 autocmd BufEnter,Bufnew *.bash* Mark
+" autocmd BufEnter,Bufnew *.c Tabs
+" autocmd BufEnter,Bufnew *.h Tabs
+" autocmd BufEnter,Bufnew *.cpp Tabs
 autocmd BufEnter,Bufnew *.vim* Tabs
 autocmd BufEnter,Bufnew .gitconfig Tabs
 autocmd BufEnter,Bufnew Makefile Tabs
+
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

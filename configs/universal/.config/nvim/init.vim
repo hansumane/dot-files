@@ -62,19 +62,22 @@ command UnsetNumber call UnsetNumbersFunction()
 call plug#begin()
 	Plug 'vim-airline/vim-airline' " Status bar
 	Plug 'preservim/nerdtree' " File browser
-	Plug 'sonph/onehalf', { 'rtp': 'vim' } " OneHalf Theme (light/dark)
+	Plug 'sainnhe/everforest' " Everforest Theme (soft green)
+	" Plug 'sonph/onehalf', { 'rtp': 'vim' } " OneHalf Theme (light/dark)
 	" Plug 'drewtempelmeyer/palenight.vim' " Palenight Theme (purple)
-	" Plug 'sainnhe/everforest' " Everforest Theme (green)
 call plug#end()
 
+
+" themes: everforest, palenight, onehalf{light,dark}
+
 set cursorline
-" set background=dark
-" let g:everforest_background='medium'
-" let g:everforest_better_performance=1
-colorscheme onehalflight " {everforest, palenight}
+set background=dark
+let g:everforest_background='medium'
+let g:everforest_better_performance=1
+colorscheme everforest 
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'onehalflight' " {'everforest', 'palenight'}
+let g:airline_theme = 'everforest'
 let g:airline_extensions = []
 
 nmap <C-f> :NERDTreeToggle<CR>
