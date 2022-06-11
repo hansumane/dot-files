@@ -60,15 +60,11 @@ command UnsetNumber call UnsetNumbersFunction()
 
 
 call plug#begin()
-	Plug 'vim-airline/vim-airline' " Status bar
+	Plug 'itchyny/lightline.vim' " Light status bar
 	Plug 'preservim/nerdtree' " File browser
 	Plug 'sainnhe/everforest' " Everforest Theme (soft green)
-	" Plug 'sonph/onehalf', { 'rtp': 'vim' } " OneHalf Theme (light/dark)
-	" Plug 'drewtempelmeyer/palenight.vim' " Palenight Theme (purple)
 call plug#end()
 
-
-" themes: everforest, palenight, onehalf{light,dark}
 
 set cursorline
 set background=dark
@@ -76,9 +72,7 @@ let g:everforest_background='medium'
 let g:everforest_better_performance=1
 colorscheme everforest 
 
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'everforest'
-let g:airline_extensions = []
+let g:lightline = {'colorscheme' : 'everforest'}
 
 nmap <C-f> :NERDTreeToggle<CR>
 nmap <C-h> :noh<CR>

@@ -52,9 +52,9 @@ command UnsetNumber call UnsetNumbersFunction()
 
 
 call plug#begin()
-	Plug 'vim-airline/vim-airline'
-	Plug 'preservim/nerdtree'
-	Plug 'sainnhe/everforest'
+	Plug 'itchyny/lightline.vim' " Light status bar
+	Plug 'preservim/nerdtree' " File browser
+	Plug 'sainnhe/everforest' " Everforest Theme (soft green)
 call plug#end()
 
 
@@ -64,9 +64,7 @@ let g:everforest_background='medium'
 let g:everforest_better_performance=1
 colorscheme everforest 
 
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'everforest'
-let g:airline_extensions = []
+let g:lightline = {'colorscheme' : 'everforest'}
 
 nmap <C-f> :NERDTreeToggle<CR>
 nmap <C-h> :noh<CR>
@@ -81,9 +79,6 @@ autocmd BufEnter,Bufnew *.yml Mark
 autocmd BufEnter,Bufnew *.sh* Mark
 autocmd BufEnter,Bufnew *.zsh* Mark
 autocmd BufEnter,Bufnew *.bash* Mark
-" autocmd BufEnter,Bufnew *.c Tabs
-" autocmd BufEnter,Bufnew *.h Tabs
-" autocmd BufEnter,Bufnew *.cpp Tabs
 autocmd BufEnter,Bufnew *.vim* Tabs
 autocmd BufEnter,Bufnew .gitconfig Tabs
 autocmd BufEnter,Bufnew Makefile Tabs
