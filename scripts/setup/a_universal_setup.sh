@@ -1,4 +1,15 @@
 #!/bin/bash
+set -e;
+
+if [ ! $(pwd | rev | cut -d"/" -f3 | rev) = 'dot-files' ] ||
+    [ ! $(pwd | rev | cut -d"/" -f2 | rev) = 'scripts' ] ||
+    [ ! $(pwd | rev | cut -d"/" -f1 | rev) = 'setup' ]; then
+  echo "please go to ?/dot-files/scripts/setup folder and run script from there!";
+  exit;
+else
+  cd ../..;
+  CURRENT_DIR=$(pwd);
+fi;
 
 cd; sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
 mkdir -p ~/.oh-my-zsh/custom/plugins;
@@ -6,16 +17,15 @@ cd ~/.oh-my-zsh/custom/plugins;
 git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git;
 git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git;
 
-cp -f ~/dot-files/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
-# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
-# ~/.oh-my-zsh/custom/themes/powerlevel10k
+cp -f ${CURRENT_DIR}/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
+# git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
 
 mkdir -p ~/.config
-cp -f ~/dot-files/configs/universal/.gitconfig ~;
-cp -f ~/dot-files/configs/universal/.zshrc ~;
-cp -rf ~/dot-files/configs/universal/.config/nvim ~/.config;
-# cp -f ~/dot-files/configs/universal/.vimrc ~;
-# cp -f ~/dot-files/configs/universal/.p10k.zsh ~;
+cp -f ${CURRENT_DIR}/configs/universal/.gitconfig ~;
+cp -f ${CURRENT_DIR}/configs/universal/.zshrc ~;
+cp -rf ${CURRENT_DIR}/configs/universal/.config/nvim ~/.config;
+# cp -f ${CURRENT_DIR}/configs/universal/.vimrc ~;
+# cp -f ${CURRENT_DIR}/configs/universal/.p10k.zsh ~;
 
 mkdir -p ~/Desktop ~/Downloads ~/Others;
 cd ~/Others;

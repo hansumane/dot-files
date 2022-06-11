@@ -1,20 +1,16 @@
 #!/bin/bash
 set -e;
 
-if [ ! $(pwd | rev | cut -d"/" -f2 | rev) = 'dot-files' ] ||
-    [ ! $(pwd | rev | cut -d"/" -f1 | rev) = 'scripts' ]; then
-  echo "please go to ?/dot-files/scripts folder and run script from there";
-  exit;
-fi;
-
-if [ ! -d $(pwd)/../.fonts ]; then
-  echo "no .fonts directory! (you have probably deleted or moved it!)";
+if [ ! $(pwd | rev | cut -d"/" -f3 | rev) = 'dot-files' ] ||
+    [ ! $(pwd | rev | cut -d"/" -f2 | rev) = 'scripts' ] ||
+    [ ! $(pwd | rev | cut -d"/" -f1 | rev) = 'setup' ]; then
+  echo "please go to ?/dot-files/scripts/setup folder and run script from there";
   exit;
 fi;
 
 echo "you'll need to grant root access to copy fonts to /usr/share/fonts/ManuallyInstalled";
 
-cd $(pwd)/../.fonts;
+cd $(pwd)/../../.fonts;
 sudo mkdir -p /usr/share/fonts/ManuallyInstalled;
   sudo tar -xf IosevkaAll.txz -C /usr/share/fonts/ManuallyInstalled;
   sudo tar -xf IosevkaTermAll.txz -C /usr/share/fonts/ManuallyInstalled;
