@@ -1,37 +1,37 @@
-// my16mple colour scheme
+// my16mple terminal colorscheme
 {
     "foreground": "#E0E0E0",
     "background": "#1E1E1E",
     "black": {
-        "black_D": "#1E1E1E",
-        "black_L": "#383838"
+        "color0": "#1E1E1E",
+        "color8": "#383838"
     },
     "red": {
-        "red_D": "#E33A3A",
-        "red_L": "#F94040"
+        "color1": "#E33A3A",
+        "color9": "#F94040"
     },
     "green": {
-        "green_D": "#37BA70",
-        "green_L": "#3DCC7B"
+        "color2": "#37BA70",
+        "color10": "#3DCC7B"
     },
     "yellow": {
-        "yellow_D": "#E7C930",
-        "yellow_L": "#FDDC35"
+        "color3": "#E7C930",
+        "color11": "#FDDC35"
     },
     "blue": {
-        "blue_D": "#3882CC",
-        "blue_L": "#3B8FED"
+        "color4": "#3882CC",
+        "color12": "#3B8FED"
     },
     "magenta": {
-        "magenta_D": "#9446E3",
-        "magenta_L": "#A34DF9"
+        "color5": "#9446E3",
+        "color13": "#A34DF9"
     },
     "cyan": {
-        "cyan_D": "#51B4CC",
-        "cyan_L": "#59C5E0"
+        "color6": "#51B4CC",
+        "color14": "#59C5E0"
     },
     "white": {
-        "white_D": "#D1D1D1",
-        "white_L": "#F4F4F4"
+        "color7": "#D1D1D1",
+        "color15": "#F4F4F4"
     }
 }

@@ -1,37 +1,37 @@
-// onehalflight terminal colours:
+// onehalflight terminal colourscheme
 {
     "foreground": "#383A42",
     "background": "#FAFAFA",
     "black": {
-        "black_D": "#383A42",
-        "black_L": "#383A42"
+        "color0": "#383A42",
+        "color8": "#383A42"
     },
     "red": {
-        "red_D": "#E45649",
-        "red_L": "#E45649"
+        "color1": "#E45649",
+        "color9": "#E45649"
     },
     "green": {
-        "green_D": "#50A14F",
-        "green_L": "#50A14F"
+        "color2": "#50A14F",
+        "color10": "#50A14F"
     },
     "yellow": {
-        "yellow_D": "#C18401",
-        "yellow_L": "#C18401"
+        "color3": "#C18401",
+        "color11": "#C18401"
     },
     "blue": {
-        "blue_D": "#0184BC",
-        "blue_L": "#0184BC"
+        "color4": "#0184BC",
+        "color12": "#0184BC"
     },
     "magenta": {
-        "magenta_D": "#A626A4",
-        "magenta_L": "#A626A4"
+        "color5": "#A626A4",
+        "color13": "#A626A4"
     },
     "cyan": {
-        "cyan_D": "#0997B3",
-        "cyan_L": "#0997B3"
+        "color6": "#0997B3",
+        "color14": "#0997B3"
     },
     "white": {
-        "white_D": "#FAFAFA",
-        "white_L": "#FAFAFA"
+        "color7": "#FAFAFA",
+        "color15": "#FAFAFA"
     }
 }
