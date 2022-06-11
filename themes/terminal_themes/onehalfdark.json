@@ -1,0 +1,37 @@
+// onehalfdark terminal colours:
+{
+    "foreground": "#DCDFE4",
+    "background": "#282C34",
+    "black": {
+        "black_D": "#282C34",
+        "black_L": "#282C34"
+    },
+    "red": {
+        "red_D": "#E06C75",
+        "red_L": "#E06C75"
+    },
+    "green": {
+        "green_D": "#98C379",
+        "green_L": "#98C379"
+    },
+    "yellow": {
+        "yellow_D": "#E5C07B",
+        "yellow_L": "#E5C07B"
+    },
+    "blue": {
+        "blue_D": "#61AFEF",
+        "blue_L": "#61AFEF"
+    },
+    "magenta": {
+        "magenta_D": "#C678DD",
+        "magenta_L": "#C678DD"
+    },
+    "cyan": {
+        "cyan_D": "#56B6C2",
+        "cyan_L": "#56B6C2"
+    },
+    "white": {
+        "white_D": "#DCDFE4",
+        "white_L": "#DCDFE4"
+    }
+}
