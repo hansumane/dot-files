@@ -12,6 +12,7 @@ SUDO_CMD="sudo"
 EXA_ICONS="--icons"
 SYS_FETCH="neofetch"
 ZSH_THEME="awesomepanda"
+LOCAL_LANG="LANG=en_US.UTF-8"
 plugins=(git svn zsh-syntax-highlighting) # zsh-autosuggestions
 
 source $ZSH/oh-my-zsh.sh
@@ -21,10 +22,10 @@ alias c="clear"
 alias q="exit"
 
 alias t="tmux"
-alias ls="exa $EXA_ICONS"
-alias la="exa $EXA_ICONS -a"
-alias ll="exa $EXA_ICONS -alh --group-directories-first"
-alias lx="exa $EXA_ICONS -alh --no-user --group-directories-first"
+alias ls="$LOCAL_LANG exa $EXA_ICONS"
+alias la="$LOCAL_LANG exa $EXA_ICONS -a"
+alias ll="$LOCAL_LANG exa $EXA_ICONS -alh --group-directories-first"
+alias lx="$LOCAL_LANG exa $EXA_ICONS -alh --no-user --group-directories-first"
 alias cls="c;ls"
 alias cla="c;la"
 alias clx="c;lx"
@@ -44,12 +45,12 @@ alias grep="grep --color=auto"
 lt ()
 {
   if (( $# == 0 )); then
-    exa $EXA_ICONS --group-directories-first -aT --level=2
+    $LOCAL_LANG exa $EXA_ICONS --group-directories-first -aT --level=2
   else
     if [[ $1 == a ]]; then
-      exa $EXA_ICONS --group-directories-first -aT
+      $LOCAL_LANG exa $EXA_ICONS --group-directories-first -aT
     else
-      exa $EXA_ICONS --group-directories-first -aT --level=$1
+      $LOCAL_LANG exa $EXA_ICONS --group-directories-first -aT --level=$1
     fi
   fi
 }
