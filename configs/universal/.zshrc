@@ -45,12 +45,12 @@ alias grep="grep --color=auto"
 lt ()
 {
   if (( $# == 0 )); then
-    $LOCAL_LANG exa $EXA_ICONS --group-directories-first -aT --level=2
+    env $LOCAL_LANG exa $EXA_ICONS --group-directories-first -aT --level=2
   else
     if [[ $1 == a ]]; then
-      $LOCAL_LANG exa $EXA_ICONS --group-directories-first -aT
+      env $LOCAL_LANG exa $EXA_ICONS --group-directories-first -aT
     else
-      $LOCAL_LANG exa $EXA_ICONS --group-directories-first -aT --level=$1
+      env $LOCAL_LANG exa $EXA_ICONS --group-directories-first -aT --level=$1
     fi
   fi
 }
