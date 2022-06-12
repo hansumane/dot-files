@@ -69,7 +69,7 @@ fcc ()
   if (( $# == 0)); then
     echo "No source file(s) given!"
   else
-    clang -Wall -std=c99 $@ -o out-$(basename $1 .c)
+    clang -g -Wall -O -std=c99 $@ -o out-$(basename $1 .c)
   fi
 }
 
@@ -78,7 +78,7 @@ fcp ()
   if (( $# == 0)); then
     echo "No source file(s) given!"
   else
-    clang++ -Wall $@ -o out-$(basename $1 .cpp)
+    clang++ -g -Wall -O $@ -o out-$(basename $1 .cpp)
   fi
 }
 
