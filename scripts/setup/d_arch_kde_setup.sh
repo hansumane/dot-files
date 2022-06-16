@@ -14,7 +14,8 @@ fi;
 sudo pacman -Syy --needed \
   plasma ark dolphin dolphin-plugins konsole okular \
   kate gwenview elisa spectacle okteta \
-  firefox firefox-i18n-ru firefox-ublock-origin \
+  chromium \
+  # firefox firefox-i18n-ru firefox-ublock-origin \
   pavucontrol-qt qpwgraph networkmanager-openvpn openssh;
 
 cp -rf ${CURRENT_DIR}/configs/universal/.config/neofetch ~/.config;
