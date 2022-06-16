@@ -11,8 +11,9 @@ else
   CURRENT_DIR=$(pwd);
 fi;
 
-sudo pacman -Syy --needed \
+sudo pacman -S --needed \
   gnome gnome-tweaks gnome-themes-extra \
+  flatpak xdg-desktop-portal-gnome \
   # firefox firefox-i18n-ru firefox-ublock-origin \
   chromium \
   pavucontrol helvum networkmanager-openvpn openssh;

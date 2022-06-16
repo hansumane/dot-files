@@ -11,10 +11,10 @@ else
   CURRENT_DIR=$(pwd);
 fi;
 
-sudo pacman -Syy --needed \
+sudo pacman -S --needed \
   plasma ark dolphin dolphin-plugins konsole okular \
   kate gwenview elisa spectacle okteta \
-  chromium flatpak \
+  chromium flatpak xdg-desktop-portal-kde \
   # firefox firefox-i18n-ru firefox-ublock-origin \
   pavucontrol-qt qpwgraph networkmanager-openvpn openssh;
 
