@@ -14,7 +14,7 @@ fi;
 sudo pacman -Syy --needed \
   plasma ark dolphin dolphin-plugins konsole okular \
   kate gwenview elisa spectacle okteta \
-  chromium \
+  chromium flatpak \
   # firefox firefox-i18n-ru firefox-ublock-origin \
   pavucontrol-qt qpwgraph networkmanager-openvpn openssh;
 
@@ -29,5 +29,6 @@ flatpak update;
 sudo mkinitcpio -P; sudo update-grub;
 sudo systemctl enable sddm;
 
+echo '!!!
 # /usr/share/dbus-1/services/org.kde.kwalletd.service :
-#   #Exec=/usr/bin/kwalletd
+#   #Exec=/usr/bin/kwalletd';
