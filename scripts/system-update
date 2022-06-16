@@ -1,0 +1,7 @@
+#!/bin/sh
+exec flatpak update
+exec yay -Syyu
+exec sudo mkinitcpio -P
+exec sudo update-grub
+exec yay -Scca
+exec yay -Sc --repo
