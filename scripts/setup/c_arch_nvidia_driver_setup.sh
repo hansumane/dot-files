@@ -2,7 +2,7 @@
 set -e;
 
 sudo pacman -S --needed \
-  mesa nvidia-open-dkms;
+  mesa intel-ucode nvidia-open-dkms;
 
 # /etc/default/grub : 
   # "nvidia nvidia_modeset nvidia_uvm nvidia_drm nvidia-drm.modeset=1"
