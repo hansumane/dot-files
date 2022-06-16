@@ -13,10 +13,9 @@ fi;
 
 sudo pacman -S --needed \
   gnome gnome-tweaks gnome-themes-extra \
-  flatpak xdg-desktop-portal-gnome \
-  # firefox firefox-i18n-ru firefox-ublock-origin \
-  chromium \
+  flatpak xdg-desktop-portal-gnome chromium \
   pavucontrol helvum networkmanager-openvpn openssh;
+  # firefox firefox-i18n-ru firefox-ublock-origin
 
 cp -rf ${CURRENT_DIR}/configs/universal/.config/neofetch ~/.config;
 sudo cp -rf ${CURRENT_DIR}/themes/icon_themes/Twilight-cursors /usr/share/icons;

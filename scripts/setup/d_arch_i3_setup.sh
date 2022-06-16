@@ -16,9 +16,9 @@ sudo pacman -S --needed \
   xfce4-clipman-plugin xfce4-screenshooter lxappearance pavucontrol \
   network-manager-applet networkmanager-openvpn \
   gnome-themes-extra xdg-desktop-portal-gtk xdg-user-dirs \
-  flatpak chromium xorg-xinit \
-  # firefox firefox-i18n-ru firefox-ublock-origin \
+  flatpak chromium xorg-xinit helvum \
   zathura zathura-pdf-mupdf zathura-djvu helvum;
+  # firefox firefox-i18n-ru firefox-ublock-origin
 
 cp -f   ${CURRENT_DIR}/configs/i3/.xinitrc ~;
 cp -rf  ${CURRENT_DIR}/configs/i3/.config/i3 ~/.config;
