@@ -16,7 +16,7 @@ sudo pacman -Syy --needed \
   xfce4-clipman-plugin xfce4-screenshooter lxappearance pavucontrol \
   network-manager-applet networkmanager-openvpn \
   gnome-themes-extra xdg-desktop-portal-gtk xdg-user-dirs \
-  flatpak chromium \
+  flatpak chromium xorg-xinit \
   # firefox firefox-i18n-ru firefox-ublock-origin \
   zathura zathura-pdf-mupdf zathura-djvu helvum;
 

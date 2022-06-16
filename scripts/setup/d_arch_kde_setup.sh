@@ -28,3 +28,6 @@ flatpak update;
 
 sudo mkinitcpio -P; sudo update-grub;
 sudo systemctl enable sddm;
+
+# /usr/share/dbus-1/services/org.kde.kwalletd.service :
+#   #Exec=/usr/bin/kwalletd
