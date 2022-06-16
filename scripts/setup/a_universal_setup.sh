@@ -59,5 +59,5 @@ else
 fi;
 
 # change .gitconfig and default user shell
-nvim ~/.gitconfig;
-sudo nvim /etc/passwd;
+nvim ~/.gitconfig || vim ~/.gitconfig || nano ~/.gitconfig;
+sudo nvim /etc/passwd || sudo vim /etc/passwd || sudo nano /etc/passwd;
