@@ -31,5 +31,5 @@ cd; rm -rf ~/Downloads/yay;
 # installing update-grub
 if [ ! -f /usr/bin/system-update ]; then
   sudo cp -f ${CURRENT_DIR}/scripts/system-update /usr/bin;
-  sudo chown root:root -R /usr/bin/system-update;
+  sudo chown root:root /usr/bin/system-update;
 fi;
