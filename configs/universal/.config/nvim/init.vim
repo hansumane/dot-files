@@ -13,12 +13,14 @@ set imsearch=0
 
 function! SetNumbersFunction()
 	set list
+	set cursorline
 	set number
 	set relativenumber
 endfunction
 
 function! UnsetNumbersFunction()
 	set list &
+	set cursorline &
 	set number &
 	set relativenumber &
 endfunction
@@ -66,7 +68,6 @@ call plug#begin()
 call plug#end()
 
 
-set cursorline
 set background=dark
 let g:everforest_background='medium'
 let g:everforest_better_performance=1
