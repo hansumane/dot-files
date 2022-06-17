@@ -3,5 +3,5 @@ flatpak update
 yay -Syyu
 sudo mkinitcpio -P
 sudo update-grub
-yay -Scca
-yay -Sc --repo
+yay -Scca --noconfirm
+yay -Sc --repo --noconfirm
