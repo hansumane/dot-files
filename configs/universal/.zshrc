@@ -59,14 +59,14 @@ gitup ()
 {
   if (( $# == 0)); then
     if read -q "choice?No commit name given, git pull? "; then
-      echo ""; git pull --rebase
+      echo ""; git pull --rebase; git status
     else
       echo "\nExiting..."
     fi
   else
     git add -A; git commit -m$1
     if read -q "choice?Commit name given, git push? "; then
-      echo ""; git push
+      echo ""; git push; git status
     else
       echo "\nExiting..."
     fi
