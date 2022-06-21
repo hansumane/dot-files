@@ -1,28 +1,28 @@
 window:
 
-  opacity: 0.85
+  opacity: 0.9
   startup_mode: Maximized
 
 
 font:
 
   normal:
-    family: Iosevka Term Nerd Font
+    family: FiraCode Nerd Font
     style: Regular
 
   bold:
-    family: Iosevka Term Nerd Font
-    style: Bold
+    family: FiraCode Nerd Font
+    style: Medium
 
   italic:
-    family: Iosevka Term Nerd Font
-    style: Italic
+    family: FiraCode Nerd Font
+    style: Regular
 
   bold_italic:
-    family: Iosevka Term Nerd Font
-    style: Bold Italic
+    family: FiraCode Nerd Font
+    style: Medium
 
-  size: 16.0
+  size: 24.0
 
 
 colors:
@@ -57,21 +57,5 @@ colors:
 
   transparent_background_colors: false
 
-
-cursor:
-  style:
-    # Values for `shape`:
-    #   - ▇ Block
-    #   - _ Underline
-    #   - | Beam
-    shape: Block
-
-    blinking: Off
-
-  #blink_interval: 750
-
-  # Thickness of the cursor relative to the cell width as floating point number
-  # from `0.0` to `1.0`.
-  #thickness: 0.15
 
 live_config_reload: false
