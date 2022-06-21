@@ -78,7 +78,7 @@ fcc ()
   if (( $# == 0)); then
     echo "No source file(s) given!"
   else
-    gcc -g -Wall -O -std=c99 $@ -o out-$(basename $1 .c)
+    gcc -Wall -Os -std=c99 $@ -o out-$(basename $1 .c)
   fi
 }
 
@@ -87,7 +87,7 @@ fcp ()
   if (( $# == 0)); then
     echo "No source file(s) given!"
   else
-    g++ -g -Wall -O $@ -o out-$(basename $1 .cpp)
+    g++ -Wall -Os $@ -o out-$(basename $1 .cpp)
   fi
 }
 
