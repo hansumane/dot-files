@@ -3,7 +3,7 @@
 pkg upgrade -y;
 pkg install root-repo curl git zip unzip neovim \
   binutils clang python zsh exa bat hexyl gnupg \
-  openssh tmux calc -y;
+  openssh tmux calc subversion -y;
 pkg install tsu -y;
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
