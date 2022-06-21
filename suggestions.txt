@@ -88,3 +88,10 @@ Other:
 
     pfetch (https://github.com/dylanaraps/pfetch.git)
     [simple and lightweight alternative to neofetch]
+
+Flatpaks:
+
+    Gnome Extension Manager  [com.mattjakeman.ExtensionManager]
+    Discord                  [com.discordapp.Discord]
+    Telegram Desktop         [org.telegram.desktop]
+    Octave                   [org.octave.Octave]

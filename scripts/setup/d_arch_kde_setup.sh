@@ -11,7 +11,7 @@ else
   CURRENT_DIR=$(pwd);
 fi;
 
-sudo pacman -S --needed \
+sudo pacman -S --needed --noconfirm \
   plasma ark dolphin dolphin-plugins konsole okular \
   kate gwenview elisa spectacle okteta \
   chromium flatpak xdg-desktop-portal-kde openssh \
@@ -21,14 +21,7 @@ sudo pacman -S --needed \
 cp -rf ${CURRENT_DIR}/configs/universal/.config/neofetch ~/.config;
 
 flatpak update;
-# flatpak install flathub com.mattjakeman.ExtensionManager;
-# flatpak install flathub com.discordapp.Discord;
-# flatpak install flathub org.telegram.desktop;
-# flatpak install flathub org.octave.Octave;
-
 sudo mkinitcpio -P; sudo update-grub;
 sudo systemctl enable sddm;
 
-echo '!!!
-# /usr/share/dbus-1/services/org.kde.kwalletd.service :
-#   #Exec=/usr/bin/kwalletd';
+sudo sed 's/Exec=.*/# Exec=\/usr\/bin\/kwalletd5/g' -i /usr/share/dbus-1/services/org.kde.kwalletd5.service;

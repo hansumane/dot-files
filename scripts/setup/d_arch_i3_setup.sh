@@ -11,7 +11,7 @@ else
   CURRENT_DIR=$(pwd);
 fi;
 
-sudo pacman -S --needed \
+sudo pacman -S --needed --noconfirm \
   i3-gaps i3lock i3blocks rofi kitty xcompmgr feh sxiv \
   xfce4-clipman-plugin xfce4-screenshooter lxappearance pavucontrol \
   network-manager-applet networkmanager-openvpn \
@@ -40,7 +40,5 @@ cd ~/Downloads/xkblayout-state;
 sudo make install;
 
 flatpak update;
-# flatpak install flathub com.mattjakeman.ExtensionManager;
-# flatpak install flathub com.discordapp.Discord;
-# flatpak install flathub org.telegram.desktop;
-# flatpak install flathub org.octave.Octave;
+sudo mkinitcpio -P; sudo update-grub;
+sudo systemctl enable gdm;

@@ -6,4 +6,4 @@ echo '
 [home_ungoogled_chromium_Arch]
 SigLevel = Required TrustAll
 Server = https://download.opensuse.org/repositories/home:/ungoogled_chromium/Arch/$arch' | sudo tee --append /etc/pacman.conf;
-sudo pacman -Syy ungoogled-chromium;
+sudo pacman -Syy --needed --noconfirm ungoogled-chromium;

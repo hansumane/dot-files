@@ -11,7 +11,7 @@ else
   CURRENT_DIR=$(pwd);
 fi;
 
-sudo pacman -S --needed \
+sudo pacman -S --needed --noconfirm \
   gnome gnome-tweaks gnome-themes-extra \
   flatpak xdg-desktop-portal-gnome chromium \
   pavucontrol helvum networkmanager-openvpn openssh;
@@ -22,14 +22,8 @@ sudo cp -rf ${CURRENT_DIR}/themes/icon_themes/Twilight-cursors /usr/share/icons;
 sudo chown root:root -R /usr/share/icons/Twilight-cursors;
 
 flatpak update;
-# flatpak install flathub com.mattjakeman.ExtensionManager;
-# flatpak install flathub com.discordapp.Discord;
-# flatpak install flathub org.telegram.desktop;
-# flatpak install flathub org.octave.Octave;
-
 sudo mkinitcpio -P; sudo update-grub;
 sudo systemctl enable gdm;
 
-echo '
-/usr/lib/udev/rules.d/61-gdm.rules :
-  # RUN+="/usr/lib/gdm-runtime-config set daemon WaylandEnable false" !!!'
+sudo sed 's/RUN+="\/usr\/lib\/gdm-runtime-config set daemon PreferredDisplayServer xorg"/# RUN+="\/usr\/lib\/gdm-runtime-config set daemon PreferredDisplayServer xorg"/g' -i /usr/lib/udev/rules.d/61-gdm.rules;
+sudo sed 's/RUN+="\/usr\/lib\/gdm-runtime-config set daemon WaylandEnable false"/# RUN+="\/usr\/lib\/gdm-runtime-config set daemon WaylandEnable false"/g' -i /usr/lib/udev/rules.d/61-gdm.rules;

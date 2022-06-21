@@ -11,17 +11,17 @@ else
   CURRENT_DIR=$(pwd);
 fi;
 
-sudo pacman -Syy --needed \
+sudo pacman -Syy --needed --noconfirm \
   curl git zip unzip neovim zsh exa bat hexyl tmux calc \
-  subversion clang jdk-openjdk jre-openjdk;
+  subversion clang neofetch jdk-openjdk jre-openjdk;
 
-sudo pacman -S --needed \
+sudo pacman -S --needed --noconfirm \
   wireplumber pipewire pipewire-alsa pipewire-pulse pipewire-jack;
 
-sudo pacman -S --needed \
+sudo pacman -S --needed --noconfirm \
   xorg xorg-xwayland wayland;
 
-sudo pacman -S --needed \
+sudo pacman -S --needed --noconfirm \
   noto-fonts noto-fonts-cjk noto-fonts-emoji;
 
 mkdir -p ~/Downloads; cd ~/Downloads;
