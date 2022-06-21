@@ -12,7 +12,7 @@ else
 fi;
 
 sudo pacman -Syy --needed \
-  curl git zip unzip neovim zsh exa bat hexyl tmux calc jdk-openjdk jre-openjdk;
+  curl git zip unzip neovim zsh exa bat hexyl tmux calc subversion jdk-openjdk jre-openjdk;
 
 sudo pacman -S --needed \
   wireplumber pipewire pipewire-alsa pipewire-pulse pipewire-jack;
