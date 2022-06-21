@@ -3,5 +3,6 @@ flatpak update
 yay -Syyu
 sudo mkinitcpio -P
 sudo update-grub
+flatpak uninstall --unused
 yay -Scca --noconfirm
 yay -Sc --repo --noconfirm

@@ -29,3 +29,7 @@ flatpak update;
 
 sudo mkinitcpio -P; sudo update-grub;
 sudo systemctl enable gdm;
+
+echo '
+/usr/lib/udev/rules.d/61-gdm.rules :
+  # RUN+="/usr/lib/gdm-runtime-config set daemon WaylandEnable false" !!!'
