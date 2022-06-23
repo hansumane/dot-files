@@ -21,15 +21,15 @@ source $ZSH/oh-my-zsh.sh
 alias c="clear"
 alias q="exit"
 
-alias t="tmux"
+alias t="c;tmux"
 alias ls="$LOCAL_LANG exa $EXA_ICONS"
 alias la="$LOCAL_LANG exa $EXA_ICONS -a"
-alias lk="$LOCAL_LANG exa $EXA_ICONS -alh --group-directories-first"
+alias ll="$LOCAL_LANG exa $EXA_ICONS -alh --group-directories-first"
 alias lx="$LOCAL_LANG exa $EXA_ICONS -alh --no-user --group-directories-first"
 alias cls="c;ls"
 alias cla="c;la"
 alias clx="c;lx"
-alias clk="c;lk"
+alias cll="c;lk"
 alias clt="c;lt"
 
 alias rr="rm -rf"
