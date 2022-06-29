@@ -11,7 +11,7 @@ else
   CURRENT_DIR=$(pwd);
 fi;
 
-sudo pacman -S --needed --noconfirm \
+sudo pacman -Syy --needed --noconfirm \
   gnome gnome-tweaks gnome-themes-extra \
   flatpak xdg-desktop-portal-gnome chromium \
   pavucontrol helvum networkmanager-openvpn openssh;

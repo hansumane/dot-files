@@ -11,7 +11,7 @@ else
   CURRENT_DIR=$(pwd);
 fi;
 
-sudo pacman -S --needed --noconfirm \
+sudo pacman -Syy --needed --noconfirm \
   i3-gaps i3lock i3blocks rofi kitty xcompmgr feh sxiv \
   xfce4-clipman-plugin xfce4-screenshooter lxappearance pavucontrol \
   network-manager-applet networkmanager-openvpn \

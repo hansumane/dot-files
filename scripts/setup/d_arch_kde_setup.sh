@@ -11,7 +11,7 @@ else
   CURRENT_DIR=$(pwd);
 fi;
 
-sudo pacman -S --needed --noconfirm \
+sudo pacman -Syy --needed --noconfirm \
   plasma ark dolphin dolphin-plugins konsole okular \
   kate gwenview elisa spectacle okteta \
   chromium flatpak xdg-desktop-portal-kde openssh \
