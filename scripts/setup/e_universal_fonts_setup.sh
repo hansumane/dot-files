@@ -13,7 +13,7 @@ echo "you'll need to grant root access to copy fonts to /usr/share/fonts/Manuall
 cd $(pwd)/../../.fonts;
 sudo rm -rf /usr/share/fonts/ManuallyInstalled;
 sudo mkdir -p /usr/share/fonts/ManuallyInstalled;
-  # sudo tar -xf CascadiaCodeAll.txz -C /usr/share/fonts/ManuallyInstalled;
+  sudo tar -xf CascadiaCodeAll.txz -C /usr/share/fonts/ManuallyInstalled;
   sudo tar -xf FiraCodeAll.txz -C /usr/share/fonts/ManuallyInstalled;
   sudo tar -xf HackAll.txz -C /usr/share/fonts/ManuallyInstalled;
   # sudo tar -xf IosevkaAll.txz -C /usr/share/fonts/ManuallyInstalled;
