@@ -67,7 +67,8 @@ gitup ()
 fcc ()
 {
   if (( $# == 0)); then
-    echo "No source file(s) given!"
+    echo "error: no source file(s) given!"
+    return 1
   else
     clang -Wall -Os -std=c99 $@ -o out-$(basename $1 .c)
   fi
@@ -76,7 +77,8 @@ fcc ()
 fcp ()
 {
   if (( $# == 0)); then
-    echo "No source file(s) given!"
+    echo "error: no source file(s) given!"
+    return 1
   else
     clang++ -Wall -Os $@ -o out-$(basename $1 .cpp)
   fi
