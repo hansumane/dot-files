@@ -36,13 +36,12 @@ XDG_MUSIC_DIR="$HOME/Others/Music"
 XDG_PICTURES_DIR="$HOME/Others/Pictures"
 XDG_VIDEOS_DIR="$HOME/Others/Videos"' > ~/.config/user-dirs.dirs;
 
-# vim-plug for nvim (neovim)
+# vim-plug for neovim
 sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim';
-
 # vim-plug for classic vim
 # curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;
 
-# installing update-grub
+# installing update-grub if there is no one;
 if [ -d /usr/sbin ]; then
   if [ ! -f /usr/sbin/update-grub ]; then
     sudo cp -f ${CURRENT_DIR}/scripts/update-grub /usr/sbin;
@@ -55,6 +54,6 @@ else
   fi;
 fi;
 
-# change .gitconfig and default user shell
+# edit .gitconfig and change default user shell to zsh
 nvim ~/.gitconfig || vim ~/.gitconfig || nano ~/.gitconfig;
-sudo nvim /etc/passwd || sudo vim /etc/passwd || sudo nano /etc/passwd;
+E_USERNAME=$(whoami); sudo chsh -s /bin/zsh $E_USERNAME || sudo nvim /etc/passwd || sudo vim /etc/passwd || sudo nano /etc/passwd;
