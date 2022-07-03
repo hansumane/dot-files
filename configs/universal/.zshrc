@@ -9,7 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export EXA_COLORS="di=1;35:da=0;35"
 
 SUDO_CMD="sudo"
-EXA_ICONS="--icons"
+EXA_ICONS="--no-icons"
 SYS_FETCH="neofetch"
 ZSH_THEME="awesomepanda"
 LOCAL_LANG="LANG=en_US.UTF-8"

@@ -10,6 +10,8 @@ else
   cd ../..; CURRENT_DIR=$(pwd);
 fi;
 
+sed 's/EXA_ICONS="--no-icons"/EXA_ICONS="--icons"/g' -i ~/.zshrc;
+
 sudo pacman -Syy --needed --noconfirm \
   curl git zip unzip neovim zsh exa bat hexyl tmux calc \
   subversion clang neofetch jdk-openjdk jre-openjdk;
@@ -28,7 +30,6 @@ git clone --depth=1 https://aur.archlinux.org/yay.git;
 cd ~/Downloads/yay; makepkg -sic;
 cd; rm -rf ~/Downloads/yay;
 
-# installing system-update
 if [ ! -f /usr/bin/system-update ]; then
   sudo cp -f ${CURRENT_DIR}/scripts/system-update-arch /usr/bin/system-update;
   sudo chown root:root /usr/bin/system-update;
