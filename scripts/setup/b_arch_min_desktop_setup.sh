@@ -25,6 +25,14 @@ sudo pacman -S --needed --noconfirm \
 sudo pacman -S --needed --noconfirm \
   noto-fonts noto-fonts-cjk noto-fonts-emoji;
 
+if (lscpu | grep Intel > /dev/null); then
+  sudo pacman -S --needed --noconfirm intel-ucode;
+elif (lscpu | grep AMD > /dev/null); then
+  sudo pacman -S --needed --noconfirm amd-ucode;
+else
+  echo "your CPU in neither Intel nor AMD";
+fi;
+
 mkdir -p ~/Downloads; cd ~/Downloads;
 git clone --depth=1 https://aur.archlinux.org/yay.git;
 cd ~/Downloads/yay; makepkg -sic;
