@@ -5,10 +5,9 @@ if [ ! $(pwd | rev | cut -d"/" -f3 | rev) = 'dot-files' ] ||
     [ ! $(pwd | rev | cut -d"/" -f2 | rev) = 'scripts' ] ||
     [ ! $(pwd | rev | cut -d"/" -f1 | rev) = 'setup' ]; then
   echo "please go to ?/dot-files/scripts/setup folder and run script from there!";
-  exit;
+  return 1;
 else
-  cd ../..;
-  CURRENT_DIR=$(pwd);
+  cd ../..; CURRENT_DIR=$(pwd);
 fi;
 
 sudo pacman -Syy --needed --noconfirm \
