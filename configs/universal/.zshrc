@@ -29,7 +29,7 @@ alias lx="$LOCAL_LANG exa $EXA_ICONS -alh --no-user --group-directories-first"
 alias cls="c;ls"
 alias cla="c;la"
 alias clx="c;lx"
-alias cll="c;lk"
+alias cll="c;ll"
 alias clt="c;lt"
 
 alias rr="rm -rf"
