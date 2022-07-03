@@ -95,3 +95,12 @@ Flatpaks:
     Discord                  [com.discordapp.Discord]
     Telegram Desktop         [org.telegram.desktop]
     Octave                   [org.octave.Octave]
+
+Gnome Extensions:
+
+    AppIndicator and KStatusNotifierItem Support
+    Caffeine
+    Clipboard Indicator
+    Vitals
+    Removable Drive Menu
+    User Themes

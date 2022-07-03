@@ -13,7 +13,8 @@ fi;
 sudo pacman -Syy --needed --noconfirm \
   gnome gnome-tweaks gnome-themes-extra \
   flatpak xdg-desktop-portal-gnome chromium \
-  pavucontrol helvum networkmanager-openvpn openssh;
+  pavucontrol helvum networkmanager-openvpn openssh \
+  libayatana-appindicator libappindicator-gtk3 libappindicator-gtk2;
   # firefox firefox-i18n-ru firefox-ublock-origin
 
 cp -rf ${CURRENT_DIR}/configs/universal/.config/neofetch ~/.config;
