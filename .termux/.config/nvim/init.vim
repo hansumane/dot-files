@@ -5,12 +5,14 @@ set listchars=space:⋅,tab:>\ ,eol:↴
 
 function! SetNumbersFunction()
 	set list
+	set cursorline
 	set number
 	set relativenumber
 endfunction
 
 function! UnsetNumbersFunction()
 	set list &
+	set cursorline &
 	set number &
 	set relativenumber &
 endfunction
@@ -58,7 +60,6 @@ call plug#begin()
 call plug#end()
 
 
-set cursorline
 set background=dark
 let g:everforest_background='medium'
 let g:everforest_better_performance=1
@@ -79,6 +80,9 @@ autocmd BufEnter,Bufnew *.yml Mark
 autocmd BufEnter,Bufnew *.sh* Mark
 autocmd BufEnter,Bufnew *.zsh* Mark
 autocmd BufEnter,Bufnew *.bash* Mark
+" autocmd BufEnter,Bufnew *.c Tabs
+" autocmd BufEnter,Bufnew *.h Tabs
+" autocmd BufEnter,Bufnew *.cpp Tabs
 autocmd BufEnter,Bufnew *.vim* Tabs
 autocmd BufEnter,Bufnew .gitconfig Tabs
 autocmd BufEnter,Bufnew Makefile Tabs
