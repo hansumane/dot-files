@@ -11,10 +11,11 @@ else
 fi;
 
 sudo pacman -Syy --needed --noconfirm \
+  gtk2 gtk3 gtk4 gtk-engine-murrine \
   gnome gnome-tweaks gnome-themes-extra \
   flatpak xdg-desktop-portal-gnome chromium \
   pavucontrol helvum networkmanager-openvpn openssh \
-  libayatana-appindicator libappindicator-gtk3 libappindicator-gtk2;
+  libayatana-appindicator libappindicator-gtk2 libappindicator-gtk3;
   # firefox firefox-i18n-ru firefox-ublock-origin
 
 cp -rf ${CURRENT_DIR}/configs/universal/.config/neofetch ~/.config;
