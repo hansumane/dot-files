@@ -1,7 +1,3 @@
-" it is still in vim script
-" but I will remake it in lua soon... maybe...
-
-
 set termguicolors
 syntax enable
 set listchars=space:⋅,tab:>\ ,eol:↴
@@ -9,7 +5,6 @@ set listchars=space:⋅,tab:>\ ,eol:↴
 set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
-
 
 function! SetNumbersFunction()
 	set list
@@ -60,24 +55,17 @@ command Mark call SpaceFunc2()
 command SetNumber call SetNumbersFunction()
 command UnsetNumber call UnsetNumbersFunction()
 
-
 call plug#begin()
-	Plug 'itchyny/lightline.vim' " Light status bar
-	Plug 'preservim/nerdtree' " File browser
-	Plug 'sainnhe/everforest' " Everforest Theme (soft green)
+	Plug 'itchyny/lightline.vim' " Lightline Status Bar
+	Plug 'preservim/nerdtree' " File Browser
+	Plug 'sonph/onehalf', { 'rtp': 'vim' } " OneHalf Theme
 call plug#end()
 
-
-set background=dark
-let g:everforest_background='medium'
-let g:everforest_better_performance=1
-colorscheme everforest 
-
-let g:lightline = {'colorscheme' : 'everforest'}
+colorscheme onehalfdark
+let g:lightline = {'colorscheme' : 'onehalfdark'}
 
 nmap <C-f> :NERDTreeToggle<CR>
 nmap <C-h> :noh<CR>
-
 
 autocmd VimEnter * SetNumber
 " autocmd VimEnter * NERDTree
