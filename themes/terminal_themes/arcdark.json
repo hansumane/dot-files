@@ -1,0 +1,37 @@
+// arc dark terminal colorscheme
+{
+    "foreground": "#D3DAE3",
+    "background": "#383C4A",
+    "black": {
+        "color0": "#383C4A",
+        "color8": "#383C4B"
+    },
+    "red": {
+        "color1": "#BF616A",
+        "color9": "#BF616A"
+    },
+    "green": {
+        "color2": "#A3BE8C",
+        "color10": "#A3BE8C"
+    },
+    "yellow": {
+        "color3": "#EBCB8B",
+        "color11": "#EBCB8B"
+    },
+    "blue": {
+        "color4": "#81A1C1",
+        "color12": "#81A1C1"
+    },
+    "magenta": {
+        "color5": "#B48EAD",
+        "color13": "#B48EAD"
+    },
+    "cyan": {
+        "color6": "#88C0D0",
+        "color14": "#88C0D0"
+    },
+    "white": {
+        "color7": "#E5E9F0",
+        "color15": "#E5E9F0"
+    }
+}
