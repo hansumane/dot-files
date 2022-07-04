@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e;
 
-if [ ! $(pwd | rev | cut -d"/" -f3 | rev) = 'dot-files' ] ||
-    [ ! $(pwd | rev | cut -d"/" -f2 | rev) = 'scripts' ] ||
-    [ ! $(pwd | rev | cut -d"/" -f1 | rev) = 'setup' ]; then
+if [ ! $(pwd | rev | cut -d'/' -f3 | rev) = 'dot-files' ] ||
+    [ ! $(pwd | rev | cut -d'/' -f2 | rev) = 'scripts' ] ||
+    [ ! $(pwd | rev | cut -d'/' -f1 | rev) = 'setup' ]; then
   echo "please go to ?/dot-files/scripts/setup folder and run script from there!";
   return 1;
 else
@@ -21,9 +21,9 @@ sudo pacman -Syy --needed --noconfirm \
   arc-gtk-theme papirus-icon-theme;
   # firefox firefox-i18n-ru firefox-ublock-origin
 
-cp -rf ${CURRENT_DIR}/configs/xfce/.config/kitty ~/.config;
+cp -rf ${CURRENT_DIR}/configs/universal/.config/kitty ~/.config;
 cp -rf ${CURRENT_DIR}/configs/universal/.config/neofetch ~/.config;
-sudo cp -f ${CURRENT_DIR}/configs/xfce/lightdm-gtk-greeter.conf /etc/lightdm;
+sudo cp -f  ${CURRENT_DIR}/configs/universal/etc/lightdm-gtk-greeter.conf /etc/lightdm;
 sudo cp -rf ${CURRENT_DIR}/themes/icon_themes/Twilight-cursors /usr/share/icons;
 sudo chown root:root /etc/lightdm/lightdm-gtk-greeter.conf;
 sudo chown root:root -R /usr/share/icons/Twilight-cursors;

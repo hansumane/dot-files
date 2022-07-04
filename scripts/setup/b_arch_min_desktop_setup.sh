@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e;
 
-if [ ! $(pwd | rev | cut -d"/" -f3 | rev) = 'dot-files' ] ||
-    [ ! $(pwd | rev | cut -d"/" -f2 | rev) = 'scripts' ] ||
-    [ ! $(pwd | rev | cut -d"/" -f1 | rev) = 'setup' ]; then
+if [ ! $(pwd | rev | cut -d'/' -f3 | rev) = 'dot-files' ] ||
+    [ ! $(pwd | rev | cut -d'/' -f2 | rev) = 'scripts' ] ||
+    [ ! $(pwd | rev | cut -d'/' -f1 | rev) = 'setup' ]; then
   echo "please go to ?/dot-files/scripts/setup folder and run script from there!";
   return 1;
 else
@@ -30,13 +30,13 @@ if (lscpu | grep Intel > /dev/null); then
 elif (lscpu | grep AMD > /dev/null); then
   sudo pacman -S --needed --noconfirm amd-ucode;
 else
-  echo "your CPU in neither Intel nor AMD";
+  echo "your CPU is neither Intel nor AMD";
 fi;
 
 mkdir -p ~/Downloads; cd ~/Downloads;
-git clone --depth=1 https://aur.archlinux.org/yay.git;
-cd ~/Downloads/yay; makepkg -sic;
-cd; rm -rf ~/Downloads/yay;
+git clone --depth=1 --recursive https://aur.archlinux.org/yay-bin.git;
+cd ~/Downloads/yay-bin; makepkg -sic;
+cd; rm -rf ~/Downloads/yay-bin;
 
 if [ ! -f /usr/bin/system-update ]; then
   sudo cp -f ${CURRENT_DIR}/scripts/system-update-arch /usr/bin/system-update;

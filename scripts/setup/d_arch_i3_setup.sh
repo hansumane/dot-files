@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e;
 
-if [ ! $(pwd | rev | cut -d"/" -f3 | rev) = 'dot-files' ] ||
-    [ ! $(pwd | rev | cut -d"/" -f2 | rev) = 'scripts' ] ||
-    [ ! $(pwd | rev | cut -d"/" -f1 | rev) = 'setup' ]; then
+if [ ! $(pwd | rev | cut -d'/' -f3 | rev) = 'dot-files' ] ||
+    [ ! $(pwd | rev | cut -d'/' -f2 | rev) = 'scripts' ] ||
+    [ ! $(pwd | rev | cut -d'/' -f1 | rev) = 'setup' ]; then
   echo "please go to ?/dot-files/scripts/setup folder and run script from there!";
   return 1;
 else
@@ -11,21 +11,26 @@ else
 fi;
 
 sudo pacman -Syy --needed --noconfirm \
+  gtk2 gtk3 gtk4 gtk-engine-murrine \
+  lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings \
   i3-gaps i3lock i3blocks rofi kitty xcompmgr feh sxiv \
   xfce4-clipman-plugin xfce4-screenshooter lxappearance pavucontrol \
-  network-manager-applet networkmanager-openvpn \
+  nm-connection-editor network-manager-applet networkmanager-openvpn \
   gnome-themes-extra xdg-desktop-portal-gtk xdg-user-dirs \
   flatpak chromium xorg-xinit helvum \
-  zathura zathura-pdf-mupdf zathura-djvu helvum;
+  zathura zathura-pdf-mupdf zathura-djvu helvum \
+  libayatana-appindicator libappindicator-gtk3 libappindicator-gtk2;
   # firefox firefox-i18n-ru firefox-ublock-origin
 
-cp -f   ${CURRENT_DIR}/configs/i3/.xinitrc ~;
-cp -rf  ${CURRENT_DIR}/configs/i3/.config/i3 ~/.config;
-cp -rf  ${CURRENT_DIR}/configs/i3/.config/i3blocks ~/.config;
-cp -rf  ${CURRENT_DIR}/configs/i3/.config/rofi ~/.config;
-cp -f   ${CURRENT_DIR}/configs/universal/.Xdefaults ~;
-cp -rf  ${CURRENT_DIR}/configs/universal/.config/kitty ~/.config;
-cp -rf  ${CURRENT_DIR}/configs/universal/.config/neofetch ~/.config;
+cp -f      ${CURRENT_DIR}/configs/i3/.xinitrc ~;
+cp -rf     ${CURRENT_DIR}/configs/i3/.config/i3 ~/.config;
+cp -rf     ${CURRENT_DIR}/configs/i3/.config/i3blocks ~/.config;
+cp -rf     ${CURRENT_DIR}/configs/i3/.config/rofi ~/.config;
+cp -f      ${CURRENT_DIR}/configs/universal/.Xdefaults ~;
+cp -rf     ${CURRENT_DIR}/configs/universal/.config/kitty ~/.config;
+cp -rf     ${CURRENT_DIR}/configs/universal/.config/neofetch ~/.config;
+sudo cp -f ${CURRENT_DIR}/configs/universal/etc/lightdm-gtk-greeter.conf /etc/lightdm;
+sudo chown root:root /etc/lightdm/lightdm-gtk-greeter.conf;
 
 sudo mkdir -p  /etc/X11/xorg.conf.d;
 sudo cp -f     ${CURRENT_DIR}/X11/xorg.conf.d/00-keyboard.conf /etc/X11/xorg.conf.d;
