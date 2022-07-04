@@ -1,4 +1,5 @@
 set termguicolors
+set guicursor=a:block
 syntax enable
 set listchars=space:⋅,tab:>\ ,eol:↴
 
@@ -79,11 +80,13 @@ autocmd BufEnter,Bufnew *.yml Mark
 autocmd BufEnter,Bufnew *.sh* Mark
 autocmd BufEnter,Bufnew *.zsh* Mark
 autocmd BufEnter,Bufnew *.bash* Mark
-" autocmd BufEnter,Bufnew *.c Tabs
-" autocmd BufEnter,Bufnew *.h Tabs
+autocmd BufEnter,Bufnew *.c Tabs
+autocmd BufEnter,Bufnew *.h Tabs
 " autocmd BufEnter,Bufnew *.cpp Tabs
+" autocmd BufEnter,Bufnew *.hpp Tabs
 autocmd BufEnter,Bufnew *.vim* Tabs
 autocmd BufEnter,Bufnew .gitconfig Tabs
+autocmd BufEnter,Bufnew .gitignore Tabs
 autocmd BufEnter,Bufnew Makefile Tabs
 
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
