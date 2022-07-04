@@ -33,6 +33,7 @@ fi;
 
 sed 's/EXA_ICONS="--no-icons"/EXA_ICONS="--icons"/g' -i ~/.zshrc;
 cp -rf ${CURRENT_DIR}/configs/universal/.config/neofetch ~/.config;
+sudo sed 's/#Color/Color/g' -i /etc/pacman.conf
 
 mkdir -p ~/Downloads; cd ~/Downloads;
 git clone --depth=1 --recursive https://aur.archlinux.org/yay-bin.git;
@@ -42,4 +43,5 @@ cd; rm -rf ~/Downloads/yay-bin;
 if [ ! -f /usr/bin/system-update ]; then
   sudo cp -f ${CURRENT_DIR}/scripts/system-update-arch /usr/bin/system-update;
   sudo chown root:root /usr/bin/system-update;
+  sudo chmod 755 /usr/bin/system-update;
 fi;
