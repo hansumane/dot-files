@@ -10,8 +10,6 @@ else
   cd ../..; CURRENT_DIR=$(pwd);
 fi;
 
-sed 's/EXA_ICONS="--no-icons"/EXA_ICONS="--icons"/g' -i ~/.zshrc;
-
 sudo pacman -Syy --needed --noconfirm \
   curl git zip unzip neovim zsh exa bat hexyl tmux calc \
   subversion clang neofetch jdk-openjdk jre-openjdk;
@@ -32,6 +30,9 @@ elif (lscpu | grep AMD > /dev/null); then
 else
   echo "your CPU is neither Intel nor AMD";
 fi;
+
+sed 's/EXA_ICONS="--no-icons"/EXA_ICONS="--icons"/g' -i ~/.zshrc;
+cp -rf ${CURRENT_DIR}/configs/universal/.config/neofetch ~/.config;
 
 mkdir -p ~/Downloads; cd ~/Downloads;
 git clone --depth=1 --recursive https://aur.archlinux.org/yay-bin.git;

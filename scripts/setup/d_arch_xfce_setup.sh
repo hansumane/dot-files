@@ -22,7 +22,6 @@ sudo pacman -Syy --needed --noconfirm \
   # firefox firefox-i18n-ru firefox-ublock-origin
 
 cp -rf ${CURRENT_DIR}/configs/universal/.config/kitty ~/.config;
-cp -rf ${CURRENT_DIR}/configs/universal/.config/neofetch ~/.config;
 sudo cp -f  ${CURRENT_DIR}/configs/universal/etc/lightdm-gtk-greeter.conf /etc/lightdm;
 sudo cp -rf ${CURRENT_DIR}/themes/icon_themes/Twilight-cursors /usr/share/icons;
 sudo chown root:root /etc/lightdm/lightdm-gtk-greeter.conf;

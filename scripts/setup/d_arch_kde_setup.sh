@@ -17,8 +17,6 @@ sudo pacman -Syy --needed --noconfirm \
   pavucontrol-qt qpwgraph networkmanager-openvpn;
   # firefox firefox-i18n-ru firefox-ublock-origin
 
-cp -rf ${CURRENT_DIR}/configs/universal/.config/neofetch ~/.config;
-
 flatpak update;
 sudo mkinitcpio -P; sudo update-grub;
 sudo systemctl enable sddm;

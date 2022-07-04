@@ -28,7 +28,6 @@ cp -rf     ${CURRENT_DIR}/configs/i3/.config/i3blocks ~/.config;
 cp -rf     ${CURRENT_DIR}/configs/i3/.config/rofi ~/.config;
 cp -f      ${CURRENT_DIR}/configs/universal/.Xdefaults ~;
 cp -rf     ${CURRENT_DIR}/configs/universal/.config/kitty ~/.config;
-cp -rf     ${CURRENT_DIR}/configs/universal/.config/neofetch ~/.config;
 sudo cp -f ${CURRENT_DIR}/configs/universal/etc/lightdm-gtk-greeter.conf /etc/lightdm;
 sudo chown root:root /etc/lightdm/lightdm-gtk-greeter.conf;
 

@@ -41,7 +41,7 @@ Console Applications:
      with nerd fonts]
 
     bat
-    [cat with wings]
+    [better cat; cat with wings]
 
     hexyl
     [lightweight hex viewer]
