@@ -1,6 +1,6 @@
 #!/bin/sh
-flatpak update
 yay -Syyu
+flatpak update
 sudo mkinitcpio -P
 sudo update-grub
 flatpak uninstall --unused
