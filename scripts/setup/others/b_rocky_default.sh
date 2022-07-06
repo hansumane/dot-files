@@ -1,9 +1,10 @@
 #!/bin/bash
 set -e;
 
-if [ ! $(pwd | rev | cut -d'/' -f3 | rev) = 'dot-files' ] ||
-    [ ! $(pwd | rev | cut -d'/' -f2 | rev) = 'scripts' ] ||
-    [ ! $(pwd | rev | cut -d'/' -f1 | rev) = 'setup' ]; then
+if [ ! $(pwd | rev | cut -d'/' -f4 | rev) = 'dot-files' ] ||
+    [ ! $(pwd | rev | cut -d'/' -f3 | rev) = 'scripts' ] ||
+    [ ! $(pwd | rev | cut -d'/' -f2 | rev) = 'setup' ] ||
+    [ ! $(pwd | rev | cut -d'/' -f1 | rev) = 'others' ]; then
   echo "please go to ?/dot-files/scripts/setup folder and run script from there!";
   return 1;
 else
@@ -14,8 +15,8 @@ fi;
 sudo echo 'max_parallel_downloads=4
 defaultyes=True' >> /etc/dnf/dnf.conf;
 sudo dnf install epel-release -y;
-sudo dnf config-manager --add-repo \
-  https://developer.download.nvidia.com/compute/cuda/repos/rhel8/x86_64/cuda-rhel8.repo -y;
+# sudo dnf config-manager --add-repo \
+#   https://developer.download.nvidia.com/compute/cuda/repos/rhel8/x86_64/cuda-rhel8.repo -y;
 sudo dnf update --allowerasing --nobest -y;
 sudo dnf autoremove -y;
 sudo dnf clean all -y;
