@@ -1,7 +1,7 @@
 " call plug#begin()
 	" Plug 'vim-airline/vim-airline' " Vim-Airline Status Bar
 	" Plug 'sainnhe/everforest' " Everforest Theme
-	" Plug 'drewtempelmeyer/palenight.vim' " Palenight Theme
+	" Plug 'sonph/onehalf', { 'rtp': 'vim' } " OneHalf Theme
 " call plug#end()
 " 
 " set background=dark

@@ -59,11 +59,11 @@ command UnsetNumber call UnsetNumbersFunction()
 call plug#begin()
 	Plug 'itchyny/lightline.vim' " Lightline Status Bar
 	Plug 'preservim/nerdtree' " File Browser
-	Plug 'sonph/onehalf', { 'rtp': 'vim' } " OneHalf Theme
+	Plug 'drewtempelmeyer/palenight.vim' " Palenight Theme
 call plug#end()
 
-colorscheme onehalfdark
-let g:lightline = {'colorscheme' : 'onehalfdark'}
+colorscheme palenight
+let g:lightline = {'colorscheme' : 'palenight'}
 
 nmap <C-f> :NERDTreeToggle<CR>
 nmap <C-h> :noh<CR>
