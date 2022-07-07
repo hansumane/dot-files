@@ -64,13 +64,13 @@ call plug#begin()
 	" Plug 'drewtempelmeyer/palenight.vim'
 	" Plug 'itchyny/lightline.vim'
 	Plug 'preservim/nerdtree'
-	Plug 'drsooch/gruber-darker-vim'
+	Plug 'dangerousScript/gruber-darker-nvim'
 call plug#end()
 
 " set background=dark
 " let g:everforest_background='medium'
 " let g:everforest_better_performance=1
-colorscheme GruberDarker
+colorscheme gruberdarker
 
 " let g:lightline = {'colorscheme' : 'palenight'}
 " let g:airline_powerline_fonts = 1
