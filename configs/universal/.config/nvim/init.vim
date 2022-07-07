@@ -1,7 +1,8 @@
+syntax enable
 set termguicolors
 set guicursor=a:block
-syntax enable
-set listchars=space:⋅,tab:>\ ,eol:↴
+set listchars=tab:>\ 
+" set listchars=space:⋅,tab:>\ ,eol:↴
 
 set keymap=russian-jcukenwin
 set iminsert=0
@@ -57,13 +58,24 @@ command SetNumber call SetNumbersFunction()
 command UnsetNumber call UnsetNumbersFunction()
 
 call plug#begin()
-	Plug 'itchyny/lightline.vim' " Lightline Status Bar
-	Plug 'preservim/nerdtree' " File Browser
-	Plug 'drewtempelmeyer/palenight.vim' " Palenight Theme
+	" Plug 'vim-airline/vim-airline'
+	" Plug 'sainnhe/everforest'
+	" Plug 'sonph/onehalf', { 'rtp': 'vim' }
+	" Plug 'drewtempelmeyer/palenight.vim'
+	" Plug 'itchyny/lightline.vim'
+	Plug 'preservim/nerdtree'
+	Plug 'drsooch/gruber-darker-vim'
 call plug#end()
 
-colorscheme palenight
-let g:lightline = {'colorscheme' : 'palenight'}
+" set background=dark
+" let g:everforest_background='medium'
+" let g:everforest_better_performance=1
+colorscheme GruberDarker
+
+" let g:lightline = {'colorscheme' : 'palenight'}
+" let g:airline_powerline_fonts = 1
+" let g:airline_theme = 'everforest'
+" let g:airline_extensions = []
 
 nmap <C-f> :NERDTreeToggle<CR>
 nmap <C-h> :noh<CR>
