@@ -1,7 +1,8 @@
-set termguicolors
 syntax enable
-set listchars=space:⋅,tab:>\ ,eol:↴
-
+set termguicolors
+set guicursor=a:block
+set listchars=tab:>\ 
+" set listchars=space:⋅,tab:>\ ,eol:↴
 
 function! SetNumbersFunction()
 	set list
@@ -52,26 +53,33 @@ command Mark call SpaceFunc2()
 command SetNumber call SetNumbersFunction()
 command UnsetNumber call UnsetNumbersFunction()
 
-
 call plug#begin()
-	Plug 'itchyny/lightline.vim' " Light status bar
-	Plug 'preservim/nerdtree' " File browser
-	Plug 'sainnhe/everforest' " Everforest Theme (soft green)
+	" Plug 'vim-airline/vim-airline'
+	" Plug 'sainnhe/everforest'
+	" Plug 'sonph/onehalf', { 'rtp': 'vim' }
+	" Plug 'drewtempelmeyer/palenight.vim'
+	" Plug 'itchyny/lightline.vim'
+	Plug 'preservim/nerdtree'
+	Plug 'dangerousScript/gruber-darker-nvim'
 call plug#end()
 
+" set background=dark
+" let g:everforest_background='medium'
+" let g:everforest_better_performance=1
+colorscheme gruberdarker
 
-set background=dark
-let g:everforest_background='medium'
-let g:everforest_better_performance=1
-colorscheme everforest 
-
-let g:lightline = {'colorscheme' : 'everforest'}
+" let g:lightline = {'colorscheme' : 'palenight'}
+" let g:airline_powerline_fonts = 1
+" let g:airline_theme = 'everforest'
+" let g:airline_extensions = []
 
 nmap <C-f> :NERDTreeToggle<CR>
 nmap <C-h> :noh<CR>
 
-
 autocmd VimEnter * SetNumber
+" autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTreeToggle<CR>
+
 autocmd BufEnter,Bufnew * Spaces
 autocmd BufEnter,Bufnew *.m Mark
 autocmd BufEnter,Bufnew *.html Mark
@@ -80,11 +88,13 @@ autocmd BufEnter,Bufnew *.yml Mark
 autocmd BufEnter,Bufnew *.sh* Mark
 autocmd BufEnter,Bufnew *.zsh* Mark
 autocmd BufEnter,Bufnew *.bash* Mark
-" autocmd BufEnter,Bufnew *.c Tabs
-" autocmd BufEnter,Bufnew *.h Tabs
+autocmd BufEnter,Bufnew *.c Tabs
+autocmd BufEnter,Bufnew *.h Tabs
 " autocmd BufEnter,Bufnew *.cpp Tabs
+" autocmd BufEnter,Bufnew *.hpp Tabs
 autocmd BufEnter,Bufnew *.vim* Tabs
 autocmd BufEnter,Bufnew .gitconfig Tabs
+autocmd BufEnter,Bufnew .gitignore Tabs
 autocmd BufEnter,Bufnew Makefile Tabs
 
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
