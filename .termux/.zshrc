@@ -21,12 +21,11 @@ alias ll="exa $EXA_ICONS -alh --group-directories-first"
 alias lx="exa $EXA_ICONS -alh --no-user --group-directories-first"
 alias cls="c;ls"
 alias cla="c;la"
-alias clx="c;lx"
 alias cll="c;ll"
+alias clx="c;lx"
 alias clt="c;lt"
 
 alias rr="rm -rf"
-
 alias gits="git status"
 alias fetch="c;$SYS_FETCH"
 alias viM="vim Makefile"
