@@ -1,8 +1,7 @@
 syntax enable
 set termguicolors
 set guicursor=a:block
-set listchars=tab:>\ 
-" set listchars=space:⋅,tab:>\ ,eol:↴
+set listchars=space:⋅,tab:>\ ,eol:↴
 
 set keymap=russian-jcukenwin
 set iminsert=0
@@ -61,18 +60,18 @@ call plug#begin()
 	" Plug 'vim-airline/vim-airline'
 	" Plug 'sainnhe/everforest'
 	" Plug 'sonph/onehalf', { 'rtp': 'vim' }
-	" Plug 'drewtempelmeyer/palenight.vim'
-	" Plug 'itchyny/lightline.vim'
+	" Plug 'dangerousScript/gruber-darker-nvim'
 	Plug 'preservim/nerdtree'
-	Plug 'dangerousScript/gruber-darker-nvim'
+	Plug 'itchyny/lightline.vim'
+	Plug 'drewtempelmeyer/palenight.vim'
 call plug#end()
 
 " set background=dark
 " let g:everforest_background='medium'
 " let g:everforest_better_performance=1
-colorscheme gruberdarker
+colorscheme palenight
 
-" let g:lightline = {'colorscheme' : 'palenight'}
+let g:lightline = {'colorscheme' : 'palenight'}
 " let g:airline_powerline_fonts = 1
 " let g:airline_theme = 'everforest'
 " let g:airline_extensions = []
