@@ -4,7 +4,7 @@
 # fi
 
 export TERM="xterm-256color"
-export EDITOR="nvim"
+export EDITOR="vim"
 export ZSH="$HOME/.oh-my-zsh"
 export EXA_COLORS="di=1;35:da=0;35"
 
@@ -39,8 +39,7 @@ alias sdn="$SUDO_CMD poweroff"
 alias gits="git status"
 alias gitr='cd $(git rev-parse --show-toplevel)'
 alias fetch="c;$SYS_FETCH"
-alias viM="vim Makefile"
-alias nviM="nvim Makefile"
+alias edM="$EDITOR Makefile"
 alias grep="grep --color=auto"
 
 lt ()
