@@ -23,7 +23,7 @@ mkdir -p ~/.config;
 cp -f ${CURRENT_DIR}/configs/universal/.gitconfig ~;
 cp -f ${CURRENT_DIR}/configs/universal/.zshrc ~;
 cp -f ${CURRENT_DIR}/configs/universal/.vimrc ~;
-##cp -rf ${CURRENT_DIR}/configs/universal/.config/nvim ~/.config;
+##mkdir -p ~/.config/nvim; cp -rf ${CURRENT_DIR}/configs/universal/.vimrc ~/.config/nvim/init.vim;
 ##cp -f ${CURRENT_DIR}/configs/universal/.p10k.zsh ~;
 
 mkdir -p ~/Desktop ~/Downloads ~/Others; cd ~/Others;
@@ -59,6 +59,6 @@ else
   fi;
 fi;
 
-nvim ~/.gitconfig || vim ~/.gitconfig || nano ~/.gitconfig;
+vim ~/.gitconfig || nano ~/.gitconfig;
 E_USERNAME=$(whoami); sudo chsh -s /bin/zsh $E_USERNAME ||
-  sudo nvim /etc/passwd || sudo vim /etc/passwd || sudo nano /etc/passwd;
+  sudo vim /etc/passwd || sudo nano /etc/passwd;
