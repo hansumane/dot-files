@@ -37,6 +37,7 @@ alias sbn="$SUDO_CMD reboot"
 alias sdn="$SUDO_CMD poweroff"
 
 alias gits="git status"
+alias gitroot="cd $(git rev-parse --show-toplevel)"
 alias fetch="c;$SYS_FETCH"
 alias viM="vim Makefile"
 alias nviM="nvim Makefile"
