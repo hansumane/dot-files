@@ -1,4 +1,5 @@
 syntax enable
+set nocompatible
 set termguicolors
 set guicursor=a:block
 set listchars=space:⋅,tab:>\ ,eol:↴
@@ -53,32 +54,29 @@ command SetNumber call SetNumbersFunction()
 command UnsetNumber call UnsetNumbersFunction()
 
 call plug#begin()
-	" Plug 'vim-airline/vim-airline'
+	" Plug 'itchyny/lightline.vim'
 	" Plug 'sainnhe/everforest'
 	" Plug 'sonph/onehalf', { 'rtp': 'vim' }
 	" Plug 'dangerousScript/gruber-darker-nvim'
 	Plug 'preservim/nerdtree'
-	Plug 'itchyny/lightline.vim'
+	Plug 'vim-airline/vim-airline'
 	Plug 'drewtempelmeyer/palenight.vim'
 call plug#end()
 
-" set background=dark
+set background=dark
+colorscheme palenight
 " let g:everforest_background='medium'
 " let g:everforest_better_performance=1
-colorscheme palenight
 
-let g:lightline = {'colorscheme' : 'palenight'}
-" let g:airline_powerline_fonts = 1
-" let g:airline_theme = 'everforest'
-" let g:airline_extensions = []
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'palenight'
+let g:airline_extensions = []
+" let g:lightline = {'colorscheme' : 'palenight'}
 
 nmap <C-f> :NERDTreeToggle<CR>
 nmap <C-h> :noh<CR>
 
 autocmd VimEnter * SetNumber
-" autocmd VimEnter * NERDTree
-" autocmd VimEnter * NERDTreeToggle<CR>
-
 autocmd BufEnter,Bufnew * Spaces
 autocmd BufEnter,Bufnew *.m Mark
 autocmd BufEnter,Bufnew *.html Mark
@@ -89,8 +87,6 @@ autocmd BufEnter,Bufnew *.zsh* Mark
 autocmd BufEnter,Bufnew *.bash* Mark
 autocmd BufEnter,Bufnew *.c Tabs
 autocmd BufEnter,Bufnew *.h Tabs
-" autocmd BufEnter,Bufnew *.cpp Tabs
-" autocmd BufEnter,Bufnew *.hpp Tabs
 autocmd BufEnter,Bufnew *.vim* Tabs
 autocmd BufEnter,Bufnew .gitconfig Tabs
 autocmd BufEnter,Bufnew .gitignore Tabs
