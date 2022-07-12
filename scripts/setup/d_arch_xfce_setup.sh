@@ -5,7 +5,7 @@ if [ ! $(pwd | rev | cut -d'/' -f3 | rev) = 'dot-files' ] ||
     [ ! $(pwd | rev | cut -d'/' -f2 | rev) = 'scripts' ] ||
     [ ! $(pwd | rev | cut -d'/' -f1 | rev) = 'setup' ]; then
   echo "please go to ?/dot-files/scripts/setup folder and run script from there!";
-  return 1;
+  exit 1;
 else
   cd $(git rev-parse --show-toplevel); CURRENT_DIR=$(pwd);
 fi;

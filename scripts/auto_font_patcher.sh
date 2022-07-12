@@ -13,7 +13,7 @@ fi;
 
 if [ ! -d ${DIRNAME}/${FONTNAME}All ]; then
   echo "No such font directory: ${FONTNAME}All";
-  exit;
+  exit 1;
 else
   mkdir -p ${DIRNAME}/${FONTNAME}All/${FONTNAME}Patched;
 fi;

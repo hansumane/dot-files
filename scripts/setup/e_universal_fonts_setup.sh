@@ -5,12 +5,12 @@ if [ ! $(pwd | rev | cut -d'/' -f3 | rev) = 'dot-files' ] ||
     [ ! $(pwd | rev | cut -d'/' -f2 | rev) = 'scripts' ] ||
     [ ! $(pwd | rev | cut -d'/' -f1 | rev) = 'setup' ]; then
   echo "please go to ?/dot-files/scripts/setup folder and run script from there!";
-  return 1;
+  exit 1;
 fi;
 
 echo "you'll need to grant root access to copy fonts to /usr/share/fonts/ManuallyInstalled";
 
-cd $(git rev-parse --show-toplevel)/.fonts;
+cd $(git rev-parse --show-toplevel)/fonts;
 sudo rm -rf /usr/share/fonts/ManuallyInstalled;
 sudo mkdir -p /usr/share/fonts/ManuallyInstalled;
   sudo tar -xf CascadiaCodeAll.txz -C /usr/share/fonts/ManuallyInstalled;

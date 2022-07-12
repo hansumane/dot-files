@@ -9,6 +9,7 @@ else
   cd $(git rev-parse --show-toplevel); CURRENT_DIR=$(pwd);
 fi;
 
+echo "> /fonts <";
 if [ ! -d ${CURRENT_DIR}/fonts ]; then
   git clone https://github.com/hansumane/fonts.git;
 else
@@ -16,6 +17,7 @@ else
   git pull --rebase;
 fi;
 
+echo "> /wallpapers <";
 if [ ! -d ${CURRENT_DIR}/wallpapers ]; then
   git clone https://github.com/hansumane/wallpapers.git;
 else

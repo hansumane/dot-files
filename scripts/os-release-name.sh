@@ -2,4 +2,4 @@
 set -e;
 
 source /etc/os-release;
-echo $NAME;
+echo $PRETTY_NAME;
