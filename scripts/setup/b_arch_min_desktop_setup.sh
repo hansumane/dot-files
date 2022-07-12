@@ -33,6 +33,7 @@ fi;
 
 sed 's/EXA_ICONS="--no-icons"/EXA_ICONS="--icons"/g' -i ~/.zshrc;
 sudo sed 's/#Color/Color/g' -i /etc/pacman.conf
+sudo sed 's/#ParallelDownloads.*/ParallelDownloads = 4/g' -i /etc/pacman.conf
 
 mkdir -p ~/Downloads; cd ~/Downloads;
 git clone --depth=1 --recursive https://aur.archlinux.org/yay-bin.git;
