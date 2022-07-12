@@ -1,7 +1,6 @@
 window:
 
-  opacity: 0.9
-  startup_mode: Maximized
+  opacity: 1.0
 
 
 font:
