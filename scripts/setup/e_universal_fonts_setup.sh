@@ -17,7 +17,7 @@ sudo mkdir -p /usr/share/fonts/ManuallyInstalled;
   sudo tar -xf FiraCodeAll.txz -C /usr/share/fonts/ManuallyInstalled;
   sudo tar -xf HackAll.txz -C /usr/share/fonts/ManuallyInstalled;
   # sudo tar -xf IosevkaAll.txz -C /usr/share/fonts/ManuallyInstalled;
-  # sudo tar -xf IosevkaTermAll.txz -C /usr/share/fonts/ManuallyInstalled;
+  sudo tar -xf IosevkaTermAll.txz -C /usr/share/fonts/ManuallyInstalled;
   sudo tar -xf JetBrainsMonoAll.txz -C /usr/share/fonts/ManuallyInstalled;
   # sudo tar -xf VictorMonoAll.txz -C /usr/share/fonts/ManuallyInstalled;
 sudo chown root:root -R /usr/share/fonts/ManuallyInstalled;
