@@ -1,5 +1,5 @@
 export TERM="xterm-256color"
-export EDITOR="nvim"
+export EDITOR="vim"
 export ZSH="$HOME/.oh-my-zsh"
 export EXA_COLORS="di=1;35:da=0;35"
 
@@ -14,22 +14,22 @@ source $ZSH/oh-my-zsh.sh
 alias c="clear"
 alias q="exit"
 
-alias t="tmux"
+alias t="c;tmux"
 alias ls="exa $EXA_ICONS"
 alias la="exa $EXA_ICONS -a"
 alias ll="exa $EXA_ICONS -alh --group-directories-first"
 alias lx="exa $EXA_ICONS -alh --no-user --group-directories-first"
-alias cls="c;ls"
-alias cla="c;la"
-alias cll="c;ll"
-alias clx="c;lx"
-alias clt="c;lt"
+alias cls="c;pwd;echo;ls"
+alias cla="c;pwd;echo;la"
+alias cll="c;pwd;echo;ll"
+alias clx="c;pwd;echo;lx"
+alias clt="c;pwd;echo;lt"
 
 alias rr="rm -rf"
 alias gits="git status"
+alias gitr='cd $(git rev-parse --show-toplevel)'
 alias fetch="c;$SYS_FETCH"
-alias viM="vim Makefile"
-alias nviM="nvim Makefile"
+alias edM="$EDITOR Makefile"
 alias grep="grep --color=auto"
 
 lt ()

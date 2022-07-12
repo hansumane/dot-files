@@ -21,9 +21,10 @@ cp -f ~/storage/dot-files/configs/universal/.gitconfig ~;
 cp -f ~/storage/dot-files/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
 
 mkdir -p ~/.config;
-cp -rf ~/storage/dot-files/.termux/.config/nvim ~/.config;
+cp -f ~/storage/dot-files/.termux/.vimrc ~;
 cp -f ~/storage/dot-files/.termux/.zshrc ~;
 
-sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim';
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;
 
-nvim ~/.gitconfig;
+vim ~/.gitconfig;
