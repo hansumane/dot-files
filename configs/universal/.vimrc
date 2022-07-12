@@ -62,8 +62,8 @@ call plug#begin()
 	" Plug 'sainnhe/everforest'
 	" Plug 'sonph/onehalf', { 'rtp': 'vim' }
 	" Plug 'dangerousScript/gruber-darker-nvim'
-	Plug 'vim-airline/vim-airline'
 	Plug 'preservim/nerdtree'
+	Plug 'vim-airline/vim-airline'
 	Plug 'drewtempelmeyer/palenight.vim'
 call plug#end()
 
@@ -81,9 +81,6 @@ nmap <C-f> :NERDTreeToggle<CR>
 nmap <C-h> :noh<CR>
 
 autocmd VimEnter * SetNumber
-" autocmd VimEnter * NERDTree
-" autocmd VimEnter * NERDTreeToggle<CR>
-
 autocmd BufEnter,Bufnew * Spaces
 autocmd BufEnter,Bufnew *.m Mark
 autocmd BufEnter,Bufnew *.html Mark
@@ -94,8 +91,6 @@ autocmd BufEnter,Bufnew *.zsh* Mark
 autocmd BufEnter,Bufnew *.bash* Mark
 autocmd BufEnter,Bufnew *.c Tabs
 autocmd BufEnter,Bufnew *.h Tabs
-" autocmd BufEnter,Bufnew *.cpp Tabs
-" autocmd BufEnter,Bufnew *.hpp Tabs
 autocmd BufEnter,Bufnew *.vim* Tabs
 autocmd BufEnter,Bufnew .gitconfig Tabs
 autocmd BufEnter,Bufnew .gitignore Tabs

@@ -22,38 +22,38 @@ font:
     family: FiraCode Nerd Font
     style: Medium
 
-  size: 24.0
+  size: 20.0
 
 
 colors:
 
   primary:
-    background: '#383c4a'
-    foreground: '#d3dae3'
+    background: '#1E1E1E'
+    foreground: '#E0E0E0'
 
   cursor:
     text: CellBackground
     cursor: CellForeground
 
   normal:
-    black:   '#383c4a'
-    red:     '#bf616a'
-    green:   '#a3be8c'
-    yellow:  '#ebcb8b'
-    blue:    '#81a1c1'
-    magenta: '#b48ead'
-    cyan:    '#88c0d0'
-    white:   '#e5e9f0'
+    black:   '#1E1E1E'
+    red:     '#E33A3A'
+    green:   '#37BA70'
+    yellow:  '#E7C930'
+    blue:    '#3882CC'
+    magenta: '#9446E3'
+    cyan:    '#51B4CC'
+    white:   '#D1D1D1'
 
   bright:
-    black:   '#3b4252'
-    red:     '#bf616a'
-    green:   '#a3be8c'
-    yellow:  '#ebcb8b'
-    blue:    '#81a1c1'
-    magenta: '#b48ead'
-    cyan:    '#88c0d0'
-    white:   '#e5e9f0'
+    black:   '#383838'
+    red:     '#F94040'
+    green:   '#3DCC7B'
+    yellow:  '#FDDC35'
+    blue:    '#3B8FED'
+    magenta: '#A34DF9'
+    cyan:    '#59C5E0'
+    white:   '#F4F4F4'
 
   transparent_background_colors: false
 
