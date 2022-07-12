@@ -10,7 +10,7 @@ fi;
 
 echo "you'll need to grant root access to copy fonts to /usr/share/fonts/ManuallyInstalled";
 
-cd $(pwd)/../../.fonts;
+cd $(git rev-parse --show-toplevel)/.fonts;
 sudo rm -rf /usr/share/fonts/ManuallyInstalled;
 sudo mkdir -p /usr/share/fonts/ManuallyInstalled;
   sudo tar -xf CascadiaCodeAll.txz -C /usr/share/fonts/ManuallyInstalled;

@@ -7,7 +7,7 @@ if [ ! $(pwd | rev | cut -d'/' -f3 | rev) = 'dot-files' ] ||
   echo "please go to ?/dot-files/scripts/setup folder and run script from there!";
   return 1;
 else
-  cd ../..; CURRENT_DIR=$(pwd);
+  cd $(git rev-parse --show-toplevel); CURRENT_DIR=$(pwd);
 fi;
 
 cp -f ${CURRENT_DIR}/configs/universal/.zshrc ~;
