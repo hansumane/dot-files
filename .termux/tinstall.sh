@@ -20,11 +20,11 @@ ln -sf ~/.termux/shell $(which zsh)
 cp -f ~/storage/dot-files/configs/universal/.gitconfig ~;
 cp -f ~/storage/dot-files/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
 
-mkdir -p ~/.config;
-cp -f ~/storage/dot-files/.termux/.vimrc ~;
+mkdir -p ~/.config/nvim;
+cp -f ~/storage/dot-files/.termux/.vimrc ~/.config/nvim/init.vim;
 cp -f ~/storage/dot-files/.termux/.zshrc ~;
 
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;
+sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim \
+  --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim';
 
-vim ~/.gitconfig;
+nvim ~/.gitconfig;
