@@ -31,7 +31,6 @@ else
   echo "your CPU is neither Intel nor AMD";
 fi;
 
-sed 's/EXA_ICONS="--no-icons"/EXA_ICONS="--icons"/g' -i ~/.zshrc;
 sudo sed 's/#Color/Color/g' -i /etc/pacman.conf
 sudo sed 's/#ParallelDownloads.*/ParallelDownloads = 4/g' -i /etc/pacman.conf
 

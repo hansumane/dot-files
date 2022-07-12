@@ -19,11 +19,11 @@ mkdir -p ~/.oh-my-zsh/custom/themes; cd ~/.oh-my-zsh/custom/themes;
 cp -f ${CURRENT_DIR}/themes/zsh_themes/* .;
 ##git clone --depth=1 --recursive https://github.com/romkatv/powerlevel10k.git;
 
-mkdir -p ~/.config;
+mkdir -p ~/.config/nvim;
 cp -f ${CURRENT_DIR}/configs/universal/.gitconfig ~;
 cp -f ${CURRENT_DIR}/configs/universal/.zshrc ~;
-cp -f ${CURRENT_DIR}/configs/universal/.vimrc ~;
-##mkdir -p ~/.config/nvim; cp -rf ${CURRENT_DIR}/configs/universal/.vimrc ~/.config/nvim/init.vim;
+cp -rf ${CURRENT_DIR}/configs/universal/.vimrc ~/.config/nvim/init.vim;
+##cp -f ${CURRENT_DIR}/configs/universal/.vimrc ~;
 ##cp -f ${CURRENT_DIR}/configs/universal/.p10k.zsh ~;
 
 mkdir -p ~/Desktop ~/Downloads ~/Others; cd ~/Others;
@@ -38,12 +38,12 @@ XDG_PICTURES_DIR="$HOME/Others/Pictures"
 XDG_VIDEOS_DIR="$HOME/Others/Videos"' > ~/.config/user-dirs.dirs;
 
 # vim-plug for neovim
-##sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim \
-##  --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim';
+sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim \
+  --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim';
 
 # vim-plug for vim
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;
+##curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+##  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;
 
 if [ -d /usr/sbin ]; then
   if [ ! -f /usr/sbin/update-grub ]; then
@@ -59,6 +59,6 @@ else
   fi;
 fi;
 
-vim ~/.gitconfig || nano ~/.gitconfig;
+nvim ~/.gitconfig || vim ~/.gitconfig || nano ~/.gitconfig;
 E_USERNAME=$(whoami); sudo chsh -s /bin/zsh $E_USERNAME ||
-  sudo vim /etc/passwd || sudo nano /etc/passwd;
+sudo nvim /etc/passwd || sudo vim /etc/passwd || sudo nano /etc/passwd;
