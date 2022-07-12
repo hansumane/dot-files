@@ -32,7 +32,6 @@ else
 fi;
 
 sed 's/EXA_ICONS="--no-icons"/EXA_ICONS="--icons"/g' -i ~/.zshrc;
-cp -rf ${CURRENT_DIR}/configs/universal/.config/neofetch ~/.config;
 sudo sed 's/#Color/Color/g' -i /etc/pacman.conf
 
 mkdir -p ~/Downloads; cd ~/Downloads;
