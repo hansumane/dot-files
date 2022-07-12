@@ -3,7 +3,7 @@ set -e;
 
 if [ ! $(pwd | rev | cut -d'/' -f4 | rev) = 'dot-files' ] ||
     [ ! $(pwd | rev | cut -d'/' -f3 | rev) = 'scripts' ] ||
-    [ ! $(pwd | rev | cut -d'/' -f2 | rev) = 'setup' ] ||
+    [ ! $(pwd | rev | cut -d'/' -f2 | rev) = 'setup' ]; then
     [ ! $(pwd | rev | cut -d'/' -f1 | rev) = 'debian' ]; then
   echo "please go to /scripts/setup/debian folder and run script from there!";
   exit 1;
@@ -39,13 +39,4 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;
 
 vim ~/.gitconfig || nano ~/.gitconfig;
-E_USERNAME=$(whoami); sudo chsh -s /bin/zsh $E_USERNAME ||
-  sudo vim /etc/passwd || sudo nano /etc/passwd;
-
-cd ~/Downloads;
-curl -fLO https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-v0.10.1.zip;
-unzip exa-linux-x86_64-v0.10.1.zip -d exa;
-sudo cp -f ~/Downloads/exa/bin/exa /usr/bin;
-
-sed 's/export EDITOR="nvim"/export EDITOR="vim"/g' -i ~/.zshrc;
-sed 's/EXA_ICONS="--no-icons"/EXA_ICONS="--icons"/g' -i ~/.zshrc;
+sudo chsh -s /bin/zsh $(whoami);

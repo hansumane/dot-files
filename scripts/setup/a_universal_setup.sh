@@ -60,5 +60,4 @@ else
 fi;
 
 nvim ~/.gitconfig || vim ~/.gitconfig || nano ~/.gitconfig;
-E_USERNAME=$(whoami); sudo chsh -s /bin/zsh $E_USERNAME ||
-sudo nvim /etc/passwd || sudo vim /etc/passwd || sudo nano /etc/passwd;
+sudo chsh -s /bin/zsh $(whoami) || sudo nvim /etc/passwd || sudo vim /etc/passwd || sudo nano /etc/passwd;
