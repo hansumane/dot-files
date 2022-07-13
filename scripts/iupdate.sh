@@ -12,20 +12,24 @@ fi;
 echo "-> /fonts ...";
 if [ ! -d ${CURRENT_DIR}/fonts ]; then
   git clone https://github.com/hansumane/fonts.git > /dev/null;
+  git status > /dev/null;
   echo "---> /fonts cloned.";
 else
   cd ${CURRENT_DIR}/fonts;
   git pull --rebase > /dev/null;
+  git status > /dev/null;
   echo "---> /fonts updated.";
 fi;
 
 echo "-> /wallpapers ...";
 if [ ! -d ${CURRENT_DIR}/wallpapers ]; then
   git clone https://github.com/hansumane/wallpapers.git > /dev/null;
+  git status > /dev/null;
   echo "---> /wallpapers cloned.";
 else
   cd ${CURRENT_DIR}/wallpapers;
   git pull --rebase > /dev/null;
+  git status > /dev/null;
   echo "---> /wallpapers updated.";
 fi;
 
