@@ -16,7 +16,7 @@ sudo pacman -Syy --needed --noconfirm \
   xfce4-clipman-plugin xfce4-screenshooter lxappearance pavucontrol \
   nm-connection-editor network-manager-applet networkmanager-openvpn \
   gnome-themes-extra xdg-desktop-portal-gtk xdg-user-dirs \
-  flatpak chromium xorg-xinit helvum \
+  flatpak chromium xorg-xinit helvum rxvt-unicode \
   zathura zathura-pdf-mupdf zathura-djvu \
   libayatana-appindicator libappindicator-gtk3 libappindicator-gtk2;
   # firefox firefox-i18n-ru firefox-ublock-origin
@@ -43,4 +43,5 @@ cd ~/Downloads/xkblayout-state;
 sudo make install;
 
 flatpak update;
-sudo mkinitcpio -P; sudo update-grub;
+sudo mkinitcpio -P;
+sudo update-grub;
