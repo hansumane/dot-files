@@ -1,4 +1,5 @@
 syntax enable
+set scrolloff=3
 set nocompatible
 set termguicolors
 set guicursor=a:block
@@ -89,8 +90,10 @@ autocmd BufEnter,Bufnew *.yml Mark
 autocmd BufEnter,Bufnew *.sh* Mark
 autocmd BufEnter,Bufnew *.zsh* Mark
 autocmd BufEnter,Bufnew *.bash* Mark
-autocmd BufEnter,Bufnew *.c Tabs
-autocmd BufEnter,Bufnew *.h Tabs
+autocmd BufEnter,Bufnew *.c Mark
+autocmd BufEnter,Bufnew *.h Mark
+autocmd BufEnter,Bufnew *.cpp Mark
+autocmd BufEnter,Bufnew *.hpp Mark
 autocmd BufEnter,Bufnew *.vim* Tabs
 autocmd BufEnter,Bufnew .gitconfig Tabs
 autocmd BufEnter,Bufnew .gitignore Tabs
