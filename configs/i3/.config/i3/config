@@ -58,7 +58,7 @@ gaps outer 0
 set $mod Mod4
 set $mod2 Shift
 
-font pango:Hack Nerd Font Regular 14
+font pango:Iosevka Nerd Font 16
 
 # Volume adjust
 #bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
