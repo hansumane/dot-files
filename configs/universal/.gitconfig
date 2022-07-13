@@ -1,5 +1,9 @@
 [user]
-	name = user
-	email = user@hostname.localdomain
+	name = User
+	email = user@localhost.localdomain
+[core]
+	autocrlf = input
+	safecrlf = warn
+	quotepath = off
 [credential]
 	helper = store
