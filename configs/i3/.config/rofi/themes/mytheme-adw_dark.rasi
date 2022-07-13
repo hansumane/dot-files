@@ -3,7 +3,7 @@
     m-dark:                      rgba ( 30, 30, 30, 100 % );
     m-bg:                        rgba ( 30, 30, 30, 85 % );
     m-transp:                    rgba ( 0, 0, 0, 0 % );
-    m-border:                    rgba ( 224, 224, 224, 100 % );
+    m-border:                    rgba ( 0, 0, 0, 0 % );
 
     selected-normal-foreground:  rgba ( 0, 0, 0, 0 % );
     foreground:                  rgba ( 0, 0, 0, 0 % );
