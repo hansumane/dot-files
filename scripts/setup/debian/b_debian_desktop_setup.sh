@@ -33,6 +33,11 @@ mkdir -p ~/Download; cd ~/Download;
   sudo apt install ~/Download/bat_0.21.0_amd64.deb -y;
     curl -fLO https://github.com/neovim/neovim/releases/download/v0.7.2/nvim-linux64.deb;
     sudo apt install ~/Download/nvim-linux64.deb -y;
+rm -rf ~/Download/exa;
+rm -f  ~/Download/exa-linux-x86_64-v0.10.1.zip;
+rm -f  ~/Download/hexyl_0.10.0_amd64.deb;
+rm -f  ~/Download/bat_0.21.0_amd64.deb;
+rm -f  ~/Download/nvim-linux64.deb;
 
 sudo apt autoremove -y &&
 sudo apt autoclean -y;
