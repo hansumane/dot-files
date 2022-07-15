@@ -11,7 +11,7 @@ fi;
 
 echo "-> /fonts ...";
 if [ ! -d ${CURRENT_DIR}/fonts ]; then
-  git clone https://github.com/hansumane/fonts.git > /dev/null;
+  git clone --depth=1 https://github.com/hansumane/fonts.git > /dev/null;
   git status > /dev/null;
   echo "---> /fonts cloned.";
 else
@@ -23,7 +23,7 @@ fi;
 
 echo "-> /wallpapers ...";
 if [ ! -d ${CURRENT_DIR}/wallpapers ]; then
-  git clone https://github.com/hansumane/wallpapers.git > /dev/null;
+  git clone --depth=1 https://github.com/hansumane/wallpapers.git > /dev/null;
   git status > /dev/null;
   echo "---> /wallpapers cloned.";
 else
