@@ -1,7 +1,7 @@
 export TERM="xterm-256color"
 export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
-export EXA_COLORS="di=1;35:da=0;35"
+export EXA_COLORS="di=1;35:da=0;35:*.png=1;34:*.jpg=1;34:*.jpeg=1;34"
 
 FOLDER_ICON="  "
 EXA_ICONS="--icons"
