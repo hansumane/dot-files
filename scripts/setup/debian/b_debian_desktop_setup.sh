@@ -14,8 +14,8 @@ sudo apt autoclean -y;
 sudo apt install -y \
   curl wget git tar nano zsh \
   tmux calc subversion clang \
-  zip unzip tar gzip2 xz-utils \
-  fonts-noto;
+  zip unzip tar gzip bzip2 xz-utils \
+  fonts-noto build-essential;
 
 if (lscpu | grep Intel &> /dev/null); then
   sudo apt install iucode-tool -y;
@@ -32,5 +32,7 @@ mkdir -p ~/Download; cd ~/Download;
   sudo chown root:root /usr/bin/exa; sudo chmod 755 /usr/bin/exa;
     curl -fLO https://github.com/sharkdp/hexyl/releases/download/v0.10.0/hexyl_0.10.0_amd64.deb;
     sudo apt install ~/Download/hexyl_0.10.0_amd64.deb -y;
-      curl -fLO https://github.com/sharkdp/bat/releases/download/v0.21.0/bat_0.21.0_amd64.deb;
-      sudo apt install ~/Download/bat_0.21.0_amd64.deb -y;
+  curl -fLO https://github.com/sharkdp/bat/releases/download/v0.21.0/bat_0.21.0_amd64.deb;
+  sudo apt install ~/Download/bat_0.21.0_amd64.deb -y;
+    curl -fLO https://github.com/neovim/neovim/releases/download/v0.7.2/nvim-linux64.deb;
+    sudo apt install ~/Download/nvim-linux64.deb -y;
