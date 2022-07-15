@@ -2,9 +2,9 @@
 set -e;
 
 echo '
-updg="sudo apt update && sudo apt full-upgrade -y"' >> ~/.zshrc;
-echo 'upcl="sudo apt autoremove -y && sudo apt autoclean -y"' >> ~/.zshrc;
-echo 'updc="updg && upcl"' >> ~/.zshrc;
+alias updg="sudo apt update && sudo apt full-upgrade -y"' >> ~/.zshrc;
+echo 'alias upcl="sudo apt autoremove -y && sudo apt autoclean -y"' >> ~/.zshrc;
+echo 'alias updc="updg && upcl"' >> ~/.zshrc;
 
 sudo apt update &&
 sudo apt full-upgrade -y &&
