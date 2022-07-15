@@ -37,9 +37,9 @@ sudo cp -rf    ${CURRENT_DIR}/themes/gtk_themes/Everforest_Dark /usr/share/theme
 sudo cp -rf    ${CURRENT_DIR}/themes/icon_themes/Zafiro-Icons-Dark /usr/share/icons;
 sudo cp -rf    ${CURRENT_DIR}/themes/icon_themes/Simp1e-Gruvbox-* /usr/share/icons;
 
-cd ~/Downloads;
+cd ~/Download;
 git clone --depth=1 --recursive https://github.com/nonpop/xkblayout-state.git;
-cd ~/Downloads/xkblayout-state;
+cd ~/Download/xkblayout-state;
 sudo make install;
 
 flatpak update;

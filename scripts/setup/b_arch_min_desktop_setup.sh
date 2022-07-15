@@ -31,10 +31,10 @@ else
   echo "your CPU is neither Intel nor AMD";
 fi;
 
-mkdir -p ~/Downloads; cd ~/Downloads;
+mkdir -p ~/Download; cd ~/Download;
 git clone --depth=1 --recursive https://aur.archlinux.org/yay-bin.git;
-cd ~/Downloads/yay-bin; makepkg -sic;
-cd; rm -rf ~/Downloads/yay-bin;
+cd ~/Download/yay-bin; makepkg -sic;
+cd; rm -rf ~/Download/yay-bin;
 
 if [ ! -f /usr/bin/system-update ]; then
   sudo cp -f ${CURRENT_DIR}/scripts/system-update-arch /usr/bin/system-update;

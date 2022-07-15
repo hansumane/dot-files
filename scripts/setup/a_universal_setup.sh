@@ -26,10 +26,10 @@ cp -rf ${CURRENT_DIR}/configs/universal/.vimrc ~/.config/nvim/init.vim;
 ##cp -f ${CURRENT_DIR}/configs/universal/.vimrc ~;
 ##cp -f ${CURRENT_DIR}/configs/universal/.p10k.zsh ~;
 
-mkdir -p ~/Desktop ~/Downloads ~/Others; cd ~/Others;
+mkdir -p ~/Desktop ~/Download ~/Others; cd ~/Others;
 mkdir -p etc Coding Documents Music Pictures Shared Templates Videos;
 echo 'XDG_DESKTOP_DIR="$HOME/Desktop"
-XDG_DOWNLOAD_DIR="$HOME/Downloads"
+XDG_DOWNLOAD_DIR="$HOME/Download"
 XDG_TEMPLATES_DIR="$HOME/Others/Templates"
 XDG_PUBLICSHARE_DIR="$HOME/Others/Shared"
 XDG_DOCUMENTS_DIR="$HOME/Others/Documents"
