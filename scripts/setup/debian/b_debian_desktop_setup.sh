@@ -12,7 +12,7 @@ sudo apt install -y \
   curl wget git tar nano zsh \
   tmux calc subversion clang \
   zip unzip tar gzip bzip2 xz-utils \
-  fonts-noto build-essential;
+  fonts-noto build-essential linux-headers-$(uname -r);
 
 if (lscpu | grep Intel &> /dev/null); then
   sudo apt install iucode-tool -y;
