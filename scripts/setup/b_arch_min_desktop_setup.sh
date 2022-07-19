@@ -23,9 +23,9 @@ sudo pacman -S --needed --noconfirm \
 sudo pacman -S --needed --noconfirm \
   noto-fonts noto-fonts-cjk noto-fonts-emoji;
 
-if (lscpu | grep Intel > /dev/null); then
+if (lscpu | grep Intel &> /dev/null); then
   sudo pacman -S --needed --noconfirm intel-ucode;
-elif (lscpu | grep AMD > /dev/null); then
+elif (lscpu | grep AMD &> /dev/null); then
   sudo pacman -S --needed --noconfirm amd-ucode;
 else
   echo "your CPU is neither Intel nor AMD";
