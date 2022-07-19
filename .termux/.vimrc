@@ -49,18 +49,18 @@ endfunction
 
 command Tabs call TabsFunc8()
 command Tabx call TabsFunc4()
-command Spaces call SpaceFunc4()
+command Space call SpaceFunc4()
 command Mark call SpaceFunc2()
 command SetNumber call SetNumbersFunction()
 command UnsetNumber call UnsetNumbersFunction()
 
 call plug#begin()
-	" Plug 'itchyny/lightline.vim'
+	" Plug 'vim-airline/vim-airline'
 	" Plug 'sainnhe/everforest'
 	" Plug 'sonph/onehalf', { 'rtp': 'vim' }
 	" Plug 'dangerousScript/gruber-darker-nvim'
 	Plug 'preservim/nerdtree'
-	Plug 'vim-airline/vim-airline'
+	Plug 'itchyny/lightline.vim'
 	Plug 'drewtempelmeyer/palenight.vim'
 call plug#end()
 
@@ -69,30 +69,20 @@ colorscheme palenight
 " let g:everforest_background='medium'
 " let g:everforest_better_performance=1
 
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'palenight'
-let g:airline_extensions = []
-" let g:lightline = {'colorscheme' : 'palenight'}
+let g:lightline = {'colorscheme' : 'palenight'}
+" let g:airline_powerline_fonts = 1
+" let g:airline_theme = 'palenight'
+" let g:airline_extensions = []
 
 nmap <C-f> :NERDTreeToggle<CR>
 nmap <C-h> :noh<CR>
 
 autocmd VimEnter * SetNumber
-autocmd BufEnter,Bufnew * Spaces
-autocmd BufEnter,Bufnew *.m Mark
-autocmd BufEnter,Bufnew *.html Mark
-autocmd BufEnter,Bufnew *.xml Mark
-autocmd BufEnter,Bufnew *.yml Mark
-autocmd BufEnter,Bufnew *.sh* Mark
-autocmd BufEnter,Bufnew *.zsh* Mark
-autocmd BufEnter,Bufnew *.bash* Mark
-autocmd BufEnter,Bufnew *.c Mark
-autocmd BufEnter,Bufnew *.h Mark
-autocmd BufEnter,Bufnew *.cpp Mark
-autocmd BufEnter,Bufnew *.hpp Mark
+autocmd BufEnter,Bufnew * Mark
+autocmd BufEnter,Bufnew *.py Space
 autocmd BufEnter,Bufnew *.vim* Tabs
 autocmd BufEnter,Bufnew .gitconfig Tabs
 autocmd BufEnter,Bufnew .gitignore Tabs
 autocmd BufEnter,Bufnew Makefile Tabs
 
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
