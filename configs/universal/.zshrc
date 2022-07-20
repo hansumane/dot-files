@@ -39,8 +39,9 @@ alias gits="git status"
 alias gitr='cd $(git rev-parse --show-toplevel)'
 alias gitl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 alias fetch="c;$SYS_FETCH"
-alias edM="$EDITOR Makefile"
 alias grep="grep --color=auto"
+alias edM="$EDITOR Makefile"
+alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
 
 lt ()
 {
