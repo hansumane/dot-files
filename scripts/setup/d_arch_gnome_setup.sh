@@ -18,6 +18,8 @@ sudo pacman -Syy --needed --noconfirm \
   libayatana-appindicator libappindicator-gtk2 libappindicator-gtk3;
   # firefox firefox-i18n-ru firefox-ublock-origin
 
+yay -S --needed gdm-tools;
+
 sudo cp -rf ${CURRENT_DIR}/themes/icon_themes/Twilight-cursors /usr/share/icons;
 sudo chown root:root -R /usr/share/icons/Twilight-cursors;
 
