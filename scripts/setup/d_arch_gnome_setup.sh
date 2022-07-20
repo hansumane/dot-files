@@ -13,10 +13,11 @@ fi;
 sudo pacman -Syy --needed --noconfirm \
   gtk2 gtk3 gtk4 gtk-engine-murrine \
   gnome gnome-tweaks gnome-themes-extra \
-  flatpak xdg-desktop-portal-gnome chromium \
+  flatpak xdg-desktop-portal-gnome \
   pavucontrol helvum networkmanager-openvpn openssh \
-  libayatana-appindicator libappindicator-gtk2 libappindicator-gtk3;
-  # firefox firefox-i18n-ru firefox-ublock-origin
+  libayatana-appindicator libappindicator-gtk2 libappindicator-gtk3 \
+  firefox firefox-i18n-ru firefox-ublock-origin;
+  # chromium
 
 yay -S --needed gdm-tools;
 
