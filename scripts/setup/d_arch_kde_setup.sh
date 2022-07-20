@@ -10,12 +10,12 @@ else
   cd $(git rev-parse --show-toplevel); CURRENT_DIR=$(pwd);
 fi;
 
-sudo pacman -Syy --needed --noconfirm \
+sudo pacman -Sy --needed \
   plasma ark dolphin dolphin-plugins konsole okular \
   kate gwenview elisa spectacle okteta \
-  chromium flatpak xdg-desktop-portal-kde openssh \
-  pavucontrol-qt qpwgraph networkmanager-openvpn;
-  # firefox firefox-i18n-ru firefox-ublock-origin
+  flatpak xdg-desktop-portal-kde openssh \
+  pavucontrol-qt qpwgraph networkmanager-openvpn \
+  firefox firefox-i18n-ru firefox-ublock-origin;
 
 flatpak update;
 sudo mkinitcpio -P; sudo update-grub;

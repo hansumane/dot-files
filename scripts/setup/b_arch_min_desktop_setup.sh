@@ -10,31 +10,35 @@ else
   cd $(git rev-parse --show-toplevel); CURRENT_DIR=$(pwd);
 fi;
 
-sudo pacman -Syy --needed --noconfirm \
+sudo pacman -Sy --needed \
   curl git zip unzip neovim zsh exa bat hexyl tmux calc \
   subversion clang neofetch jdk-openjdk jre-openjdk;
 
-sudo pacman -S --needed --noconfirm \
+sudo pacman -S --needed \
   wireplumber pipewire pipewire-alsa pipewire-pulse pipewire-jack;
 
-sudo pacman -S --needed --noconfirm \
+sudo pacman -S --needed \
   xorg xorg-xwayland wayland;
 
-sudo pacman -S --needed --noconfirm \
+sudo pacman -S --needed \
   noto-fonts noto-fonts-cjk noto-fonts-emoji;
 
 if (lscpu | grep Intel &> /dev/null); then
-  sudo pacman -S --needed --noconfirm intel-ucode;
+  sudo pacman -S --needed intel-ucode;
 elif (lscpu | grep AMD &> /dev/null); then
-  sudo pacman -S --needed --noconfirm amd-ucode;
+  sudo pacman -S --needed amd-ucode;
 else
-  echo "your CPU is neither Intel nor AMD";
+  echo "your CPU is neither Intel nor AMD =(";
 fi;
 
 mkdir -p ~/Download; cd ~/Download;
 git clone --depth=1 --recursive https://aur.archlinux.org/yay-bin.git;
 cd ~/Download/yay-bin; makepkg -sic;
 cd; rm -rf ~/Download/yay-bin;
+
+yay -Sy --needed \
+  hunspell hunspell-en_us hunspell-ru \
+  hyphen hyphen-en hyphen-ru;
 
 if [ ! -f /usr/bin/system-update ]; then
   sudo cp -f ${CURRENT_DIR}/scripts/system-update-arch /usr/bin/system-update;

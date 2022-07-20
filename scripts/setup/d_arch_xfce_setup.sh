@@ -10,16 +10,16 @@ else
   cd $(git rev-parse --show-toplevel); CURRENT_DIR=$(pwd);
 fi;
 
-sudo pacman -Syy --needed --noconfirm \
+sudo pacman -Sy --needed \
   gtk2 gtk3 gtk4 gtk-engine-murrine \
   lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings \
   xfce4 xfce4-goodies gnome-themes-extra kitty \
-  chromium pavucontrol helvum networkmanager-openvpn openssh \
+  pavucontrol helvum networkmanager-openvpn openssh \
   libayatana-appindicator libappindicator-gtk3 libappindicator-gtk2 \
   nm-connection-editor network-manager-applet \
   flatpak xdg-desktop-portal-gtk \
-  arc-gtk-theme papirus-icon-theme;
-  # firefox firefox-i18n-ru firefox-ublock-origin
+  arc-gtk-theme papirus-icon-theme \
+  firefox firefox-i18n-ru firefox-ublock-origin;
 
 cp -rf ${CURRENT_DIR}/configs/universal/.config/kitty ~/.config;
 sudo cp -f  ${CURRENT_DIR}/configs/universal/etc/lightdm-gtk-greeter.conf /etc/lightdm;

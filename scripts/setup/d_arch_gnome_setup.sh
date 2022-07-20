@@ -10,7 +10,7 @@ else
   cd $(git rev-parse --show-toplevel); CURRENT_DIR=$(pwd);
 fi;
 
-sudo pacman -Syy --needed --noconfirm \
+sudo pacman -Sy --needed \
   gtk2 gtk3 gtk4 gtk-engine-murrine \
   gnome gnome-tweaks gnome-themes-extra \
   flatpak xdg-desktop-portal-gnome \

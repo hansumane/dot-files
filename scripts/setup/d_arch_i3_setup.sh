@@ -10,16 +10,16 @@ else
   cd $(git rev-parse --show-toplevel); CURRENT_DIR=$(pwd);
 fi;
 
-sudo pacman -Syy --needed --noconfirm \
+sudo pacman -Sy --needed \
   gtk2 gtk3 gtk4 gtk-engine-murrine \
   i3-gaps i3lock i3blocks rofi kitty xcompmgr feh sxiv \
   xfce4-clipman-plugin xfce4-screenshooter lxappearance pavucontrol \
   nm-connection-editor network-manager-applet networkmanager-openvpn \
   gnome-themes-extra xdg-desktop-portal-gtk xdg-user-dirs \
-  flatpak chromium xorg-xinit helvum rxvt-unicode \
+  flatpak xorg-xinit helvum rxvt-unicode \
   zathura zathura-pdf-mupdf zathura-djvu \
-  libayatana-appindicator libappindicator-gtk3 libappindicator-gtk2;
-  # firefox firefox-i18n-ru firefox-ublock-origin
+  libayatana-appindicator libappindicator-gtk3 libappindicator-gtk2 \
+  firefox firefox-i18n-ru firefox-ublock-origin;
   # lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
 
 cp -f      ${CURRENT_DIR}/configs/i3/.xinitrc ~;
