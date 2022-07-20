@@ -80,7 +80,7 @@ fcc ()
     echo "error: no source file(s) given!"
     return 1
   else
-    gcc -Wall -Os -std=c99 $@ -o out-$(basename $1 .c)
+    gcc -Wall -Os -std=gnu99 $@ -o out-$(basename $1 .c)
   fi
 }
 
