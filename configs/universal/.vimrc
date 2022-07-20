@@ -79,7 +79,9 @@ let g:airline_extensions = []
 " let g:lightline = {'colorscheme' : 'palenight'}
 
 nmap <C-f> :NERDTreeToggle<CR>
-nmap <C-h> :noh<CR>
+nmap <C-j> :noh<CR>
+nmap <C-h> <C-w>h
+nmap <C-l> <C-w>l
 
 autocmd VimEnter * SetNumber
 autocmd BufEnter,Bufnew * Mark
@@ -89,4 +91,4 @@ autocmd BufEnter,Bufnew .gitconfig Tabs
 autocmd BufEnter,Bufnew .gitignore Tabs
 autocmd BufEnter,Bufnew Makefile Tabs
 
-" autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
