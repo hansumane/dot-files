@@ -60,21 +60,21 @@ command UnsetNumber call UnsetNumbersFunction()
 
 call plug#begin()
 	" Plug 'itchyny/lightline.vim'
-	" Plug 'sainnhe/everforest'
+	" Plug 'drewtempelmeyer/palenight.vim'
 	" Plug 'sonph/onehalf', { 'rtp': 'vim' }
 	" Plug 'dangerousScript/gruber-darker-nvim'
 	Plug 'preservim/nerdtree'
 	Plug 'vim-airline/vim-airline'
-	Plug 'drewtempelmeyer/palenight.vim'
+	Plug 'sainnhe/everforest'
 call plug#end()
 
 set background=dark
-colorscheme palenight
-" let g:everforest_background='medium'
-" let g:everforest_better_performance=1
+colorscheme everforest
+let g:everforest_background='medium'
+let g:everforest_better_performance=1
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'palenight'
+let g:airline_theme = 'everforest'
 let g:airline_extensions = []
 " let g:lightline = {'colorscheme' : 'palenight'}
 
