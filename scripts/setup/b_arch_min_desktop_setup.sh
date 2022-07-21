@@ -12,7 +12,8 @@ fi;
 
 sudo pacman -Sy --needed \
   curl git zip unzip neovim zsh exa bat hexyl tmux calc \
-  subversion clang neofetch jdk-openjdk jre-openjdk;
+  subversion clang neofetch jdk-openjdk jre-openjdk \
+  man-db man-pages;
 
 sudo pacman -S --needed \
   wireplumber pipewire pipewire-alsa pipewire-pulse pipewire-jack;
