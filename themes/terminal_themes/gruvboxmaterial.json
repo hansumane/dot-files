@@ -1,0 +1,37 @@
+// gruvbox-material terminal colorscheme
+{
+    "foreground": "#D4BE98",
+    "background": "#282828",
+    "black": {
+        "color0": "#282828",
+        "color8": "#32302F"
+    },
+    "red": {
+        "color1": "#EA6962",
+        "color9": "#EA6962"
+    },
+    "green": {
+        "color2": "#A9B665",
+        "color10": "#A9B665"
+    },
+    "yellow": {
+        "color3": "#D8A657",
+        "color11": "#D8A657"
+    },
+    "blue": {
+        "color4": "#E78A4E",
+        "color12": "#E78A4E"
+    },
+    "magenta": {
+        "color5": "#D3869B",
+        "color13": "#D3869B"
+    },
+    "cyan": {
+        "color6": "#7DAEA3",
+        "color14": "#7DAEA3"
+    },
+    "white": {
+        "color7": "#D6C0AB",
+        "color15": "#EAD2BB"
+    }
+}
