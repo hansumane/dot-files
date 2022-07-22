@@ -14,7 +14,8 @@ termux-change-repo;
 pkg install -y \
   curl git tar zip unzio gzip bzip2 xz-utils \
   neovim zsh exa bat hexyl calc tmux gnupg \
-  binutis clang python subversion root-repo;
+  binutis clang python subversion \
+  openssh root-repo;
 pkg install tsu -y;
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
