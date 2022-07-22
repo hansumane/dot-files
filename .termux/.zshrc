@@ -1,12 +1,12 @@
 export TERM="xterm-256color"
 export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
-export PATH="$PATH:~/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 # export EXA_COLORS="di=1;35:da=0;35"
 
 FOLDER_ICON="  "
 EXA_ICONS="--icons"
-SYS_FETCH="neofetch"
+SYS_FETCH="pfetch"
 ZSH_THEME="awesomepanda"
 plugins=(git svn zsh-syntax-highlighting)
 
@@ -15,11 +15,11 @@ source $ZSH/oh-my-zsh.sh
 
 alias c="clear"
 alias q="exit"
-
 alias t="c;tmux"
+
 alias la="exa -a"
-alias ll="exa $EXA_ICONS -albh --git --classify --group-directories-first"
-alias lx="exa $EXA_ICONS -albh --git --classify --no-user --group-directories-first"
+alias ll="exa $EXA_ICONS -albh --classify --group-directories-first"
+alias lx="exa $EXA_ICONS -albh --classify --no-user --group-directories-first"
 alias cla="c;echo -n '${FOLDER_ICON}PWD : ';pwd;la"
 alias cll="c;echo -n '${FOLDER_ICON}PWD : ';pwd;ll"
 alias clx="c;echo -n '${FOLDER_ICON}PWD : ';pwd;lx"
