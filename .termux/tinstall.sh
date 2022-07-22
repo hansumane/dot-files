@@ -9,6 +9,8 @@ else
 fi;
 
 pkg upgrade -y;
+rm -f ~/../usr/etc/motd.sh;
+termux-change-repo;
 pkg install -y \
   curl git tar zip unzio gzip bzip2 xz-utils \
   neovim zsh exa bat hexyl calc tmux gnupg \
