@@ -12,11 +12,10 @@ pkg upgrade -y;
 rm -f ~/../usr/etc/motd.sh;
 termux-change-repo;
 pkg install -y \
-  curl git tar zip unzio gzip bzip2 xz-utils \
+  curl git tar zip unzip gzip bzip2 xz-utils \
   neovim zsh exa bat hexyl calc tmux gnupg \
-  binutis clang python subversion \
-  openssh root-repo;
-pkg install tsu -y;
+  binutils clang python subversion \
+  openssh root-repo tsu -y;
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
 cd ~/.oh-my-zsh/custom/plugins;
