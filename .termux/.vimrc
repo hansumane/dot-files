@@ -65,6 +65,8 @@ call plug#begin()
 	Plug 'sainnhe/gruvbox-material'
 call plug#end()
 
+let NERDTreeShowHidden=1
+
 set background=dark
 colorscheme gruvbox-material
 let g:everforest_background='medium'
