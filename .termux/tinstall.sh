@@ -15,7 +15,7 @@ pkg install -y \
   curl git tar zip unzip gzip bzip2 xz-utils \
   neovim zsh exa bat hexyl calc tmux gnupg \
   binutils clang python subversion \
-  openssh root-repo tsu -y;
+  openssh root-repo tsu man manpages -y;
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
 cd ~/.oh-my-zsh/custom/plugins;
