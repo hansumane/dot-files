@@ -21,7 +21,9 @@ sudo pacman -Sy --needed \
 
 yay -S --needed gdm-tools;
 
+sudo cp -rf ${CURRENT_DIR}/themes/gtk_themes/Everforest_Dark /usr/share/themes;
 sudo cp -rf ${CURRENT_DIR}/themes/icon_themes/Twilight-cursors /usr/share/icons;
+sudo chown root:root -R /usr/share/themes/Everforest_Dark;
 sudo chown root:root -R /usr/share/icons/Twilight-cursors;
 
 flatpak update;
