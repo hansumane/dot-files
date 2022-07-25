@@ -69,10 +69,10 @@ let NERDTreeShowHidden=1
 
 set background=dark
 colorscheme gruvbox-material
-let g:everforest_background='medium'
-let g:everforest_better_performance=1
 let g:gruvbox_material_background='soft'
 let g:gruvbox_material_better_performance=1
+" let g:everforest_background='medium'
+" let g:everforest_better_performance=1
 
 let g:lightline = {'colorscheme' : 'gruvbox_material'}
 " let g:airline_powerline_fonts = 1
