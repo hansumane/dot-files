@@ -24,7 +24,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions.git;
 
 ln -sf $(which zsh) ~/.termux/shell;
 
-mkdir -p ~/.config/nvim;
+mkdir -p ~/.local/bin ~/.config/nvim;
 cp -f ${CURRENT_DIR}/.termux/.vimrc ~/.config/nvim/init.vim;
 cp -f ${CURRENT_DIR}/.termux/.zshrc ~;
 cp -f ${CURRENT_DIR}/.termux/font.ttf ~/.termux;
