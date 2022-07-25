@@ -19,14 +19,14 @@ mkdir -p ~/.oh-my-zsh/custom/themes; cd ~/.oh-my-zsh/custom/themes;
 cp -f ${CURRENT_DIR}/themes/zsh_themes/* .;
 ##git clone --depth=1 --recursive https://github.com/romkatv/powerlevel10k.git;
 
-mkdir -p ~/.config/nvim;
+mkdir -p ~/.local/bin ~/.config/nvim;
 cp -f ${CURRENT_DIR}/configs/universal/.gitconfig ~;
 cp -f ${CURRENT_DIR}/configs/universal/.zshrc ~;
 cp -rf ${CURRENT_DIR}/configs/universal/.vimrc ~/.config/nvim/init.vim;
 ##cp -f ${CURRENT_DIR}/configs/universal/.vimrc ~;
 ##cp -f ${CURRENT_DIR}/configs/universal/.p10k.zsh ~;
 
-mkdir -p ~/.local/bin ~/Desktop ~/Download ~/Others; cd ~/Others;
+mkdir -p ~/Desktop ~/Download ~/Others; cd ~/Others;
 mkdir -p etc Coding Documents Music Pictures Shared Templates Videos;
 echo 'XDG_DESKTOP_DIR="$HOME/Desktop"
 XDG_DOWNLOAD_DIR="$HOME/Download"
