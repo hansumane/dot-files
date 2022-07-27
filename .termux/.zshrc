@@ -2,12 +2,11 @@ export TERM="xterm-256color"
 export EDITOR="nvim"
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$PATH:$HOME/.local/bin"
-# export EXA_COLORS="di=1;35:da=0;35"
 
 FOLDER_ICON="  "
 EXA_ICONS="--icons"
 SYS_FETCH="pfetch"
-ZSH_THEME="awesomepanda"
+ZSH_THEME="agnoster-custom"
 plugins=(git svn zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
