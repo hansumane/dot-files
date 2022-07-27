@@ -13,7 +13,7 @@ SUDO_CMD="sudo"
 FOLDER_ICON="  "
 EXA_ICONS="--icons"
 SYS_FETCH="neofetch"
-ZSH_THEME="awesomepanda"
+ZSH_THEME="agnoster-custom"
 LOCAL_LANG="LANG=en_US.UTF-8"
 plugins=(git svn zsh-syntax-highlighting) # zsh-autosuggestions
 
