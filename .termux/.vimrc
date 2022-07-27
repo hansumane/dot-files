@@ -87,9 +87,11 @@ nmap <C-l> <C-w>l
 autocmd VimEnter * SetNumber
 autocmd BufEnter,Bufnew * Mark
 autocmd BufEnter,Bufnew *.py Space
+autocmd BufEnter,Bufnew *.c Tabs
+autocmd BufEnter,Bufnew *.h Tabs
 autocmd BufEnter,Bufnew *.vim* Tabs
+autocmd BufEnter,Bufnew Makefile Tabs
 autocmd BufEnter,Bufnew .gitconfig Tabs
 autocmd BufEnter,Bufnew .gitignore Tabs
-autocmd BufEnter,Bufnew Makefile Tabs
 
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
