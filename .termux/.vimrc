@@ -103,6 +103,10 @@ nmap <C-l> <C-w>l
 autocmd VimEnter * SetNumber
 autocmd BufEnter,Bufnew * Spac2
 autocmd BufEnter,Bufnew *.py Spac4
+autocmd BufEnter,Bufnew *.cpp Spac4
+autocmd BufEnter,Bufnew *.cxx Spac4
+autocmd BufEnter,Bufnew *.hpp Spac4
+autocmd BufEnter,Bufnew *.hxx Spac4
 autocmd BufEnter,Bufnew *.c Tab8
 autocmd BufEnter,Bufnew *.h Tab8
 autocmd BufEnter,Bufnew *.vim* Tab8
