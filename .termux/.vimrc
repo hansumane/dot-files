@@ -33,6 +33,20 @@ function! TabsFunc4()
 	set expandtab &
 endfunction
 
+function! TabsFunc2()
+	set shiftwidth=2
+	set tabstop=2
+	set softtabstop=2
+	set expandtab &
+endfunction
+
+function! SpaceFunc8()
+	set shiftwidth=8
+	set tabstop=8
+	set softtabstop=8
+	set expandtab
+endfunction
+
 function! SpaceFunc4()
 	set shiftwidth=4
 	set tabstop=4
@@ -47,10 +61,12 @@ function! SpaceFunc2()
 	set expandtab
 endfunction
 
-command Tabs call TabsFunc8()
-command Tabx call TabsFunc4()
-command Space call SpaceFunc4()
-command Mark call SpaceFunc2()
+command Tab8 call TabsFunc8()
+command Tab4 call TabsFunc4()
+command Tab2 call TabsFunc2()
+command Spac8 call SpaceFunc8()
+command Spac4 call SpaceFunc4()
+command Spac2 call SpaceFunc2()
 command SetNumber call SetNumbersFunction()
 command UnsetNumber call UnsetNumbersFunction()
 
@@ -85,13 +101,13 @@ nmap <C-h> <C-w>h
 nmap <C-l> <C-w>l
 
 autocmd VimEnter * SetNumber
-autocmd BufEnter,Bufnew * Mark
-autocmd BufEnter,Bufnew *.py Space
-autocmd BufEnter,Bufnew *.c Tabs
-autocmd BufEnter,Bufnew *.h Tabs
-autocmd BufEnter,Bufnew *.vim* Tabs
-autocmd BufEnter,Bufnew Makefile Tabs
-autocmd BufEnter,Bufnew .gitconfig Tabs
-autocmd BufEnter,Bufnew .gitignore Tabs
+autocmd BufEnter,Bufnew * Spac2
+autocmd BufEnter,Bufnew *.py Spac4
+autocmd BufEnter,Bufnew *.c Spac8
+autocmd BufEnter,Bufnew *.h Spac8
+autocmd BufEnter,Bufnew *.vim* Tab8
+autocmd BufEnter,Bufnew Makefile Tab8
+autocmd BufEnter,Bufnew .gitconfig Tab8
+autocmd BufEnter,Bufnew .gitignore Tab8
 
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
