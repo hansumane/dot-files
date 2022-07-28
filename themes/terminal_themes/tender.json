@@ -1,0 +1,37 @@
+// tender terminal colorscheme
+{
+    "foreground": "#EEEEEE",
+    "background": "#282828",
+    "black": {
+        "color0": "#292929",
+        "color8": "#323232"
+    },
+    "red": {
+        "color1": "#F43753",
+        "color9": "#F43753"
+    },
+    "green": {
+        "color2": "#C9D05C",
+        "color10": "#C9D05C"
+    },
+    "yellow": {
+        "color3": "#FFC24B",
+        "color11": "#FFC24B"
+    },
+    "blue": {
+        "color4": "#73CEF4",
+        "color12": "#73CEF4"
+    },
+    "magenta": {
+        "color5": "#D3B987",
+        "color13": "#D3B987"
+    },
+    "cyan": {
+        "color6": "#B3DEEF",
+        "color14": "#B3DEEF"
+    },
+    "white": {
+        "color7": "#EEEEEE",
+        "color15": "#FEFFFF"
+    }
+}
