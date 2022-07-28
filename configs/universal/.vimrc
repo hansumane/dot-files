@@ -77,27 +77,28 @@ command UnsetNumber call UnsetNumbersFunction()
 call plug#begin()
 	" Plug 'itchyny/lightline.vim'
 	" Plug 'sainnhe/everforest'
+	" Plug 'sainnhe/gruvbox-material'
 	" Plug 'drewtempelmeyer/palenight.vim'
 	" Plug 'sonph/onehalf', { 'rtp': 'vim' }
 	" Plug 'dangerousScript/gruber-darker-nvim'
 	Plug 'preservim/nerdtree'
 	Plug 'vim-airline/vim-airline'
-	Plug 'sainnhe/gruvbox-material'
+	Plug 'jacoborus/tender.vim'
 call plug#end()
 
 let NERDTreeShowHidden=1
 
-set background=dark
-colorscheme gruvbox-material
-let g:gruvbox_material_background='soft'
-let g:gruvbox_material_better_performance=1
+colorscheme tender
+" set background=dark
 " let g:everforest_background='medium'
 " let g:everforest_better_performance=1
+" let g:gruvbox_material_background='soft'
+" let g:gruvbox_material_better_performance=1
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'gruvbox_material'
+let g:airline_theme = 'tender'
 let g:airline_extensions = []
-" let g:lightline = {'colorscheme' : 'gruvbox_material'}
+" let g:lightline = {'colorscheme' : 'tender'}
 
 nmap <C-f> :NERDTreeToggle<CR>
 nmap <C-j> :noh<CR>
