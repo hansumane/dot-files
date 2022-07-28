@@ -70,7 +70,7 @@ fcc ()
     echo "error: no source file(s) given!"
     return 1
   else
-    clang -Wall -Os -std=c99 $@ -o out-$(basename $1 .c)
+    clang $@ -Wall -Os -o out-$(basename $1 .c)
   fi
 }
 
@@ -80,7 +80,7 @@ fcp ()
     echo "error: no source file(s) given!"
     return 1
   else
-    clang++ -Wall -Os $@ -o out-$(basename $1 .cpp)
+    clang++ $@ -Wall -Os -o out-$(basename $1 .cpp)
   fi
 }
 
