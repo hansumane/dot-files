@@ -103,8 +103,8 @@ nmap <C-l> <C-w>l
 autocmd VimEnter * SetNumber
 autocmd BufEnter,Bufnew * Spac2
 autocmd BufEnter,Bufnew *.py Spac4
-autocmd BufEnter,Bufnew *.c Spac8
-autocmd BufEnter,Bufnew *.h Spac8
+autocmd BufEnter,Bufnew *.c Tab8
+autocmd BufEnter,Bufnew *.h Tab8
 autocmd BufEnter,Bufnew *.vim* Tab8
 autocmd BufEnter,Bufnew Makefile Tab8
 autocmd BufEnter,Bufnew .gitconfig Tab8
