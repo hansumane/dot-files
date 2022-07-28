@@ -1,9 +1,9 @@
 syntax enable
 set scrolloff=3
-set nocompatible
 set termguicolors
-set guicursor=a:block
 set listchars=space:⋅,tab:>\ ,eol:↴
+" set nocompatible
+" set guicursor=a:block
 
 function! SetNumbersFunction()
 	set list
