@@ -22,8 +22,8 @@ source $ZSH/oh-my-zsh.sh
 
 alias c="clear"
 alias q="exit"
-
 alias t="c;tmux"
+
 alias la="exa -a"
 alias ll="$LOCAL_LANG exa $EXA_ICONS -albh --git --classify --group-directories-first"
 alias lx="$LOCAL_LANG exa $EXA_ICONS -albh --git --classify --no-user --group-directories-first"
@@ -33,16 +33,17 @@ alias clx="c;echo -n '${FOLDER_ICON}PWD : ';pwd;lx"
 alias clt="c;echo -n '${FOLDER_ICON}PWD : ';pwd;lt"
 
 alias rr="rm -rf"
+alias fetch="c;$SYS_FETCH"
 alias sbn="$SUDO_CMD reboot"
 alias sdn="$SUDO_CMD poweroff"
 
 alias gits="git status"
 alias gitr='cd $(git rev-parse --show-toplevel)'
 alias gitl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
-alias fetch="c;$SYS_FETCH"
-alias grep="grep --color=auto"
+
 alias edM="$EDITOR Makefile"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
+alias grep="grep --color=auto"
 
 lt ()
 {
