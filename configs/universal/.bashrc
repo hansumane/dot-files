@@ -1,7 +1,7 @@
 export PS1='\u@\h:\w\$ '
 export TERM='xterm-256color'
 export EDITOR='nvim'
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"
 
 alias c='clear'
 alias q='exit'
@@ -23,6 +23,12 @@ alias clx='cpwd;lx'
 alias gits='git status'
 alias gitr='cd $(git rev-parse --show-toplevel)'
 alias gitl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
 
 gitup () {
   if [[ $# -eq 0 ]]; then
