@@ -21,6 +21,8 @@ cp -f ${CURRENT_DIR}/themes/zsh_themes/* .;
 
 mkdir -p ~/.local/bin ~/.config/nvim;
 cp -f ${CURRENT_DIR}/configs/universal/.gitconfig ~;
+cp -f ${CURRENT_DIR}/configs/universal/.bash_profile ~;
+cp -f ${CURRENT_DIR}/configs/universal/.bashrc ~;
 cp -f ${CURRENT_DIR}/configs/universal/.zshrc ~;
 cp -rf ${CURRENT_DIR}/configs/universal/.vimrc ~/.config/nvim/init.vim;
 ##cp -f ${CURRENT_DIR}/configs/universal/.vimrc ~;
