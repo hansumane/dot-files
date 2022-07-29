@@ -9,11 +9,13 @@ alias t='c;tmux'
 alias rr='rm -rf'
 
 alias ls='LANG=en_US.UTF-8 ls'
+alias exa='LANG=en_US.UTF-8 exa'
 alias cpwd="c;echo -n 'PWD in ';pwd"
 
 alias la='ls -A'
 alias ll='ls -alh --classify --group-directories-first'
 alias lx='ls -Alh --classify --group-directories-first'
+alias lexa='cpwd;exa -albh --git --classify --no-user --group-directories-first'
 alias cla='cpwd;la'
 alias cll='cpwd;ll'
 alias clx='cpwd;lx'
