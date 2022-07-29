@@ -9,10 +9,9 @@ echo 'alias updc="updg && upcl"' >> ~/.zshrc;
 sudo apt update &&
 sudo apt full-upgrade -y &&
 sudo apt install -y \
-  curl wget git tar nano zsh \
-  tmux calc subversion clang \
-  zip unzip tar gzip bzip2 xz-utils \
-  fonts-noto build-essential linux-headers-$(uname -r);
+  curl git tar gzip bzip2 xz-utils \
+  zip unzip nano tmux zsh calc \
+  subversion clang build-essential;
 
 if (lscpu | grep Intel &> /dev/null); then
   sudo apt install iucode-tool -y;
