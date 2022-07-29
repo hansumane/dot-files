@@ -63,16 +63,19 @@ fcp () {
   fi
 }
 
-fcr() {
+frs () {
   if [[ $# -eq 0 ]]; then
     echo 'error: no source file(s) given!'; return 1
   else
-    rustc $@ -o out-$(basename $1 .rs)
+    rustc $@ -C debuginfo=0 -C opt-level=s -o out-$(basename $1 .rs)
   fi
 }
 
 
 c  # clear;echo '( .-.)'
+bind 'TAB:menu-complete'
+bind 'set show-all-if-ambiguous on'
+bind 'set completion-ignore-case on'
 
 if [ -d ~/.local/bin ]; then
   case ":$PATH:" in
