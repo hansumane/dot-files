@@ -1,3 +1,4 @@
+export PS1='\u@\h:\w\$ '
 export TERM='xterm-256color'
 export EDITOR='nvim'
 export PATH="$PATH:$HOME/.local/bin"
@@ -20,6 +21,24 @@ alias clx='cpwd;lx'
 alias gits='git status'
 alias gitr='cd $(git rev-parse --show-toplevel)'
 alias gitl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+
+gitup () {
+  if [[ $# -eq 0 ]]; then
+    read -p 'No commit name given, git pull? [Y/n] ' ANS
+    case $ANS in
+      [Nn] ) echo 'Exiting...';;
+      *    ) git pull --rebase; git status;;
+    esac
+  else
+    git add -A
+    git commit -m "$1"
+    read -p 'Commit name given, git push? [Y/n] ' ANS
+    case $ANS in
+      [Nn] ) echo 'Exiting...';;
+      *    ) git push; git status;;
+    esac
+  fi
+}
 
 fcc () {
   if [[ $# -eq 0 ]]; then
