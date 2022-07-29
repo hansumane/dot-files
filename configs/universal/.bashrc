@@ -2,19 +2,19 @@ export PS1='\u@\h:\w\$ '
 export TERM='xterm-256color'
 export EDITOR='nvim'
 
-alias c='clear'
 alias q='exit'
 alias t='c;tmux'
 alias rr='rm -rf'
+alias c="clear;echo '( .-.)'"
 
 alias ls='LANG=en_US.UTF-8 ls'
 alias exa='LANG=en_US.UTF-8 exa'
-alias cpwd="c;echo -n 'PWD in ';pwd"
+alias cpwd="clear;echo -n 'PWD in ';pwd"
 
 alias la='ls -A'
 alias ll='ls -alh --classify --group-directories-first'
 alias lx='ls -Alh --classify --group-directories-first'
-alias lexa='cpwd;exa -albh --git --classify --no-user --group-directories-first'
+# alias lexa='cpwd;exa -albh --git --classify --no-user --group-directories-first'
 alias cla='cpwd;la'
 alias cll='cpwd;ll'
 alias clx='cpwd;lx'
@@ -72,12 +72,18 @@ fcr() {
 }
 
 
-case ":$PATH:" in
-  *:"$HOME/.local/bin":* ) ;;
-  * ) export PATH="$PATH:$HOME/.local/bin";;
-esac
+c  # clear;echo '( .-.)'
 
-case ":$PATH:" in
-  *:"$HOME/.cargo/bin":* ) ;;
-  * ) export PATH="$PATH:$HOME/.cargo/bin";;
-esac
+if [ -d ~/.local/bin ]; then
+  case ":$PATH:" in
+    *:"$HOME/.local/bin":* ) ;;
+    * ) export PATH="$PATH:$HOME/.local/bin";;
+  esac
+fi
+
+if [ -d ~/.cargo/bin ]; then
+  case ":$PATH:" in
+    *:"$HOME/.cargo/bin":* ) ;;
+    * ) export PATH="$PATH:$HOME/.cargo/bin";;
+  esac
+fi
