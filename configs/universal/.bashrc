@@ -14,7 +14,6 @@ alias cpwd="clear;echo -n 'PWD in ';pwd"
 alias la='ls -A'
 alias ll='ls -alh --classify --group-directories-first'
 alias lx='ls -Alh --classify --group-directories-first'
-# alias lexa='cpwd;exa -albh --git --classify --no-user --group-directories-first'
 alias cla='cpwd;la'
 alias cll='cpwd;ll'
 alias clx='cpwd;lx'
