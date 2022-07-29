@@ -1,7 +1,6 @@
 export PS1='\u@\h:\w\$ '
 export TERM='xterm-256color'
 export EDITOR='nvim'
-export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"
 
 alias c='clear'
 alias q='exit'
@@ -50,8 +49,7 @@ gitup () {
 
 fcc () {
   if [[ $# -eq 0 ]]; then
-    echo 'error: no source file(s) given!'
-    return 1
+    echo 'error: no source file(s) given!'; return 1
   else
     gcc $@ -std=gnu99 -Wall -Os -o out-$(basename $1 .c)
   fi
@@ -59,9 +57,27 @@ fcc () {
 
 fcp () {
   if [[ $# -eq 0 ]]; then
-    echo 'error: no source file(s) given!'
-    return 1
+    echo 'error: no source file(s) given!'; return 1
   else
     clang++ $@ -Wall -Os -o out-$(basename $1 .cpp)
   fi
 }
+
+fcr() {
+  if [[ $# -eq 0 ]]; then
+    echo 'error: no source file(s) given!'; return 1
+  else
+    rustc $@ -o out-$(basename $1 .rs)
+  fi
+}
+
+
+case ":$PATH:" in
+  *:"$HOME/.local/bin":* ) ;;
+  * ) export PATH="$PATH:$HOME/.local/bin";;
+esac
+
+case ":$PATH:" in
+  *:"$HOME/.cargo/bin":* ) ;;
+  * ) export PATH="$PATH:$HOME/.cargo/bin";;
+esac
