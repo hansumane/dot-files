@@ -13,7 +13,7 @@ alias cpwd="clear;echo -n 'PWD in ';pwd"
 
 alias la='ls -A'
 alias ll='ls -alh --classify --group-directories-first'
-alias lx='ls -Alh --classify --group-directories-first'
+alias lx='ls -Alh --no-group --classify --group-directories-first'
 alias cla='cpwd;la'
 alias cll='cpwd;ll'
 alias clx='cpwd;lx'
@@ -72,8 +72,8 @@ frs () {
 
 
 c  # clear;echo '( .-.)'
+# bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
-bind 'set show-all-if-ambiguous on'
 bind 'set completion-ignore-case on'
 
 if [ -d ~/.local/bin ]; then
