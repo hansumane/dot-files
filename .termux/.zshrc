@@ -25,13 +25,15 @@ alias clx="c;echo -n '${FOLDER_ICON}PWD : ';pwd;lx"
 alias clt="c;echo -n '${FOLDER_ICON}PWD : ';pwd;lt"
 
 alias rr="rm -rf"
+alias fetch="c;$SYS_FETCH"
+
 alias gits="git status"
 alias gitr='cd $(git rev-parse --show-toplevel)'
 alias gitl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
-alias fetch="c;$SYS_FETCH"
-alias grep="grep --color=auto"
+
 alias edM="$EDITOR Makefile"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
+alias grep="grep --color=auto"
 
 lt ()
 {
