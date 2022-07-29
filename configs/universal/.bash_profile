@@ -1,5 +1,5 @@
 if [ -f ~/.bashrc ]; then
-  source ~/.bashrc
+  . ~/.bashrc
 else
   echo 'no ~/.bashrc (!)'
 fi
