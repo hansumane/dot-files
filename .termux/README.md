@@ -2,7 +2,7 @@
 
 ## color scheme
 
-/themes/terminal_themes/my16mple.json
+/themes/terminal\_themes/tender.json
 
 ## font
 
