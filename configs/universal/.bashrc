@@ -1,6 +1,7 @@
 export PS1='\u@\h:\w\$ '
 export TERM='xterm-256color'
 export EDITOR='nvim'
+TOPATH="$HOME/.local/bin $HOME/.cargo/bin"
 
 alias q='exit'
 alias t='c;tmux'
@@ -8,7 +9,6 @@ alias rr='rm -rf'
 alias c="clear;echo '( .-.)'"
 
 alias ls='LANG=en_US.UTF-8 ls'
-alias exa='LANG=en_US.UTF-8 exa'
 alias cpwd="clear;echo -n 'PWD in ';pwd"
 
 alias la='ls -A'
@@ -27,6 +27,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
+alias .......='cd ../../../../../..'
 
 gitup () {
   if [[ $# -eq 0 ]]; then
@@ -71,21 +72,15 @@ frs () {
 }
 
 
-c  # clear;echo '( .-.)'
-# bind 'set show-all-if-ambiguous on'
+c  # bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
 bind 'set completion-ignore-case on'
 
-if [ -d ~/.local/bin ]; then
-  case ":$PATH:" in
-    *:"$HOME/.local/bin":* ) ;;
-    * ) export PATH="$PATH:$HOME/.local/bin";;
-  esac
-fi
-
-if [ -d ~/.cargo/bin ]; then
-  case ":$PATH:" in
-    *:"$HOME/.cargo/bin":* ) ;;
-    * ) export PATH="$PATH:$HOME/.cargo/bin";;
-  esac
-fi
+for DIR in $TOPATH; do
+  if [ -d $DIR ]; then
+    case ":$PATH:" in
+      *:"$DIR":* ) ;;
+      * ) export PATH="$PATH:$DIR";;
+    esac
+  fi
+done
