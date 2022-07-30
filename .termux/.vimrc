@@ -104,6 +104,7 @@ nmap <C-l> <C-w>l
 autocmd VimEnter * SetNumber
 autocmd BufEnter,Bufnew * Spac2
 autocmd BufEnter,Bufnew *.py Spac4
+autocmd BufEnter,Bufnew *.rs Spac4
 autocmd BufEnter,Bufnew *.cpp Spac4
 autocmd BufEnter,Bufnew *.cxx Spac4
 autocmd BufEnter,Bufnew *.hpp Spac4
