@@ -15,7 +15,8 @@ sudo pacman -Sy --needed \
   kate gwenview elisa spectacle okteta \
   flatpak xdg-desktop-portal-kde openssh \
   pavucontrol-qt qpwgraph networkmanager-openvpn \
-  firefox firefox-i18n-ru firefox-ublock-origin;
+  firefox firefox-i18n-ru firefox-ublock-origin \
+  zathura zathura-pdf-mupdf zathura-djvu;
 
 flatpak update;
 sudo mkinitcpio -P; sudo update-grub;

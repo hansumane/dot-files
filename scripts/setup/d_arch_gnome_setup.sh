@@ -16,7 +16,8 @@ sudo pacman -Sy --needed \
   flatpak xdg-desktop-portal-gnome \
   pavucontrol helvum networkmanager-openvpn openssh \
   libayatana-appindicator libappindicator-gtk2 libappindicator-gtk3 \
-  firefox firefox-i18n-ru firefox-ublock-origin;
+  firefox firefox-i18n-ru firefox-ublock-origin \
+  zathura zathura-pdf-mupdf zathura-djvu;
 
 yay -S --needed gdm-tools;
 
