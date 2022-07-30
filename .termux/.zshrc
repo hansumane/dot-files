@@ -1,43 +1,44 @@
-export TERM="xterm-256color"
-export EDITOR="nvim"
+export TERM='xterm-256color'
+export EDITOR='nvim'
 export ZSH="$HOME/.oh-my-zsh"
-export PATH="$PATH:$HOME/.local/bin"
+# export EXA_COLORS='di=1;35:da=0;35'
 
-FOLDER_ICON="  "
-EXA_ICONS="--icons"
-SYS_FETCH="pfetch"
-ZSH_THEME="agnoster-custom"
+FOLDER_ICON='  '
+EXA_ICONS='--icons'
+SYS_FETCH='neofetch'
+ZSH_THEME='agnoster-custom'
+TOPATH="$HOME/.local/bin $HOME/.cargo/bin"
 plugins=(git svn zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
+alias q='exit'
+alias t='c;tmux'
+alias rr='rm -rf'
+alias c="clear;echo '( .-.)'"
+alias cpwd="clear;echo -n '${FOLDER_ICON}PWD in ';pwd"
 
-alias c="clear"
-alias q="exit"
-alias t="c;tmux"
+alias la='exa -a'
+alias ll="exa $EXA_ICONS -albh --git --classify --group-directories-first"
+alias lx="exa $EXA_ICONS -albh --git --classify --no-user --group-directories-first"
+alias cla='cpwd;la'
+alias cll='cpwd;ll'
+alias clx='cpwd;lx'
 
-alias la="exa -a"
-alias ll="exa $EXA_ICONS -albh --classify --group-directories-first"
-alias lx="exa $EXA_ICONS -albh --classify --no-user --group-directories-first"
-alias cla="c;echo -n '${FOLDER_ICON}PWD : ';pwd;la"
-alias cll="c;echo -n '${FOLDER_ICON}PWD : ';pwd;ll"
-alias clx="c;echo -n '${FOLDER_ICON}PWD : ';pwd;lx"
-alias clt="c;echo -n '${FOLDER_ICON}PWD : ';pwd;lt"
-
-alias rr="rm -rf"
-alias fetch="c;$SYS_FETCH"
-
-alias gits="git status"
+alias gits='git status'
 alias gitr='cd $(git rev-parse --show-toplevel)'
 alias gitl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 
+alias fetch="c;$SYS_FETCH"
 alias edM="$EDITOR Makefile"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
-alias grep="grep --color=auto"
 
-lt ()
-{
-  if (( $# == 0 )); then
+alias updg='pkg upgrade -y && apt update && apt full-upgrade -y'
+alias upcl='pkg autoclean -y && apt autoremove -y && apt autoclean -y'
+alias updc='updg && upcl'
+
+lt () {
+  if [[ $# == 0 ]]; then
     exa $EXA_ICONS --group-directories-first -aT --level=2
   else
     if [[ $1 == a ]]; then
@@ -48,44 +49,45 @@ lt ()
   fi
 }
 
-gitup ()
-{
-  if (( $# == 0)); then
-    if read -q "choice?No commit name given, git pull? "; then
-      echo ""; git pull --rebase; git status
+gitup () {
+  if [[ $# == 0 ]]; then
+    if read -q 'choice?No commit name given, git pull? '; then
+      echo ''; git pull --rebase; git status
     else
-      echo "\nExiting..."
+      echo ' Exiting...'
     fi
   else
     git add -A; git commit -m$1
-    if read -q "choice?Commit name given, git push? "; then
-      echo ""; git push; git status
+    if read -q 'choice?Commit name given, git push? '; then
+      echo ''; git push; git status
     else
-      echo "\nExiting..."
+      echo ' Exiting...'
     fi
   fi
 }
 
-fcc ()
-{
-  if (( $# == 0)); then
-    echo "error: no source file(s) given!"
-    return 1
+fcc () {
+  if [[ $# == 0 ]]; then
+    echo 'error: no source file(s) given!'; return 1
   else
-    clang $@ -Wall -Os -o out-$(basename $1 .c)
+    gcc $@ -std=gnu99 -Wall -Os -o out-$(basename $1 .c)
   fi
 }
 
-fcp ()
-{
-  if (( $# == 0)); then
-    echo "error: no source file(s) given!"
-    return 1
+fcp () {
+  if [[ $# == 0 ]]; then
+    echo 'error: no source file(s) given!'; return 1
   else
     clang++ $@ -Wall -Os -o out-$(basename $1 .cpp)
   fi
 }
 
-alias updg="pkg upgrade -y && apt update && apt full-upgrade -y"
-alias upcl="pkg autoclean -y && apt autoremove -y && apt autoclean -y"
-alias updc="updg && upcl"
+setopt shwordsplit
+for DIR in $TOPATH; do
+  if [ -d $DIR ]; then
+    case ":$PATH:" in
+      *:"$DIR":* ) ;;
+      * ) export PATH="$PATH:$DIR";;
+    esac
+  fi
+done
