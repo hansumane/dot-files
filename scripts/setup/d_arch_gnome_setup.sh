@@ -17,7 +17,6 @@ sudo pacman -Sy --needed \
   pavucontrol helvum networkmanager-openvpn openssh \
   libayatana-appindicator libappindicator-gtk2 libappindicator-gtk3 \
   firefox firefox-i18n-ru firefox-ublock-origin;
-  # chromium
 
 yay -S --needed gdm-tools;
 

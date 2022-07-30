@@ -17,6 +17,7 @@ alias lx='ls -Alh --no-group --classify --group-directories-first'
 alias cla='cpwd;la'
 alias cll='cpwd;ll'
 alias clx='cpwd;lx'
+alias clt='cpwd;lt'
 
 alias gits='git status'
 alias gitr='cd $(git rev-parse --show-toplevel)'
@@ -28,6 +29,22 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
+
+lt () {
+  if [[ $# -eq 0 ]]; then
+    tree --dirsfirst -A .
+  elif [[ $# -eq 1 ]]; then
+    case $1 in
+      [0-9] ) tree --dirsfirst -AL $1;;
+      * ) tree --dirsfirst -A $1;;
+    esac
+  else
+    case $1 in
+      [0-9] ) tree --dirsfirst -AL $1 $2;;
+      * ) tree --dirsfirst -AL $2 $1;;
+    esac
+  fi
+}
 
 gitup () {
   if [[ $# -eq 0 ]]; then

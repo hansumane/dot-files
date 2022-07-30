@@ -21,11 +21,9 @@ cp -f ${CURRENT_DIR}/themes/zsh_themes/* .;
 
 mkdir -p ~/.local/bin ~/.config/nvim;
 cp -f ${CURRENT_DIR}/configs/universal/.gitconfig ~;
-cp -f ${CURRENT_DIR}/configs/universal/.bash_profile ~;
-cp -f ${CURRENT_DIR}/configs/universal/.bashrc ~;
+cp -f ${CURRENT_DIR}/configs/universal/.bash* ~;
 cp -f ${CURRENT_DIR}/configs/universal/.zshrc ~;
 cp -rf ${CURRENT_DIR}/configs/universal/.vimrc ~/.config/nvim/init.vim;
-##cp -f ${CURRENT_DIR}/configs/universal/.vimrc ~;
 ##cp -f ${CURRENT_DIR}/configs/universal/.p10k.zsh ~;
 
 mkdir -p ~/Desktop ~/Download ~/Others; cd ~/Others;
@@ -62,4 +60,3 @@ else
 fi;
 
 nvim ~/.gitconfig || vim ~/.gitconfig || nano ~/.gitconfig;
-sudo chsh -s /bin/zsh $(whoami) || sudo nvim /etc/passwd || sudo vim /etc/passwd || sudo nano /etc/passwd;
