@@ -6,10 +6,10 @@ export ZSH="$HOME/.oh-my-zsh"
 FOLDER_ICON='  '
 EXA_ICONS='--icons'
 SYS_FETCH='neofetch'
-ZSH_THEME='agnoster-custom'
+ZSH_THEME='awesomepanda'
 TOPATH="$HOME/.local/bin $HOME/.cargo/bin"
-plugins=(git svn zsh-syntax-highlighting)
 
+plugins=(git svn zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 alias q='exit'
@@ -19,11 +19,12 @@ alias c="clear;echo '( .-.)'"
 alias cpwd="clear;echo -n '${FOLDER_ICON}PWD in ';pwd"
 
 alias la='exa -a'
-alias ll="exa $EXA_ICONS -albh --git --classify --group-directories-first"
-alias lx="exa $EXA_ICONS -albh --git --classify --no-user --group-directories-first"
+alias ll="exa $EXA_ICONS -albh --group-directories-first"
+alias lx="exa $EXA_ICONS -albh --no-user --group-directories-first"
 alias cla='cpwd;la'
 alias cll='cpwd;ll'
 alias clx='cpwd;lx'
+alias clt='cpwd;lt'
 
 alias gits='git status'
 alias gitr='cd $(git rev-parse --show-toplevel)'
@@ -38,14 +39,19 @@ alias upcl='pkg autoclean -y && apt autoremove -y && apt autoclean -y'
 alias updc='updg && upcl'
 
 lt () {
-  if [[ $# == 0 ]]; then
-    exa $EXA_ICONS --group-directories-first -aT --level=2
+  if [[ $# -eq 0 ]]; then
+    exa $EXA_ICONS --group-directories-first -aT
+    tree --dirsfirst -A .
+  elif [[ $# -eq 1 ]]; then
+    case $1 in
+      [0-9] ) exa $EXA_ICONS --group-directories-first -aT --level $1;;
+      * ) exa $EXA_ICONS --group-directories-first -aT $1;;
+    esac
   else
-    if [[ $1 == a ]]; then
-      exa $EXA_ICONS --group-directories-first -aT
-    else
-      exa $EXA_ICONS --group-directories-first -aT --level=$1
-    fi
+    case $1 in
+      [0-9] ) exa $EXA_ICONS --group-directories-first -aT --level $1 $2;;
+      * ) exa $EXA_ICONS --group-directories-first -aT --level $2 $1;;
+    esac
   fi
 }
 

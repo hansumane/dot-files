@@ -10,8 +10,8 @@ SYS_FETCH='neofetch'
 ZSH_THEME='agnoster-custom'
 LOCAL_LANG='LANG=en_US.UTF-8'
 TOPATH="$HOME/.local/bin $HOME/.cargo/bin"
-plugins=(git svn zsh-syntax-highlighting)
 
+plugins=(git svn zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 alias q='exit'
@@ -28,6 +28,7 @@ alias lx="exa $EXA_ICONS -albh --git --classify --no-user --group-directories-fi
 alias cla='cpwd;la'
 alias cll='cpwd;ll'
 alias clx='cpwd;lx'
+alias clt='cpwd;lt'
 
 alias fetch="c;$SYS_FETCH"
 alias sbn="$SUDO_CMD reboot"
@@ -41,14 +42,19 @@ alias edM="$EDITOR Makefile"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
 
 lt () {
-  if [[ $# == 0 ]]; then
-    exa $EXA_ICONS --group-directories-first -aT --level=2
+  if [[ $# -eq 0 ]]; then
+    exa $EXA_ICONS --group-directories-first -aT
+    tree --dirsfirst -A .
+  elif [[ $# -eq 1 ]]; then
+    case $1 in
+      [0-9] ) exa $EXA_ICONS --group-directories-first -aT --level $1;;
+      * ) exa $EXA_ICONS --group-directories-first -aT $1;;
+    esac
   else
-    if [[ $1 == a ]]; then
-      exa $EXA_ICONS --group-directories-first -aT
-    else
-      exa $EXA_ICONS --group-directories-first -aT --level=$1
-    fi
+    case $1 in
+      [0-9] ) exa $EXA_ICONS --group-directories-first -aT --level $1 $2;;
+      * ) exa $EXA_ICONS --group-directories-first -aT --level $2 $1;;
+    esac
   fi
 }
 
