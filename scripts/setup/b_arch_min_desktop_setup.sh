@@ -11,9 +11,9 @@ else
 fi;
 
 sudo pacman -Sy --needed \
-  curl git zip unzip neovim zsh exa bat hexyl tmux calc \
+  curl git zip unzip neovim zsh exa bat hexyl tmux \
   subversion clang neofetch jdk-openjdk jre-openjdk \
-  man-db man-pages;
+  calc tree man-db man-pages;
 
 sudo pacman -S --needed \
   wireplumber pipewire pipewire-alsa pipewire-pulse pipewire-jack;
