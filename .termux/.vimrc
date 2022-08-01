@@ -23,21 +23,21 @@ function! TabsFunc8()
 	set shiftwidth=8
 	set tabstop=8
 	set softtabstop=8
-	set expandtab &
+	set noexpandtab
 endfunction
 
 function! TabsFunc4()
 	set shiftwidth=4
 	set tabstop=4
 	set softtabstop=4
-	set expandtab &
+	set noexpandtab
 endfunction
 
 function! TabsFunc2()
 	set shiftwidth=2
 	set tabstop=2
 	set softtabstop=2
-	set expandtab &
+	set noexpandtab
 endfunction
 
 function! SpaceFunc8()
@@ -61,9 +61,25 @@ function! SpaceFunc2()
 	set expandtab
 endfunction
 
+function! MixIndent4()
+	set shiftwidth=4
+	set tabstop=8
+	set softtabstop=4
+	set noexpandtab
+endfunction
+
+function! MixIndent2()
+	set shiftwidth=2
+	set tabstop=4
+	set softtabstop=2
+	set noexpandtab
+endfunction
+
 command Tab8 call TabsFunc8()
 command Tab4 call TabsFunc4()
 command Tab2 call TabsFunc2()
+command Mix4 call MixIndent4()
+command Mix2 call MixIndent2()
 command Spac8 call SpaceFunc8()
 command Spac4 call SpaceFunc4()
 command Spac2 call SpaceFunc2()
@@ -82,8 +98,6 @@ call plug#begin()
 	Plug 'jacoborus/tender.vim'
 call plug#end()
 
-let NERDTreeShowHidden=1
-
 colorscheme tender
 " set background=dark
 " let g:everforest_background='medium'
@@ -96,21 +110,16 @@ let g:lightline = {'colorscheme' : 'tender'}
 " let g:airline_theme = 'tender'
 " let g:airline_extensions = []
 
+let NERDTreeShowHidden=1
 nmap <C-f> :NERDTreeToggle<CR>
-nmap <C-j> :noh<CR>
+nmap <C-j> :nohlsearch<CR>
 nmap <C-h> <C-w>h
 nmap <C-l> <C-w>l
 
 autocmd VimEnter * SetNumber
-autocmd BufEnter,Bufnew * Spac2
+autocmd BufEnter,Bufnew * Mix4
 autocmd BufEnter,Bufnew *.py Spac4
 autocmd BufEnter,Bufnew *.rs Spac4
-autocmd BufEnter,Bufnew *.cpp Spac4
-autocmd BufEnter,Bufnew *.cxx Spac4
-autocmd BufEnter,Bufnew *.hpp Spac4
-autocmd BufEnter,Bufnew *.hxx Spac4
-autocmd BufEnter,Bufnew *.c Tab8
-autocmd BufEnter,Bufnew *.h Tab8
 autocmd BufEnter,Bufnew *.vim* Tab8
 autocmd BufEnter,Bufnew Makefile Tab8
 autocmd BufEnter,Bufnew .gitconfig Tab8
