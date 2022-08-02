@@ -35,6 +35,7 @@ alias sbn="$SUDO_CMD reboot"
 alias sdn="$SUDO_CMD poweroff"
 
 alias gits='git status'
+alias gitp='git reset --hard HEAD'
 alias gitr='cd $(git rev-parse --show-toplevel)'
 alias gitl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 
