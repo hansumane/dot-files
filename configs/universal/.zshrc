@@ -23,7 +23,7 @@ alias exa="$LOCAL_LANG exa"
 alias cpwd="clear;echo -n '${FOLDER_ICON}PWD in ';pwd"
 
 alias la='exa -a'
-alias ll="exa $EXA_ICONS -albh --git --classify --group-directories-first"
+alias ll="exa $EXA_ICONS -albh --git --classify --group --group-directories-first"
 alias lx="exa $EXA_ICONS -albh --git --classify --no-user --group-directories-first"
 alias cla='cpwd;la'
 alias cll='cpwd;ll'
