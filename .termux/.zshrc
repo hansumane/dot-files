@@ -57,18 +57,19 @@ lt () {
 
 gitup () {
   if [[ $# == 0 ]]; then
-    if read -q 'choice?No commit name given, git pull? '; then
-      echo ''; git pull --rebase; git status
-    else
-      echo ' Exiting...'
-    fi
+    read 'ANS?No commit name given, git pull? [Y/n] '
+    case $ANS in
+      [Nn] ) echo 'Exiting...';;
+      *    ) git pull --rebase; git status;;
+    esac
   else
-    git add -A; git commit -m$1
-    if read -q 'choice?Commit name given, git push? '; then
-      echo ''; git push; git status
-    else
-      echo ' Exiting...'
-    fi
+    git add -A
+    git commit -m "$1"
+    read 'ANS?Commit name given, git push? [Y/n] '
+    case $ANS in
+      [Nn] ) echo 'Exiting...';;
+      *    ) git push; git status;;
+    esac
   fi
 }
 
