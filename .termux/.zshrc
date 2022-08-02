@@ -19,7 +19,7 @@ alias c="clear;echo '( .-.)'"
 alias cpwd="clear;echo -n '${FOLDER_ICON}PWD in ';pwd"
 
 alias la='exa -a'
-alias ll="exa $EXA_ICONS -albh --group-directories-first"
+alias ll="exa $EXA_ICONS -albh --group --group-directories-first"
 alias lx="exa $EXA_ICONS -albh --no-user --group-directories-first"
 alias cla='cpwd;la'
 alias cll='cpwd;ll'
