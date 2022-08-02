@@ -42,7 +42,7 @@ alias edM="$EDITOR Makefile"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
 
 lt () {
-  if [[ $# -eq 0 ]]; then
+  if (( $# -eq 0 )); then
     exa $EXA_ICONS --group-directories-first -aT
     tree --dirsfirst -A .
   elif [[ $# -eq 1 ]]; then
@@ -59,7 +59,7 @@ lt () {
 }
 
 gitup () {
-  if [[ $# == 0 ]]; then
+  if (( $# == 0 )); then
     read 'ANS?No commit name given, git pull? [Y/n] '
     case $ANS in
       [Nn] ) echo 'Exiting...';;
@@ -77,7 +77,7 @@ gitup () {
 }
 
 fcc () {
-  if [[ $# == 0 ]]; then
+  if (( $# == 0 )); then
     echo 'error: no source file(s) given!'; return 1
   else
     gcc $@ -std=gnu99 -Wall -Os -o out-$(basename $1 .c)
@@ -85,7 +85,7 @@ fcc () {
 }
 
 fcp () {
-  if [[ $# == 0 ]]; then
+  if (( $# == 0 )); then
     echo 'error: no source file(s) given!'; return 1
   else
     clang++ $@ -Wall -Os -o out-$(basename $1 .cpp)
@@ -94,7 +94,7 @@ fcp () {
 
 setopt shwordsplit
 for DIR in $TOPATH; do
-  if [ -d $DIR ]; then
+  if [[ -d $DIR ]]; then
     case ":$PATH:" in
       *:"$DIR":* ) ;;
       * ) export PATH="$PATH:$DIR";;
