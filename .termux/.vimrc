@@ -120,6 +120,9 @@ autocmd VimEnter * SetNumber
 autocmd BufEnter,Bufnew * Mix4
 autocmd BufEnter,Bufnew *.py Spac4
 autocmd BufEnter,Bufnew *.rs Spac4
+autocmd BufEnter,Bufnew *.sh* Spac4
+autocmd BufEnter,Bufnew *.zsh* Spac4
+autocmd BufEnter,Bufnew *.bash* Spac4
 autocmd BufEnter,Bufnew *.vim* Tab8
 autocmd BufEnter,Bufnew Makefile Tab8
 autocmd BufEnter,Bufnew .gitconfig Tab8
