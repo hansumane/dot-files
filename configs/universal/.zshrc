@@ -43,10 +43,10 @@ alias edM="$EDITOR Makefile"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
 
 lt () {
-  if (( $# -eq 0 )); then
+  if (( $# == 0 )); then
     exa $EXA_ICONS --group-directories-first -aT
     tree --dirsfirst -A .
-  elif [[ $# -eq 1 ]]; then
+  elif (( $# == 1 )); then
     case $1 in
       [0-9] ) exa $EXA_ICONS --group-directories-first -aT --level $1;;
       * ) exa $EXA_ICONS --group-directories-first -aT $1;;
@@ -90,6 +90,14 @@ fcp () {
     echo 'error: no source file(s) given!'; return 1
   else
     clang++ $@ -Wall -Os -o out-$(basename $1 .cpp)
+  fi
+}
+
+frs () {
+  if (( $# == 0 )); then
+    echo 'error: no source file(s) given!'; return 1
+  else
+    rustc $@ -C debuginfo=0 -C opt-level=s -o out-$(basename $1 .rs)
   fi
 }
 
