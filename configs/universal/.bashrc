@@ -89,7 +89,6 @@ frs () {
   fi
 }
 
-
 c  # bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
 bind 'set completion-ignore-case on'

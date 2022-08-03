@@ -40,10 +40,10 @@ alias upcl='pkg autoclean -y && apt autoremove -y && apt autoclean -y'
 alias updc='updg && upcl'
 
 lt () {
-  if [[ $# -eq 0 ]]; then
+  if (( $# -eq 0 )); then
     exa $EXA_ICONS --group-directories-first -aT
     tree --dirsfirst -A .
-  elif [[ $# -eq 1 ]]; then
+  elif (( $# -eq 1 )); then
     case $1 in
       [0-9] ) exa $EXA_ICONS --group-directories-first -aT --level $1;;
       * ) exa $EXA_ICONS --group-directories-first -aT $1;;
@@ -57,7 +57,7 @@ lt () {
 }
 
 gitup () {
-  if [[ $# == 0 ]]; then
+  if (( $# == 0 )); then
     read 'ANS?No commit name given, git pull? [Y/n] '
     case $ANS in
       [Nn] ) echo 'Exiting...';;
@@ -75,24 +75,32 @@ gitup () {
 }
 
 fcc () {
-  if [[ $# == 0 ]]; then
+  if (( $# == 0 )); then
     echo 'error: no source file(s) given!'; return 1
   else
-    gcc $@ -std=gnu99 -Wall -Os -o out-$(basename $1 .c)
+    clang $@ -std=gnu99 -Wall -Os -o out-$(basename $1 .c)
   fi
 }
 
 fcp () {
-  if [[ $# == 0 ]]; then
+  if (( $# == 0 )); then
     echo 'error: no source file(s) given!'; return 1
   else
     clang++ $@ -Wall -Os -o out-$(basename $1 .cpp)
   fi
 }
 
+frs () {
+  if (( $# == 0 )); then
+    echo 'error: no source file(s) given!'; return 1
+  else
+    rustc $@ -C debuginfo=0 -C opt-level=s -o out-$(basename $1 .rs)
+  fi
+}
+
 setopt shwordsplit
 for DIR in $TOPATH; do
-  if [ -d $DIR ]; then
+  if [[ -d $DIR ]]; then
     case ":$PATH:" in
       *:"$DIR":* ) ;;
       * ) export PATH="$PATH:$DIR";;
