@@ -40,10 +40,10 @@ alias upcl='pkg autoclean -y && apt autoremove -y && apt autoclean -y'
 alias updc='updg && upcl'
 
 lt () {
-  if (( $# -eq 0 )); then
+  if (( $# == 0 )); then
     exa $EXA_ICONS --group-directories-first -aT
     tree --dirsfirst -A .
-  elif (( $# -eq 1 )); then
+  elif (( $# == 1 )); then
     case $1 in
       [0-9] ) exa $EXA_ICONS --group-directories-first -aT --level $1;;
       * ) exa $EXA_ICONS --group-directories-first -aT $1;;

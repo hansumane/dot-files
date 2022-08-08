@@ -121,8 +121,6 @@ autocmd BufEnter,Bufnew * Spac4
 autocmd BufEnter,Bufnew *.sh* Spac2
 autocmd BufEnter,Bufnew *.zsh* Spac2
 autocmd BufEnter,Bufnew *.bash* Spac2
-autocmd BufEnter,Bufnew *.c Tab8
-autocmd BufEnter,Bufnew *.h Tab8
 autocmd BufEnter,Bufnew *.vim* Tab8
 autocmd BufEnter,Bufnew Makefile Tab8
 autocmd BufEnter,Bufnew .gitconfig Tab8
