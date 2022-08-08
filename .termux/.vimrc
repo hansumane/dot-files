@@ -1,22 +1,24 @@
 syntax enable
 set scrolloff=3
+set textwidth=78
 set termguicolors
-set listchars=tab:-->,trail:␣,eol:¶
+set listchars=tab:-->,trail:␣
 " listchars: ⋅␣↴¶
-" set nocompatible
 " set guicursor=a:block
 
 function! SetNumbersFunction()
 	set list
-	set cursorline
 	set number
+	set cursorline
+	set colorcolumn=+1
 	set relativenumber
 endfunction
 
 function! UnsetNumbersFunction()
 	set list &
-	set cursorline &
 	set number &
+	set cursorline &
+	set colorcolumn &
 	set relativenumber &
 endfunction
 
@@ -34,18 +36,11 @@ function! TabsFunc4()
 	set noexpandtab
 endfunction
 
-function! TabsFunc2()
-	set shiftwidth=2
-	set tabstop=2
-	set softtabstop=2
-	set noexpandtab
-endfunction
-
-function! SpaceFunc8()
-	set shiftwidth=8
+function! MixIndent4()
+	set shiftwidth=4
 	set tabstop=8
-	set softtabstop=8
-	set expandtab
+	set softtabstop=4
+	set noexpandtab
 endfunction
 
 function! SpaceFunc4()
@@ -62,26 +57,9 @@ function! SpaceFunc2()
 	set expandtab
 endfunction
 
-function! MixIndent4()
-	set shiftwidth=4
-	set tabstop=8
-	set softtabstop=4
-	set noexpandtab
-endfunction
-
-function! MixIndent2()
-	set shiftwidth=2
-	set tabstop=4
-	set softtabstop=2
-	set noexpandtab
-endfunction
-
 command Tab8 call TabsFunc8()
 command Tab4 call TabsFunc4()
-command Tab2 call TabsFunc2()
 command Mix4 call MixIndent4()
-command Mix2 call MixIndent2()
-command Spac8 call SpaceFunc8()
 command Spac4 call SpaceFunc4()
 command Spac2 call SpaceFunc2()
 command SetNumber call SetNumbersFunction()
@@ -119,6 +97,8 @@ nmap <C-l> <C-w>l
 
 autocmd VimEnter * SetNumber
 autocmd BufEnter,Bufnew * Spac4
+autocmd BufEnter,Bufnew *.c Spac2
+autocmd BufEnter,Bufnew *.h Spac2
 autocmd BufEnter,Bufnew *.sh* Spac2
 autocmd BufEnter,Bufnew *.zsh* Spac2
 autocmd BufEnter,Bufnew *.bash* Spac2
