@@ -81,7 +81,7 @@ fcc () {
   if (( $# == 0 )); then
     echo 'error: no source file(s) given!'; return 1
   else
-    gcc $@ -std=gnu99 -Wall -Os -o out-$(basename $1 .c)
+    gcc $@ -std=gnu99 -Wall -O2 -o out-$(basename $1 .c)
   fi
 }
 
@@ -89,7 +89,7 @@ fcp () {
   if (( $# == 0 )); then
     echo 'error: no source file(s) given!'; return 1
   else
-    clang++ $@ -Wall -Os -o out-$(basename $1 .cpp)
+    clang++ $@ -Wall -O2 -o out-$(basename $1 .cpp)
   fi
 }
 
@@ -97,7 +97,7 @@ frs () {
   if (( $# == 0 )); then
     echo 'error: no source file(s) given!'; return 1
   else
-    rustc $@ -C debuginfo=0 -C opt-level=s -o out-$(basename $1 .rs)
+    rustc $@ -C debuginfo=0 -C opt-level=2 -o out-$(basename $1 .rs)
   fi
 }
 
