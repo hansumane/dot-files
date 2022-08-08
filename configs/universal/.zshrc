@@ -45,7 +45,6 @@ alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
 lt () {
   if (( $# == 0 )); then
     exa $EXA_ICONS --group-directories-first -aT
-    tree --dirsfirst -A .
   elif (( $# == 1 )); then
     case $1 in
       [0-9] ) exa $EXA_ICONS --group-directories-first -aT --level $1;;
