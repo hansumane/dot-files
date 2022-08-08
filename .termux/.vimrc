@@ -1,7 +1,8 @@
 syntax enable
 set scrolloff=3
 set termguicolors
-set listchars=space:⋅,tab:>\⋅,eol:↴
+set listchars=tab:-->,trail:␣,eol:¶
+" listchars: ⋅␣↴¶
 " set nocompatible
 " set guicursor=a:block
 
