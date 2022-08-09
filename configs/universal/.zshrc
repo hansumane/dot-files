@@ -7,11 +7,11 @@ SUDO_CMD='sudo'
 FOLDER_ICON='  '
 EXA_ICONS='--icons'
 SYS_FETCH='neofetch'
-ZSH_THEME='agnoster-custom'
+ZSH_THEME='undollar'
 LOCAL_LANG='LANG=en_US.UTF-8'
 TOPATH="$HOME/.local/bin $HOME/.cargo/bin"
 
-plugins=(git svn zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 alias q='exit'

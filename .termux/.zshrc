@@ -6,10 +6,10 @@ export ZSH="$HOME/.oh-my-zsh"
 FOLDER_ICON='  '
 EXA_ICONS='--icons'
 SYS_FETCH='neofetch'
-ZSH_THEME='awesomepanda'
+ZSH_THEME='undollar'
 TOPATH="$HOME/.local/bin $HOME/.cargo/bin"
 
-plugins=(git svn zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 alias q='exit'
