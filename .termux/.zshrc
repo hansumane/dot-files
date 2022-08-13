@@ -3,6 +3,7 @@ export EDITOR='nvim'
 export ZSH="$HOME/.oh-my-zsh"
 # export EXA_COLORS='di=1;35:da=0;35'
 
+LESS_CMD='bat'
 FOLDER_ICON='  '
 EXA_ICONS='--icons'
 SYS_FETCH='neofetch'
@@ -31,7 +32,7 @@ alias gitp='git reset --hard HEAD'
 alias gitr='cd $(git rev-parse --show-toplevel)'
 alias gitl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 
-alias fetch="c;$SYS_FETCH"
+alias fetch="clear;$SYS_FETCH"
 alias edM="$EDITOR Makefile"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
 
@@ -73,9 +74,19 @@ gitup () {
   fi
 }
 
+indchk () {
+  if (( $# == 0 )); then
+    echo 'Error: No source file given!'; return 1
+  else
+    indent -gnu -nut $1 -o "$1\~" &&
+    diff -u $1 "$1\~" | $LESS_CMD
+    rm -rf "$1\~"
+  fi
+}
+
 fcc () {
   if (( $# == 0 )); then
-    echo 'error: no source file(s) given!'; return 1
+    echo 'Error: No source file(s) given!'; return 1
   else
     clang $@ -std=gnu99 -Wall -O3 -o out-$(basename $1 .c)
   fi
@@ -83,7 +94,7 @@ fcc () {
 
 fcp () {
   if (( $# == 0 )); then
-    echo 'error: no source file(s) given!'; return 1
+    echo 'Error: No source file(s) given!'; return 1
   else
     clang++ $@ -Wall -O3 -o out-$(basename $1 .cpp)
   fi
@@ -91,7 +102,7 @@ fcp () {
 
 frs () {
   if (( $# == 0 )); then
-    echo 'error: no source file(s) given!'; return 1
+    echo 'Error: No source file(s) given!'; return 1
   else
     rustc $@ -C debuginfo=0 -C opt-level=3 -o out-$(basename $1 .rs)
   fi
@@ -100,9 +111,10 @@ frs () {
 setopt shwordsplit
 for DIR in $TOPATH; do
   if [[ -d $DIR ]]; then
-    case ":$PATH:" in
-      *:"$DIR":* ) ;;
-      * ) export PATH="$PATH:$DIR";;
+    case :$PATH: in
+      *:$DIR:* ) ;;
+      * ) export PATH=$PATH:$DIR;;
     esac
   fi
 done
+c

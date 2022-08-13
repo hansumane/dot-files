@@ -3,6 +3,7 @@ export EDITOR='nvim'
 export ZSH="$HOME/.oh-my-zsh"
 # export EXA_COLORS='di=1;35:da=0;35'
 
+LESS_CMD='bat'
 SUDO_CMD='sudo'
 FOLDER_ICON='  '
 EXA_ICONS='--icons'
@@ -30,7 +31,7 @@ alias cll='cpwd;ll'
 alias clx='cpwd;lx'
 alias clt='cpwd;lt'
 
-alias fetch="c;$SYS_FETCH"
+alias fetch="clear;$SYS_FETCH"
 alias sbn="$SUDO_CMD reboot"
 alias sdn="$SUDO_CMD poweroff"
 
@@ -67,7 +68,7 @@ gitup () {
     esac
   else
     git add -A
-    git commit -m "$1"
+    git commit -m $1
     read 'ANS?Commit name given, git push? [Y/n] '
     case $ANS in
       [Nn] ) echo 'Exiting...';;
@@ -76,9 +77,19 @@ gitup () {
   fi
 }
 
+indchk () {
+  if (( $# == 0 )); then
+    echo 'Error: No source file given!'; return 1
+  else
+    indent -gnu -nut $1 -o $1\~ &&
+    diff -u $1 $1\~ | $LESS_CMD
+    rm -rf $1\~
+  fi
+}
+
 fcc () {
   if (( $# == 0 )); then
-    echo 'error: no source file(s) given!'; return 1
+    echo 'Error: No source file(s) given!'; return 1
   else
     gcc $@ -std=gnu99 -Wall -O2 -o out-$(basename $1 .c)
   fi
@@ -86,7 +97,7 @@ fcc () {
 
 fcp () {
   if (( $# == 0 )); then
-    echo 'error: no source file(s) given!'; return 1
+    echo 'Error: No source file(s) given!'; return 1
   else
     clang++ $@ -Wall -O2 -o out-$(basename $1 .cpp)
   fi
@@ -94,7 +105,7 @@ fcp () {
 
 frs () {
   if (( $# == 0 )); then
-    echo 'error: no source file(s) given!'; return 1
+    echo 'Error: No source file(s) given!'; return 1
   else
     rustc $@ -C debuginfo=0 -C opt-level=2 -o out-$(basename $1 .rs)
   fi
@@ -103,9 +114,10 @@ frs () {
 setopt shwordsplit
 for DIR in $TOPATH; do
   if [[ -d $DIR ]]; then
-    case ":$PATH:" in
-      *:"$DIR":* ) ;;
-      * ) export PATH="$PATH:$DIR";;
+    case :$PATH: in
+      *:$DIR:* ) ;;
+      * ) export PATH=$PATH:$DIR;;
     esac
   fi
 done
+c

@@ -95,9 +95,9 @@ bind 'set completion-ignore-case on'
 
 for DIR in $TOPATH; do
   if [[ -d $DIR ]]; then
-    case ":$PATH:" in
-      *:"$DIR":* ) ;;
-      * ) export PATH="$PATH:$DIR";;
+    case :$PATH: in
+      *:$DIR:* ) ;;
+      * ) export PATH=$PATH:$DIR;;
     esac
   fi
 done
