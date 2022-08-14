@@ -64,7 +64,7 @@ gitup () {
     read 'ANS?No commit name given, git pull? [Y/n] '
     case $ANS in
       [Nn] ) echo 'Exiting...';;
-      *    ) git pull --rebase; git status;;
+      *    ) git pull; git status;;
     esac
   else
     git add -A

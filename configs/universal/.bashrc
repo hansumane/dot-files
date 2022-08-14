@@ -52,7 +52,7 @@ gitup () {
     read -p 'No commit name given, git pull? [Y/n] ' ANS
     case $ANS in
       [Nn] ) echo 'Exiting...';;
-      *    ) git pull --rebase; git status;;
+      *    ) git pull; git status;;
     esac
   else
     git add -A
@@ -67,7 +67,7 @@ gitup () {
 
 fcc () {
   if [[ $# -eq 0 ]]; then
-    echo 'error: no source file(s) given!'; return 1
+    echo 'Error: No source file(s) given!'; return 1
   else
     gcc $@ -std=gnu99 -Wall -Wextra -O2 -o out-$(basename $1 .c)
   fi
@@ -75,7 +75,7 @@ fcc () {
 
 fcp () {
   if [[ $# -eq 0 ]]; then
-    echo 'error: no source file(s) given!'; return 1
+    echo 'Error: No source file(s) given!'; return 1
   else
     clang++ $@ -Wall -Wextra -O2 -o out-$(basename $1 .cpp)
   fi
@@ -83,7 +83,7 @@ fcp () {
 
 frs () {
   if [[ $# -eq 0 ]]; then
-    echo 'error: no source file(s) given!'; return 1
+    echo 'Error: No source file(s) given!'; return 1
   else
     rustc $@ -C debuginfo=0 -C opt-level=2 -o out-$(basename $1 .rs)
   fi
