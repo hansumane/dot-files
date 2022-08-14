@@ -91,7 +91,7 @@ fcc () {
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
-    gcc $@ -std=gnu99 -Wall -O2 -o out-$(basename $1 .c)
+    gcc $@ -std=gnu99 -Wall -Wextra -O2 -o out-$(basename $1 .c)
   fi
 }
 
@@ -99,7 +99,7 @@ fcp () {
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
-    clang++ $@ -Wall -O2 -o out-$(basename $1 .cpp)
+    clang++ $@ -Wall -Wextra -O2 -o out-$(basename $1 .cpp)
   fi
 }
 
