@@ -1,10 +1,9 @@
 syntax enable
 set scrolloff=3
-set textwidth=78
+set textwidth=80
 set termguicolors
 set listchars=tab:-->,trail:␣
 " listchars: ⋅␣↴¶
-" set guicursor=a:block
 
 function! SetNumbersFunction()
 	set list
@@ -43,28 +42,20 @@ function! MixIndent4()
 	set noexpandtab
 endfunction
 
-function! MixGnu()
-	set shiftwidth=2
-	set tabstop=8
-	set softtabstop=2
-	set expandtab
-endfunction
-
 function! SpaceFunc4()
 	set shiftwidth=4
-	set tabstop=4
+	set tabstop=8
 	set softtabstop=4
 	set expandtab
 endfunction
 
 function! SpaceFunc2()
 	set shiftwidth=2
-	set tabstop=2
+	set tabstop=8
 	set softtabstop=2
 	set expandtab
 endfunction
 
-command Gnu call MixGnu()
 command Tab8 call TabsFunc8()
 command Tab4 call TabsFunc4()
 command Mix4 call MixIndent4()
@@ -106,8 +97,8 @@ nmap <C-l> <C-w>l
 
 autocmd VimEnter * SetNumber
 autocmd BufEnter,Bufnew * Spac4
-autocmd BufEnter,Bufnew *.c Gnu
-autocmd BufEnter,Bufnew *.h Gnu
+autocmd BufEnter,Bufnew *.c Spac2
+autocmd BufEnter,Bufnew *.h Spac2
 autocmd BufEnter,Bufnew *.sh* Spac2
 autocmd BufEnter,Bufnew *.zsh* Spac2
 autocmd BufEnter,Bufnew *.bash* Spac2

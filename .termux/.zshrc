@@ -42,16 +42,16 @@ alias updc='updg && upcl'
 
 lt () {
   if (( $# == 0 )); then
-    exa $EXA_ICONS --group-directories-first -aT
+    exa $EXA_ICONS --group-directories-first --tree
   elif (( $# == 1 )); then
     case $1 in
-      [0-9] ) exa $EXA_ICONS --group-directories-first -aT --level $1;;
-      * ) exa $EXA_ICONS --group-directories-first -aT $1;;
+      [0-9] ) exa $EXA_ICONS --group-directories-first --tree --level $1;;
+      * ) exa $EXA_ICONS --group-directories-first --tree $1;;
     esac
   else
     case $1 in
-      [0-9] ) exa $EXA_ICONS --group-directories-first -aT --level $1 $2;;
-      * ) exa $EXA_ICONS --group-directories-first -aT --level $2 $1;;
+      [0-9] ) exa $EXA_ICONS --group-directories-first --tree --level $1 $2;;
+      * ) exa $EXA_ICONS --group-directories-first --tree --level $2 $1;;
     esac
   fi
 }

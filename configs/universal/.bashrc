@@ -33,16 +33,16 @@ alias .......='cd ../../../../../..'
 
 lt () {
   if [[ $# -eq 0 ]]; then
-    tree --dirsfirst -A .
+    tree --dirsfirst .
   elif [[ $# -eq 1 ]]; then
     case $1 in
-      [0-9] ) tree --dirsfirst -AL $1;;
-      * ) tree --dirsfirst -A $1;;
+      [0-9] ) tree --dirsfirst -L $1;;
+      * ) tree --dirsfirst $1;;
     esac
   else
     case $1 in
-      [0-9] ) tree --dirsfirst -AL $1 $2;;
-      * ) tree --dirsfirst -AL $2 $1;;
+      [0-9] ) tree --dirsfirst -L $1 $2;;
+      * ) tree --dirsfirst -L $2 $1;;
     esac
   fi
 }
@@ -62,6 +62,16 @@ gitup () {
       [Nn] ) echo 'Exiting...';;
       *    ) git push; git status;;
     esac
+  fi
+}
+
+indchk () {
+  if [[ $# -eq 0 ]]; then
+    echo 'Error: No source file given!'; return 1
+  else
+    indent -gnu -nut $1 -o $1\~ &&
+    diff -u $1 $1\~ | less
+    rm -rf $1\~
   fi
 }
 
