@@ -1,6 +1,5 @@
 syntax enable
 set scrolloff=3
-set textwidth=80
 set termguicolors
 set listchars=tab:-->,trail:␣
 " listchars: ⋅␣↴¶
@@ -9,7 +8,7 @@ function! SetNumbersFunction()
 	set list
 	set number
 	set cursorline
-	set colorcolumn=+1
+	set colorcolumn=81
 	set relativenumber
 endfunction
 
