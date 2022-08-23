@@ -18,7 +18,7 @@ source $ZSH/oh-my-zsh.sh
 alias q='exit'
 alias t='c;tmux'
 alias rr='rm -rf'
-alias c="clear;echo '( .-.)'"
+alias c="clear;echo '( ,-,)'"
 
 alias exa="$LOCAL_LANG exa"
 alias cpwd="clear;echo -n '${FOLDER_ICON}PWD in ';pwd"
