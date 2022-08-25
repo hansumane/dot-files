@@ -82,7 +82,7 @@ indchk () {
   if (( $# == 0 )); then
     echo 'Error: No source file given!'; return 1
   else
-    indent -gnu -nut $1 -o $1\~ &&
+    indent -gnu -nut -npcs $1 -o $1\~ &&
     diff -u $1 $1\~ | $LESS_CMD
     rm -rf $1\~
   fi

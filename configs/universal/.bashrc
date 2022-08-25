@@ -69,7 +69,7 @@ indchk () {
   if [[ $# -eq 0 ]]; then
     echo 'Error: No source file given!'; return 1
   else
-    indent -gnu -nut $1 -o $1\~ &&
+    indent -gnu -nut -npcs $1 -o $1\~ &&
     diff -u $1 $1\~ | less
     rm -rf $1\~
   fi
@@ -99,7 +99,7 @@ frs () {
   fi
 }
 
-c  # bind 'set show-all-if-ambiguous on'
+clear  # bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
 bind 'set completion-ignore-case on'
 
