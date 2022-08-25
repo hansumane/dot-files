@@ -1,14 +1,17 @@
 syntax enable
+set mouse=nv
 set scrolloff=3
+set updatetime=300
+set listchars=tab:⋅\ >,trail:␣
+
+set nobackup
 set termguicolors
-set listchars=tab:-->,trail:␣
-" listchars: ⋅␣↴¶
+set nowritebackup
 
 function! SetNumbersFunction()
 	set list
 	set number
 	set cursorline
-	set colorcolumn=81
 	set relativenumber
 endfunction
 
@@ -16,7 +19,6 @@ function! UnsetNumbersFunction()
 	set list &
 	set number &
 	set cursorline &
-	set colorcolumn &
 	set relativenumber &
 endfunction
 
@@ -64,35 +66,44 @@ command SetNumber call SetNumbersFunction()
 command UnsetNumber call UnsetNumbersFunction()
 
 call plug#begin()
-	" Plug 'vim-airline/vim-airline'
-	" Plug 'sainnhe/everforest'
-	" Plug 'sainnhe/gruvbox-material'
-	" Plug 'drewtempelmeyer/palenight.vim'
-	" Plug 'sonph/onehalf', { 'rtp': 'vim' }
-	" Plug 'dangerousScript/gruber-darker-nvim'
 	Plug 'preservim/nerdtree'
-	Plug 'itchyny/lightline.vim'
-	Plug 'jacoborus/tender.vim'
+	Plug 'vim-airline/vim-airline'
+	Plug 'sainnhe/everforest'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
-colorscheme tender
-" set background=dark
-" let g:everforest_background='medium'
-" let g:everforest_better_performance=1
-" let g:gruvbox_material_background='soft'
-" let g:gruvbox_material_better_performance=1
+set background=dark
+colorscheme everforest
+let g:everforest_background='medium'
+let g:everforest_better_performance=1
 
-let g:lightline = {'colorscheme' : 'tender'}
-" let g:airline_powerline_fonts = 1
-" let g:airline_theme = 'tender'
-" let g:airline_extensions = []
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'everforest'
+let g:airline_extensions = []
 
 let NERDTreeShowHidden=1
-nmap <C-f> :NERDTreeToggle<CR>
-nmap <C-j> :nohlsearch<CR>
-imap <C-k> <C-v><C-i>
+let g:coc_snippet_next = '<tab>'
+let g:NERDTreeDirArrowExpandable="+"
+let g:NERDTreeDirArrowCollapsible="~"
+
 nmap <C-h> <C-w>h
 nmap <C-l> <C-w>l
+imap <C-k> <C-v><C-i>
+nmap <C-j> :nohlsearch<CR>
+nmap <C-f> :NERDTreeToggle<CR>
+inoremap <silent><expr> <C-n> coc#pum#visible() ? coc#pum#next(1) : "\<C-n>"
+inoremap <silent><expr> <C-p> coc#pum#visible() ? coc#pum#prev(1) : "\<C-p>"
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
+inoremap <silent><expr> <TAB>
+	\ coc#pum#visible() ? coc#_select_confirm() :
+	\ coc#expandableOrJumpable() ?
+	\ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+	\ CheckBackSpace() ? "\<TAB>" :
+	\ coc#refresh()
+function! CheckBackSpace() abort
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 autocmd VimEnter * SetNumber
 autocmd BufEnter,Bufnew * Spac4
@@ -105,5 +116,3 @@ autocmd BufEnter,Bufnew *.vim* Tab8
 autocmd BufEnter,Bufnew Makefile Tab8
 autocmd BufEnter,Bufnew .gitconfig Tab8
 autocmd BufEnter,Bufnew .gitignore Tab8
-
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
