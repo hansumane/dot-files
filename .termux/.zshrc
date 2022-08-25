@@ -85,6 +85,18 @@ indchk () {
   fi
 }
 
+edP () {
+  if (( $# == 0 )); then
+    echo 'Error: No file name given!'; return 1
+  else
+    if [[ ! -f $1 ]]; then
+      touch $1 && chmod +x $1 && echo "#!/bin/env python3" > $1 && $EDITOR $1
+    else
+      $EDITOR $1
+    fi
+  fi
+}
+
 fcc () {
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
