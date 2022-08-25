@@ -4,9 +4,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # export EXA_COLORS='di=1;35:da=0;35'
 
 LESS_CMD='bat'
-FOLDER_ICON='  '
-EXA_ICONS='--icons'
-SYS_FETCH='neofetch'
+FOLDER_ICON=''
+EXA_ICONS='--no-icons'
+SYS_FETCH='pfetch'
 ZSH_THEME='undollar'
 TOPATH="$HOME/.local/bin $HOME/.cargo/bin"
 
@@ -16,7 +16,7 @@ source $ZSH/oh-my-zsh.sh
 alias q='exit'
 alias t='c;tmux'
 alias rr='rm -rf'
-alias c="clear;echo '( .-.)'"
+alias c="clear;echo '( •|•)'"
 alias cpwd="clear;echo -n '${FOLDER_ICON}PWD in ';pwd"
 
 alias la='exa -a'
