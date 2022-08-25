@@ -18,7 +18,7 @@ source $ZSH/oh-my-zsh.sh
 alias q='exit'
 alias t='c;tmux'
 alias rr='rm -rf'
-alias c="clear;echo '( ,-,)'"
+alias c="clear;echo '( .-.)'"
 
 alias exa="$LOCAL_LANG exa"
 alias cpwd="clear;echo -n '${FOLDER_ICON}PWD in ';pwd"
@@ -35,6 +35,7 @@ alias fetch="clear;$SYS_FETCH"
 alias sbn="$SUDO_CMD reboot"
 alias sdn="$SUDO_CMD poweroff"
 
+alias gite='gitr && ..'
 alias gits='git status'
 alias gitp='git reset --hard HEAD'
 alias gitr='cd $(git rev-parse --show-toplevel)'
@@ -120,4 +121,4 @@ for DIR in $TOPATH; do
     esac
   fi
 done
-c
+clear
