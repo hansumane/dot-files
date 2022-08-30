@@ -80,7 +80,7 @@ edP () {
     echo 'Error: No file name given!'; return 1
   else
     if [[ ! -f $1 ]]; then
-      touch $1 && chmod +x $1 && echo "#!/bin/env python3" > $1 && $EDITOR $1
+      touch $1 && chmod +x $1 && echo "#!/bin/env python3\n\nif __name__ == '__main__':\n    pass" > $1 && $EDITOR $1
     else
       $EDITOR $1
     fi
