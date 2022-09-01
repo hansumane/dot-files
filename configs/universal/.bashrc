@@ -65,12 +65,20 @@ gitup () {
   fi
 }
 
+bless () {
+  if [[ $# -eq 0 ]]; then
+    echo 'Error: No source file given!'; return 1
+  else
+    cat -n $1 | less
+  fi
+}
+
 indchk () {
   if [[ $# -eq 0 ]]; then
     echo 'Error: No source file given!'; return 1
   else
     indent -gnu -nut -npcs $1 -o $1\~ &&
-    diff -u $1 $1\~ | less
+    diff -u $1 $1\~ | cat -n | less
     rm -rf $1\~
   fi
 }

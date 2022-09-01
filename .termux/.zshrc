@@ -3,7 +3,6 @@ export EDITOR='nvim'
 export ZSH="$HOME/.oh-my-zsh"
 # export EXA_COLORS='di=1;35:da=0;35'
 
-LESS_CMD='bat'
 FOLDER_ICON=''
 EXA_ICONS='--no-icons'
 SYS_FETCH='pfetch'
@@ -75,12 +74,20 @@ gitup () {
   fi
 }
 
+bless () {
+  if (( $# == 0 )); then
+    echo 'Error: No source file given!'; return 1
+  else
+    cat -n $1 | less
+  fi
+}
+
 indchk () {
   if (( $# == 0 )); then
     echo 'Error: No source file given!'; return 1
   else
     indent -gnu -nut -npcs $1 -o $1\~ &&
-    diff -u $1 $1\~ | $LESS_CMD
+    diff -u $1 $1\~ | bat
     rm -rf $1\~
   fi
 }
