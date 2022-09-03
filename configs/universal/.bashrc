@@ -19,10 +19,12 @@ alias cll='cpwd;ll'
 alias clx='cpwd;lx'
 alias clt='cpwd;lt'
 
+alias gite='gitr && ..'
 alias gits='git status'
-alias gitp='git reset --hard HEAD'
 alias gitr='cd $(git rev-parse --show-toplevel)'
 alias gitl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+alias gitp='git reset --hard HEAD'
+alias gitp^='git reset --hard HEAD^'
 
 alias ..='cd ..'
 alias ...='cd ../..'

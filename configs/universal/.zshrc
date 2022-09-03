@@ -36,9 +36,10 @@ alias sdn="$SUDO_CMD poweroff"
 
 alias gite='gitr && ..'
 alias gits='git status'
-alias gitp='git reset --hard HEAD'
 alias gitr='cd $(git rev-parse --show-toplevel)'
 alias gitl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+alias gitp='git reset --hard HEAD'
+alias gitp^='git reset --hard HEAD^'
 
 alias edM="$EDITOR Makefile"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
