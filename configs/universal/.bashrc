@@ -6,7 +6,7 @@ TOPATH="$HOME/.local/bin $HOME/.cargo/bin"
 alias q='exit'
 alias t='c;tmux'
 alias rr='rm -rf'
-alias c="clear;echo '( .-.)'"
+alias c="clear;echo '( ,-,)'"
 
 alias ls='LANG=en_US.UTF-8 ls'
 alias cpwd="clear;echo -n 'PWD in ';pwd"
@@ -121,9 +121,9 @@ frs () {
   fi
 }
 
-clear  # bind 'set show-all-if-ambiguous on'
-bind 'TAB:menu-complete'
-bind 'set completion-ignore-case on'
+# bind 'TAB:menu-complete'
+# bind 'set completion-ignore-case on'
+# bind 'set show-all-if-ambiguous on'
 
 for DIR in $TOPATH; do
   if [[ -d $DIR ]]; then
@@ -133,3 +133,4 @@ for DIR in $TOPATH; do
     esac
   fi
 done
+c
