@@ -1,1 +1,1 @@
-start "TITLE" /d "PATH_TO_DIRNAME" alacritty.exe -e "ssh -i PATH_TO_KEY USERNAME@ADDRESS"
+start "TITLE" /d "PATH_TO_ALACRITTY" alacritty.exe -e "ssh -i PATH_TO_KEY USERNAME@ADDRESS"
