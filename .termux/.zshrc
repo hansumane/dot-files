@@ -148,4 +148,3 @@ for DIR in $TOPATH; do
     esac
   fi
 done
-c
