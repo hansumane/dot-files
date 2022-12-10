@@ -102,18 +102,7 @@ edP () {
     echo 'Error: No file name given!'; return 1
   else
     if [[ ! -f $1 ]]; then
-      echo "#!/bin/env python3\n\nif __name__ == '__main__':\n    pass" > $1 && chmod +x $1
-    fi
-    $EDITOR $1
-  fi
-}
-
-edJ () {
-  if (( $# == 0 )); then
-    echo 'Error: No file name given!'; return 1
-  else
-    if [[ ! -f $1 ]]; then
-      echo "public class $(basename $1 .java)\n{\n    public static void main(String[] args)\n    {\n        System.out.println(\"hello world\");\n    }\n}" > $1
+      echo "#!python3\n\nif __name__ == '__main__':\n    pass" > $1 && chmod +x $1
     fi
     $EDITOR $1
   fi

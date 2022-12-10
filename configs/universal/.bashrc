@@ -6,9 +6,10 @@ TOPATH="$HOME/.local/bin $HOME/.cargo/bin"
 alias q='exit'
 alias t='c;tmux'
 alias rr='rm -rf'
+alias rrs="$SUDO_CMD rm -rf"
 alias c="clear;echo '( ,-,)'"
 
-alias ls='LANG=en_US.UTF-8 ls'
+alias ls='LANG=en_US.UTF-8 ls --color'
 alias cpwd="clear;echo -n 'PWD in ';pwd"
 
 alias la='ls -A'
@@ -90,18 +91,7 @@ edP () {
     echo 'Error: No file name given!'; return 1
   else
     if [[ ! -f $1 ]]; then
-      echo "#!/bin/env python3\n\nif __name__ == '__main__':\n    pass" > $1 && chmod +x $1
-    fi
-    $EDITOR $1
-  fi
-}
-
-edJ () {
-  if [[ $# -eq 0 ]]; then
-    echo 'Error: No file name given!'; return 1
-  else
-    if [[ ! -f $1 ]]; then
-      echo "public class $(basename $1 .java)\n{\n    public static void main(String[] args)\n    {\n        System.out.println(\"hello world\");\n    }\n}" > $1
+      echo "#!python3\n\nif __name__ == '__main__':\n    pass" > $1 && chmod +x $1
     fi
     $EDITOR $1
   fi
@@ -131,8 +121,8 @@ frs () {
   fi
 }
 
-# bind 'TAB:menu-complete'
-# bind 'set completion-ignore-case on'
+bind 'TAB:menu-complete'
+bind 'set completion-ignore-case on'
 # bind 'set show-all-if-ambiguous on'
 
 for DIR in $TOPATH; do
