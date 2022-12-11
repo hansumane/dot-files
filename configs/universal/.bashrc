@@ -6,11 +6,11 @@ TOPATH="$HOME/.local/bin $HOME/.cargo/bin"
 alias q='exit'
 alias t='c;tmux'
 alias rr='rm -rf'
-alias rrs="$SUDO_CMD rm -rf"
-alias c="clear;echo '( ,-,)'"
+alias rrs='sudo rm -rf'
+alias c="clear;echo '( .-.)'"
 
 alias ls='LANG=en_US.UTF-8 ls --color'
-alias cpwd="clear;echo -n 'PWD in ';pwd"
+alias cpwd="c;echo -n 'PWD in ';pwd"
 
 alias la='ls -A'
 alias ll='ls -alh --classify --group-directories-first'
