@@ -12,6 +12,7 @@ function! SetNumbersFunction()
 	set list
 	set number
 	set cursorline
+	set colorcolumn=101
 	set relativenumber
 endfunction
 
@@ -19,6 +20,7 @@ function! UnsetNumbersFunction()
 	set list &
 	set number &
 	set cursorline &
+	set colorcolumn &
 	set relativenumber &
 endfunction
 
@@ -67,7 +69,7 @@ command UnsetNumber call UnsetNumbersFunction()
 
 call plug#begin()
 	Plug 'preservim/nerdtree'
-	Plug 'vim-airline/vim-airline'
+	Plug 'itchyny/lightline.vim'
 	Plug 'sainnhe/everforest'
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
@@ -76,10 +78,7 @@ set background=dark
 colorscheme everforest
 let g:everforest_background='medium'
 let g:everforest_better_performance=1
-
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'everforest'
-let g:airline_extensions = []
+let g:lightline = {'colorscheme' : 'everforest'}
 
 let NERDTreeShowHidden=1
 let g:coc_snippet_next = '<tab>'
@@ -109,6 +108,10 @@ autocmd VimEnter * SetNumber
 autocmd BufEnter,Bufnew * Spac4
 autocmd BufEnter,Bufnew *.c Spac2
 autocmd BufEnter,Bufnew *.h Spac2
+autocmd BufEnter,Bufnew *.cpp Spac2
+autocmd BufEnter,Bufnew *.hpp Spac2
+autocmd BufEnter,Bufnew *.cxx Spac2
+autocmd BufEnter,Bufnew *.hxx Spac2
 autocmd BufEnter,Bufnew *.sh* Spac2
 autocmd BufEnter,Bufnew *.zsh* Spac2
 autocmd BufEnter,Bufnew *.bash* Spac2

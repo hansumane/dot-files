@@ -1,9 +1,8 @@
 export TERM='xterm-256color'
 export EDITOR='nvim'
 export ZSH="$HOME/.oh-my-zsh"
-# export EXA_COLORS='di=1;35:da=0;35'
 
-FOLDER_ICON=''
+FOLDER_ICON=' '
 EXA_ICONS='--no-icons'
 SYS_FETCH='pfetch'
 ZSH_THEME='undollar'
@@ -15,16 +14,22 @@ source $ZSH/oh-my-zsh.sh
 alias q='exit'
 alias t='c;tmux'
 alias rr='rm -rf'
-alias c="clear;echo '( •|•)'"
+alias c="clear;echo '( ,-,)'"
+
 alias cpwd="clear;echo -n '${FOLDER_ICON}PWD in ';pwd"
 
 alias la='exa -a'
-alias ll="exa $EXA_ICONS -albh --group --group-directories-first"
-alias lx="exa $EXA_ICONS -albh --no-user --group-directories-first"
+alias ll="exa $EXA_ICONS -albh --git --classify --group --group-directories-first"
+alias lx="exa $EXA_ICONS -albh --git --classify --no-user --group-directories-first"
 alias cla='cpwd;la'
 alias cll='cpwd;ll'
 alias clx='cpwd;lx'
 alias clt='cpwd;lt'
+
+alias fetch="clear;$SYS_FETCH"
+alias updg='pkg upgrade -y && apt update && apt full-upgrade -y'
+alias upcl='pkg autoclean -y && apt autoremove -y && apt autoclean -y'
+alias updc='updg && upcl'
 
 alias gite='gitr && ..'
 alias gits='git status'
@@ -33,13 +38,8 @@ alias gitl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
 alias gitp='git reset --hard HEAD'
 alias gitp^='git reset --hard HEAD^'
 
-alias fetch="clear;$SYS_FETCH"
 alias edM="$EDITOR Makefile"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
-
-alias updg='pkg upgrade -y && apt update && apt full-upgrade -y'
-alias upcl='pkg autoclean -y && apt autoremove -y && apt autoclean -y'
-alias updc='updg && upcl'
 
 lt () {
   if (( $# == 0 )); then
@@ -98,18 +98,7 @@ edP () {
     echo 'Error: No file name given!'; return 1
   else
     if [[ ! -f $1 ]]; then
-      echo "#!/bin/env python3\n\nif __name__ == '__main__':\n    pass" > $1 && chmod +x $1
-    fi
-    $EDITOR $1
-  fi
-}
-
-edJ () {
-  if (( $# == 0 )); then
-    echo 'Error: No file name given!'; return 1
-  else
-    if [[ ! -f $1 ]]; then
-      echo "public class $(basename $1 .java)\n{\n    public static void main(String[] args)\n    {\n        System.out.println(\"hello world\");\n    }\n}" > $1
+      echo "#!python3\n\nif __name__ == '__main__':\n    pass" > $1 && chmod +x $1
     fi
     $EDITOR $1
   fi
@@ -119,7 +108,7 @@ fcc () {
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
-    clang $@ -std=gnu99 -Wall -Wextra -O3 -o out-$(basename $1 .c)
+    gcc $@ -std=gnu99 -Wall -Wextra -O2 -o out-$(basename $1 .c)
   fi
 }
 
@@ -127,7 +116,7 @@ fcp () {
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
-    clang++ $@ -Wall -Wextra -O3 -o out-$(basename $1 .cpp)
+    clang++ $@ -Wall -Wextra -O2 -o out-$(basename $1 .cpp)
   fi
 }
 
@@ -135,7 +124,7 @@ frs () {
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
-    rustc $@ -C debuginfo=0 -C opt-level=3 -o out-$(basename $1 .rs)
+    rustc $@ -C debuginfo=0 -C opt-level=2 -o out-$(basename $1 .rs)
   fi
 }
 

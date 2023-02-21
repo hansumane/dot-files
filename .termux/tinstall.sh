@@ -12,7 +12,7 @@ rm -f ~/../usr/etc/motd.sh;
 pkg install -y \
   curl git tar zip unzip gzip bzip2 xz-utils \
   neovim zsh exa bat hexyl calc tmux gnupg \
-  binutils clang python subversion \
+  binutils clang python subversion nodejs yarn \
   openssh root-repo tsu man manpages -y;
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
