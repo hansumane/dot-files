@@ -108,6 +108,14 @@ edP () {
   fi
 }
 
+fas () {
+  if (( $# == 0 )); then
+    echo 'Error: No source file(s) given!'; return 1
+  else
+    gcc $@ -Wall -Wextra -no-pie -o out-$(basename $1 .s)
+  fi
+}
+
 fcc () {
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
