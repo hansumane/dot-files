@@ -31,7 +31,7 @@ alias clt='cpwd;lt'
 alias gite='gitr && ..'
 alias gits='git status'
 alias gitr='cd $(git rev-parse --show-toplevel)'
-alias gitl='git log --pretty=format:"%h %ad | %s%d [%an]" --graph --date=short'
+alias gitl='git log --date=format-local:"%d/%m/%Y %H:%M:%S" --pretty=format:"%h %ad | %an >>> %s%d" --graph'
 alias gitp='git reset --hard HEAD'
 alias gitp^='git reset --hard HEAD^'
 
