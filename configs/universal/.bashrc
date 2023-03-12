@@ -109,7 +109,7 @@ fas () {
   if [[ $# -eq 0 ]]; then
     echo 'Error: No source file(s) given!'; return 1
   else
-    gcc $@ -Wall -Wextra -no-pie -o out-$(basename $1 .s)
+    gcc $@ -Wall -Wextra -o out-$(basename $1 .s)
   fi
 }
 
