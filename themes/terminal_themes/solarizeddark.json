@@ -1,0 +1,37 @@
+// solarized dark terminal colorscheme
+{
+    "foreground": "#839496",
+    "background": "#002B36",
+    "black": {
+        "color0": "#073642",
+        "color8": "#002B36"
+    },
+    "red": {
+        "color1": "#DC322F",
+        "color9": "#CB4B16"
+    },
+    "green": {
+        "color2": "#859900",
+        "color10": "#586E75"
+    },
+    "yellow": {
+        "color3": "#B58900",
+        "color11": "#657B83"
+    },
+    "blue": {
+        "color4": "#268BD2",
+        "color12": "#839496"
+    },
+    "magenta": {
+        "color5": "#D33682",
+        "color13": "#6C71C4"
+    },
+    "cyan": {
+        "color6": "#2AA198",
+        "color14": "#93A1A1"
+    },
+    "white": {
+        "color7": "#EEE8D5",
+        "color15": "#FDF6E3"
+    }
+}
