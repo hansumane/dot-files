@@ -38,6 +38,7 @@ alias cla='cpwd;la'
 alias cll='cpwd;ll'
 alias clx='cpwd;lx'
 alias clt='cpwd;lt'
+alias cxl='clx'
 
 alias fetch="clear;$SYS_FETCH"
 alias sbn="$SUDO_CMD reboot"
@@ -100,7 +101,7 @@ indchk () {
     echo 'Error: No source file given!'; return 1
   else
     indent -gnu -nut $1 -o $1\~ &&  # -npcs
-    diff -u $1 $1\~ | bat
+    diff -u $1 $1\~ | bat --tabs 8
     rm -rf $1\~
   fi
 }
@@ -120,7 +121,7 @@ fas () {
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
-    gcc $@ -Wall -Wextra -o out-$(basename $1 .s)
+    gcc $@ -std=gnu99 -Wall -Wextra -Og -o out-$(basename $1 .s)
   fi
 }
 
