@@ -78,7 +78,7 @@ case $OSTYPE in
     ;;
 esac
 
-zsh -c '. ~/.zshrc; omz update; exit'
+zsh -c '. ~/.zshrc; omz update'
 nvim +PlugUpgrade +qa
 nvim +PlugUpdate +qa
 nvim +CocUpdate
