@@ -125,7 +125,7 @@ fcp () {
   if [[ $# -eq 0 ]]; then
     echo 'Error: No source file(s) given!'; return 1
   else
-    g++ $@ -Wall -Wextra -O2 -o out-$(basename $1 .cpp)
+    g++ $@ -std=gnu++14 -Wall -Wextra -O2 -o out-$(basename $1 .cpp)
   fi
 }
 

@@ -14,7 +14,6 @@ export ZSH="$HOME/.oh-my-zsh"
 SUDO_CMD='sudo'
 FOLDER_ICON='  '
 EXA_ICONS='--icons'
-SYS_FETCH='neofetch'
 ZSH_THEME='undollar'
 LOCAL_LANG='LANG=en_US.UTF-8'
 TOPATH="$HOME/.local/bin $HOME/.cargo/bin"
@@ -40,7 +39,6 @@ alias clx='cpwd;lx'
 alias clt='cpwd;lt'
 alias cxl='clx'
 
-alias fetch="clear;$SYS_FETCH"
 alias sbn="$SUDO_CMD reboot"
 alias sdn="$SUDO_CMD poweroff"
 
@@ -137,7 +135,7 @@ fcp () {
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
-    clang++ $@ -Wall -Wextra -O2 -o out-$(basename $1 .cpp)
+    g++ $@ -std=gnu++14 -Wall -Wextra -O2 -o out-$(basename $1 .cpp)
   fi
 }
 

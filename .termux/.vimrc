@@ -70,16 +70,14 @@ command UnsetNumber call UnsetNumbersFunction()
 call plug#begin()
 	Plug 'preservim/nerdtree'
 	Plug 'itchyny/lightline.vim'
-	Plug 'sainnhe/everforest'
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+	Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 call plug#end()
 
 set background=dark
-colorscheme everforest
-let g:everforest_background='medium'
-let g:everforest_better_performance=1
-let g:lightline = {'colorscheme' : 'everforest'}
+colorscheme catppuccin-macchiato
 
+let g:lightline = { 'colorscheme' : 'catppuccin' }
 let NERDTreeShowHidden=1
 let g:coc_snippet_next = '<tab>'
 let g:NERDTreeDirArrowExpandable="+"
@@ -108,13 +106,11 @@ autocmd VimEnter * SetNumber
 autocmd BufEnter,Bufnew * Spac4
 autocmd BufEnter,Bufnew *.c Spac2
 autocmd BufEnter,Bufnew *.h Spac2
-autocmd BufEnter,Bufnew *.cpp Spac2
-autocmd BufEnter,Bufnew *.hpp Spac2
-autocmd BufEnter,Bufnew *.cxx Spac2
-autocmd BufEnter,Bufnew *.hxx Spac2
 autocmd BufEnter,Bufnew *.sh* Spac2
 autocmd BufEnter,Bufnew *.zsh* Spac2
 autocmd BufEnter,Bufnew *.bash* Spac2
+autocmd BufEnter,Bufnew *.s Tab8
+autocmd BufEnter,Bufnew *.asm Tab8
 autocmd BufEnter,Bufnew *.vim* Tab8
 autocmd BufEnter,Bufnew Makefile Tab8
 autocmd BufEnter,Bufnew .gitconfig Tab8
