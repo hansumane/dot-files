@@ -32,6 +32,8 @@ case $OSTYPE in
       *Fedora*)
         echo "${NYELLOW}Running ${BBLUE}Fedora${NYELLOW} update...${NRST}"
         sudo dnf upgrade -y --refresh && sudo dnf autoremove -y
+        flatpak update -y && sleep 1 && flatpak update -y
+        flatpak uninstall --unused
         ;;
 
       *Arch*)
