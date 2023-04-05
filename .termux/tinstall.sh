@@ -30,6 +30,7 @@ cp -f ${CURRENT_DIR}/.termux/.zshrc ~;
 cp -f ${CURRENT_DIR}/.termux/font.ttf ~/.termux;
 cp -f ${CURRENT_DIR}/.termux/termux.properties ~/.termux;
 cp -f ${CURRENT_DIR}/.termux/colors.properties ~/.termux;
+cp -f ${CURRENT_DIR}/scripts/newup.sh ~
 cp -f ${CURRENT_DIR}/configs/universal/.gitconfig ~;
 cp -f ${CURRENT_DIR}/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
 
