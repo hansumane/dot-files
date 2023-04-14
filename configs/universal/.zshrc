@@ -109,7 +109,7 @@ edP () {
     echo 'Error: No file name given!'; return 1
   else
     if [[ ! -f $1 ]]; then
-      echo "#!python3\n\nif __name__ == '__main__':\n    pass" > $1 && chmod +x $1
+      echo "#!/bin/python3\n\nif __name__ == '__main__':\n    pass" > $1 && chmod +x $1
     fi
     $EDITOR $1
   fi
