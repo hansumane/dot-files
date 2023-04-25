@@ -22,8 +22,8 @@ case $OSTYPE in
 
     case $NAME in
 
-      *Debian*)
-        echo "${NYELLOW}Running ${BRED}Debian${NYELLOW} update...${NRST}"
+      *Debian* | *Ubuntu*)
+        echo "${NYELLOW}Running ${BRED}Debian-based${NYELLOW} update...${NRST}"
         sudo apt update && sudo apt full-upgrade -y &&
         sudo apt autoremove -y && sudo apt autoclean -y
         PIP_FLAGS="--break-system-packages $PIP_FLAGS"
@@ -32,19 +32,13 @@ case $OSTYPE in
       *Fedora*)
         echo "${NYELLOW}Running ${BBLUE}Fedora${NYELLOW} update...${NRST}"
         sudo dnf upgrade -y --refresh && sudo dnf autoremove -y
-        if command -v flatpak &> /dev/null; then
-          flatpak update -y && sleep 1 && flatpak update -y
-          flatpak uninstall --unused
-        fi
         ;;
 
       *Arch*)
         echo "${NYELLOW}Running ${BCYAN}Arch${NYELLOW} update...${NRST}"
         sudo timedatectl set-ntp true && sleep 5 && sudo hwclock --systohc
         yay -Syyu
-        flatpak update -y && sleep 1 && flatpak update -y
         sudo mkinitcpio -P && sudo update-grub
-        flatpak uninstall --unused
         yay -Scca --noconfirm
         yay -Sc --repo --noconfirm
         ;;
@@ -70,7 +64,18 @@ case $OSTYPE in
 
 esac
 
-echo "${NYELLOW}Running universal update...${NRST}"
+echo "${NYELLOW}Running universal updates...${NRST}"
+
+if command -v flatpak &> /dev/null; then
+  echo "${NYELLOW}Running ${BBLUE}FlatPak${NYELLOW} update..."
+  flatpak update -y && sleep 1 && flatpak update -y
+  flatpak uninstall --unused
+fi
+
+if command -v snap &> /dev/null; then
+  echo "${NYELLOW}Running ${BRED}Snap${NYELLOW} update..."
+  sudo snap refresh && sleep 1 && sudo snap refresh
+fi
 
 [[ ! -z $PIP_PACKAGES ]] && pip3 install $PIP_PACKAGES $PIP_FLAGS ||
 echo "${NYELLOW}Skipping user ${BYELLOW}Python${NYELLOW} updates..."
