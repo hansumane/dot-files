@@ -59,19 +59,6 @@ esac
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
 # rendering default background/foreground.
-prompt_segment() {
-  local bg fg
-  [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
-  [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
-  if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
-    echo -n " %{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%} "
-  else
-    echo -n "%{$bg%}%{$fg%} "
-  fi
-  CURRENT_BG=$1
-  [[ -n $3 ]] && echo -n $3
-}
-
 prompt_segment_nospace() {
   local bg fg
   [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
@@ -80,6 +67,19 @@ prompt_segment_nospace() {
     echo -n "%{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%}"
   else
     echo -n "%{$bg%}%{$fg%}"
+  fi
+  CURRENT_BG=$1
+  [[ -n $3 ]] && echo -n $3
+}
+
+prompt_segment() {
+  local bg fg
+  [[ -n $1 ]] && bg="%K{$1}" || bg="%k"
+  [[ -n $2 ]] && fg="%F{$2}" || fg="%f"
+  if [[ $CURRENT_BG != 'NONE' && $1 != $CURRENT_BG ]]; then
+    echo -n " %{$bg%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR%{$fg%} "
+  else
+    echo -n "%{$bg%}%{$fg%} "
   fi
   CURRENT_BG=$1
   [[ -n $3 ]] && echo -n $3
@@ -122,9 +122,20 @@ prompt_git() {
     dirty=$(parse_git_dirty)
     ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git rev-parse --short HEAD 2> /dev/null)"
     if [[ -n $dirty ]]; then
-      prompt_segment yellow $CURRENT_FG
+      prompt_segment yellow black
     else
       prompt_segment green $CURRENT_FG
+    fi
+
+    local ahead behind
+    ahead=$(git log --oneline @{upstream}.. 2>/dev/null)
+    behind=$(git log --oneline ..@{upstream} 2>/dev/null)
+    if [[ -n "$ahead" ]] && [[ -n "$behind" ]]; then
+      PL_BRANCH_CHAR=$'\u21c5'
+    elif [[ -n "$ahead" ]]; then
+      PL_BRANCH_CHAR=$'\u21b1'
+    elif [[ -n "$behind" ]]; then
+      PL_BRANCH_CHAR=$'\u21b0'
     fi
 
     if [[ -e "${repo_path}/BISECT_LOG" ]]; then
@@ -215,7 +226,7 @@ prompt_hg() {
 
 # Dir: current working directory
 prompt_dir() {
-  prompt_segment cyan $CURRENT_FG '%1~'
+  prompt_segment blue $CURRENT_FG '%2~'
 }
 
 # Virtualenv: current working virtualenv

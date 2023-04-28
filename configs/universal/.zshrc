@@ -14,7 +14,7 @@ export ZSH_COMPDUMP="$ZSH/cache/.zcompdump-$HOST"
 SUDO_CMD='sudo'
 FOLDER_ICON='  '
 EXA_ICONS='--icons'
-ZSH_THEME='undollar'
+ZSH_THEME='agnoster-custom'
 LOCAL_LANG='LANG=en_US.UTF-8'
 TOPATH="$HOME/.local/bin $HOME/.cargo/bin"
 
