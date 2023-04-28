@@ -67,23 +67,23 @@ esac
 echo "${NYELLOW}Running universal updates...${NRST}"
 
 if command -v flatpak &> /dev/null; then
-  echo "${NYELLOW}Running ${BBLUE}FlatPak${NYELLOW} update..."
+  echo "${NYELLOW}Running ${BBLUE}FlatPak${NYELLOW} update...${NRST}"
   flatpak update -y && sleep 1 && flatpak update -y
   flatpak uninstall --unused
 fi
 
 if command -v snap &> /dev/null; then
-  echo "${NYELLOW}Running ${BRED}Snap${NYELLOW} update..."
+  echo "${NYELLOW}Running ${BRED}Snap${NYELLOW} update...${NRST}"
   sudo snap refresh && sleep 1 && sudo snap refresh
 fi
 
 [[ ! -z $PIP_PACKAGES ]] && pip3 install $PIP_PACKAGES $PIP_FLAGS ||
-echo "${NYELLOW}Skipping user ${BYELLOW}Python${NYELLOW} updates..."
+echo "${NYELLOW}Skipping user ${BYELLOW}Python${NYELLOW} updates...${NRST}"
 
 case $OSTYPE in
   *linux-gnu*)
     [[ ! -z $SU_PIP_PACKAGES ]] && sudo pip3 install $SU_PIP_PACKAGES $PIP_FLAGS ||
-    echo "${NYELLOW}Skipping root ${BYELLOW}Python${NYELLOW} updates.."
+    echo "${NYELLOW}Skipping root ${BYELLOW}Python${NYELLOW} updates..${NRST}"
     ;;
 esac
 
