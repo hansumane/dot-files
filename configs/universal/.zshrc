@@ -1,4 +1,4 @@
-export TERM='xterm-256color'
+# export TERM='xterm-256color'
 export EDITOR='nvim'
 export GROFF_NO_SGR=1
 export LESS_TERMCAP_mb=$'\e[1;31m'
@@ -25,10 +25,10 @@ alias q='exit'
 alias t='c;tmux'
 alias rr='rm -rf'
 alias rrs="$SUDO_CMD rm -rf"
-alias c="clear;echo '( ,-,)'"
+alias c='clear'
 
 alias exa="$LOCAL_LANG exa"
-alias cpwd="clear;echo -n '${FOLDER_ICON}PWD in ';pwd"
+alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"
 
 alias la='exa -a'
 alias ll="exa $EXA_ICONS -albh --git --classify --group --group-directories-first"
@@ -36,18 +36,15 @@ alias lx="exa $EXA_ICONS -albh --git --classify --no-user --group-directories-fi
 alias cla='cpwd;la'
 alias cll='cpwd;ll'
 alias clx='cpwd;lx'
+alias cxl='cpwd;lx'
 alias clt='cpwd;lt'
-alias cxl='clx'
-
-alias sbn="$SUDO_CMD reboot"
-alias sdn="$SUDO_CMD poweroff"
 
 alias gite='gitr && ..'
 alias gits='git status'
 alias gitr='cd $(git rev-parse --show-toplevel)'
 alias gitl='git log --date=format-local:"%d/%m/%Y %H:%M:%S" --pretty=format:"%h %ad | %an >>> %s%d" --graph'
 alias gitp='git reset --hard HEAD'
-alias gitp^='git reset --hard HEAD^'
+alias 'gitp^'='git reset --hard HEAD^'
 
 alias edM="$EDITOR Makefile"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
@@ -104,6 +101,16 @@ indchk () {
   fi
 }
 
+ptchk() {
+  if (( $# == 0 )); then
+    echo 'Error: No source file given!'; return 1
+  else
+    checkpatch.pl --no-tree --strict --max-line-length=90 --file --ignore \
+                  SPDX_LICENSE_TAG,CONCATENATED_STRING,PREFER_KERNEL_TYPES,SPLIT_STRING \
+                  $1
+  fi
+}
+
 edP () {
   if (( $# == 0 )); then
     echo 'Error: No file name given!'; return 1
@@ -127,7 +134,7 @@ fcc () {
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
-    gcc $@ -std=gnu99 -Wall -Wextra -O2 -o out-$(basename $1 .c)
+    gcc $@ -std=gnu11 -Wall -Wextra -O2 -o out-$(basename $1 .c)
   fi
 }
 

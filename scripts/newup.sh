@@ -10,9 +10,11 @@ BCYAN=$'\e[1;94m'
 BGREEN=$'\e[1;32m'
 NRST=$'\e[0;0m'
 
-PIP_PACKAGES="pynvim pylint jedi"
+PIP_PACKAGES=""
 SU_PIP_PACKAGES=""
 PIP_FLAGS="-U"
+
+echo "${NYELLOW}You may need to enter your ${BRED}sudo password.${NRST}"
 
 case $OSTYPE in
 
@@ -23,24 +25,34 @@ case $OSTYPE in
     case $NAME in
 
       *Debian* | *Ubuntu*)
-        echo "${NYELLOW}Running ${BRED}Debian-based${NYELLOW} update...${NRST}"
+        echo "${NYELLOW}Running ${BRED}Debian-based${NYELLOW} updates.${NRST}"
         sudo apt update && sudo apt full-upgrade -y &&
         sudo apt autoremove -y && sudo apt autoclean -y
         PIP_FLAGS="--break-system-packages $PIP_FLAGS"
         ;;
 
       *Fedora*)
-        echo "${NYELLOW}Running ${BBLUE}Fedora${NYELLOW} update...${NRST}"
+        echo "${NYELLOW}Running ${BBLUE}Fedora${NYELLOW} updates.${NRST}"
         sudo dnf upgrade -y --refresh && sudo dnf autoremove -y
         ;;
 
       *Arch*)
-        echo "${NYELLOW}Running ${BCYAN}Arch${NYELLOW} update...${NRST}"
+        echo "${NYELLOW}Running ${BCYAN}Arch${NYELLOW} updates.${NRST}"
         sudo timedatectl set-ntp true && sleep 5 && sudo hwclock --systohc
         yay -Syyu
         sudo mkinitcpio -P && sudo update-grub
         yay -Scca --noconfirm
         yay -Sc --repo --noconfirm
+        ;;
+
+      *openSUSE*)
+        echo "${NYELLOW}Running ${BGREEN}OpenSUSE${NYELLOW} updates.${NRST}"
+        sudo zypper ref && sudo zypper dup -y
+        ;;
+
+      *)
+        echo "${NYELLOW}Your ${OSTYPE}: ${BRED}${NAME}${NYELLOW} is not supported.${NRST}"
+        exit 1;
         ;;
 
     esac
@@ -49,7 +61,7 @@ case $OSTYPE in
 
   *linux-android*)
 
-    echo "${NYELLOW}Running ${BGREEN}Android (Termux)${NYELLOW} update...${NRST}"
+    echo "${NYELLOW}Running ${BGREEN}Android (Termux)${NYELLOW} updates.${NRST}"
     pkg upgrade -y && apt update && apt full-upgrade -y
     pkg autoclean -y && apt autoremove -y && apt autoclean -y
 
@@ -57,35 +69,42 @@ case $OSTYPE in
 
   *)
 
-    echo "${NYELLOW}Your system(${BRED}${OSTYPE}${NYELLOW}) is not supported.${NRST}"
+    echo "${NYELLOW}Your system: ${BRED}${OSTYPE}${NYELLOW} is not supported.${NRST}"
     exit 1;
 
     ;;
 
 esac
 
-echo "${NYELLOW}Running universal updates...${NRST}"
+echo "${NYELLOW}Running universal updates.${NRST}"
 
 if command -v flatpak &> /dev/null; then
-  echo "${NYELLOW}Running ${BBLUE}FlatPak${NYELLOW} update...${NRST}"
+  echo "${NYELLOW}Running ${BBLUE}FlatPak${NYELLOW} updates.${NRST}"
   flatpak update -y && sleep 1 && flatpak update -y
   flatpak uninstall --unused
 fi
 
 if command -v snap &> /dev/null; then
-  echo "${NYELLOW}Running ${BRED}Snap${NYELLOW} update...${NRST}"
+  echo "${NYELLOW}Running ${BRED}Snap${NYELLOW} updates.${NRST}"
   sudo snap refresh && sleep 1 && sudo snap refresh
 fi
 
 [[ ! -z $PIP_PACKAGES ]] && pip3 install $PIP_PACKAGES $PIP_FLAGS ||
-echo "${NYELLOW}Skipping user ${BYELLOW}Python${NYELLOW} updates...${NRST}"
+echo "${NYELLOW}Skipping user ${BBLUE}Python${NYELLOW} updates.${NRST}"
 
 case $OSTYPE in
   *linux-gnu*)
     [[ ! -z $SU_PIP_PACKAGES ]] && sudo pip3 install $SU_PIP_PACKAGES $PIP_FLAGS ||
-    echo "${NYELLOW}Skipping root ${BYELLOW}Python${NYELLOW} updates..${NRST}"
+    echo "${NYELLOW}Skipping root ${BBLUE}Python${NYELLOW} updates.${NRST}"
     ;;
 esac
 
-zsh -c '. ~/.zshrc; omz update'
-nvim +PlugUpgrade
+if command -v zsh &> /dev/null; then
+  echo "${NYELLOW}Running ${BGREEN}ZSH${NYELLOW} update.${NRST}"
+  zsh -c '. ~/.zshrc; omz update'
+fi
+
+if command -v nvim &> /dev/null; then
+  echo "${NYELLOW}Running ${BGREEN}NeoVIM${NYELLOW} update.${NRST}"
+  nvim +PlugUpgrade
+fi

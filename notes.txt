@@ -1,0 +1,106 @@
+Fonts:
+
+    [all fonts are included in .fonts directory,
+     an installation script is in the scrips folder]
+
+WMs:
+
+    [There is an auto install and setup script for i3 on Arch Linux!]
+    -> i3 (i3-gaps i3lock polybar/i3blocks rofi)
+    [I have updated i3 with both polybar and i3blocks bars,
+     but I prefer i3blocks for its simplicity; its dependencies
+     are installed automatically with my script]
+
+    -- or --
+
+    -> dwm (dwm dmenu slstatus)
+    [dwm, dmenu and slstatus are better
+     to be downloaded from suckless.org,
+     as you may want to recompile them]
+
+Terminals:
+
+    kitty
+    [it works the best with X11 sessions and gpu accelerating]
+
+    urxvt (rxvt-unicode)
+    [is much more simple terminal, but it has
+     the best compatibility]
+
+Console Applications:
+
+    nvim (neovim)
+    [better vim, currently using]
+
+    zsh
+    [better shell to use with ohmyzsh framework]
+
+    exa (https://github.com/ogham/exa.git)
+    [modern ls replacement with icons,
+     which are shown properly only
+     with nerd fonts]
+
+    bat
+    [better cat; cat with wings]
+
+    hexyl
+    [lightweight hex viewer]
+
+Utils:
+
+    pcmanfm/thunar
+    [GUI file manager, if you need one]
+
+    xfce4-screenshooter & xfce4-clipman-plugin
+    [easy to use screenshot application, but
+     copying to clipboard doesn't work
+     without xfce4-clipman-plugin]
+
+    sxiv
+    [simple X11 image viewer]
+
+    -> zathura (zathura-pdf-mupdf zathura-djvu)
+    [simple pdf and djvu reader with vim keybindings]
+
+    xcompmgr
+    [simple X11 compositor]
+
+    xdg-user-dirs
+    [Desktop, Downloads, etc folders support]
+
+Theming:
+
+    qt5ct && kvantum
+    [qui-based utility to set up qt themes in window managers
+     you should append 'export QT_QPA_PLATFORMTHEME="qt5ct"'
+     to /etc/profile,
+     you only need it if you don't use KDE, LXQT
+     or other QT-based DE]
+
+    lxappearance
+    [GUI-based utility for setting up gtk themes and fonts,
+     you only need it if you don't have theme configurer
+     in your desktop environment]
+
+Other:
+
+    pfetch (https://github.com/dylanaraps/pfetch.git)
+    [simple and lightweight alternative to neofetch]
+
+Flatpaks:
+
+    Gnome Extension Manager  [com.mattjakeman.ExtensionManager]
+    Discord-ScreenAudio      [de.shorsh.discord-screenaudio]
+    Telegram Desktop         [org.telegram.desktop]
+    GitKraken                [com.axosoft.GitKraken]
+    Obsidian                 [md.obsidian.Obsidian]
+    Discord                  [com.discordapp.Discord]
+    Octave                   [org.octave.Octave]
+
+Gnome Extensions:
+
+    AppIndicator and KStatusNotifierItem Support
+    Clipboard Indicator
+    User Themes
+    Caffeine
+    Vitals
