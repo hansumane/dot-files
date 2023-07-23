@@ -32,6 +32,7 @@ cp -f ${CURRENT_DIR}/.termux/termux.properties ~/.termux;
 cp -f ${CURRENT_DIR}/.termux/colors.properties ~/.termux;
 cp -f ${CURRENT_DIR}/scripts/newup.sh ~
 cp -f ${CURRENT_DIR}/configs/universal/.gitconfig ~;
+cp -f ${CURRENT_DIR}/configs/universal/.tmux.conf ~;
 cp -f ${CURRENT_DIR}/themes/zsh_themes/* ~/.oh-my-zsh/custom/themes;
 
 sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim \

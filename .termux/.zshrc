@@ -11,6 +11,7 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_COMPDUMP="$ZSH/cache/.zcompdump-$HOST"
 
+FOLDER_ICON='  '
 EXA_ICONS='--no-icons'
 ZSH_THEME='undollar'
 TOPATH="$HOME/.local/bin $HOME/.cargo/bin"
@@ -21,9 +22,9 @@ source $ZSH/oh-my-zsh.sh
 alias q='exit'
 alias t='c;tmux'
 alias rr='rm -rf'
-alias c="clear;echo '( ,-,)'"
+alias c='clear'
 
-alias cpwd="clear;echo -n 'PWD in ';pwd"
+alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"
 
 alias la='exa -a'
 alias ll="exa $EXA_ICONS -albh --classify --group --group-directories-first"
@@ -31,15 +32,15 @@ alias lx="exa $EXA_ICONS -albh --classify --no-user --group-directories-first"
 alias cla='cpwd;la'
 alias cll='cpwd;ll'
 alias clx='cpwd;lx'
+alias cxl='cpwd;lx'
 alias clt='cpwd;lt'
-alias cxl='clx'
 
 alias gite='gitr && ..'
 alias gits='git status'
 alias gitr='cd $(git rev-parse --show-toplevel)'
 alias gitl='git log --date=format-local:"%d/%m/%Y %H:%M:%S" --pretty=format:"%h %ad | %an >>> %s%d" --graph'
 alias gitp='git reset --hard HEAD'
-alias gitp^='git reset --hard HEAD^'
+alias 'gitp^'='git reset --hard HEAD^'
 
 alias edM="$EDITOR Makefile"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
@@ -90,9 +91,19 @@ indchk () {
   if (( $# == 0 )); then
     echo 'Error: No source file given!'; return 1
   else
-    indent -gnu -nut $1 -o $1\~ &&
+    indent -gnu -nut $1 -o $1\~ &&  # -npcs
     diff -u $1 $1\~ | bat --tabs 8
     rm -rf $1\~
+  fi
+}
+
+ptchk() {
+  if (( $# == 0 )); then
+    echo 'Error: No source file given!'; return 1
+  else
+    checkpatch.pl --no-tree --strict --max-line-length=90 --file --ignore \
+                  SPDX_LICENSE_TAG,CONCATENATED_STRING,PREFER_KERNEL_TYPES,SPLIT_STRING \
+                  $1
   fi
 }
 
@@ -101,7 +112,7 @@ edP () {
     echo 'Error: No file name given!'; return 1
   else
     if [[ ! -f $1 ]]; then
-      echo "#!python3\n\nif __name__ == '__main__':\n    pass" > $1 && chmod +x $1
+      echo "#!/bin/python3\n\nif __name__ == '__main__':\n    pass" > $1 && chmod +x $1
     fi
     $EDITOR $1
   fi
@@ -120,6 +131,14 @@ fcp () {
     echo 'Error: No source file(s) given!'; return 1
   else
     clang++ $@ -Wall -Wextra -O2 -o out-$(basename $1 .cpp)
+  fi
+}
+
+frs () {
+  if (( $# == 0 )); then
+    echo 'Error: No source file(s) given!'; return 1
+  else
+    rustc $@ -C debuginfo=0 -C opt-level=2 -o out-$(basename $1 .rs)
   fi
 }
 

@@ -1,4 +1,5 @@
 syntax enable
+
 set mouse=nv
 set scrolloff=3
 set updatetime=300
@@ -12,7 +13,7 @@ function! SetNumbersFunction()
 	set list
 	set number
 	set cursorline
-	set colorcolumn=101
+	set colorcolumn=91
 	set relativenumber
 endfunction
 
@@ -24,46 +25,26 @@ function! UnsetNumbersFunction()
 	set relativenumber &
 endfunction
 
-function! TabsFunc8()
-	set shiftwidth=8
-	set tabstop=8
-	set softtabstop=8
-	set noexpandtab
+function! SetIndent(n, mode)
+	let &shiftwidth = a:n
+	let &tabstop = a:n
+	let &softtabstop = a:n
+
+	if a:mode=="tabs"
+		set noexpandtab
+	elseif a:mode=="mixed"
+		let &tabstop=2 * a:n
+		set noexpandtab
+	else
+		set expandtab
+	endif
 endfunction
 
-function! TabsFunc4()
-	set shiftwidth=4
-	set tabstop=4
-	set softtabstop=4
-	set noexpandtab
-endfunction
-
-function! MixIndent4()
-	set shiftwidth=4
-	set tabstop=8
-	set softtabstop=4
-	set noexpandtab
-endfunction
-
-function! SpaceFunc4()
-	set shiftwidth=4
-	set tabstop=8
-	set softtabstop=4
-	set expandtab
-endfunction
-
-function! SpaceFunc2()
-	set shiftwidth=2
-	set tabstop=8
-	set softtabstop=2
-	set expandtab
-endfunction
-
-command Tab8 call TabsFunc8()
-command Tab4 call TabsFunc4()
-command Mix4 call MixIndent4()
-command Spac4 call SpaceFunc4()
-command Spac2 call SpaceFunc2()
+command Spac2 call SetIndent(2, "")
+command Spac4 call SetIndent(4, "")
+command Tab4 call SetIndent(4, "tabs")
+command Tab8 call SetIndent(8, "tabs")
+command Mix4 call SetIndent(4, "mixed")
 command SetNumber call SetNumbersFunction()
 command UnsetNumber call UnsetNumbersFunction()
 
@@ -72,12 +53,14 @@ call plug#begin()
 	Plug 'itchyny/lightline.vim'
 	Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 	Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+	Plug 'nathanalderson/yang.vim'
 call plug#end()
 
 set background=dark
 colorscheme catppuccin-macchiato
 
 let g:lightline = { 'colorscheme' : 'catppuccin' }
+
 let NERDTreeShowHidden=1
 let g:coc_snippet_next = '<tab>'
 let g:NERDTreeDirArrowExpandable="+"
@@ -104,14 +87,5 @@ endfunction
 
 autocmd VimEnter * SetNumber
 autocmd BufEnter,Bufnew * Spac4
-autocmd BufEnter,Bufnew *.c Spac2
-autocmd BufEnter,Bufnew *.h Spac2
-autocmd BufEnter,Bufnew *.sh* Spac2
-autocmd BufEnter,Bufnew *.zsh* Spac2
-autocmd BufEnter,Bufnew *.bash* Spac2
-autocmd BufEnter,Bufnew *.s Tab8
-autocmd BufEnter,Bufnew *.asm Tab8
-autocmd BufEnter,Bufnew *.vim* Tab8
-autocmd BufEnter,Bufnew Makefile Tab8
-autocmd BufEnter,Bufnew .gitconfig Tab8
-autocmd BufEnter,Bufnew .gitignore Tab8
+autocmd BufEnter,Bufnew *.xml,*.html,*.yang*,*.sh*,*.zsh*,*.bash* Spac2
+autocmd BufEnter,Bufnew *.s,*.c,*.h,*.vim*,Makefile,*.git* Tab8
