@@ -1,5 +1,7 @@
 export PS1='\u@\h:\w\$ '
-export TERM='xterm-256color'
+export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin'
+export LD_LIBRARY_PATH='/usr/local/libexec:/usr/local/lib64:/usr/local/lib:/usr/libexec:/usr/lib64:/usr/lib:/lib64:/lib'
+
 export EDITOR='nvim'
 export GROFF_NO_SGR=1
 export LESS_TERMCAP_mb=$'\e[1;31m'
@@ -9,13 +11,13 @@ export LESS_TERMCAP_us=$'\e[01;37m'
 export LESS_TERMCAP_me=$'\e[0m'
 export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_ue=$'\e[0m'
+
 TOPATH="$HOME/.local/bin $HOME/.cargo/bin"
 
 alias q='exit'
 alias t='c;tmux'
 alias rr='rm -rf'
 alias rrs='sudo rm -rf'
-alias c="clear;echo '( .-.)'"
 
 alias ls='LANG=en_US.UTF-8 ls --color'
 alias cpwd="c;echo -n 'PWD in ';pwd"
@@ -33,7 +35,7 @@ alias gits='git status'
 alias gitr='cd $(git rev-parse --show-toplevel)'
 alias gitl='git log --date=format-local:"%d/%m/%Y %H:%M:%S" --pretty=format:"%h %ad | %an >>> %s%d" --graph'
 alias gitp='git reset --hard HEAD'
-alias gitp^='git reset --hard HEAD^'
+alias 'gitp^'='git reset --hard HEAD^'
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -41,6 +43,13 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
+
+c () {
+  clear
+  if [[ $TERM == 'screen-256color-bce' ]]; then
+    tmux clear-history
+  fi
+}
 
 lt () {
   if [[ $# -eq 0 ]]; then
@@ -84,6 +93,14 @@ bless () {
   fi
 }
 
+pya () {
+  if [[ $# -eq 0 ]]; then
+    echo 'Error: No YANG file given!'; return 1
+  else
+    pyang -f tree $1 | cat -n | less
+  fi
+}
+
 indchk () {
   if [[ $# -eq 0 ]]; then
     echo 'Error: No source file given!'; return 1
@@ -99,7 +116,7 @@ edP () {
     echo 'Error: No file name given!'; return 1
   else
     if [[ ! -f $1 ]]; then
-      echo "#!/bin/python3\n\nif __name__ == '__main__':\n    pass" > $1 && chmod +x $1
+      echo "#!/usr/bin/env python3\n\nif __name__ == '__main__':\n    pass" > $1 && chmod +x $1
     fi
     $EDITOR $1
   fi

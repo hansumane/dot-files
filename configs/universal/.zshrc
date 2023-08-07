@@ -1,4 +1,6 @@
-# export TERM='xterm-256color'
+export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin'
+export LD_LIBRARY_PATH='/usr/local/libexec:/usr/local/lib64:/usr/local/lib:/usr/libexec:/usr/lib64:/usr/lib:/lib64:/lib'
+
 export EDITOR='nvim'
 export GROFF_NO_SGR=1
 export LESS_TERMCAP_mb=$'\e[1;31m'
@@ -22,10 +24,9 @@ plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 alias q='exit'
-alias t='c;tmux'
+alias t='c;tmux -u'
 alias rr='rm -rf'
 alias rrs="$SUDO_CMD rm -rf"
-alias c='clear'
 
 alias exa="$LOCAL_LANG exa"
 alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"
@@ -48,6 +49,13 @@ alias 'gitp^'='git reset --hard HEAD^'
 
 alias edM="$EDITOR Makefile"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
+
+c () {
+  clear
+  if [[ $TERM == 'screen-256color-bce' ]]; then
+    tmux clear-history
+  fi
+}
 
 lt () {
   if (( $# == 0 )); then
@@ -91,6 +99,14 @@ bless () {
   fi
 }
 
+pya () {
+  if (( $# == 0 )); then
+    echo 'Error: No YANG file given!'; return 1
+  else
+    pyang -f tree $1 | cat -n | less
+  fi
+}
+
 indchk () {
   if (( $# == 0 )); then
     echo 'Error: No source file given!'; return 1
@@ -116,7 +132,7 @@ edP () {
     echo 'Error: No file name given!'; return 1
   else
     if [[ ! -f $1 ]]; then
-      echo "#!/bin/python3\n\nif __name__ == '__main__':\n    pass" > $1 && chmod +x $1
+      echo "#!/usr/bin/env python3\n\nif __name__ == '__main__':\n    pass" > $1 && chmod +x $1
     fi
     $EDITOR $1
   fi

@@ -14,6 +14,7 @@ PIP_PACKAGES=""
 SU_PIP_PACKAGES=""
 PIP_FLAGS="-U"
 
+clear
 echo "${NYELLOW}You may need to enter your ${BRED}sudo password.${NRST}"
 
 case $OSTYPE in
@@ -45,9 +46,9 @@ case $OSTYPE in
         yay -Sc --repo --noconfirm
         ;;
 
-      *openSUSE*)
-        echo "${NYELLOW}Running ${BGREEN}OpenSUSE${NYELLOW} updates.${NRST}"
-        sudo zypper ref && sudo zypper dup -y
+      *openSUSE\ Tumbleweed*)
+        echo "${NYELLOW}Running ${BGREEN}OpenSUSE Tumbleweed${NYELLOW} updates.${NRST}"
+        sudo zypper ref && sudo zypper dup
         ;;
 
       *)
@@ -80,7 +81,7 @@ echo "${NYELLOW}Running universal updates.${NRST}"
 
 if command -v flatpak &> /dev/null; then
   echo "${NYELLOW}Running ${BBLUE}FlatPak${NYELLOW} updates.${NRST}"
-  flatpak update -y && sleep 1 && flatpak update -y
+  flatpak update && sleep 1 && flatpak update
   flatpak uninstall --unused
 fi
 
