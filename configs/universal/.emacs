@@ -7,6 +7,7 @@
 (require 'company)
 (require 'lsp-mode)
 (require 'flycheck)
+(require 'use-package)
 (require 'editorconfig)
 (require 'gruber-darker-theme)
 
@@ -17,10 +18,11 @@
 (global-display-line-numbers-mode 1)
 (setq-default display-line-numbers-type 'relative
               ring-bell-function 'ignore
-              show-trailing-whitespace t
-              inhibit-startup-message t
-              make-backup-files nil
-              visible-bell nil
+              show-trailing-whitespace 1
+              inhibit-startup-message 1
+              make-backup-files -1
+              backup-inhibited 1
+              visible-bell -1
               scroll-margin 3
               fill-column 80)
 (editorconfig-mode 1)
@@ -42,4 +44,5 @@
 
 (custom-set-variables
   '(package-selected-packages
-    '(flycheck company lsp-mode editorconfig evil gruber-darker-theme)))
+    '(use-package flycheck company lsp-mode editorconfig evil gruber-darker-theme))
+  '(warning-suppress-log-types))
