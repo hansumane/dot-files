@@ -27,7 +27,10 @@ alias q='exit'
 alias t='c;tmux -u'
 alias rr='rm -rf'
 alias rrs="$SUDO_CMD rm -rf"
+alias rreas="rrs \#*\#"
+alias rreasa="$SUDO_CMD find . -type f -name '#*#' -delete"
 
+alias e="emacs-x11"
 alias exa="$LOCAL_LANG exa"
 alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"
 
