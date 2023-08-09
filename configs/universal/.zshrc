@@ -1,7 +1,6 @@
 export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin'
 export LD_LIBRARY_PATH='/usr/local/libexec:/usr/local/lib64:/usr/local/lib:/usr/libexec:/usr/lib64:/usr/lib:/lib64:/lib'
 
-export TERM='xterm-256color'
 export EDITOR='nvim'
 export GROFF_NO_SGR=1
 export LESS_TERMCAP_mb=$'\e[1;31m'
@@ -33,7 +32,7 @@ alias rreasa="$SUDO_CMD find . -type f -name '#*#' -or -name '*~' -delete"
 
 alias exa="$LOCAL_LANG exa"
 alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"
-alias e="(emacs > /dev/null 2>&1 | emacs-x11 > /dev/null 2>&1)&"
+alias e="( emacs-x11 > /dev/null 2>&1 || emacs > /dev/null 2>&1 )&"
 
 alias la='exa -a'
 alias ll="exa $EXA_ICONS -albh --git --classify --group --group-directories-first"

@@ -21,6 +21,7 @@ alias rrs='sudo rm -rf'
 
 alias ls='LANG=en_US.UTF-8 ls --color'
 alias cpwd="c;echo -n 'PWD in ';pwd"
+alias e="( emacs-x11 > /dev/null 2>&1 || emacs > /dev/null 2>&1 )&"
 
 alias la='ls -A'
 alias ll='ls -alh --classify --group-directories-first'

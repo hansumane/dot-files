@@ -17,6 +17,7 @@
 
 (global-display-line-numbers-mode 1)
 (setq-default display-line-numbers-type 'relative
+              warning-minimum-level :emergency
               ring-bell-function 'ignore
               show-trailing-whitespace 1
               inhibit-startup-message 1
@@ -33,7 +34,7 @@
 
 (use-package lsp-mode
   :config
-  (setq lsp-idle-delay 0.5
+  (setq lsp-idle-delay 0.1
         lsp-enable-symbol-highlighting t
         lsp-enable-snippet nil)
   :hook
