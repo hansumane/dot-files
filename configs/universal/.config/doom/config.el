@@ -3,12 +3,6 @@
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
 
-
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets. It is optional.
-;; (setq user-full-name "John Doe"
-;;       user-mail-address "john@doe.com")
-;;
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
@@ -24,7 +18,6 @@
       doom-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium)
       display-line-numbers-type 'relative)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
-(after! evil-escape (evil-escape-mode -1))
 (map! :leader "j" #'evil-ex-nohighlight)
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
