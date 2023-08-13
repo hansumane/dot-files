@@ -27,6 +27,7 @@ source $ZSH/oh-my-zsh.sh
 alias q='exit'
 alias t='c;tmux -u'
 alias rr='rm -rf'
+alias ds='doom sync'
 alias rrs="$SUDO_CMD rm -rf"
 alias rreas="$SUDO_CMD find . -type f -name '#*#' -or -name '*~' -delete"
 

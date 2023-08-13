@@ -21,7 +21,7 @@
       org-directory "~/org/"
       user-full-name "User"
       user-mail-address "user@localhost.localdomain"
-      doom-font (font-spec :family "CaskaydiaCove Nerd Font" :size 16 :weight 'medium)
+      doom-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium)
       display-line-numbers-type 'relative)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (after! evil-escape (evil-escape-mode -1))

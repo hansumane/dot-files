@@ -1,3 +1,5 @@
+;; Don't use this regular emacs config,
+;; there is a better doom emacs one.
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "https://melpa.org/packages/") t)
