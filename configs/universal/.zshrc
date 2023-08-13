@@ -12,13 +12,14 @@ export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_COMPDUMP="$ZSH/cache/.zcompdump-$HOST"
+export PYTHONDONTWRITEBYTECODE=1
 
 SUDO_CMD='sudo'
 FOLDER_ICON='  '
 EXA_ICONS='--icons'
-ZSH_THEME='agnoster-custom'
+ZSH_THEME='undollar'
 LOCAL_LANG='LANG=en_US.UTF-8'
-TOPATH="$HOME/.local/bin $HOME/.cargo/bin"
+TOPATH="$HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin"
 
 plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
@@ -27,12 +28,11 @@ alias q='exit'
 alias t='c;tmux -u'
 alias rr='rm -rf'
 alias rrs="$SUDO_CMD rm -rf"
-alias rreas="rrs \#*\# *\~"
-alias rreasa="$SUDO_CMD find . -type f -name '#*#' -or -name '*~' -delete"
+alias rreas="$SUDO_CMD find . -type f -name '#*#' -or -name '*~' -delete"
 
 alias exa="$LOCAL_LANG exa"
+alias e="( emacs > /dev/null 2>&1 )&"
 alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"
-alias e="( emacs-x11 > /dev/null 2>&1 || emacs > /dev/null 2>&1 )&"
 
 alias la='exa -a'
 alias ll="exa $EXA_ICONS -albh --git --classify --group --group-directories-first"
