@@ -1,6 +1,6 @@
 [user]
 	name = User
-	email = user@localhost.localdomain
+	email = user@example.com
 [core]
 	autocrlf = input
 	safecrlf = warn

@@ -12,13 +12,20 @@
 
 (setq scroll-margin 3
       doom-theme 'doom-one
-      org-directory "~/org/"
-      user-full-name "User"
-      user-mail-address "user@localhost.localdomain"
       doom-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium)
       display-line-numbers-type 'relative)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+
+(setq org-directory "~/org/"
+      user-full-name "User"
+      user-mail-address "user@example.com")
+
 (map! :leader "j" #'evil-ex-nohighlight)
+
+(use-package! org-auto-tangle
+  :defer t
+  :hook (org-mode . org-auto-tangle-mode)
+  :config (setq org-auto-tangle-default t))
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;

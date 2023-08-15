@@ -126,7 +126,7 @@ ptchk() {
     echo 'Error: No source file given!'; return 1
   else
     checkpatch.pl --no-tree --strict --max-line-length=90 --file --ignore \
-                  SPDX_LICENSE_TAG,CONCATENATED_STRING,PREFER_KERNEL_TYPES,SPLIT_STRING \
+                  SPDX_LICENSE_TAG,CONCATENATED_STRING,PREFER_KERNEL_TYPES,SPLIT_STRING,SSCANF_TO_KSTRTO,FSF_MAILING_ADDRESS,STRCPY,OPEN_ENDED_LINE,VOLATILE,CAMELCASE,BLOCK_COMMENT_STYLE,QUOTED_WHITESPACE_BEFORE_NEWLINE \
                   $1
   fi
 }
