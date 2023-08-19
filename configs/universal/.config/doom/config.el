@@ -12,7 +12,7 @@
 
 (setq scroll-margin 3
       doom-theme 'doom-one
-      doom-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium)
+      doom-font (font-spec :family "CaskaydiaCove Nerd Font" :size 18 :weight 'medium)
       display-line-numbers-type 'relative)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
@@ -23,9 +23,30 @@
 (map! :leader "j" #'evil-ex-nohighlight)
 
 (use-package! org-auto-tangle
-  :defer t
-  :hook (org-mode . org-auto-tangle-mode)
-  :config (setq org-auto-tangle-default t))
+    :defer t
+    :hook (org-mode . org-auto-tangle-mode)
+    :config (setq org-auto-tangle-default t))
+
+(custom-theme-set-faces! 'doom-one
+    '(line-number-current-line
+         :inherit line-number
+         :foreground "#51afef"))
+
+;; (use-package! gruber-darker-theme
+;;     :config (setq doom-theme 'gruber-darker))
+
+;; (use-package! catppuccin-theme
+;;     :config
+;;     (setq doom-theme 'catppuccin
+;;           catppuccin-flavor 'macchiato)
+;;     (catppuccin-reload))
+
+;; (use-package! spaceway-theme
+;;     :load-path "~/.config/doom/manual/spaceway"
+;;     :config (setq doom-theme 'spaceway
+;;                   evil-normal-state-cursor '(box "#dc322f")
+;;                   evil-insert-state-cursor '(bar "#dc322f")
+;;                   evil-visual-state-cursor '(hollow "#dc322f")))
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;

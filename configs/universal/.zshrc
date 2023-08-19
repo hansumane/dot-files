@@ -28,6 +28,7 @@ alias q='exit'
 alias t='c;tmux -u'
 alias rr='rm -rf'
 alias ds='doom sync'
+alias bat='bat --tabs=8'
 alias rrs="$SUDO_CMD rm -rf"
 alias rreas="$SUDO_CMD find . -type f -name '#*#' -or -name '*~' -delete"
 
@@ -126,7 +127,7 @@ ptchk() {
     echo 'Error: No source file given!'; return 1
   else
     checkpatch.pl --no-tree --strict --max-line-length=90 --file --ignore \
-                  SPDX_LICENSE_TAG,CONCATENATED_STRING,PREFER_KERNEL_TYPES,SPLIT_STRING,SSCANF_TO_KSTRTO,FSF_MAILING_ADDRESS,STRCPY,OPEN_ENDED_LINE,VOLATILE,CAMELCASE,BLOCK_COMMENT_STYLE,QUOTED_WHITESPACE_BEFORE_NEWLINE \
+                  SPDX_LICENSE_TAG,CONCATENATED_STRING,PREFER_KERNEL_TYPES,SPLIT_STRING,SSCANF_TO_KSTRTO,FSF_MAILING_ADDRESS,STRCPY,OPEN_ENDED_LINE,VOLATILE,CAMELCASE,BLOCK_COMMENT_STYLE,QUOTED_WHITESPACE_BEFORE_NEWLINE,PREFER_DEFINED_ATTRIBUTE_MACRO \
                   $1
   fi
 }
@@ -145,7 +146,7 @@ fas () {
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
-    gcc $@ -std=gnu99 -Wall -Wextra -Og -o out-$(basename $1 .s)
+    gcc $@ -std=gnu99 -Wall -Wextra -Werror -Og -o out-$(basename $1 .s)
   fi
 }
 
@@ -153,7 +154,7 @@ fcc () {
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
-    gcc $@ -std=gnu11 -Wall -Wextra -O2 -o out-$(basename $1 .c)
+    gcc $@ -std=gnu11 -Wall -Wextra -Werror -O2 -o out-$(basename $1 .c)
   fi
 }
 
@@ -161,7 +162,7 @@ fcp () {
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
-    g++ $@ -std=gnu++14 -Wall -Wextra -O2 -o out-$(basename $1 .cpp)
+    g++ $@ -std=gnu++14 -Wall -Wextra -Werror -O2 -o out-$(basename $1 .cpp)
   fi
 }
 

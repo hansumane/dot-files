@@ -5,13 +5,12 @@ charset = utf-8
 end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
-
-[*.{c,h,cpp,hpp,cxx,hxx}]
-indent_style = tab
-indent_size = 8
-tab_width = 8
-
-[!*.{c,h,cpp,hpp,cxx,hxx}]
+max_line_length = 90
 indent_style = space
 indent_size = 4
 tab_width = 4
+
+[{Makefile,*.{c,h,cpp,hpp,cxx,hxx}}]
+indent_style = tab
+indent_size = 8
+tab_width = 8
