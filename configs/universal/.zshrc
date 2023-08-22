@@ -28,10 +28,10 @@ alias q='exit'
 alias t='c;tmux -u'
 alias rr='rm -rf'
 alias ds='doom sync'
-alias bat='bat --tabs=8'
 alias rrs="$SUDO_CMD rm -rf"
 alias rreas="$SUDO_CMD find . -type f -name '#*#' -or -name '*~' -delete"
 
+alias bat='bat --tabs=8'
 alias exa="$LOCAL_LANG exa"
 alias e="( emacs > /dev/null 2>&1 )&"
 alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"

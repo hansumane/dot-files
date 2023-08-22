@@ -10,9 +10,13 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 
+
 (setq scroll-margin 3
       doom-theme 'doom-one
-      doom-font (font-spec :family "CaskaydiaCove Nerd Font" :size 18 :weight 'medium)
+      doom-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium)
+      doom-big-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium)
+      doom-unicode-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium)
+      doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium)
       display-line-numbers-type 'relative)
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
@@ -21,6 +25,9 @@
       user-mail-address "user@example.com")
 
 (map! :leader "j" #'evil-ex-nohighlight)
+(set-input-method  ; C-\ to switch
+    'russian-computer)
+(toggle-input-method)
 
 (use-package! org-auto-tangle
     :defer t
@@ -32,14 +39,19 @@
          :inherit line-number
          :foreground "#51afef"))
 
+(setq eshell-history-size 3000
+      eshell-buffer-maximum-lines 3000
+      eshell-aliases-file "~/.config/doom/eshell/aliases")
+(map! :leader "e s" #'eshell)
+
 ;; (use-package! gruber-darker-theme
 ;;     :config (setq doom-theme 'gruber-darker))
 
-;; (use-package! catppuccin-theme
-;;     :config
-;;     (setq doom-theme 'catppuccin
-;;           catppuccin-flavor 'macchiato)
-;;     (catppuccin-reload))
+(use-package! catppuccin-theme
+    :config
+    (setq doom-theme 'catppuccin
+          catppuccin-flavor 'macchiato)
+    (catppuccin-reload))
 
 ;; (use-package! spaceway-theme
 ;;     :load-path "~/.config/doom/manual/spaceway"
