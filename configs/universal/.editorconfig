@@ -10,7 +10,7 @@ indent_style = space
 indent_size = 4
 tab_width = 4
 
-[{Makefile,*.{c,h,cpp,hpp,cxx,hxx}}]
+[{Makefile,*.git*,*.{c,h,cpp,hpp,cxx,hxx}}]
 indent_style = tab
 indent_size = 8
 tab_width = 8

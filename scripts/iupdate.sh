@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 set -e
 
 if [[ ! $(pwd | rev | cut -d'/' -f2 | rev) = 'dot-files' ]] ||

@@ -10,14 +10,14 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 
-
 (setq scroll-margin 3
       doom-theme 'doom-one
+      display-line-numbers-type 'relative
       doom-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium)
       doom-big-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium)
+      doom-serif-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium)
       doom-unicode-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium)
-      doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium)
-      display-line-numbers-type 'relative)
+      doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium))
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 (setq org-directory "~/org/"
@@ -29,15 +29,15 @@
     'russian-computer)
 (toggle-input-method)
 
+(custom-theme-set-faces!
+    'doom-one '(line-number-current-line
+                   :inherit line-number
+                   :foreground "#51afef"))
+
 (use-package! org-auto-tangle
     :defer t
     :hook (org-mode . org-auto-tangle-mode)
     :config (setq org-auto-tangle-default t))
-
-(custom-theme-set-faces! 'doom-one
-    '(line-number-current-line
-         :inherit line-number
-         :foreground "#51afef"))
 
 (setq eshell-history-size 3000
       eshell-buffer-maximum-lines 3000
