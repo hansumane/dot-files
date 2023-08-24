@@ -79,8 +79,9 @@ lt () {
 }
 
 gitup () {
+  BRANCH=$(git rev-parse --abbrev-ref HEAD)
   if (( $# == 0 )); then
-    read 'ANS?No commit name given, git pull? [Y/n] '
+    read "ANS?No commit name given, git pull ($BRANCH)? [Y/n] "
     case $ANS in
       [Nn] ) echo 'Exiting...';;
       *    ) git pull; git status;;
@@ -88,10 +89,10 @@ gitup () {
   else
     git add -A
     git commit -m "$1"
-    read 'ANS?Commit name given, git push? [Y/n] '
+    read "ANS?Commit name given, git push ($BRANCH)? [Y/n] "
     case $ANS in
       [Nn] ) echo 'Exiting...';;
-      *    ) git push; git status;;
+      *    ) git push -u origin $BRANCH; git status;;
     esac
   fi
 }

@@ -25,6 +25,7 @@
       user-mail-address "user@example.com")
 
 (map! :leader "j" #'evil-ex-nohighlight)
+(map! :leader "c D" #'lsp-find-references)
 (set-input-method  ; C-\ to switch
     'russian-computer)
 (toggle-input-method)

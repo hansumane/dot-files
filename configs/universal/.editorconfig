@@ -10,6 +10,11 @@ indent_style = space
 indent_size = 4
 tab_width = 4
 
+[*.{xml,html,sh*,bash*,zsh*}]
+indent_style = space
+indent_size = 2
+tab_width = 2
+
 [{Makefile,*.git*,*.{c,h,cpp,hpp,cxx,hxx}}]
 indent_style = tab
 indent_size = 8
