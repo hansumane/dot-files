@@ -2,14 +2,13 @@
 
 ## color scheme
 
-/themes/terminal\_themes/everforest.json
+/themes/terminal\_themes/catppuccinmacchiato.json
 
 ## font
 
-/.termux/font.ttf <-> IosevkaTerm Nerd Font
+/.termux/font.ttf <-> IosevkaTerm Nerd Font Regular
 
 ## others
 
 .zshrc and .vimrc are a slightly modified versions
 of /configs/universal/.zshrc and /configs/universal/.vimrc
-respectively

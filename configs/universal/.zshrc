@@ -25,7 +25,7 @@ plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 alias q='exit'
-alias t='c;tmux -u'
+alias t='cd;c;tmux -u'
 alias rr='rm -rf'
 alias ds='doom sync'
 alias rrs="$SUDO_CMD rm -rf"

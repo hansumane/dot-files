@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 
@@ -15,7 +15,7 @@ SU_PIP_PACKAGES=""
 PIP_FLAGS="-U"
 
 clear
-echo "${NYELLOW}You may need to enter your ${BRED}sudo password.${NRST}"
+echo "${NYELLOW}You may need to enter your ${BRED}sudo${NYELLOW} password.${NRST}"
 
 case $OSTYPE in
 
@@ -26,10 +26,10 @@ case $OSTYPE in
     case $NAME in
 
       *Debian* | *Ubuntu*)
+        PIP_FLAGS="--break-system-packages $PIP_FLAGS"
         echo "${NYELLOW}Running ${BRED}Debian-based${NYELLOW} updates.${NRST}"
         sudo apt update && sudo apt full-upgrade -y &&
         sudo apt autoremove -y && sudo apt autoclean -y
-        PIP_FLAGS="--break-system-packages $PIP_FLAGS"
         ;;
 
       *Fedora*)
@@ -47,6 +47,7 @@ case $OSTYPE in
         ;;
 
       *openSUSE\ Tumbleweed*)
+        PIP_FLAGS="--break-system-packages $PIP_FLAGS"
         echo "${NYELLOW}Running ${BGREEN}OpenSUSE Tumbleweed${NYELLOW} updates.${NRST}"
         sudo zypper ref && sudo zypper dup
         ;;

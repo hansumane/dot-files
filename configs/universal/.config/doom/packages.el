@@ -7,7 +7,6 @@
 
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
-;(package! some-package)
 (package! gruber-darker-theme)
 (package! catppuccin-theme)
 (package! org-auto-tangle)

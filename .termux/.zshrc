@@ -1,4 +1,4 @@
-export TERM='xterm-256color'
+# export TERM='xterm-256color'
 export EDITOR='nvim'
 export GROFF_NO_SGR=1
 export LESS_TERMCAP_mb=$'\e[1;31m'
@@ -10,6 +10,7 @@ export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_COMPDUMP="$ZSH/cache/.zcompdump-$HOST"
+export PYTHONDONTWRITEBYTECODE=1
 
 FOLDER_ICON='  '
 EXA_ICONS='--no-icons'
@@ -20,10 +21,10 @@ plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 alias q='exit'
-alias t='c;tmux'
+alias t='cd;c;tmux -u'
 alias rr='rm -rf'
-alias c='clear'
 
+alias bat='bat --tabs=8'
 alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"
 
 alias la='exa -a'
@@ -45,6 +46,13 @@ alias 'gitp^'='git reset --hard HEAD^'
 alias edM="$EDITOR Makefile"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
 
+c () {
+  clear
+  if [[ $TERM == 'screen-256color-bce' ]]; then
+    tmux clear-history
+  fi
+}
+
 lt () {
   if (( $# == 0 )); then
     exa $EXA_ICONS --group-directories-first --tree
@@ -62,8 +70,9 @@ lt () {
 }
 
 gitup () {
+  BRANCH=$(git rev-parse --abbrev-ref HEAD)
   if (( $# == 0 )); then
-    read 'ANS?No commit name given, git pull? [Y/n] '
+    read "ANS?No commit name given, git pull ($BRANCH)? [Y/n] "
     case $ANS in
       [Nn] ) echo 'Exiting...';;
       *    ) git pull; git status;;
@@ -71,10 +80,10 @@ gitup () {
   else
     git add -A
     git commit -m "$1"
-    read 'ANS?Commit name given, git push? [Y/n] '
+    read "ANS?Commit name given, git push ($BRANCH)? [Y/n] "
     case $ANS in
       [Nn] ) echo 'Exiting...';;
-      *    ) git push; git status;;
+      *    ) git push -u origin $BRANCH; git status;;
     esac
   fi
 }
@@ -102,7 +111,7 @@ ptchk() {
     echo 'Error: No source file given!'; return 1
   else
     checkpatch.pl --no-tree --strict --max-line-length=90 --file --ignore \
-                  SPDX_LICENSE_TAG,CONCATENATED_STRING,PREFER_KERNEL_TYPES,SPLIT_STRING \
+                  SPDX_LICENSE_TAG,CONCATENATED_STRING,PREFER_KERNEL_TYPES,SPLIT_STRING,SSCANF_TO_KSTRTO,FSF_MAILING_ADDRESS,STRCPY,OPEN_ENDED_LINE,VOLATILE,CAMELCASE,BLOCK_COMMENT_STYLE,QUOTED_WHITESPACE_BEFORE_NEWLINE,PREFER_DEFINED_ATTRIBUTE_MACRO \
                   $1
   fi
 }
@@ -112,9 +121,8 @@ edP () {
     echo 'Error: No file name given!'; return 1
   else
     if [[ ! -f $1 ]]; then
-      echo "#!/bin/python3\n\nif __name__ == '__main__':\n    pass" > $1 && chmod +x $1
+      echo "#!/usr/bin/env python3\n\nif __name__ == '__main__':\n    pass" > $1 && chmod +x $1
     fi
-    $EDITOR $1
   fi
 }
 
@@ -122,7 +130,7 @@ fcc () {
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
-    clang $@ -Wall -Wextra -O2 -o out-$(basename $1 .c)
+    clang $@ -Wall -Wextra -Werror -O2 -o out-$(basename $1 .c)
   fi
 }
 
@@ -130,7 +138,7 @@ fcp () {
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
-    clang++ $@ -Wall -Wextra -O2 -o out-$(basename $1 .cpp)
+    clang++ $@ -Wall -Wextra -Werror -O2 -o out-$(basename $1 .cpp)
   fi
 }
 

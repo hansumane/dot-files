@@ -2,9 +2,9 @@
 
 set -xe
 
-FONTNAME='Iosevka'
-EXTENSION='.ttf'
-DIRNAME=$(pwd)
+FONTNAME="Iosevka"
+EXTENSION=".ttf"
+DIRNAME="$(pwd)"
 
 if [[ ! -d ${DIRNAME}/nerd-fonts ]]; then
   mkdir -p ${DIRNAME}/nerd-fonts
@@ -15,6 +15,7 @@ else
   git reset --hard HEAD
   git pull
 fi
+$EDITOR ${DIRNAME}/nerd-fonts/font-patcher
 
 if [[ ! -d ${DIRNAME}/${FONTNAME}All/ ]]; then
   echo "No such font directory: ${FONTNAME}All/"; exit 1
