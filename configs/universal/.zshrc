@@ -47,10 +47,11 @@ alias clt='cpwd;lt'
 
 alias gite='gitr && ..'
 alias gits='git status'
-alias gitr='cd $(git rev-parse --show-toplevel)'
-alias gitl='git log --date=format-local:"%d/%m/%Y %H:%M:%S" --pretty=format:"%h %ad | %an >>> %s%d" --graph'
 alias gitp='git reset --hard HEAD'
 alias 'gitp^'='git reset --hard HEAD^'
+alias gita='git add -A && git commit --amend'
+alias gitr='cd $(git rev-parse --show-toplevel)'
+alias gitl='git log --date=format-local:"%d/%m/%Y %H:%M:%S" --pretty=format:"%h %ad | %an >>> %s%d" --graph'
 
 alias edM="$EDITOR Makefile"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
@@ -97,6 +98,10 @@ gitup () {
   fi
 }
 
+giti () {
+  $SUDO_CMD rm -rf $(git ls-files --others --ignored --exclude-standard --directory)
+}
+
 bless () {
   if (( $# == 0 )); then
     echo 'Error: No source file given!'; return 1
@@ -109,7 +114,7 @@ pya () {
   if (( $# == 0 )); then
     echo 'Error: No YANG file given!'; return 1
   else
-    pyang -f tree $1 | cat -n | less
+    pyang -f tree $1 | bat
   fi
 }
 
@@ -118,7 +123,7 @@ indchk () {
     echo 'Error: No source file given!'; return 1
   else
     indent -gnu -nut $1 -o $1\~ &&  # -npcs
-    diff -u $1 $1\~ | bat --tabs 8
+    diff -u $1 $1\~ | bat
     rm -rf $1\~
   fi
 }
@@ -128,8 +133,8 @@ ptchk() {
     echo 'Error: No source file given!'; return 1
   else
     checkpatch.pl --no-tree --strict --max-line-length=90 --file --ignore \
-                  SPDX_LICENSE_TAG,CONCATENATED_STRING,PREFER_KERNEL_TYPES,SPLIT_STRING,SSCANF_TO_KSTRTO,FSF_MAILING_ADDRESS,STRCPY,OPEN_ENDED_LINE,VOLATILE,CAMELCASE,BLOCK_COMMENT_STYLE,QUOTED_WHITESPACE_BEFORE_NEWLINE,PREFER_DEFINED_ATTRIBUTE_MACRO \
-                  $1
+      SPDX_LICENSE_TAG,CONCATENATED_STRING,PREFER_KERNEL_TYPES,SPLIT_STRING,PREFER_DEFINED_ATTRIBUTE_MACRO,BLOCK_COMMENT_STYLE $@
+      # SPDX_LICENSE_TAG,CONCATENATED_STRING,PREFER_KERNEL_TYPES,SPLIT_STRING,SSCANF_TO_KSTRTO,FSF_MAILING_ADDRESS,OPEN_ENDED_LINE,VOLATILE,CAMELCASE,BLOCK_COMMENT_STYLE,QUOTED_WHITESPACE_BEFORE_NEWLINE,PREFER_DEFINED_ATTRIBUTE_MACRO,IF_0
   fi
 }
 

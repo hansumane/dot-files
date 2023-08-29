@@ -15,7 +15,7 @@ indent_style = space
 indent_size = 2
 tab_width = 2
 
-[{Makefile,*.{s,c,h,vim*,git*}}]
+[{Makefile{,.*},*.{s,c,h,vim*,git*}}]
 indent_style = tab
 indent_size = 8
 tab_width = 8
