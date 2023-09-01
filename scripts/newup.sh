@@ -39,7 +39,7 @@ case $OSTYPE in
 
       *Arch*)
         echo "${NYELLOW}Running ${BCYAN}Arch${NYELLOW} updates.${NRST}"
-        sudo timedatectl set-ntp true && sleep 5 && sudo hwclock --systohc
+        sudo timedatectl set-ntp true && sleep 10 && sudo hwclock --systohc
         yay -Syyu
         sudo mkinitcpio -P && sudo update-grub
         yay -Scca --noconfirm

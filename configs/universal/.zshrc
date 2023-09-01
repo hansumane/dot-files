@@ -1,5 +1,8 @@
-export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin'
-export LD_LIBRARY_PATH='/usr/local/libexec:/usr/local/lib64:/usr/local/lib:/usr/libexec:/usr/lib64:/usr/lib:/lib64:/lib'
+
+export PATH='/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin'
+export LD_LIBRARY_PATH='/usr/local/lib:/usr/local/lib64:/usr/local/libexec:/usr/lib:/usr/lib64:/usr/libexec:/lib:/lib64'
+TOPATH="$HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin"
+TOLPATH="$HOME/.local/lib"
 
 export EDITOR='nvim'
 export GROFF_NO_SGR=1
@@ -12,14 +15,13 @@ export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_COMPDUMP="$ZSH/cache/.zcompdump-$HOST"
-export PYTHONDONTWRITEBYTECODE=1
+export PYTHONDONTWRITEBYTECODE='1'
 
 SUDO_CMD='sudo'
 FOLDER_ICON='  '
 EXA_ICONS='--icons'
 ZSH_THEME='undollar'
 LOCAL_LANG='LANG=en_US.UTF-8'
-TOPATH="$HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin"
 
 plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
@@ -106,15 +108,22 @@ bless () {
   if (( $# == 0 )); then
     echo 'Error: No source file given!'; return 1
   else
-    cat -n $1 | less
+    cat -n $@ | less
   fi
 }
 
 pya () {
+  setopt shwordsplit
   if (( $# == 0 )); then
     echo 'Error: No YANG file given!'; return 1
   else
-    pyang -f tree $1 | bat
+    for var in "$@"; do
+      echo >> /tmp/.__pya_temp_out
+      pyang -f tree $var >> /tmp/.__pya_temp_out
+      echo >> /tmp/.__pya_temp_out
+    done
+    bat /tmp/.__pya_temp_out
+    rm -f /tmp/.__pya_temp_out
   fi
 }
 
@@ -185,7 +194,15 @@ for DIR in $TOPATH; do
   if [[ -d $DIR ]]; then
     case :$PATH: in
       *:$DIR:* ) ;;
-      * ) export PATH=$PATH:$DIR;;
+      * ) export PATH=$DIR:$PATH;;
+    esac
+  fi
+done
+for DIR in $TOLPATH; do
+  if [[ -d $DIR ]]; then
+    case :$LD_LIBRARY_PATH: in
+      *:$DIR:* ) ;;
+      * ) export LD_LIBRARY_PATH=$DIR:$LD_LIBRARY_PATH;;
     esac
   fi
 done
