@@ -10,7 +10,7 @@ BCYAN=$'\e[1;94m'
 BGREEN=$'\e[1;32m'
 NRST=$'\e[0;0m'
 
-PIP_PACKAGES=""
+PIP_PACKAGES="pynvim pylint jedi 'python-lsp-server[all]'"
 SU_PIP_PACKAGES=""
 PIP_FLAGS="-U"
 
@@ -91,12 +91,12 @@ if command -v snap &> /dev/null; then
   sudo snap refresh && sleep 1 && sudo snap refresh
 fi
 
-[[ ! -z $PIP_PACKAGES ]] && pip3 install $PIP_PACKAGES $PIP_FLAGS ||
+[[ ! -z $PIP_PACKAGES ]] && bash -c "pip3 install $PIP_PACKAGES $PIP_FLAGS" ||
 echo "${NYELLOW}Skipping user ${BBLUE}Python${NYELLOW} updates.${NRST}"
 
 case $OSTYPE in
   *linux-gnu*)
-    [[ ! -z $SU_PIP_PACKAGES ]] && sudo pip3 install $SU_PIP_PACKAGES $PIP_FLAGS ||
+    [[ ! -z $SU_PIP_PACKAGES ]] && sudo bash -c "pip3 install $PIP_PACKAGES $PIP_FLAGS" ||
     echo "${NYELLOW}Skipping root ${BBLUE}Python${NYELLOW} updates.${NRST}"
     ;;
 esac
