@@ -12,7 +12,7 @@ fi;
 
 pkg install -y \
   curl git zip unzip tar gzip bzip2 xz-utils \
-  neovim zsh exa bat hexyl calc tmux gnupg \
+  neovim zsh exa bat hexyl calc tmux gnupg which \
   binutils clang python subversion nodejs yarn \
   openssh man manpages -y;
 
