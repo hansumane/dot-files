@@ -8,6 +8,7 @@ BRED=$'\e[1;31m'
 BBLUE=$'\e[1;34m'
 BCYAN=$'\e[1;94m'
 BGREEN=$'\e[1;32m'
+BWHITE=$'\e[1;37m'
 NRST=$'\e[0;0m'
 
 PIP_PACKAGES="pynvim pylint jedi 'python-lsp-server[all]'"
@@ -69,6 +70,13 @@ case $OSTYPE in
 
     ;;
 
+  *darwin*)
+
+  echo "${NYELLOW}Running ${BWHITE}MacOS${NYELLOW} updates.${NRST}"
+  brew update && brew upgrade
+
+  ;;
+
   *)
 
     echo "${NYELLOW}Your system: ${BRED}${OSTYPE}${NYELLOW} is not supported.${NRST}"
@@ -95,7 +103,7 @@ fi
 echo "${NYELLOW}Skipping user ${BBLUE}Python${NYELLOW} updates.${NRST}"
 
 case $OSTYPE in
-  *linux-gnu*)
+  *linux-gnu*|*darwin*)
     [[ ! -z $SU_PIP_PACKAGES ]] && sudo bash -c "pip3 install $PIP_PACKAGES $PIP_FLAGS" ||
     echo "${NYELLOW}Skipping root ${BBLUE}Python${NYELLOW} updates.${NRST}"
     ;;
@@ -108,5 +116,5 @@ fi
 
 if command -v nvim &> /dev/null; then
   echo "${NYELLOW}Running ${BGREEN}NeoVIM${NYELLOW} update.${NRST}"
-  nvim +PlugUpgrade
+  nvim +PlugUpgrade +PlugUpdate +CocUpdate
 fi
