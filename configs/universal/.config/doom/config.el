@@ -48,11 +48,11 @@
 ;; (use-package! gruber-darker-theme
 ;;     :config (setq doom-theme 'gruber-darker))
 
-(use-package! catppuccin-theme
-    :config
-    (setq doom-theme 'catppuccin
-          catppuccin-flavor 'macchiato)
-    (catppuccin-reload))
+;; (use-package! catppuccin-theme
+;;     :config
+;;     (setq doom-theme 'catppuccin
+;;           catppuccin-flavor 'macchiato)
+;;     (catppuccin-reload))
 
 ;; (use-package! spaceway-theme
 ;;     :load-path "~/.config/doom/manual/spaceway"

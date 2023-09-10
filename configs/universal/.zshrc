@@ -117,6 +117,7 @@ pya () {
   if (( $# == 0 )); then
     echo 'Error: No YANG file given!'; return 1
   else
+    rm -f /tmp/.__pya_temp_out
     for var in "$@"; do
       echo >> /tmp/.__pya_temp_out
       pyang -f tree $var >> /tmp/.__pya_temp_out
@@ -190,6 +191,7 @@ frs () {
 }
 
 setopt shwordsplit
+
 for DIR in $TOPATH; do
   if [[ -d $DIR ]]; then
     case :$PATH: in
@@ -198,6 +200,7 @@ for DIR in $TOPATH; do
     esac
   fi
 done
+
 for DIR in $TOLPATH; do
   if [[ -d $DIR ]]; then
     case :$LD_LIBRARY_PATH: in
