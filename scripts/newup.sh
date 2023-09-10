@@ -42,7 +42,7 @@ case $OSTYPE in
         echo "${NYELLOW}Running ${BCYAN}Arch${NYELLOW} updates.${NRST}"
         sudo timedatectl set-ntp true && sleep 10 && sudo hwclock --systohc
         yay -Syyu
-        sudo mkinitcpio -P && sudo update-grub
+        sudo mkinitcpio -P && sudo chmod 600 /boot/initramfs-linux* && sudo update-grub
         yay -Scca --noconfirm
         yay -Sc --repo --noconfirm
         ;;

@@ -2,10 +2,11 @@
 
 set -e
 
-if [[ ! $(pwd | rev | cut -d'/' -f3 | rev) = 'dot-files' ]] ||
-   [[ ! $(pwd | rev | cut -d'/' -f2 | rev) = 'scripts' ]] ||
-   [[ ! $(pwd | rev | cut -d'/' -f1 | rev) = 'setup' ]]; then
-  echo 'please go to /scripts/setup/ folder and run script from there!'; exit 1
+if [[ ! $(pwd | rev | cut -d'/' -f4 | rev) = 'dot-files' ]] ||
+   [[ ! $(pwd | rev | cut -d'/' -f3 | rev) = 'scripts' ]] ||
+   [[ ! $(pwd | rev | cut -d'/' -f2 | rev) = 'setup' ]] ||
+   [[ ! $(pwd | rev | cut -d'/' -f1 | rev) = 'arch' ]]; then
+  echo 'please go to /scripts/setup/arch folder and run script from there!'; exit 1
 else
   cd $(git rev-parse --show-toplevel); CURRENT_DIR=$(pwd)
 fi
