@@ -1,10 +1,15 @@
 
-export PATH='/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin'
-export LD_LIBRARY_PATH='/usr/local/lib:/usr/local/lib64:/usr/local/libexec:/usr/lib:/usr/lib64:/usr/libexec:/lib:/lib64'
+# Uncomment on GNU/Linux.
+# export PATH='/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin'
+# export LD_LIBRARY_PATH='/usr/local/lib:/usr/local/lib64:/usr/local/libexec:/usr/lib:/usr/lib64:/usr/libexec:/lib:/lib64'
 TOPATH="$HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin"
 TOLPATH="$HOME/.local/lib"
 
 export EDITOR='nvim'
+export ZSH="$HOME/.oh-my-zsh"
+export ZSH_COMPDUMP="$ZSH/cache/.zcompdump-$HOST"
+export PYTHONDONTWRITEBYTECODE='1'
+
 export GROFF_NO_SGR=1
 export LESS_TERMCAP_mb=$'\e[1;31m'
 export LESS_TERMCAP_md=$'\e[1;33m'
@@ -13,9 +18,6 @@ export LESS_TERMCAP_us=$'\e[01;37m'
 export LESS_TERMCAP_me=$'\e[0m'
 export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_ue=$'\e[0m'
-export ZSH="$HOME/.oh-my-zsh"
-export ZSH_COMPDUMP="$ZSH/cache/.zcompdump-$HOST"
-export PYTHONDONTWRITEBYTECODE='1'
 
 SUDO_CMD='sudo'
 FOLDER_ICON='  '
@@ -27,11 +29,10 @@ plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
 alias q='exit'
-alias t='cd;c;tmux -u'
 alias rr='rm -rf'
 alias ds='doom sync'
+alias t='cd;c;tmux -u'
 alias rrs="$SUDO_CMD rm -rf"
-alias rreas="$SUDO_CMD find . -type f -name '#*#' -or -name '*~' -delete"
 
 alias bat='bat --tabs=8'
 alias exa="$LOCAL_LANG exa"
@@ -46,14 +47,6 @@ alias cll='cpwd;ll'
 alias clx='cpwd;lx'
 alias cxl='cpwd;lx'
 alias clt='cpwd;lt'
-
-alias gite='gitr && ..'
-alias gits='git status'
-alias gitp='git reset --hard HEAD'
-alias 'gitp^'='git reset --hard HEAD^'
-alias gita='git add -A && git commit --amend'
-alias gitr='cd $(git rev-parse --show-toplevel)'
-alias gitl='git log --date=format-local:"%d/%m/%Y %H:%M:%S" --pretty=format:"%h %ad | %an >>> %s%d" --graph'
 
 alias edM="$EDITOR Makefile"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
@@ -81,6 +74,27 @@ lt () {
   fi
 }
 
+alias gits='git status'
+alias gite='gitr && cd ..'
+alias gitp='git reset --hard HEAD'
+alias 'gitp^'='git reset --hard HEAD^'
+alias gitr='cd $(git rev-parse --show-toplevel)'
+alias gita='git add -A && git commit --amend --no-edit'
+alias gitl='git log --date=format-local:"%d/%m/%Y %H:%M:%S" --pretty=format:"%h %ad | %an >>> %s%d" --graph'
+
+giti () {
+  $SUDO_CMD rm -rf $(git ls-files --others --ignored --exclude-standard --directory)
+}
+
+gitc () {
+  if (( $# == 0 )); then
+    git config --local --list | bat
+  else
+    git config --local user.name $1
+    git config --local user.email $2
+  fi
+}
+
 gitup () {
   BRANCH=$(git rev-parse --abbrev-ref HEAD)
   if (( $# == 0 )); then
@@ -97,18 +111,6 @@ gitup () {
       [Nn] ) echo 'Exiting...';;
       *    ) git push -u origin $BRANCH; git status;;
     esac
-  fi
-}
-
-giti () {
-  $SUDO_CMD rm -rf $(git ls-files --others --ignored --exclude-standard --directory)
-}
-
-bless () {
-  if (( $# == 0 )); then
-    echo 'Error: No source file given!'; return 1
-  else
-    cat -n $@ | less
   fi
 }
 
