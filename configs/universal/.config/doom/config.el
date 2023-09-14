@@ -1,12 +1,9 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-(setq org-ellipsis " ▼ "
-      org-directory "~/org/"
-      org-hide-emphasis-markers t
-      org-superstar-headline-bullets-list '("◉" "○" "✸" "✿")
-      scroll-margin 3
-      doom-theme 'doom-oceanic-next
+(setq scroll-margin 3
+      doom-theme 'doom-one
       display-line-numbers-type 'relative
+      user-full-name "User" user-mail-address "user@example.com"
       doom-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium)
       doom-big-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium)
       doom-serif-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium)
@@ -14,28 +11,27 @@
       doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium))
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
-(setq org-directory "~/org/"
-      user-full-name "User"
-      user-mail-address "user@example.com")
-
 (map! :leader "j" #'evil-ex-nohighlight)
 (map! :leader "c D" #'lsp-find-references)
 (set-input-method  ; C-\ to switch
     'russian-computer)
 (toggle-input-method)
 
-(custom-theme-set-faces!
-    'doom-one '(line-number-current-line
-                   :inherit line-number
-                   :foreground "#51afef"))
+(custom-theme-set-faces! 'doom-one
+    '(line-number-current-line
+         :inherit line-number
+         :foreground "#51afef"))
 
-(custom-theme-set-faces!
-    'doom-oceanic-next '(line-number-current-line
-                            :inherit line-number
-                            :foreground "#fec061"))
+(custom-theme-set-faces! 'doom-oceanic-next
+    '(line-number-current-line
+         :inherit line-number
+         :foreground "#fec061"))
 
-(use-package! org-superstar
-    :hook (org-mode . org-superstar-mode))
+(setq org-ellipsis " ▼ "
+      org-directory "~/org/"
+      org-hide-emphasis-markers t
+      org-superstar-itembullet-alist '((?+ . ?➤) (?- . ?✦))
+      org-superstar-headline-bullets-list '("◉" "○" "✸" "✿" "○" "✸" "✿"))
 (use-package! org-auto-tangle
     :hook (org-mode . org-auto-tangle-mode)
     :config (setq org-auto-tangle-default t))

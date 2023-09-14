@@ -6,6 +6,7 @@ TOPATH="$HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin"
 TOLPATH="$HOME/.local/lib"
 
 export EDITOR='nvim'
+export SUDO_CMD='sudo'
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_COMPDUMP="$ZSH/cache/.zcompdump-$HOST"
 export PYTHONDONTWRITEBYTECODE='1'
@@ -19,7 +20,6 @@ export LESS_TERMCAP_me=$'\e[0m'
 export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_ue=$'\e[0m'
 
-SUDO_CMD='sudo'
 FOLDER_ICON='  '
 EXA_ICONS='--icons'
 ZSH_THEME='undollar'
