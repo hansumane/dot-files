@@ -1,0 +1,7 @@
+[
+    {
+        "key": "tab",
+        "command": "emacs-tab.reindentCurrentLine",
+        "when": "editorTextFocus && !editorReadonly && !editorTabMovesFocus"
+    }
+]
