@@ -21,28 +21,29 @@ export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_ue=$'\e[0m'
 
 FOLDER_ICON='  '
-EXA_GIT='--git'
-EXA_ICONS='--icons'
+EZA_GIT='--git'
+EZA_ICONS='--icons'
 ZSH_THEME='undollar'
 LOCAL_LANG='LANG=en_US.UTF-8'
 
 plugins=(git zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
 
+alias c='cl'
 alias q='exit'
 alias rr='rm -rf'
-alias ds='doom sync'
-alias t='cd;c;tmux -u'
 alias rrs="$SUDO_CMD rm -rf"
-
-alias bat='bat --tabs=8'
-alias eza="$LOCAL_LANG eza"
-alias e="( emacs > /dev/null 2>&1 )&"
 alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"
 
+alias ds='doom sync'
+alias t='cd;c;tmux -u'
+alias bat='bat --tabs=8'
+alias eza="$LOCAL_LANG eza"
+alias dup='doom upgrade && doom doctor && doom sync'
+
 alias la='eza -a'
-alias lx="eza $EXA_ICONS -albh $EXA_GIT --classify --group --group-directories-first"
-alias ll="eza $EXA_ICONS -albh $EXA_GIT --classify --no-user --group-directories-first"
+alias lx="eza $EZA_ICONS -albh $EZA_GIT --classify --group --group-directories-first"
+alias ll="eza $EZA_ICONS -albh $EZA_GIT --classify --no-user --group-directories-first"
 alias cla='cpwd;la'
 alias cll='cpwd;ll'
 alias clx='cpwd;lx'
@@ -53,7 +54,7 @@ alias edM="$EDITOR Makefile"
 alias edcr="$EDITOR ~/.git-credentials"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
 
-c () {
+cl () {
   clear
   if [[ $TERM == 'screen-256color-bce' ]]; then
     tmux clear-history
@@ -62,9 +63,9 @@ c () {
 
 lt () {
   if (( $# == 0 )); then
-    eza $EXA_ICONS -albh $EXA_GIT --classify --no-user --group-directories-first -T
+    eza $EZA_ICONS -albh $EZA_GIT --classify --no-user --group-directories-first -T
   elif (( $# > 0 )); then
-    eza $EXA_ICONS -albh $EXA_GIT --classify --no-user --group-directories-first -TL $@
+    eza $EZA_ICONS -albh $EZA_GIT --classify --no-user --group-directories-first -TL $@
   fi
 }
 

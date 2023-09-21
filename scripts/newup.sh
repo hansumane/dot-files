@@ -5,11 +5,12 @@ set -e
 NYELLOW=$'\e[0;33m'
 BYELLOW=$'\e[1;33m'
 BRED=$'\e[1;31m'
+BGREEN=$'\e[1;32m'
 BBLUE=$'\e[1;34m'
 BCYAN=$'\e[1;94m'
-BGREEN=$'\e[1;32m'
+BMAGENTA=$'\e[1;35m'
 BWHITE=$'\e[1;37m'
-NRST=$'\e[0;0m'
+NRST=$'\e[0m'
 
 PIP_PACKAGES="pynvim pylint jedi 'python-lsp-server[all]'"
 SU_PIP_PACKAGES=""
@@ -117,4 +118,9 @@ fi
 if command -v nvim &> /dev/null; then
   echo "${NYELLOW}Running ${BGREEN}NeoVIM${NYELLOW} update.${NRST}"
   nvim +PlugUpgrade +PlugUpdate +CocUpdate
+fi
+
+if command -v doom &> /dev/null; then
+  echo "${NYELLOW}Running ${BMAGENTA}DOOM Emacs${NYELLOW} update.${NRST}"
+  doom upgrade && doom doctor | cat && doom sync
 fi

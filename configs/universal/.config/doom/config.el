@@ -4,11 +4,11 @@
       doom-theme 'doom-one
       display-line-numbers-type 'relative
       user-full-name "User" user-mail-address "user@example.com"
-      doom-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium)
-      doom-big-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium)
-      doom-serif-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium)
-      doom-unicode-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium)
-      doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 20 :weight 'medium))
+      doom-font (font-spec :family "Iosevka Nerd Font" :size 18 :weight 'medium)
+      doom-big-font (font-spec :family "Iosevka Nerd Font" :size 18 :weight 'medium)
+      doom-serif-font (font-spec :family "Iosevka Nerd Font" :size 18 :weight 'medium)
+      doom-unicode-font (font-spec :family "Iosevka Nerd Font" :size 18 :weight 'medium)
+      doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 18 :weight 'medium))
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
 (map! :leader "j" #'evil-ex-nohighlight)
@@ -21,6 +21,11 @@
     '(line-number-current-line
          :inherit line-number
          :foreground "#51afef"))
+
+(custom-theme-set-faces! 'doom-horizon
+    '(line-number-current-line
+         :inherit line-number
+         :foreground "#e95678"))
 
 (custom-theme-set-faces! 'doom-oceanic-next
     '(line-number-current-line
@@ -44,11 +49,11 @@
 ;; (use-package! gruber-darker-theme
 ;;     :config (setq doom-theme 'gruber-darker))
 
-;; (use-package! catppuccin-theme
-;;     :config
-;;     (setq doom-theme 'catppuccin
-;;           catppuccin-flavor 'macchiato)
-;;     (catppuccin-reload))
+(use-package! catppuccin-theme
+    :config
+    (setq doom-theme 'catppuccin
+          catppuccin-flavor 'mocha)
+    (catppuccin-reload))
 
 ;; (use-package! spaceway-theme
 ;;     :load-path "~/.config/doom/manual/spaceway"
