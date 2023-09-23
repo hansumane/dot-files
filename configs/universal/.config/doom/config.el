@@ -11,6 +11,12 @@
       doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 18 :weight 'medium))
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
+(setq c-default-style
+    '((java-mode . "java")
+      (awk-mode . "awk")
+      (c-mode . "gnu")
+      (other . "doom")))
+
 (map! :leader "j" #'evil-ex-nohighlight)
 (map! :leader "c D" #'lsp-find-references)
 (set-input-method  ; C-\ to switch
