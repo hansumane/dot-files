@@ -39,7 +39,6 @@ alias ds='doom sync'
 alias t='cd;c;tmux -u'
 alias bat='bat --tabs=8'
 alias eza="$LOCAL_LANG eza"
-alias dup='doom upgrade && doom doctor && doom sync'
 
 alias la='eza -a'
 alias lx="eza $EZA_ICONS -albh $EZA_GIT --classify --group --group-directories-first"
@@ -74,7 +73,7 @@ alias gite='gitr && cd ..'
 alias gitp='git reset --hard HEAD'
 alias 'gitp^'='git reset --hard HEAD^'
 alias gitr='cd $(git rev-parse --show-toplevel)'
-alias gita='git add -A && git commit --amend --no-edit'
+alias gita='git add -A && git commit --amend --reset-author --no-edit'
 alias gitl='git log --date=format-local:"%d/%m/%Y %H:%M:%S" --pretty=format:"%h %ad | %an >>> %s%d" --graph'
 
 giti () {
@@ -99,12 +98,28 @@ gitup () {
       *    ) git pull; git status;;
     esac
   else
-    git add -A
-    git commit -m "$1"
     read "ANS?Commit name given, git push ($BRANCH)? [Y/n] "
     case $ANS in
-      [Nn] ) echo 'Exiting...';;
-      *    ) git push -u origin $BRANCH; git status;;
+      [Nn] ) echo 'Exiting...' ;;
+      *    )
+        if git config --local --list | grep -q 'user.name' &&
+           git config --local --list | grep -q 'user.email'; then
+          echo "user.name: $(git config --local 'user.name')"
+          echo "user.email: $(git config --local 'user.email')"
+          read 'ANS?Are these ok? [Y/n] '
+          case $ANS in
+            [Nn] ) echo 'Exiting...' ;;
+            *    )
+              git add -A; git commit -m "$1"
+              git push -u origin $BRANCH
+              git status
+              ;;
+          esac
+        else
+          echo 'git user.name or user.email ot set, exiting...'
+          return 1
+        fi
+        ;;
     esac
   fi
 }
