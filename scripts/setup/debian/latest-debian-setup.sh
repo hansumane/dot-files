@@ -6,7 +6,7 @@ sudo apt update &&
 sudo apt full-upgrade -y &&
 sudo apt install -y \
   curl git zip unzip tar gzip bzip2 xz-utils \
-  zsh exa bat hexyl tmux calc subversion \
+  zsh tmux calc subversion \
   clang clangd build-essential python3-pip \
   man-db manpages nodejs yarnpkg
 
