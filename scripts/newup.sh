@@ -28,8 +28,8 @@ case $OSTYPE in
     case $NAME in
 
       *Debian* | *Ubuntu*)
-        PIP_FLAGS="--break-system-packages $PIP_FLAGS"
         echo "${NYELLOW}Running ${BRED}Debian-based${NYELLOW} updates.${NRST}"
+        PIP_FLAGS="--break-system-packages $PIP_FLAGS"
         sudo apt update && sudo apt full-upgrade -y &&
         sudo apt autoremove -y && sudo apt autoclean -y
         ;;
@@ -41,6 +41,7 @@ case $OSTYPE in
 
       *Arch*)
         echo "${NYELLOW}Running ${BCYAN}Arch${NYELLOW} updates.${NRST}"
+        PIP_FLAGS="--break-system-packages $PIP_FLAGS"
         sudo timedatectl set-ntp true && sleep 10 && sudo hwclock --systohc
         yay -Syyu
         sudo mkinitcpio -P && sudo chmod 600 /boot/initramfs-linux* && sudo update-grub
@@ -49,8 +50,8 @@ case $OSTYPE in
         ;;
 
       *openSUSE\ Tumbleweed*)
-        PIP_FLAGS="--break-system-packages $PIP_FLAGS"
         echo "${NYELLOW}Running ${BGREEN}OpenSUSE Tumbleweed${NYELLOW} updates.${NRST}"
+        PIP_FLAGS="--break-system-packages $PIP_FLAGS"
         sudo zypper ref && sudo zypper dup
         ;;
 
