@@ -1,7 +1,7 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 (setq scroll-margin 3
-      doom-theme 'doom-one
+      doom-theme 'doom-old-hope
       display-line-numbers-type 'relative
       user-full-name "User" user-mail-address "user@example.com"
       doom-font (font-spec :family "Iosevka Nerd Font" :size 18 :weight 'medium)
@@ -14,7 +14,7 @@
 (setq c-default-style
     '((java-mode . "java")
       (awk-mode . "awk")
-      (c-mode . "gnu")
+      ;;(c-mode . "gnu")
       (other . "doom")))
 
 (map! :leader "j" #'evil-ex-nohighlight)
@@ -28,10 +28,10 @@
          :inherit line-number
          :foreground "#51afef"))
 
-(custom-theme-set-faces! 'doom-horizon
+(custom-theme-set-faces! 'doom-old-hope
     '(line-number-current-line
          :inherit line-number
-         :foreground "#e95678"))
+         :foreground "#fedd38"))
 
 (custom-theme-set-faces! 'doom-oceanic-next
     '(line-number-current-line
@@ -55,11 +55,11 @@
 ;; (use-package! gruber-darker-theme
 ;;     :config (setq doom-theme 'gruber-darker))
 
-(use-package! catppuccin-theme
-    :config
-    (setq doom-theme 'catppuccin
-          catppuccin-flavor 'mocha)
-    (catppuccin-reload))
+;; (use-package! catppuccin-theme
+;;     :config
+;;     (setq doom-theme 'catppuccin
+;;           catppuccin-flavor 'mocha)
+;;     (catppuccin-reload))
 
 ;; (use-package! spaceway-theme
 ;;     :load-path "~/.config/doom/manual/spaceway"

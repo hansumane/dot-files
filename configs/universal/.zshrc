@@ -84,8 +84,8 @@ gitc () {
   if (( $# == 0 )); then
     git config --local --list | bat
   else
-    git config --local user.name $1
-    git config --local user.email $2
+    git config --local user.name "$1"
+    git config --local user.email "$2"
   fi
 }
 
