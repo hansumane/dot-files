@@ -2,6 +2,7 @@
 	autocrlf = input
 	safecrlf = warn
 	quotepath = off
+	pager = bat
 [init]
 	defaultBranch = main
 [pull]

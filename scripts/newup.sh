@@ -93,7 +93,7 @@ echo "${NYELLOW}Running universal updates.${NRST}"
 if command -v flatpak &> /dev/null; then
   echo "${NYELLOW}Running ${BBLUE}FlatPak${NYELLOW} updates.${NRST}"
   flatpak update && sleep 1 && flatpak update
-  flatpak uninstall --unused
+  set +e; flatpak uninstall --unused; set -e
 fi
 
 if command -v snap &> /dev/null; then

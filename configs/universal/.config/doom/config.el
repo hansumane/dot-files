@@ -17,6 +17,7 @@
       ;;(c-mode . "gnu")
       (other . "doom")))
 
+(map! :leader "k" #'sort-lines)
 (map! :leader "j" #'evil-ex-nohighlight)
 (map! :leader "c D" #'lsp-find-references)
 (set-input-method  ; C-\ to switch
@@ -27,6 +28,11 @@
     '(line-number-current-line
          :inherit line-number
          :foreground "#51afef"))
+
+(custom-theme-set-faces! 'doom-ayu-dark
+    '(line-number-current-line
+         :inherit line-number
+         :foreground "#e6b450"))
 
 (custom-theme-set-faces! 'doom-old-hope
     '(line-number-current-line
@@ -47,8 +53,8 @@
     :hook (org-mode . org-auto-tangle-mode)
     :config (setq org-auto-tangle-default t))
 
-(setq eshell-history-size 3000
-      eshell-buffer-maximum-lines 3000
+(setq eshell-history-size 4096
+      eshell-buffer-maximum-lines 4096
       eshell-aliases-file "~/.config/doom/eshell/aliases")
 (map! :leader "e s" #'eshell)
 

@@ -127,7 +127,7 @@ gitup () {
 pya () {
   setopt shwordsplit
   if (( $# == 0 )); then
-    echo 'Error: No YANG file given!'; return 1
+    echo 'Error: No YANG file(s) given!'; return 1
   else
     rm -f /tmp/.__pya_temp_out
     for var in "$@"; do
@@ -152,10 +152,10 @@ indchk () {
 
 ptchk() {
   if (( $# == 0 )); then
-    echo 'Error: No source file given!'; return 1
+    echo 'Error: No source file(s) given!'; return 1
   else
     checkpatch.pl --no-tree --strict --max-line-length=90 --file --ignore \
-      SPDX_LICENSE_TAG,CONCATENATED_STRING,PREFER_KERNEL_TYPES,SPLIT_STRING,PREFER_DEFINED_ATTRIBUTE_MACRO,BLOCK_COMMENT_STYLE $@
+      SPDX_LICENSE_TAG,CONCATENATED_STRING,PREFER_KERNEL_TYPES,SPLIT_STRING,PREFER_DEFINED_ATTRIBUTE_MACRO,BLOCK_COMMENT_STYLE,OPEN_ENDED_LINE,IF_0 $@
       # SPDX_LICENSE_TAG,CONCATENATED_STRING,PREFER_KERNEL_TYPES,SPLIT_STRING,SSCANF_TO_KSTRTO,FSF_MAILING_ADDRESS,OPEN_ENDED_LINE,VOLATILE,CAMELCASE,BLOCK_COMMENT_STYLE,QUOTED_WHITESPACE_BEFORE_NEWLINE,PREFER_DEFINED_ATTRIBUTE_MACRO,IF_0
   fi
 }
