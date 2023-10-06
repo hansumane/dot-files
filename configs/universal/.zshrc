@@ -144,7 +144,7 @@ indchk () {
   if (( $# == 0 )); then
     echo 'Error: No source file given!'; return 1
   else
-    indent -gnu -nut $1 -o $1\~ &&  # -npcs
+    indent -gnu -nut -l79 -lc82 $1 -o $1\~ &&  # -npcs
     diff -u $1 $1\~ | bat
     rm -rf $1\~
   fi
