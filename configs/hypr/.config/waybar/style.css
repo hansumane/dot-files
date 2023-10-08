@@ -150,7 +150,7 @@ window#waybar.empty #window {
 
 #pulseaudio.muted {
     background-color: @color11;
-    color: #FFFFFF;
+    color: @background;
 }
 
 #network {
