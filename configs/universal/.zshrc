@@ -1,17 +1,17 @@
 
-# Uncomment on GNU/Linux.
-# export PATH='/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin'
-# export LD_LIBRARY_PATH='/usr/local/lib:/usr/local/lib64:/usr/local/libexec:/usr/lib:/usr/lib64:/usr/libexec:/lib:/lib64'
-TOPATH="$HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin"
-TOLPATH="$HOME/.local/lib"
-
+# base defines
+case "$TERM" in
+  *screen* ) ;;
+  * ) export TERM="xterm-256color" ;;
+esac
 export EDITOR='nvim'
 export SUDO_CMD='sudo'
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_COMPDUMP="$ZSH/cache/.zcompdump-$HOST"
 export PYTHONDONTWRITEBYTECODE='1'
 
-export GROFF_NO_SGR=1
+# man colors
+export GROFF_NO_SGR='1'
 export LESS_TERMCAP_mb=$'\e[1;31m'
 export LESS_TERMCAP_md=$'\e[1;33m'
 export LESS_TERMCAP_so=$'\e[01;44;37m'
@@ -20,6 +20,7 @@ export LESS_TERMCAP_me=$'\e[0m'
 export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_ue=$'\e[0m'
 
+# local defines
 FOLDER_ICON='  '
 EZA_GIT='--git'
 EZA_ICONS='--icons'
@@ -116,7 +117,7 @@ gitup () {
               ;;
           esac
         else
-          echo 'git user.name or user.email ot set, exiting...'
+          echo 'git user.name or user.email not set, exiting...'
           return 1
         fi
         ;;
@@ -202,9 +203,17 @@ frs () {
   fi
 }
 
+TOBPATH=""
+TOBPATH+="/bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin"
+TOBPATH+="$HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin"
+
+TOLPATH=""
+TOLPATH+="/libexec /lib /lib64 /usr/libexec /usr/lib /usr/lib64 /usr/local/libexec /usr/local/lib /usr/local/lib64"
+TOLPATH+="$HOME/.local/lib"
+
 setopt shwordsplit
 
-for DIR in $TOPATH; do
+for DIR in $TOBPATH; do
   if [[ -d $DIR ]]; then
     case :$PATH: in
       *:$DIR:* ) ;;
