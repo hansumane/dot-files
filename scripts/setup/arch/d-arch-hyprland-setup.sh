@@ -14,9 +14,9 @@ else
 fi
 
 yay -Sy --needed \
-  gtk2 gtk3 gtk4 gtk-engine-murrine \
+  gtk2 gtk3 gtk4 qt5-wayland qt6-wayland gtk-engine-murrine \
   hyprland wofi hyprpaper waybar xdg-desktop-portal-hyprland \
-  lxappearance pavucontrol dolphin kitty alacritty \
+  grim slurp lxappearance pavucontrol dolphin kitty alacritty \
   nm-connection-editor network-manager-applet networkmanager-openvpn \
   gnome-themes-extra xdg-desktop-portal-gtk xdg-user-dirs \
   flatpak helvum zathura zathura-pdf-mupdf zathura-djvu \
