@@ -1,0 +1,22 @@
+@define-color foreground #cdd6f4;
+@define-color background #1e1e2e;
+
+window {
+    background: @background;
+    color: @color;
+    font-family: "Iosevka Nerd Font";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    opacity: 0.8;
+}
+
+#input {
+    background: @background;
+    color: @color;
+}
+
+#entry:selected {
+    background: @foreground;
+    color: @background;
+}
