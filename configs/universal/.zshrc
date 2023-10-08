@@ -206,14 +206,14 @@ frs () {
   fi
 }
 
- TOBPATH="/bin /usr/sbin /usr/bin"
-TOBPATH+="/usr/local/sbin /usr/local/bin"
-TOBPATH+="$HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin"
+  TOBPATH="/bin /usr/sbin /usr/bin"
+TOBPATH+=" /usr/local/sbin /usr/local/bin"
+TOBPATH+=" $HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin"
 
- TOLPATH="/libexec /lib /lib64"
-TOLPATH+="/usr/libexec /usr/lib /usr/lib64"
-TOLPATH+="/usr/local/libexec /usr/local/lib /usr/local/lib64"
-TOLPATH+="$HOME/.local/lib"
+  TOLPATH="/libexec /lib /lib64"
+TOLPATH+=" /usr/libexec /usr/lib /usr/lib64"
+TOLPATH+=" /usr/local/libexec /usr/local/lib /usr/local/lib64"
+TOLPATH+=" $HOME/.local/lib"
 
 setopt shwordsplit
 
