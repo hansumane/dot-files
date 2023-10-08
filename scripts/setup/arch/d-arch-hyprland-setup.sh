@@ -15,7 +15,7 @@ fi
 
 yay -Sy --needed \
   gtk2 gtk3 gtk4 qt5-wayland qt6-wayland gtk-engine-murrine \
-  hyprland wofi hyprpaper waybar xdg-desktop-portal-hyprland \
+  dunst nwg-look-bin hyprland wofi hyprpaper waybar xdg-desktop-portal-hyprland \
   grim slurp lxappearance pavucontrol dolphin kitty alacritty \
   nm-connection-editor network-manager-applet networkmanager-openvpn \
   gnome-themes-extra xdg-desktop-portal-gtk xdg-user-dirs \
