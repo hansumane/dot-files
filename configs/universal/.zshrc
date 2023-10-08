@@ -166,7 +166,10 @@ edP () {
     echo 'Error: No file name given!'; return 1
   else
     if [[ ! -f $1 ]]; then
-      echo "#!/usr/bin/env python3\n\nif __name__ == '__main__':\n    pass" > $1 && chmod +x $1
+      echo "#!/usr/bin/env python3\n" > $1
+      echo 'if __name__ == "__main__":' >> $1
+      echo '    pass' >> $1
+      chmod +x $1
     fi
   fi
 }
@@ -203,12 +206,13 @@ frs () {
   fi
 }
 
-TOBPATH=""
-TOBPATH+="/bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin"
+ TOBPATH="/bin /usr/sbin /usr/bin"
+TOBPATH+="/usr/local/sbin /usr/local/bin"
 TOBPATH+="$HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin"
 
-TOLPATH=""
-TOLPATH+="/libexec /lib /lib64 /usr/libexec /usr/lib /usr/lib64 /usr/local/libexec /usr/local/lib /usr/local/lib64"
+ TOLPATH="/libexec /lib /lib64"
+TOLPATH+="/usr/libexec /usr/lib /usr/lib64"
+TOLPATH+="/usr/local/libexec /usr/local/lib /usr/local/lib64"
 TOLPATH+="$HOME/.local/lib"
 
 setopt shwordsplit
