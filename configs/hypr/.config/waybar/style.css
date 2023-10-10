@@ -55,7 +55,7 @@ window#waybar {
 #workspaces button:hover {
     background: @malter;
     color: @mbackground;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 tooltip {
