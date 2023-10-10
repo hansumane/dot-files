@@ -4,40 +4,51 @@
     monitor = 0
     follow = mouse
 
-    width = 256
-    height = 256
-
-    origin = bottom-left
-    offset = 10x10
-
     scale = 0
+    width = 512
+    height = 256
+    offset = 10x10
+    origin = bottom-right
+
+    frame_width = 2
+    line_height = 0
+    alignment = left
+    ellipsize = middle
+    corner_radius = 10
+    icon_corner_radius = 0
+    vertical_alignment = center
+    frame_color = "#f5e0dc"
+
+    ignore_newline = no
+    indicate_hidden = yes
+    show_indicators = yes
+    stack_duplicates = true
+    hide_duplicate_count = false
+
+    history_length = 20
     notification_limit = 20
+    show_age_threshold = 60
+
+    sort = yes
+    sticky_history = yes
 
     progress_bar = true
     progress_bar_height = 10
-    progress_bar_frame_width = 1
+    progress_bar_frame_width = 2
     progress_bar_min_width = 128
-    progress_bar_max_width = 256
+    progress_bar_max_width = 512
     progress_bar_corner_radius = 10
 
-    indicate_hidden = yes
-
     transparency = 0
-
-    line_height = 0
     separator_height = 2
     separator_color = frame
 
     padding = 8
+    gap_size = 0
     horizontal_padding = 8
     text_icon_padding = 0
-    frame_color = "#f5e0dc"
-    frame_width = 2
-    gap_size = 0
 
-    sort = yes
-
-    font = Iosevka Nerd Font 11
+    font = Iosevka Nerd Font 14
 
     # The format of the message.  Possible variables are:
     #   %a  appname
@@ -49,50 +60,24 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     markup = full
-    format = "<b>%a</b>\n%s\n<i>%b</i>"
-
-    alignment = left
-
-    vertical_alignment = center
-
-    show_age_threshold = 60
-
-    ellipsize = middle
-
-    ignore_newline = no
-
-    stack_duplicates = true
-
-    hide_duplicate_count = false
-
-    show_indicators = yes
-
-    enable_recursive_icon_lookup = true
-
-    icon_theme = Papirus-Dark
+    format = "<b>%a</b>\n<i>%s</i>\n%b"
 
     min_icon_size = 32
     max_icon_size = 128
     icon_position = left
-    icon_corner_radius = 10
+    icon_theme = Papirus-Dark
     icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
-
-    sticky_history = yes
-    history_length = 20
-
-    dmenu = /usr/bin/dmenu -p dunst:
+    enable_recursive_icon_lookup = true
 
     browser = /usr/bin/xdg-open
-
+    dmenu = /usr/bin/dmenu -p dunst:
     always_run_script = true
 
     title = Dunst
     class = Dunst
-
-    corner_radius = 10
-    ignore_dbusclose = false
     force_xwayland = false
     force_xinerama = false
+    ignore_dbusclose = false
 
     mouse_left_click = close_current
     mouse_middle_click = do_action, close_current
