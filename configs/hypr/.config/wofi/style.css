@@ -1,9 +1,15 @@
-@define-color foreground #cdd6f4;
-@define-color background #1e1e2e;
+
+@define-color mforeground #cdd6f4;
+@define-color mbackground #1e1e2e;
+@define-color mbrightbg #45475a;
+@define-color maccent #f5e0dc;
+@define-color malter #fab387;
+@define-color mgreen #a6e3a1;
+@define-color mred #f38ba8;
 
 window {
-    background: @background;
-    color: @color;
+    background: @mbackground;
+    color: @mforeground;
     font-family: "Iosevka Nerd Font";
     font-style: normal;
     font-weight: 500;
@@ -12,11 +18,11 @@ window {
 }
 
 #input {
-    background: @background;
-    color: @color;
+    background: @mbackground;
+    color: @mforeground;
 }
 
 #entry:selected {
-    background: @foreground;
-    color: @background;
+    background: @maccent;
+    color: @mbackground;
 }

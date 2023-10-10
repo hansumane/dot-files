@@ -1,23 +1,11 @@
-@define-color foreground #cdd6f4;
-@define-color background #1e1e2e;
-@define-color cursor #b4befe;
 
-@define-color color0 #45475A;
-@define-color color1 #f38ba8;
-@define-color color2 #a6e3a1;
-@define-color color3 #f9e2af;
-@define-color color4 #89b4fa;
-@define-color color5 #f5c2e7;
-@define-color color6 #94e2d2;
-@define-color color7 #bac2de;
-@define-color color8 #585B70;
-@define-color color9 #f38ba8;
-@define-color color10 #a6e3a1;
-@define-color color11 #f9e2af;
-@define-color color12 #89b4fa;
-@define-color color13 #f5c2e7;
-@define-color color14 #94e2d2;
-@define-color color15 #a6adc8;
+@define-color mforeground #cdd6f4;
+@define-color mbackground #1e1e2e;
+@define-color mbrightbg #45475a;
+@define-color maccent #f5e0dc;
+@define-color malter #fab387;
+@define-color mgreen #a6e3a1;
+@define-color mred #f38ba8;
 
 * {
     font-family: "Iosevka Nerd Font";
@@ -35,8 +23,8 @@ window#waybar {
 }
 
 #workspaces {
-    background: @background;
-    color: @foreground;
+    background: @mbackground;
+    color: @mforeground;
     padding: 0px 1px;
     margin: 2px 1px 3px 1px;
     border: 0px;
@@ -45,8 +33,8 @@ window#waybar {
 }
 
 #workspaces button {
-    background: @color8;
-    color: @foreground;
+    background: @mbrightbg;
+    color: @mforeground;
     padding: 1px 9px;
     margin: 3px 3px;
     border: 0px;
@@ -56,8 +44,8 @@ window#waybar {
 }
 
 #workspaces button.active {
-    background: @color13;
-    color: @background;
+    background: @maccent;
+    color: @mbackground;
     border-radius: 15px;
     min-width: 40px;
     transition: all 0.3s ease-in-out;
@@ -65,14 +53,14 @@ window#waybar {
 }
 
 #workspaces button:hover {
-    background: @color11;
-    color: @background;
-    opacity: 0.7;
+    background: @malter;
+    color: @mbackground;
+    opacity: 0.8;
 }
 
 tooltip {
-    background: @background;
-    color: @foreground;
+    background: @mbackground;
+    color: @mforeground;
     padding: 20px;
     margin: 0px;
     border-radius: 10px;
@@ -80,14 +68,14 @@ tooltip {
 }
 
 #window {
-    background: @background;
-    color: @foreground;
+    background: @mbackground;
+    color: @mforeground;
     padding: 2px 10px 0px 10px;
     margin: 3px 15px 3px 0px;
     border-radius: 12px;
     font-size: 16px;
     opacity: 0.8;
-    border: 2px solid @color13;
+    border: 2px solid @maccent;
 }
 
 window#waybar.empty #window {
@@ -96,12 +84,12 @@ window#waybar.empty #window {
 }
 
 #taskbar {
-    background: @background;
+    background: @mbackground;
     padding: 0px;
     margin: 3px 15px 3px 0px;
     border-radius: 15px;
     opacity: 0.8;
-    border: 2px solid @color13;
+    border: 2px solid @maccent;
 }
 
 #taskbar.empty {
@@ -117,7 +105,7 @@ window#waybar.empty #window {
 }
 
 #disk,#memory,#cpu {
-    color: @foreground;
+    color: @mforeground;
     padding: 0px;
     margin: 0px;
     font-size: 18px;
@@ -128,19 +116,19 @@ window#waybar.empty #window {
 }
 
 #clock {
-    background: @background;
-    color: @foreground;
+    background: @mbackground;
+    color: @mforeground;
     border-radius: 15px;
     padding: 1px 10px 0px 10px;
     margin: 3px 0px 3px 0px;
     opacity: 0.8;
-    border: 2px solid @color13;
+    border: 2px solid @maccent;
     font-size: 16px;
 }
 
 #pulseaudio {
-    background: @foreground;
-    color: @background;
+    background: @mforeground;
+    color: @mbackground;
     border-radius: 15px;
     padding: 2px 10px 0px 10px;
     margin: 5px 15px 5px 0px;
@@ -149,40 +137,40 @@ window#waybar.empty #window {
 }
 
 #pulseaudio.muted {
-    background-color: @color11;
-    color: @background;
+    background-color: @maltern;
+    color: @mbackground;
 }
 
 #network {
-    background: @background;
-    color: @foreground;
+    background: @mbackground;
+    color: @mforeground;
     border-radius: 15px;
     padding: 2px 10px 0px 10px;
     margin: 3px 10px 3px 0px;
     opacity: 0.8;
-    border: 2px solid @color13;
+    border: 2px solid @maccent;
     font-size: 16px;
 }
 
 #network.ethernet {
-    background: @background;
-    color: @foreground;
+    background: @mbackground;
+    color: @mforeground;
     border-radius: 15px;
     padding: 2px 10px 0px 10px;
     margin: 3px 10px 3px 0px;
     opacity: 0.8;
-    border: 2px solid @color13;
+    border: 2px solid @maccent;
     font-size: 16px;
 }
 
 #network.wifi {
-    background: @background;
-    color: @foreground;
+    background: @mbackground;
+    color: @mforeground;
     border-radius: 15px;
     padding: 2px 10px 0px 10px;
     margin: 3px 10px 3px 0px;
     opacity: 0.8;
-    border: 2px solid @color13;
+    border: 2px solid @maccent;
     font-size: 16px;
 }
 
@@ -203,8 +191,8 @@ window#waybar.empty #window {
 }*/
 
 #battery {
-    background: @background;
-    color: @foreground;
+    background: @mbackground;
+    color: @mforeground;
     border-radius: 15px;
     padding: 2px 15px 0px 10px;
     margin: 5px 15px 5px 0px;
@@ -213,20 +201,20 @@ window#waybar.empty #window {
 }
 
 #battery.charging, #battery.plugged {
-    background: @color10;
-    color: @background;
+    background: @mgreen;
+    color: @mbackground;
 }
 
 @keyframes blink {
     to {
-        background: @foreground;
-        color: @background;
+        background: @mforeground;
+        color: @mbackground;
     }
 }
 
 #battery.critical:not(.charging) {
-    background: @color9;
-    color: @foreground;
+    background: @mred;
+    color: @mforeground;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -235,8 +223,8 @@ window#waybar.empty #window {
 }
 
 #tray {
-    background: @background;
-    color: @foreground;
+    background: @mbackground;
+    color: @mforeground;
     padding: 0px 10px 0px 10px;
     margin: 3px 15px 3px 0px;
     border-radius: 15px;
@@ -260,8 +248,8 @@ label:focus {
 }
 
 #network.disconnected {
-    background: @color9;
-    color: @foreground;
+    background: @maltern;
+    color: @mforeground;
     border-radius: 15px;
     padding: 2px 10px 0px 10px;
     margin: 3px 10px 3px 0px;
