@@ -48,7 +48,7 @@
     horizontal_padding = 8
     text_icon_padding = 0
 
-    font = Iosevka Nerd Font 14
+    font = Iosevka Nerd Font 12
 
     # The format of the message.  Possible variables are:
     #   %a  appname

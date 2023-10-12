@@ -56,9 +56,9 @@ alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
 
 cl () {
   clear
-  if [[ $TERM == 'screen-256color-bce' ]]; then
-    tmux clear-history
-  fi
+  case $TERM in
+    *screen* ) tmux clear-history ;;
+  esac
 }
 
 lt () {
