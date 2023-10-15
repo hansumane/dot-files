@@ -1,5 +1,6 @@
 {
     "layer": "top",
+    "position": "top",
     "include": ["~/.config/waybar/modules.json"],
 
     "modules-left": [
@@ -21,6 +22,7 @@
         "orientation": "horizontal",
         "modules": [
             "pulseaudio",
+            "backlight",
             "battery",
             "network"
         ]

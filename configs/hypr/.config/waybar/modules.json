@@ -24,6 +24,12 @@
         "scroll-step": 1,
         "on-click": "pavucontrol"
     },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "<span foreground='#f5e0dc'>{icon}</span>  {percent}% <span foreground='#1e1e2e'>|</span> ",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "tooltip-format": "Brightness"
+    },
     "battery": {
         "states": {
             "warning": 30,
