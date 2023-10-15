@@ -8,21 +8,41 @@
 @define-color mred #f38ba8;
 
 window {
-    background: @mbackground;
-    color: @mforeground;
+    background-color: @mbackground;
     font-family: "Iosevka Nerd Font";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    opacity: 0.8;
+    font-size: 16px;
+    padding: 50px;
 }
 
 #input {
-    background: @mbackground;
-    color: @mforeground;
+    background-color: @mbrightbg;
+    color: @maccent;
+    margin: 20px 15px;
+    padding: 10px 20px;
+    border: none;
+}
+
+#input:focus {
+    box-shadow: none;
+}
+
+#inner-box {
+    margin: 0 15px;
+}
+
+#img {
+    margin: 10px;
 }
 
 #entry:selected {
-    background: @maccent;
-    color: @mbackground;
+    background-color: @maccent;
+    border-radius: 5px;
+}
+
+#text {
+    color: @mforeground
+}
+
+#text:selected {
+    color: @mbackground
 }
