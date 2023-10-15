@@ -1,227 +1,71 @@
 {
-    "hyprland/workspaces" : {
-        "on-click": "activate",
-        "active-only": false,
-        "all-outputs": true,
+    "hyprland/workspaces": {
         "format": "{}",
-        "format-icons": {
-            "urgent": "",
-            "active": "",
-            "default": ""
-        },
-        "persistent_workspaces": {
-             "*": 5
-        }
-    },
-
-    "wlr/taskbar": {
-        "format": "{icon}",
-        "icon-size": 18,
-        "tooltip-format": "{title}",
+        "format-icons": {},
         "on-click": "activate",
-        "on-click-middle": "close",
-        "ignore-list": [
-            "Alacritty",
-            "kitty"
-        ],
-        "app_ids-mapping": {
-            "firefoxdeveloperedition": "firefox-developer-edition"
-        },
-        "rewrite": {
-            "Firefox Web Browser": "Firefox",
-            "Foot Server": "Terminal"
-        }
+        "sort-by-number": true,
+        "active-only": true
     },
-
     "hyprland/window": {
-        "rewrite": {
-            "(.*) - Brave": "$1",
-            "(.*) - Chromium": "$1",
-            "(.*) - Brave Search": "$1",
-            "(.*) - Outlook": "$1",
-            "(.*) Microsoft Teams": "$1"
-        },
+        "max-length": 128,
         "separate-outputs": true
     },
-
-    "custom/youtube": {
-        "format": " {}",
-        "exec": "python ~/private/youtube.py",
-        "restart-interval": 600,
-        "on-click": "brave https://studio.youtube.com",
-        "tooltip": false
-    },
-
-    "custom/cliphist": {
-        "format": "",
-        "on-click": "sleep 0.1 && ~/dotfiles/scripts/cliphist.sh",
-        "on-click-right": "sleep 0.1 && ~/dotfiles/scripts/cliphist.sh d",
-        "on-click-middle": "sleep 0.1 && ~/dotfiles/scripts/cliphist.sh w",
-        "tooltip": false
-    },
-
-    "custom/updates": {
-        "format": "  {}",
-        "tooltip-format": "{}",
-        "escape": true,
-        "return-type": "json",
-        "exec": "~/dotfiles/scripts/updates.sh",
-        "restart-interval": 60,
-        "on-click": "alacritty -e ~/dotfiles/scripts/installupdates.sh",
-        "tooltip": false
-    },
-
-    "custom/wallpaper": {
-        "format": "",
-        "on-click-right": "~/dotfiles/scripts/wallpaper-swww.sh",
-        "on-click": "~/dotfiles/scripts/updatewal-swww.sh",
-        "tooltip": false
-    },
-
-    "custom/filemanager": {
-        "format": "",
-        "on-click": "~/dotfiles/scripts/filemanager.sh",
-        "tooltip": false
-    },
-
-    "custom/outlook": {
-        "format": "",
-        "on-click": "brave --app=https://outlook.office.com/mail/",
-        "tooltip": false
-    },
-
-    "custom/teams": {
-        "format": "",
-        "on-click": "chromium --app=https://teams.microsoft.com/go",
-        "tooltip": false
-    },
-
-    "custom/brave": {
-        "format": "",
-        "on-click": "brave",
-        "tooltip": false
-    },
-
-    "custom/chatgpt": {
-        "format": "",
-        "on-click": "brave --app=https://chat.openai.com",
-        "tooltip": false
-    },
-
-    "custom/calculator": {
-        "format": "",
-        "on-click": "~/dotfiles/scripts/calculator.sh",
-        "tooltip": false
-    },
-
-    "custom/windowsvm": {
-        "format": "",
-        "on-click": "~/private/launchvm.sh",
-        "tooltip": false
-    },
-
-    "custom/appmenu": {
-        "format": "Apps",
-        "on-click": "~/dotfiles/scripts/applauncher.sh",
-        "tooltip": false
-    },
-
-    "custom/exit": {
-        "format": "",
-        "on-click": "wlogout",
-        "tooltip": false
-    },
-
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
-    },
-
-    "tray": {
-        "spacing": 10
-    },
-
     "clock": {
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": "{:%a, %d %b (%m) %Y}"
     },
-
-    "cpu": {
-        "format": "/ C {usage}% ",
-        "on-click": "alacritty -e htop"
+    "pulseaudio": {
+        "format": "<span foreground='#f5e0dc'>{icon}</span> {volume}% <span foreground='#1e1e2e'>|</span> ",
+        "format-bluetooth": "<span foreground='#f5e0dc'>{icon} </span> {volume}% <span foreground='#1e1e2e'>|</span> ",
+        "format-muted": "<span foreground='#f5e0dc'>MUT</span> <span foreground='#1e1e2e'>|</span> ",
+        "format-icons": {
+            "headphone": "",
+            "default": ["", "", ""]
+        },
+        "scroll-step": 1,
+        "on-click": "pavucontrol"
     },
-
-    "memory": {
-        "format": "/ M {}% ",
-        "on-click": "alacritty -e htop"
-    },
-
-    "disk": {
-        "interval": 30,
-        "format": "   {percentage_used}% ",
-        "path": "/",
-        "on-click": "alacritty -e htop"
-    },
-
-    "network": {
-        "format": "{ifname}",
-        "format-wifi": "   {signalStrength}%",
-        "format-ethernet": "  {ipaddr}",
-        "format-disconnected": "",
-        "tooltip-format": " {ifname} via {gwaddri}",
-        "tooltip-format-wifi": "   {essid} ({signalStrength}%)",
-        "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
-        "tooltip-format-disconnected": "Disconnected",
-        "max-length": 50,
-        "on-click": "nm-connection-editor"
-    },
-
     "battery": {
         "states": {
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon}   {capacity}%",
-        "format-charging": "  {capacity}%",
-        "format-plugged": "  {capacity}%",
-        "format-alt": "{icon}  {time}",
+        "format": "<span foreground='#f5e0dc'>{icon}</span>{capacity}% <span foreground='#1e1e2e'>|</span> ",
+        "format-charging": "<span foreground='#f5e0dc'></span> {capacity}% <span foreground='#1e1e2e'>|</span> ",
+        "format-plugged": "<span foreground='#f5e0dc'></span> {capacity}% <span foreground='#1e1e2e'>|</span> ",
+        "format-alt": "<span foreground='#f5e0dc'>{icon}</span> {time} <span foreground='#1e1e2e'>|</span> ",
         "format-icons": [" ", " ", " ", " ", " "]
     },
-
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", " ", " "]
-        },
-        "on-click": "pavucontrol"
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": "<span foreground='#f5e0dc'></span>  {signalStrength}%",
+        "format-ethernet": "<span foreground='#f5e0dc'></span>  ether",
+        "format-disconnected": "",
+        "tooltip-format": "  {ifname} via {gwaddri}",
+        "tooltip-format-wifi": "  {essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "  {ifname} ({ipaddr}/{cidr})",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "nm-connection-editor",
+        "max-length": 64
     },
-
-    "bluetooth": {
-        "format-disabled": "",
-        "format-off": "",
-        "interval": 30,
-        "on-click": "blueman-manager"
+    "hyprland/language": {
+        "format": "<span foreground='#f5e0dc'>󰌌</span>  {}",
+        "format-en": "US",
+        "format-ru": "RU"
     },
-
-    "user": {
-        "format": "{user}",
-        "interval": 60,
-        "icon": false
+    "tray": {
+        "spacing": 10
+    },
+    "cpu": {
+        "format": "<span foreground='#f5e0dc'></span>  {usage}% <span foreground='#1e1e2e'>|</span> ",
+        "on-click": "alacritty -e btop"
+    },
+    "memory": {
+        "format": "{}%",
+        "on-click": "alacritty -e btop"
+    },
+    "custom/wlogout": {
+        "format": " ",
+        "on-click": "wlogout",
+        "tooltip": false
     }
 }

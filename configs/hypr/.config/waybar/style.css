@@ -9,251 +9,73 @@
 
 * {
     font-family: "Iosevka Nerd Font";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    border: none;
-    border-radius: 0px;
+    font-size: 16px;
 }
 
 window#waybar {
+    background: @mbackground;
+    color: @mforeground;
+    opacity: 0.9;
+    border: 0px;
+}
+
+#system, #keyboard, #hardware, #tray {
+    background: @mbrightbg;
+    color: @mforeground;
+    margin: 5px;
+    padding: 0px 10px;
+    border-radius: 15px;
+    border: 0px;
+}
+
+#window, #clock {
+    background: @maccent;
+    color: @mbackground;
+    margin: 5px;
+    padding: 0 10px;
+    font-weight: bold;
+    border: 0px;
+    border-radius: 15px;
+}
+
+window#waybar.empty #window {
     background: transparent;
-    transition-property: background;
-    transition-duration: .5s;
 }
 
 #workspaces {
-    background: @mbackground;
+    background: transparent;
     color: @mforeground;
+    margin: 2px 1px;
     padding: 0px 1px;
-    margin: 2px 1px 3px 1px;
     border: 0px;
     border-radius: 15px;
-    opacity: 0.8;
 }
 
 #workspaces button {
     background: @mbrightbg;
     color: @mforeground;
-    padding: 1px 9px;
     margin: 3px 3px;
+    padding: 1px 10px;
     border: 0px;
     border-radius: 15px;
     transition: all 0.3s ease-in-out;
-    opacity: 0.5;
 }
 
 #workspaces button.active {
     background: @maccent;
     color: @mbackground;
-    border-radius: 15px;
     min-width: 40px;
     transition: all 0.3s ease-in-out;
-    opacity: 0.9;
 }
 
 #workspaces button:hover {
     background: @malter;
     color: @mbackground;
-    opacity: 0.9;
 }
 
-tooltip {
-    background: @mbackground;
-    color: @mforeground;
-    padding: 20px;
-    margin: 0px;
-    border-radius: 10px;
-    opacity: 0.8;
-}
-
-#window {
-    background: @mbackground;
-    color: @mforeground;
-    padding: 2px 10px 0px 10px;
-    margin: 3px 15px 3px 0px;
-    border-radius: 12px;
-    font-size: 16px;
-    opacity: 0.8;
-    border: 2px solid @maccent;
-}
-
-window#waybar.empty #window {
-    background: transparent;
-    border: 0px;
-}
-
-#taskbar {
-    background: @mbackground;
-    padding: 0px;
-    margin: 3px 15px 3px 0px;
-    border-radius: 15px;
-    opacity: 0.8;
-    border: 2px solid @maccent;
-}
-
-#taskbar.empty {
-    background: transparent;
-    padding: 0px;
-    margin: 0px;
-    border: 0px;
-}
-
-#taskbar button {
-    padding: 0px 5px 0px 5px;
-    margin: 0px;
-}
-
-#disk,#memory,#cpu {
-    color: @mforeground;
-    padding: 0px;
-    margin: 0px;
-    font-size: 18px;
-}
-
-#memory {
-    margin-right: 5px;
-}
-
-#clock {
-    background: @mbackground;
-    color: @mforeground;
-    border-radius: 15px;
-    padding: 1px 10px 0px 10px;
-    margin: 3px 0px 3px 0px;
-    opacity: 0.8;
-    border: 2px solid @maccent;
-    font-size: 16px;
-}
-
-#pulseaudio {
-    background: @mforeground;
+#custom-wlogout {
+    background: @maccent;
     color: @mbackground;
-    border-radius: 15px;
-    padding: 2px 10px 0px 10px;
-    margin: 5px 15px 5px 0px;
-    opacity: 0.8;
-    font-size: 16px;
-}
-
-#pulseaudio.muted {
-    background-color: @maltern;
-    color: @mbackground;
-}
-
-#network {
-    background: @mbackground;
-    color: @mforeground;
-    border-radius: 15px;
-    padding: 2px 10px 0px 10px;
-    margin: 3px 10px 3px 0px;
-    opacity: 0.8;
-    border: 2px solid @maccent;
-    font-size: 16px;
-}
-
-#network.ethernet {
-    background: @mbackground;
-    color: @mforeground;
-    border-radius: 15px;
-    padding: 2px 10px 0px 10px;
-    margin: 3px 10px 3px 0px;
-    opacity: 0.8;
-    border: 2px solid @maccent;
-    font-size: 16px;
-}
-
-#network.wifi {
-    background: @mbackground;
-    color: @mforeground;
-    border-radius: 15px;
-    padding: 2px 10px 0px 10px;
-    margin: 3px 10px 3px 0px;
-    opacity: 0.8;
-    border: 2px solid @maccent;
-    font-size: 16px;
-}
-
-/*#bluetooth.on, #bluetooth.connected {
-    background-color: #FFFFFF;
-    font-size: 16px;
-    color: @background;
-    border-radius: 15px;
-    padding: 2px 10px 0px 10px;
-    margin: 5px 15px 5px 0px;
-    opacity:0.8;
-}
-
-#bluetooth.off {
-    background-color: transparent;
-    padding: 0px;
-    margin: 0px;
-}*/
-
-#battery {
-    background: @mbackground;
-    color: @mforeground;
-    border-radius: 15px;
-    padding: 2px 15px 0px 10px;
-    margin: 5px 15px 5px 0px;
-    opacity: 0.8;
-    font-size: 16px;
-}
-
-#battery.charging, #battery.plugged {
-    background: @mgreen;
-    color: @mbackground;
-}
-
-@keyframes blink {
-    to {
-        background: @mforeground;
-        color: @mbackground;
-    }
-}
-
-#battery.critical:not(.charging) {
-    background: @mred;
-    color: @mforeground;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#tray {
-    background: @mbackground;
-    color: @mforeground;
-    padding: 0px 10px 0px 10px;
-    margin: 3px 15px 3px 0px;
-    border-radius: 15px;
-    opacity: 0.8;
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-}
-
-label:focus {
-    background-color: #ff0000;
-}
-
-#backlight {
-    background-color: #ff0000;
-}
-
-#network.disconnected {
-    background: @maltern;
-    color: @mforeground;
-    border-radius: 15px;
-    padding: 2px 10px 0px 10px;
-    margin: 3px 10px 3px 0px;
-    opacity: 0.8;
-    border: 0px;
-    font-size: 16px;
+    margin-left: 5px;
+    padding: 0px 10px 0px 12px;
 }

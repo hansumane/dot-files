@@ -1,33 +1,38 @@
 {
-    "position": "top",
     "layer": "top",
-    "spacing": 0,
-
-    "margin-top": 10,
-    "margin-bottom": 0,
-    "margin-left": 10,
-    "margin-right": 10,
-
     "include": ["~/.config/waybar/modules.json"],
 
     "modules-left": [
-        "wlr/taskbar",
+        "hyprland/workspaces",
         "hyprland/window"
     ],
-
     "modules-center": [
-        "hyprland/workspaces",
-        "tray"
+        "clock"
+    ],
+    "modules-right": [
+        "group/system",
+        "group/keyboard",
+        "group/hardware",
+        "tray",
+        "custom/wlogout"
     ],
 
-    "modules-right": [
-        "pulseaudio",
-        "bluetooth",
-        "battery",
-        "network",
-        "group/hardware",
-        "clock",
-    ],
+    "group/system": {
+        "orientation": "horizontal",
+        "modules": [
+            "pulseaudio",
+            "battery",
+            "network"
+        ]
+    },
+
+    "group/keyboard": {
+        "orientation": "horizontal",
+        "modules": [
+            "hyprland/language",
+            "keyboard-state"
+        ]
+    },
 
     "group/hardware": {
         "orientation": "horizontal",
