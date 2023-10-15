@@ -14,13 +14,14 @@ else
 fi
 
 yay -Sy --needed \
-  gtk2 gtk3 gtk4 qt5-wayland qt6-wayland gtk-engine-murrine \
-  hyprshot wlogout swaylock-effects dunst nwg-look-bin hyprland wofi hyprpaper waybar \
-  xdg-desktop-portal-hyprland gnome-themes-extra xdg-user-dirs \
-  grim slurp lxappearance pavucontrol dolphin kitty alacritty \
+  gtk2 gtk3 gtk4 gtk-engine-murrine qt5-wayland qt6-wayland \
+  hyprland hyprshot hyprpaper wlogout swaylock-effects wofi waybar swayidle \
+  dunst nwg-look-bin lxappearance gnome-themes-extra \
+  pavucontrol dolphin kitty alacritty \
+  xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal xdg-user-dirs \
   nm-connection-editor network-manager-applet networkmanager-openvpn \
   flatpak helvum zathura zathura-pdf-mupdf zathura-djvu \
-  libayatana-appindicator libappindicator-gtk3 libappindicator-gtk2 \
+  libayatana-appindicator libappindicator-gtk2 libappindicator-gtk3 \
   firefox firefox-i18n-ru
 
 cp -rf ${CURRENT_DIR}/configs/hypr/.config/* ~/.config
