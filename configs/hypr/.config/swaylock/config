@@ -1,17 +1,17 @@
 # swaylock config
 
 ignore-empty-password
-font="Iosevka Nerd Font"
 
 clock
 timestr=%R
 
-image=~/Downloads/dot-files/wallpapers/wallpaper_11.png
-fade-in=1
-effect-blur=20x6
+screenshots
+fade-in=0.2
+effect-blur=20x2
+effect-scale=0.3
 
 indicator
-indicator-radius=200
+indicator-radius=240
 indicator-thickness=20
 
 key-hl-color=f5e0dcff
