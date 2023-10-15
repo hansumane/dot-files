@@ -15,18 +15,18 @@ fi
 
 yay -Sy --needed \
   gtk2 gtk3 gtk4 qt5-wayland qt6-wayland gtk-engine-murrine \
-  wlogout swaylock-effect dunst nwg-look-bin hyprland wofi hyprpaper waybar \
+  hyprshot wlogout swaylock-effects dunst nwg-look-bin hyprland wofi hyprpaper waybar \
   xdg-desktop-portal-hyprland gnome-themes-extra xdg-user-dirs \
   grim slurp lxappearance pavucontrol dolphin kitty alacritty \
   nm-connection-editor network-manager-applet networkmanager-openvpn \
   flatpak helvum zathura zathura-pdf-mupdf zathura-djvu \
   libayatana-appindicator libappindicator-gtk3 libappindicator-gtk2 \
-  firefox firefox-i18n-ru;
+  firefox firefox-i18n-ru
 
-cp -rf ${CURRENT_DIR}/configs/hypr/.config/hypr ~/.config
-cp -rf ${CURRENT_DIR}/configs/hypr/.config/waybar ~/.config
-cp -rf ${CURRENT_DIR}/configs/hypr/.config/wofi ~/.config
+cp -rf ${CURRENT_DIR}/configs/hypr/.config/* ~/.config
+cp -rf ${CURRENT_DIR}/configs/universal/.config/kitty ~/.config
+cp -rf ${CURRENT_DIR}/configs/universal/.config/alacritty ~/.config
 
-flatpak update;
-sudo mkinitcpio -P;
-sudo update-grub;
+flatpak update
+sudo mkinitcpio -P
+sudo update-grub
