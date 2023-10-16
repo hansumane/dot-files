@@ -13,8 +13,9 @@ else
   CURRENT_DIR=$(pwd)
 fi
 
+# change hyprland to hyprland-nvidia or hyprland-nvidia-git and add libva for NVIDIA
 yay -Sy --needed \
-  gtk2 gtk3 gtk4 gtk-engine-murrine qt5-wayland qt6-wayland \
+  gtk-engine-murrine gtk2 gtk3 gtk4 qt5ct qt6ct qt5-wayland qt6-wayland \
   hyprland hyprshot hyprpaper wlogout swaylock-effects wofi waybar swayidle \
   dunst nwg-look-bin lxappearance gnome-themes-extra \
   pavucontrol dolphin kitty alacritty \
