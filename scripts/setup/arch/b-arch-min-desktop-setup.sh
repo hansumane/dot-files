@@ -35,7 +35,7 @@ else
 fi
 
 sudo pacman -S --needed \
-  subversion tmux calc tree openssh man-db man-pages npm \
+  tmux calc tree openssh man-db man-pages npm \
   neofetch base-devel clang cmake colorgcc nodejs \
   wireguard-tools jdk17-openjdk jre17-openjdk \
   indent python-pip
