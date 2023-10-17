@@ -18,7 +18,7 @@ yay -Sy --needed \
   gtk-engine-murrine gtk2 gtk3 gtk4 qt5ct qt6ct qt5-wayland qt6-wayland \
   hyprland hyprshot hyprpaper wlogout swaylock-effects wofi waybar swayidle \
   dunst nwg-look-bin lxappearance gnome-themes-extra \
-  pavucontrol dolphin kitty alacritty \
+  pavucontrol dolphin kitty alacritty xwaylandvideobridge \
   xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal xdg-user-dirs \
   nm-connection-editor network-manager-applet networkmanager-openvpn \
   flatpak helvum zathura zathura-pdf-mupdf zathura-djvu \
