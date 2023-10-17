@@ -1,13 +1,13 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 (setq scroll-margin 3
-      doom-theme 'doom-old-hope
+      doom-theme 'doom-one
       display-line-numbers-type 'relative
       user-full-name "User" user-mail-address "user@example.com"
       doom-font (font-spec :family "Iosevka Nerd Font" :size 18 :weight 'medium)
       doom-big-font (font-spec :family "Iosevka Nerd Font" :size 18 :weight 'medium)
       doom-serif-font (font-spec :family "Iosevka Nerd Font" :size 18 :weight 'medium)
-      doom-unicode-font (font-spec :family "Iosevka Nerd Font" :size 18 :weight 'medium)
+      doom-symbol-font (font-spec :family "Iosevka Nerd Font" :size 18 :weight 'medium)
       doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 18 :weight 'medium))
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 
@@ -58,14 +58,14 @@
       eshell-aliases-file "~/.config/doom/eshell/aliases")
 (map! :leader "e s" #'eshell)
 
+(use-package! catppuccin-theme
+    :config
+    (setq doom-theme 'catppuccin
+          catppuccin-flavor 'mocha)
+    (catppuccin-reload))
+
 ;; (use-package! gruber-darker-theme
 ;;     :config (setq doom-theme 'gruber-darker))
-
-;; (use-package! catppuccin-theme
-;;     :config
-;;     (setq doom-theme 'catppuccin
-;;           catppuccin-flavor 'mocha)
-;;     (catppuccin-reload))
 
 ;; (use-package! spaceway-theme
 ;;     :load-path "~/.config/doom/manual/spaceway"
