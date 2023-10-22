@@ -123,5 +123,5 @@ fi
 
 if command -v doom &> /dev/null; then
   echo "${NYELLOW}Running ${BMAGENTA}DOOM Emacs${NYELLOW} update.${NRST}"
-  doom upgrade && doom doctor | cat && doom sync
+  doom sync && doom upgrade && doom doctor | cat && doom sync
 fi
