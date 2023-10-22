@@ -11,6 +11,7 @@
         "separate-outputs": true
     },
     "clock": {
+        "tooltip-format": "{calendar}",
         "format-alt": "{:%a, %d %b (%m) %Y}"
     },
     "pulseaudio": {
