@@ -55,7 +55,7 @@ window#waybar.empty #window {
     background: @mbrightbg;
     color: @mforeground;
     margin: 3px 3px;
-    padding: 1px 10px;
+    padding: 1px 6px;
     border: 0px;
     border-radius: 15px;
     transition: all 0.3s ease-in-out;
@@ -64,7 +64,7 @@ window#waybar.empty #window {
 #workspaces button.active {
     background: @maccent;
     color: @mbackground;
-    min-width: 40px;
+    min-width: 35px;
     transition: all 0.3s ease-in-out;
 }
 
