@@ -10,15 +10,14 @@
 * {
     font-family: "Iosevka Nerd Font";
     background-image: none;
-    transition: 20ms;
 }
 
 window {
-    background-color: @background;
+    background: transparent;
 }
 
 button {
-    background-color: @background;
+    background-color: rgba(30, 30, 46, 0.55);
     color: @mforeground;
     font-size: 20px;
 
@@ -26,49 +25,52 @@ button {
     background-position: center;
     background-size: 25%;
 
-    border: 3px solid @mbrightbg;
+    box-shadow: none;
+    text-shadow: none;
+    transition: background-color 0.2s ease-in-out;
+
+    border: 2px solid @mbrightbg;
 }
 
-button:focus,
-button:active,
-button:hover {
-    background-color: @mbackground;
+button:focus, button:active, button:hover {
+    background-color: rgba(30, 30, 46, 0.85);
+    opacity: 1;
     color: @maccent;
-    border: 3px solid @maccent;
+    border: 2px solid @maccent;
 }
 
 #lock {
-	margin: 10px;
-	border-radius: 20px;
-	background-image: image(url("icons/lock.png"));
+    margin: 10px;
+    border-radius: 20px;
+    background-image: image(url("icons/lock.png"));
 }
 
 #logout {
-	margin: 10px;
-	border-radius: 20px;
-	background-image: image(url("icons/logout.png"));
+    margin: 10px;
+    border-radius: 20px;
+    background-image: image(url("icons/logout.png"));
 }
 
 #suspend {
-	margin: 10px;
-	border-radius: 20px;
-	background-image: image(url("icons/suspend.png"));
+    margin: 10px;
+    border-radius: 20px;
+    background-image: image(url("icons/suspend.png"));
 }
 
 #hibernate {
-	margin: 10px;
-	border-radius: 20px;
-	background-image: image(url("icons/hibernate.png"));
+    margin: 10px;
+    border-radius: 20px;
+    background-image: image(url("icons/hibernate.png"));
 }
 
 #shutdown {
-	margin: 10px;
-	border-radius: 20px;
-	background-image: image(url("icons/shutdown.png"));
+    margin: 10px;
+    border-radius: 20px;
+    background-image: image(url("icons/shutdown.png"));
 }
 
 #reboot {
-	margin: 10px;
-	border-radius: 20px;
-	background-image: image(url("icons/reboot.png"));
+    margin: 10px;
+    border-radius: 20px;
+    background-image: image(url("icons/reboot.png"));
 }
