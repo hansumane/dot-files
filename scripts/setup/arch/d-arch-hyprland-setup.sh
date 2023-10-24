@@ -23,7 +23,7 @@ yay -Sy --needed \
   nm-connection-editor network-manager-applet networkmanager-openvpn \
   flatpak helvum eog zathura zathura-pdf-mupdf zathura-djvu \
   libayatana-appindicator libappindicator-gtk2 libappindicator-gtk3 \
-  firefox firefox-i18n-ru
+  inter-font firefox firefox-i18n-ru
 
 cp -rf ${CURRENT_DIR}/configs/hypr/.config/* ~/.config
 cp -rf ${CURRENT_DIR}/configs/universal/.config/kitty ~/.config
