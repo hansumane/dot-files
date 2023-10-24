@@ -17,15 +17,6 @@ sudo pacman -Sy --needed \
   curl git zip unzip tar gzip bzip2 xz \
   neovim zsh exa bat btop hexyl
 
-sudo pacman -S --needed \
-  wireplumber pipewire pipewire-alsa pipewire-pulse pipewire-jack
-
-sudo pacman -S --needed \
-  xorg xorg-xwayland wayland
-
-sudo pacman -S --needed \
-  noto-fonts noto-fonts-cjk noto-fonts-emoji
-
 if ( lscpu | grep Intel &> /dev/null ); then
   sudo pacman -S --needed intel-ucode
 elif ( lscpu | grep AMD &> /dev/null ); then
@@ -44,10 +35,6 @@ mkdir -p ~/Downloads; cd ~/Downloads
 git clone --depth=1 --recursive https://aur.archlinux.org/yay-bin.git
 cd ~/Downloads/yay-bin; makepkg -sic
 cd; rm -rf ~/Downloads/yay-bin
-
-yay -Sy --needed \
-  hunspell hunspell-en_us hunspell-ru \
-  hyphen hyphen-en hyphen-ru
 
 if [[ -d /usr/sbin ]]; then
   if [[ ! -f /usr/sbin/update-grub ]]; then
