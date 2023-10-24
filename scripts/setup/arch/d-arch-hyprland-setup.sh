@@ -18,7 +18,7 @@ yay -Sy --needed \
   gtk-engine-murrine gtk2 gtk3 gtk4 qt5ct qt6ct qt5-wayland qt6-wayland \
   hyprland hyprshot hyprpaper wlogout swaylock-effects wofi waybar swayidle \
   dunst nwg-look-bin lxappearance gnome-themes-extra kvantum grim slurp \
-  pavucontrol dolphin dolphin-plugins kitty alacritty xwaylandvideobridge \
+  pavucontrol sddm dolphin dolphin-plugins kitty alacritty xwaylandvideobridge \
   xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal xdg-user-dirs \
   nm-connection-editor network-manager-applet networkmanager-openvpn \
   flatpak helvum eog zathura zathura-pdf-mupdf zathura-djvu \
@@ -32,3 +32,4 @@ cp -rf ${CURRENT_DIR}/configs/universal/.config/alacritty ~/.config
 flatpak update
 sudo mkinitcpio -P
 sudo update-grub
+sudo systemctl enable sddm
