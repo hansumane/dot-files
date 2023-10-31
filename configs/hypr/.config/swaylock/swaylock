@@ -1,0 +1,4 @@
+#%PAM-1.0
+# put into /etc/pam.d/swaylock
+# if manually installed with pam feature
+auth     include        login
