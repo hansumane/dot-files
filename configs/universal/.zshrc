@@ -1,4 +1,3 @@
-
 # base defines
 case "$TERM" in
   *screen* ) ;;
@@ -139,6 +138,7 @@ pya () {
     bat /tmp/.__pya_temp_out
     rm -f /tmp/.__pya_temp_out
   fi
+  unsetopt shwordsplit
 }
 
 indchk () {
@@ -178,7 +178,7 @@ fas () {
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
-    gcc $@ -std=gnu99 -Wall -Wextra -Werror -Og -o out-$(basename $1 .s)
+    gcc $@ -std=gnu99 -Wall -Wextra -Wpedantic -o out-$(basename $1 .s)
   fi
 }
 
@@ -186,7 +186,7 @@ fcc () {
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
-    gcc $@ -std=gnu11 -Wall -Wextra -Werror -O2 -o out-$(basename $1 .c)
+    gcc $@ -g -O -std=gnu17 -Wall -Wextra -Wpedantic -o out-$(basename $1 .c)
   fi
 }
 
@@ -194,7 +194,7 @@ fcp () {
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
-    g++ $@ -std=gnu++14 -Wall -Wextra -Werror -O2 -o out-$(basename $1 .cpp)
+    g++ $@ -g -O -std=c++20 -Wall -Wextra -Wpedantic -o out-$(basename $1 .cpp)
   fi
 }
 
@@ -206,31 +206,35 @@ frs () {
   fi
 }
 
-  TOBPATH="/bin /usr/sbin /usr/bin"
-TOBPATH+=" /usr/local/sbin /usr/local/bin"
-TOBPATH+=" $HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin"
+update_path () {
+  setopt shwordsplit
 
-  TOLPATH="/libexec /lib /lib64"
-TOLPATH+=" /usr/libexec /usr/lib /usr/lib64"
-TOLPATH+=" /usr/local/libexec /usr/local/lib /usr/local/lib64"
-TOLPATH+=" $HOME/.local/lib"
+    TOBPATH="/bin /usr/sbin /usr/bin"
+  TOBPATH+=" /usr/local/sbin /usr/local/bin"
+  TOBPATH+=" $HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin"
 
-setopt shwordsplit
+    TOLPATH="/libexec /lib /lib64"
+  TOLPATH+=" /usr/libexec /usr/lib /usr/lib64"
+  TOLPATH+=" /usr/local/libexec /usr/local/lib /usr/local/lib64"
+  TOLPATH+=" $HOME/.local/lib"
 
-for DIR in $TOBPATH; do
-  if [[ -d $DIR ]]; then
-    case :$PATH: in
-      *:$DIR:* ) ;;
-      * ) export PATH=$DIR:$PATH;;
-    esac
-  fi
-done
+  for DIR in $TOBPATH; do
+    if [[ -d $DIR ]]; then
+      export PATH="$(echo -n ":$PATH:" | sed "s/:$(echo -n "$DIR" | sed 's/\//\\\//g'):/:/g")"
+      export PATH="$DIR:$PATH"
+    fi
+  done
+  export PATH="$(echo -n ":$PATH:" | sed 's/:\+/:/g' | sed 's/^:\(.*\):$/\1/g')"
 
-for DIR in $TOLPATH; do
-  if [[ -d $DIR ]]; then
-    case :$LD_LIBRARY_PATH: in
-      *:$DIR:* ) ;;
-      * ) export LD_LIBRARY_PATH=$DIR:$LD_LIBRARY_PATH;;
-    esac
-  fi
-done
+  for DIR in $TOLPATH; do
+    if [[ -d $DIR ]]; then
+      export LD_LIBRARY_PATH="$(echo -n ":$LD_LIBRARY_PATH:" | sed "s/:$(echo -n "$DIR" | sed 's/\//\\\//g'):/:/g" | sed 's/^:\(.*\):$/\1/g')"
+      export LD_LIBRARY_PATH="$DIR:$LD_LIBRARY_PATH"
+    fi
+  done
+  export LD_LIBRARY_PATH="$(echo -n ":$LD_LIBRARY_PATH:" | sed 's/:\+/:/g' | sed 's/^:\(.*\):$/\1/g')"
+
+  unsetopt shwordsplit
+}
+update_path
+unfunction update_path
