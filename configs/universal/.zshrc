@@ -68,8 +68,10 @@ lt () {
   fi
 }
 
+alias gitd='git diff'
 alias gits='git status'
 alias gite='gitr && cd ..'
+alias gitb='git branch -a'
 alias gitp='git reset --hard HEAD'
 alias 'gitp^'='git reset --hard HEAD^'
 alias gitr='cd $(git rev-parse --show-toplevel)'
