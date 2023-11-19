@@ -1,4 +1,5 @@
 local tree_config = function ()
+  require'nvim-web-devicons'.setup{}
   require'nvim-tree'.setup{
     update_focused_file = {
       enable = true,
@@ -12,7 +13,7 @@ local tree_config = function ()
 
   vim.g.loaded_netrw = true
   vim.g.loaded_netrwPlugin = true
-  vim.keymap.set('n', '<leader>e', ':NvimTreeFindFileToggle<CR>')
+  vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeFindFileToggle<CR>')
 
   vim.api.nvim_create_autocmd('QuitPre', {
     callback = function ()
@@ -41,11 +42,10 @@ end
 
 return {
   {
-    'nvim-tree/nvim-web-devicons',
-    config = true,
-  },
-  {
     'nvim-tree/nvim-tree.lua',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons'
+    },
     config = tree_config,
   },
 }

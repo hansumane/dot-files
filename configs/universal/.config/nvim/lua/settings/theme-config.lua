@@ -1,7 +1,7 @@
 return {
   "catppuccin/nvim",
   name = "catppuccin",
-  priority = 1000,
+  priority = 100,
   config = function()
     vim.opt.background = 'dark'
     require'catppuccin'.setup{flavour = 'mocha'}
