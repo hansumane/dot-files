@@ -28,6 +28,7 @@ XDG_MUSIC_DIR="$HOME/Others/Music"
 XDG_PICTURES_DIR="$HOME/Others/Pictures"
 XDG_VIDEOS_DIR="$HOME/Others/Videos"' > ~/.config/user-dirs.dirs
 
-sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim \
-  --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-nvim ~/.gitconfig
+# vim-plug for neovim (deprecated)
+# sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim \
+#   --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim';
+# nvim ~/.gitconfig

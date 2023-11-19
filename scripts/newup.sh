@@ -112,16 +112,17 @@ case $OSTYPE in
 esac
 
 if command -v zsh &> /dev/null; then
-  echo "${NYELLOW}Running ${BGREEN}ZSH${NYELLOW} update.${NRST}"
-  zsh -c '. ~/.zshrc; omz update'
-fi
-
-if command -v nvim &> /dev/null; then
-  echo "${NYELLOW}Running ${BGREEN}NeoVIM${NYELLOW} update.${NRST}"
-  nvim +PlugUpgrade +PlugUpdate +CocUpdate
+  if [[ -d $HOME/.oh-my-zsh ]]; then
+    echo "${NYELLOW}Running ${BGREEN}OhMyZsh${NYELLOW} update.${NRST}"
+    zsh -c '. ~/.zshrc; omz update'
+  fi
 fi
 
 if command -v doom &> /dev/null; then
   echo "${NYELLOW}Running ${BMAGENTA}DOOM Emacs${NYELLOW} update.${NRST}"
   doom sync && doom upgrade && doom doctor | cat && doom sync
+fi
+
+if command -v nvim &> /dev/null; then
+  echo "${NYELLOW}Don't forget to do ${BBLUE}Neo${BGREEN}VIM${NYELLOW} update.${NRST}"
 fi
