@@ -43,9 +43,9 @@ end
 return {
   {
     'nvim-tree/nvim-tree.lua',
+    config = config,
     dependencies = {
       'nvim-tree/nvim-web-devicons'
     },
-    config = config,
   },
 }

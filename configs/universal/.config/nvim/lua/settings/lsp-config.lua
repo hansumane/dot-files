@@ -7,10 +7,14 @@ local function config ()
   lsp_zero.on_attach(function(client, bufnr)
     local opts = {buffer = bufnr, remap = false}
 
+    vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
     vim.keymap.set("n", "<leader>ld", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "<leader>lD", function() vim.lsp.buf.declaration() end, opts)
     vim.keymap.set("n", "<leader>li", function() vim.lsp.buf.implementation() end, opts)
     vim.keymap.set("n", "<leader>lr", function() require'telescope.builtin'.lsp_references() end, opts)
+    vim.keymap.set("n", "<leader>ll", function() vim.diagnostic.open_float() end, opts)
+    vim.keymap.set("n", "<leader>l[", function() vim.diagnostic.goto_prev() end, opts)
+    vim.keymap.set("n", "<leader>l[", function() vim.diagnostic.goto_next() end, opts)
   end)
 
   require'mason'.setup{}
@@ -23,9 +27,8 @@ local function config ()
     },
     handlers = {
       lsp_zero.default_setup,
-      lua_ls = function()
-        local lua_opts = lsp_zero.nvim_lua_ls()
-        require'lspconfig'.lua_ls.setup(lua_opts)
+      lua_ls = function ()
+        require'lspconfig'.lua_ls.setup(lsp_zero.nvim_lua_ls())
       end,
     },
   }

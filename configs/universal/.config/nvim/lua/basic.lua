@@ -13,6 +13,7 @@ vim.opt.listchars = {
 vim.opt.backup = false
 vim.opt.writebackup = false
 vim.opt.termguicolors = true
+vim.g.c_syntax_for_h = true
 
 vim.opt.keymap = 'russian-jcukenwin'
 vim.opt.iminsert = 0
