@@ -1,4 +1,4 @@
-local config = function ()
+local function config ()
   local cmp = require'cmp'
   local luasnip = require'luasnip'
   local lsp_zero = require'lsp-zero'
@@ -85,17 +85,16 @@ local config = function ()
 end
 
 return {
-  'williamboman/mason.nvim',
-  'williamboman/mason-lspconfig.nvim',
-  'neovim/nvim-lspconfig',
-  'hrsh7th/cmp-nvim-lsp',
-  'hrsh7th/nvim-cmp',
-  'L3MON4D3/LuaSnip',
-  'rafamadriz/friendly-snippets',
-  {
-    'VonHeikemen/lsp-zero.nvim',
-    priority = 49,
-    branch = 'v3.x',
-    config = config,
+  'VonHeikemen/lsp-zero.nvim',
+  branch = 'v3.x',
+  config = config,
+  dependencies = {
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig',
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/nvim-cmp',
+    'L3MON4D3/LuaSnip',
+    'rafamadriz/friendly-snippets',
   },
 }

@@ -1,4 +1,4 @@
-local tree_config = function ()
+local function config ()
   require'nvim-web-devicons'.setup{}
   require'nvim-tree'.setup{
     update_focused_file = {
@@ -46,6 +46,6 @@ return {
     dependencies = {
       'nvim-tree/nvim-web-devicons'
     },
-    config = tree_config,
+    config = config,
   },
 }
