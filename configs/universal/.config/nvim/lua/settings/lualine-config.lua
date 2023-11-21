@@ -25,6 +25,22 @@ local function config ()
         },
         'filetype'
       },
+      lualine_y = {
+        function ()
+          local shift = vim.opt.shiftwidth:get()
+          local tabst = vim.opt.tabstop:get()
+          local expand = vim.opt.expandtab:get()
+          local result = shift .. '/' .. tabst .. '-'
+          if expand then
+            result = result .. 'S'
+          elseif shift ~= tabst then
+            result = result .. 'M'
+          else
+            result = result .. 'T'
+          end
+          return result
+        end
+      },
     },
   }
 end
