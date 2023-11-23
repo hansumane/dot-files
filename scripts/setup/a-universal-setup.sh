@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -e
 
 if [[ ! $(pwd | rev | cut -d'/' -f3 | rev) = 'dot-files' ]] ||
@@ -23,7 +22,6 @@ cp -f ${CURRENT_DIR}/scripts/newup.sh ~
 cp -f ${CURRENT_DIR}/configs/universal/.zshrc ~
 cp -f ${CURRENT_DIR}/configs/universal/.gitconfig ~
 cp -f ${CURRENT_DIR}/configs/universal/.tmux.conf ~
-cp -f ${CURRENT_DIR}/configs/universal/.vimrc ~/.config/nvim/init.vim
 cp -rf ${CURRENT_DIR}/configs/universal/.config/doom/ ~/.config/
 
 mkdir -p ~/Desktop/ ~/Downloads/ ~/Others/; cd ~/Others/
@@ -38,5 +36,6 @@ XDG_PICTURES_DIR="$HOME/Others/Pictures"
 XDG_VIDEOS_DIR="$HOME/Others/Videos"' > ~/.config/user-dirs.dirs
 
 # vim-plug for neovim (deprecated)
+# cp -f ${CURRENT_DIR}/configs/universal/.vimrc ~/.config/nvim/init.vim
 # sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim \
 #   --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim';

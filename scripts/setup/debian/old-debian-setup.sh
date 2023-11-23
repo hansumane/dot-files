@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
-
 set -e
 
 sudo apt update &&
 sudo apt full-upgrade -y &&
 sudo apt install -y \
-  curl git zip unzip tar gzip bzip2 xz-utils \
+  curl wget git zip unzip tar gzip bzip2 xz-utils \
   tmux tree build-essential python3-pip \
   man-db manpages
 
