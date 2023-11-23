@@ -14,7 +14,7 @@ else
 fi
 
 sudo pacman -Sy --needed \
-  curl git zip unzip tar gzip bzip2 xz \
+  curl lazygit git zip unzip tar gzip bzip2 xz \
   neovim zsh exa bat btop hexyl
 
 if ( lscpu | grep Intel &> /dev/null ); then

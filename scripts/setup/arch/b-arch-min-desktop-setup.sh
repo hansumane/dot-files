@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-
 set -e
+
+# TODO: remove everything that is already in a-arch-terminal-only-setup.sh
 
 if [[ ! $(pwd | rev | cut -d'/' -f4 | rev) = 'dot-files' ]] ||
    [[ ! $(pwd | rev | cut -d'/' -f3 | rev) = 'scripts' ]] ||
@@ -14,7 +15,7 @@ else
 fi
 
 sudo pacman -Sy --needed \
-  curl git zip unzip tar gzip bzip2 xz \
+  curl lazygit git zip unzip tar gzip bzip2 xz \
   neovim zsh exa bat btop hexyl
 
 sudo pacman -S --needed \
