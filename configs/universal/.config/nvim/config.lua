@@ -9,10 +9,13 @@ vim.opt.keymap = 'russian-jcukenwin'
 vim.opt.iminsert = 0
 vim.opt.imsearch = 0
 
+lvim.builtin.terminal.open_mapping = '<C-t>'
 lvim.keys.insert_mode['<C-\\>'] = '<C-6>'
 lvim.keys.insert_mode['<C-k>'] = '<C-v><C-i>'
 lvim.keys.normal_mode['<S-h>'] = '<cmd>BufferLineCyclePrev<cr>'
 lvim.keys.normal_mode['<S-l>'] = '<cmd>BufferLineCycleNext<cr>'
+lvim.keys.normal_mode['<S-n>'] = '<cmd>BufferLineMovePrev<cr>'
+lvim.keys.normal_mode['<S-m>'] = '<cmd>BufferLineMoveNext<cr>'
 lvim.lsp.buffer_mappings.normal_mode['gr'] = {
   [[<cmd>lua require'telescope.builtin'.lsp_references()<cr>]],
   'References',
