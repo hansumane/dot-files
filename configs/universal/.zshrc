@@ -79,7 +79,11 @@ alias gita='git add -A && git commit --amend --reset-author --no-edit'
 alias gitl='git log --date=format-local:"%d/%m/%Y %H:%M:%S" --pretty=format:"%h %ad | %an >>> %s%d" --graph'
 
 giti () {
-  $SUDO_CMD rm -rf $(git ls-files --others --ignored --exclude-standard --directory)
+  GIT_IGNORE_DIR_PATH=$(git rev-parse --show-toplevel) || return 1
+  GIT_IGNORE_FILE_PATH=$GIT_IGNORE_DIR_PATH/.gitignore
+  cd $GIT_IGNORE_DIR_PATH
+  $SUDO_CMD rm -rf $(git ls-files --others --ignored --exclude-from=${GIT_IGNORE_FILE_PATH} --directory)
+  cd -
 }
 
 gitc () {
@@ -172,6 +176,29 @@ edP () {
       echo 'if __name__ == "__main__":' >> $1
       echo '    pass' >> $1
       chmod +x $1
+    fi
+  fi
+}
+
+edC () {
+  if [[ ! -f ./compile_flags.txt ]]; then
+    echo '-std=gnu++20' > ./compile_flags.txt
+    echo '-Wall' >> ./compile_flags.txt
+    echo '-Wextra' >> ./compile_flags.txt
+    echo '-Wformat' >> ./compile_flags.txt
+    echo '-Wpedantic' >> ./compile_flags.txt
+    echo '-Wno-vla' >> ./compile_flags.txt
+    echo '-Wno-unused-variable' >> ./compile_flags.txt
+    echo '-Wno-unused-parameter' >> ./compile_flags.txt
+  fi
+
+  $EDITOR ./compile_flags.txt
+
+  GIT_TOPDIR=$(git rev-parse --show-toplevel) || return 0
+  GIT_EXCLUDE=$GIT_TOPDIR/.git/info/exclude
+  if [[ -f $GIT_EXCLUDE ]]; then
+    if ! grep -Fxq 'compile_flags.txt' $GIT_EXCLUDE; then
+      echo 'compile_flags.txt' >> $GIT_EXCLUDE
     fi
   fi
 }
