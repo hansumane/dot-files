@@ -1,0 +1,8 @@
+-std=gnu++20
+-Wall
+-Wextra
+-Wformat
+-Wpedantic
+-Wno-vla
+-Wno-unused-variable
+-Wno-unused-parameter
