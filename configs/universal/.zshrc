@@ -194,12 +194,11 @@ edC () {
 
   $EDITOR ./compile_flags.txt
 
-  GIT_TOPDIR=$(git rev-parse --show-toplevel) || return 0
-  GIT_EXCLUDE=$GIT_TOPDIR/.git/info/exclude
-  if [[ -f $GIT_EXCLUDE ]]; then
-    if ! grep -Fxq 'compile_flags.txt' $GIT_EXCLUDE; then
-      echo 'compile_flags.txt' >> $GIT_EXCLUDE
-    fi
+  GIT_TOPDIR="$(git rev-parse --show-toplevel)" || return 0
+  GIT_INFODIR="$GIT_TOPDIR/.git/info"
+  mkdir -p "$GIT_INFODIR" && touch "$GIT_INFODIR/exclude"
+  if ! grep -Fxq 'compile_flags.txt' "$GIT_INFODIR/exclude"; then
+    echo 'compile_flags.txt' >> "$GIT_INFODIR/exclude"
   fi
 }
 
