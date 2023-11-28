@@ -118,6 +118,11 @@ if command -v zsh &> /dev/null; then
   fi
 fi
 
+if command -v rustup &> /dev/null; then
+  echo "${NYELLOW}Running ${BRED}Rust${NYELLOW} update.${NRST}"
+  rustup update
+fi
+
 if command -v doom &> /dev/null; then
   echo "${NYELLOW}Running ${BMAGENTA}DOOM Emacs${NYELLOW} update.${NRST}"
   doom sync && doom upgrade && doom doctor | cat && doom sync

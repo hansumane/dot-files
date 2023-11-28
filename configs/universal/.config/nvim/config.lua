@@ -68,7 +68,7 @@ lvim.builtin.treesitter.sync_install = false
 lvim.builtin.treesitter.auto_install = false
 lvim.builtin.treesitter.highlight.enable = true
 lvim.builtin.treesitter.ensure_installed = {
-  'lua', 'luadoc', 'vim', 'vimdoc', 'bash',
+  'lua', 'luadoc', 'vim', 'vimdoc',
   'c', 'cpp', 'python', 'rust',
   'make', 'cmake', 'json', 'toml', 'yang',
   'gitcommit', 'gitignore'
