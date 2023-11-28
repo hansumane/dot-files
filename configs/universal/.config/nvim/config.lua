@@ -9,15 +9,21 @@ vim.opt.keymap = 'russian-jcukenwin'
 vim.opt.iminsert = 0
 vim.opt.imsearch = 0
 
+lvim.builtin.which_key.mappings['w'] = {}
+lvim.builtin.which_key.mappings['h'] = {}
 lvim.builtin.terminal.open_mapping = '<C-t>'
+
 lvim.keys.insert_mode['<C-\\>'] = '<C-6>'
 lvim.keys.insert_mode['<C-k>'] = '<C-v><C-i>'
-lvim.keys.normal_mode['<S-h>'] = '<cmd>BufferLineCyclePrev<cr>'
-lvim.keys.normal_mode['<S-l>'] = '<cmd>BufferLineCycleNext<cr>'
-lvim.keys.normal_mode['<S-n>'] = '<cmd>BufferLineMovePrev<cr>'
-lvim.keys.normal_mode['<S-m>'] = '<cmd>BufferLineMoveNext<cr>'
-lvim.lsp.buffer_mappings.normal_mode['gr'] = {
-  [[<cmd>lua require'telescope.builtin'.lsp_references()<cr>]],
+lvim.keys.normal_mode['<S-h>'] = '<cmd>BufferLineCyclePrev<CR>'
+lvim.keys.normal_mode['<S-l>'] = '<cmd>BufferLineCycleNext<CR>'
+lvim.keys.normal_mode['<S-n>'] = '<cmd>BufferLineMovePrev<CR>'
+lvim.keys.normal_mode['<S-m>'] = '<cmd>BufferLineMoveNext<CR>'
+
+lvim.builtin.which_key.mappings.j = {'<cmd>noh<CR>', 'No Highlight'}
+lvim.builtin.which_key.vmappings.k = {":sort<CR>", 'Sort Lines'}
+lvim.lsp.buffer_mappings.normal_mode.gr = {
+  [[<cmd>lua require'telescope.builtin'.lsp_references()<CR>]],
   'References',
 }
 
