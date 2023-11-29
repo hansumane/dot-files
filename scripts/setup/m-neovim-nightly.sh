@@ -35,3 +35,6 @@ curl -fLO "https://github.com/neovim/neovim/releases/download/nightly/$NVIM_FN.t
 tar xf "$NVIM_FN.tar.gz"
 sudo mkdir -vp "${NVIM_DESTDIR}${NVIM_PREFIX}"
 sudo cp -vrf "$NVIM_FN"/* "${NVIM_DESTDIR}${NVIM_PREFIX}"
+
+cd
+rm -rf "$TEMPDIR"
