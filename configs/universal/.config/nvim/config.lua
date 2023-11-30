@@ -130,6 +130,18 @@ lvim.plugins = {
       lvim.colorscheme = 'catppuccin'
     end
   },
+--[[
+  {
+    'sainnhe/everforest',
+    priority = 1500,
+    config = function()
+      vim.opt.background = 'dark'
+      vim.g.everforest_background = 'hard'
+      vim.g.everforest_better_performance = 1
+      lvim.colorscheme = 'everforest'
+    end
+  },
+--]]
   {
     'folke/todo-comments.nvim',
     dependencies = {"nvim-lua/plenary.nvim"},
