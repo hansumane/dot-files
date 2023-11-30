@@ -134,7 +134,7 @@ lvim.plugins = {
     'folke/todo-comments.nvim',
     dependencies = {"nvim-lua/plenary.nvim"},
     opts = {},
-  }
+  },
 }
 
 lvim.autocommands = {
@@ -164,3 +164,29 @@ lvim.autocommands = {
     }
   }
 }
+
+require'lvim.lsp.manager'.setup('lua_ls', {
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'Lua 5.4',
+--[[
+        -- It seems like runtime.path is a path relative to workspace.library
+        -- (for example, if path is {'?.lua'}, then it will find all
+        --  .lua files in all paths that are in workspace.library)
+        path = {
+          '~/virtual/definitions/?.lua',
+          '~/virtual/vm_mount/usr/share/lua/5.4/?.lua',
+          '~/virtual/vm_mount/usr/share/lua/5.4/?/?.lua',
+        },
+--]]
+      },
+      workspace = {
+        library = {
+          ['~/virtual/definitions'] = true,
+          ['~/virtual/vm_mount/usr/share/lua/5.4'] = true,
+        }
+      },
+    }
+  }
+})
