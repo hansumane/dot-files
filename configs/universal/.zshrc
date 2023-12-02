@@ -35,6 +35,8 @@ alias rr='rm -rf'
 alias rrs="$SUDO_CMD rm -rf"
 alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"
 
+alias crr='cr -r'
+alias cr='cargo run'
 alias ds='doom sync'
 alias t='cd;c;tmux -u'
 alias bat='bat --tabs=8'
@@ -43,6 +45,7 @@ alias eza="$LOCAL_LANG eza"
 alias la='eza -a'
 alias lx="eza $EZA_ICONS -albh $EZA_GIT --classify --group --group-directories-first"
 alias ll="eza $EZA_ICONS -albh $EZA_GIT --classify --no-user --group-directories-first"
+alias lt='eza $EZA_ICONS -albh $EZA_GIT --classify --no-user --group-directories-first -T'
 alias cla='cpwd;la'
 alias cll='cpwd;ll'
 alias clx='cpwd;lx'
@@ -58,14 +61,6 @@ cl () {
   case $TERM in
     *screen* ) tmux clear-history ;;
   esac
-}
-
-lt () {
-  if (( $# == 0 )); then
-    eza $EZA_ICONS -albh $EZA_GIT --classify --no-user --group-directories-first -T
-  elif (( $# > 0 )); then
-    eza $EZA_ICONS -albh $EZA_GIT --classify --no-user --group-directories-first -TL $@
-  fi
 }
 
 alias gitd='git diff'
@@ -204,33 +199,35 @@ edC () {
 
 fas () {
   if (( $# == 0 )); then
-    echo 'Error: No source file(s) given!'; return 1
+    echo 'ERROR: No source file(s) given!'; return 1
   else
-    gcc $@ -std=gnu99 -Wall -Wextra -Wpedantic -o out-$(basename $1 .s)
+    gcc -Wall -Wextra -Wformat -Wpedantic -o out-$(basename $1 .s) $@
   fi
 }
 
 fcc () {
   if (( $# == 0 )); then
-    echo 'Error: No source file(s) given!'; return 1
+    echo 'ERROR: No source file(s) given!'; return 1
   else
-    gcc $@ -g -O -std=gnu17 -Wall -Wextra -Wpedantic -o out-$(basename $1 .c)
+    gcc -s -O3 -std=gnu17 -Wall -Wextra -Wformat -Wpedantic -o out-$(basename $1 .c) $@
   fi
 }
 
 fcp () {
   if (( $# == 0 )); then
-    echo 'Error: No source file(s) given!'; return 1
+    echo 'ERROR: No source file(s) given!'; return 1
   else
-    g++ $@ -g -O -std=c++20 -Wall -Wextra -Wpedantic -o out-$(basename $1 .cpp)
+    g++ -s -O3 -std=c++20 -Wall -Wextra -Wformat -Wpedantic -o out-$(basename $1 .cpp) $@
   fi
 }
 
 frs () {
   if (( $# == 0 )); then
-    echo 'Error: No source file(s) given!'; return 1
+    echo 'ERROR: No source file(s) given!'; return 1
   else
-    rustc $@ -C debuginfo=0 -C opt-level=2 -o out-$(basename $1 .rs)
+    rustc -C opt-level=2 -o out-$(basename $1 .rs) $@
+    #     -C debuginfo=0 -C opt-level=3 -C lto='true' -C codegen-units=1 -C strip='symbols' -o out-$(basename $1 .rs) $@
+    #     -C debuginfo=0 -C opt-level=3 -C codegen-units=1 -C strip=symbols -C prefer-dynamic
   fi
 }
 
@@ -264,5 +261,5 @@ update_path () {
 
   unsetopt shwordsplit
 }
+
 update_path
-unfunction update_path
