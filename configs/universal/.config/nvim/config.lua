@@ -26,7 +26,7 @@ lvim.builtin.which_key.mappings.lt = {'<cmd>TodoTelescope<CR>', 'TODOs'}
 
 lvim.lsp.buffer_mappings.normal_mode.gr = {
   [[<cmd>lua require'telescope.builtin'.lsp_references()<CR>]],
-  'References',
+  'References'
 }
 
 function SetNumber(toggle)
@@ -100,7 +100,7 @@ lvim.builtin.lualine.sections.lualine_x = {
     else
       return 'EN'
     end
-  end,
+  end
 }
 lvim.builtin.lualine.sections.lualine_y = {
   function ()
@@ -117,36 +117,6 @@ lvim.builtin.lualine.sections.lualine_y = {
     end
     return result
   end
-}
-
-lvim.plugins = {
-  {
-    'catppuccin/nvim',
-    name = "catppuccin",
-    priority = 1500,
-    config = function()
-      vim.opt.background = 'dark'
-      require'catppuccin'.setup{flavour = 'mocha'}
-      lvim.colorscheme = 'catppuccin'
-    end
-  },
---[[
-  {
-    'sainnhe/everforest',
-    priority = 1500,
-    config = function()
-      vim.opt.background = 'dark'
-      vim.g.everforest_background = 'hard'
-      vim.g.everforest_better_performance = 1
-      lvim.colorscheme = 'everforest'
-    end
-  },
---]]
-  {
-    'folke/todo-comments.nvim',
-    dependencies = {"nvim-lua/plenary.nvim"},
-    opts = {},
-  },
 }
 
 lvim.autocommands = {
@@ -177,28 +147,85 @@ lvim.autocommands = {
   }
 }
 
-require'lvim.lsp.manager'.setup('lua_ls', {
+lvim.plugins = {
+--[[
+  {
+    'catppuccin/nvim',
+    name = "catppuccin",
+    priority = 1500,
+    config = function ()
+      vim.opt.background = 'dark'
+      require'catppuccin'.setup{flavour = 'mocha'}
+      lvim.colorscheme = 'catppuccin'
+    end
+  },
+  {
+    'sainnhe/everforest',
+    priority = 1500,
+    config = function ()
+      vim.opt.background = 'dark'
+      vim.g.everforest_background = 'hard'
+      vim.g.everforest_better_performance = 1
+      lvim.colorscheme = 'everforest'
+    end
+  },
+--]]
+  {
+    'mcchrish/zenbones.nvim',
+    dependencies = {'rktjmp/lush.nvim'},
+    config = function ()
+      vim.opt.background = 'dark'
+      lvim.colorscheme = 'zenbones'
+    end
+  },
+  {
+    'folke/todo-comments.nvim',
+    dependencies = {"nvim-lua/plenary.nvim"},
+    opts = {}
+  }
+}
+
+local lsp_options = {
   settings = {
+    ['rust-analyzer'] = {
+      lens = {
+        enable = false
+      },
+      diagnostics = {
+        enable = true,
+        experimental = {
+          enable = true
+        }
+      }
+    },
     Lua = {
       runtime = {
         version = 'Lua 5.4',
---[[
-        -- It seems like runtime.path is a path relative to workspace.library
-        -- (for example, if path is {'?.lua'}, then it will find all
-        --  .lua files in all paths that are in workspace.library)
-        path = {
-          '~/virtual/definitions/?.lua',
-          '~/virtual/vm_mount/usr/share/lua/5.4/?.lua',
-          '~/virtual/vm_mount/usr/share/lua/5.4/?/?.lua',
-        },
---]]
       },
+      --[[
       workspace = {
         library = {
           ['~/virtual/definitions'] = true,
           ['~/virtual/vm_mount/usr/share/lua/5.4'] = true,
         }
-      },
+      }
+      --]]
     }
   }
-})
+}
+
+require'lvim.lsp.manager'.setup('rust_analyzer', lsp_options)
+require'lvim.lsp.manager'.setup('lua_ls', lsp_options)
+
+if vim.fn.has('nightly') then
+  local orig_notify = vim.notify
+  local filter_notify = function (text, level, opts)
+    if (type(text) == 'string' and
+        (string.find(text, 'vim.lsp.util.parse_snippet is deprecated :help deprecated') or
+         string.find(text, 'in function \'parse_snippet\''))) then
+      return
+    end
+    orig_notify(text, level, opts)
+  end
+  vim.notify = filter_notify
+end
