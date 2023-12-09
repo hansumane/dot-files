@@ -26,7 +26,7 @@ EZA_ICONS='--icons'
 ZSH_THEME='undollar'
 LOCAL_LANG='LANG=en_US.UTF-8'
 
-plugins=(git zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 alias c='cl'
@@ -35,11 +35,12 @@ alias rr='rm -rf'
 alias rrs="$SUDO_CMD rm -rf"
 alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"
 
+alias v="$EDITOR"
 alias crr='cr -r'
 alias cr='cargo run'
 alias ds='doom sync'
 alias t='cd;c;tmux -u'
-alias bat='bat --tabs=8'
+alias b='bat --tabs=8'
 alias eza="$LOCAL_LANG eza"
 
 alias la='eza -a'
@@ -149,6 +150,18 @@ indchk () {
     indent -gnu -nut -l79 -lc82 $1 -o $1\~ &&  # -npcs
     diff -u $1 $1\~ | bat
     rm -rf $1\~
+  fi
+}
+
+rfmt () {
+  if (( $# == 0 )); then
+    echo 'ERROR: No source file given!'; return 1
+  else
+    TEMP_FN="$(basename "$1" .rs)~.rs"
+    cp "$1" "$TEMP_FN"
+    rustfmt "$TEMP_FN"
+    diff -u "$1" "$TEMP_FN" | bat --tabs=8
+    rm -rf "$TEMP_FN"
   fi
 }
 
