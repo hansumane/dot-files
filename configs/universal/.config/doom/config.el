@@ -14,7 +14,7 @@
 (setq c-default-style
     '((java-mode . "java")
       (awk-mode . "awk")
-      ;;(c-mode . "gnu")
+      ;(c-mode . "gnu")
       (other . "doom")))
 
 (map! :leader "k" #'sort-lines)
@@ -53,10 +53,7 @@
     :hook (org-mode . org-auto-tangle-mode)
     :config (setq org-auto-tangle-default t))
 
-(setq eshell-history-size 4096
-      eshell-buffer-maximum-lines 4096
-      eshell-aliases-file "~/.config/doom/eshell/aliases")
-(map! :leader "e s" #'eshell)
+(load! "~/.config/doom/manual/yang-mode.el")
 
 (use-package! catppuccin-theme
     :config
@@ -73,3 +70,9 @@
 ;;                   evil-normal-state-cursor '(box "#dc322f")
 ;;                   evil-insert-state-cursor '(bar "#dc322f")
 ;;                   evil-visual-state-cursor '(hollow "#dc322f")))
+
+;; org-mode settings
+;; #+language: ru
+;; #+options: num:nil
+;; #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-bigblow.setup
+;; #+setupfile: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
