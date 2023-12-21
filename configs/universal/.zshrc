@@ -30,6 +30,7 @@ plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 alias c='cl'
+alias b='bt'
 alias q='exit'
 alias rr='rm -rf'
 alias rrs="$SUDO_CMD rm -rf"
@@ -40,7 +41,7 @@ alias crr='cr -r'
 alias cr='cargo run'
 alias ds='doom sync'
 alias t='cd;c;tmux -u'
-alias b='bat --tabs=8'
+alias ded='emacs --daemon'
 alias eza="$LOCAL_LANG eza"
 
 alias la='eza -a'
@@ -56,6 +57,10 @@ alias clt='cpwd;lt'
 alias edM="$EDITOR Makefile"
 alias edcr="$EDITOR ~/.git-credentials"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
+
+bt () {
+  bat --tabs=8 $@
+}
 
 cl () {
   clear
