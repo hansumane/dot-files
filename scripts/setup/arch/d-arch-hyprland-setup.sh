@@ -14,9 +14,9 @@ else
 fi
 
 # change hyprland to hyprland-nvidia or hyprland-nvidia-git and add libva for NVIDIA
-yay -Sy --needed \
+yay -Sy --needed hyprland \
   gtk-engine-murrine gtk2 gtk3 gtk4 qt5ct qt6ct qt5-wayland qt6-wayland \
-  hyprland hyprshot hyprpaper wlogout swaylock-effects wofi waybar swayidle \
+  hyprshot hyprpaper wlogout swaylock-effects wofi waybar swayidle \
   dunst nwg-look-bin lxappearance gnome-themes-extra kvantum grim slurp \
   pavucontrol sddm dolphin dolphin-plugins kitty alacritty xwaylandvideobridge \
   xdg-desktop-portal-hyprland xdg-desktop-portal-gtk xdg-desktop-portal xdg-user-dirs \
