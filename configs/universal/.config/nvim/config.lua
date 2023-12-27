@@ -83,10 +83,15 @@ lvim.builtin.treesitter.auto_install = true
 lvim.builtin.treesitter.sync_install = false
 lvim.builtin.treesitter.highlight.enable = true
 
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {'pyright'})
+lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
+  return server ~= 'jedi_language_server'
+end, lvim.lsp.automatic_configuration.skipped_servers)
+
 lvim.lsp.automatic_servers_installation = false
 lvim.lsp.installer.setup.automatic_installation = false
 lvim.lsp.installer.setup.ensure_installed = {
-  'lua_ls', 'clangd', 'pyright', 'rust_analyzer'
+  'lua_ls', 'clangd', 'rust_analyzer', 'jedi_language_server'
 }
 
 local components = require'lvim.core.lualine.components'
@@ -148,7 +153,6 @@ lvim.autocommands = {
 }
 
 lvim.plugins = {
---[[
   {
     'catppuccin/nvim',
     name = "catppuccin",
@@ -159,6 +163,7 @@ lvim.plugins = {
       lvim.colorscheme = 'catppuccin'
     end
   },
+--[[
   {
     'sainnhe/everforest',
     priority = 1500,
@@ -169,7 +174,6 @@ lvim.plugins = {
       lvim.colorscheme = 'everforest'
     end
   },
---]]
   {
     'mcchrish/zenbones.nvim',
     dependencies = {'rktjmp/lush.nvim'},
@@ -178,6 +182,7 @@ lvim.plugins = {
       lvim.colorscheme = 'zenbones'
     end
   },
+--]]
   {
     'folke/todo-comments.nvim',
     dependencies = {"nvim-lua/plenary.nvim"},
@@ -190,6 +195,9 @@ local lsp_options = {
     ['rust-analyzer'] = {
       lens = {
         enable = false
+      },
+      checkOnSave = {
+        command = 'clippy'
       },
       diagnostics = {
         enable = true,
@@ -216,6 +224,7 @@ local lsp_options = {
 
 require'lvim.lsp.manager'.setup('rust_analyzer', lsp_options)
 require'lvim.lsp.manager'.setup('lua_ls', lsp_options)
+lvim.builtin.treesitter.ignore_install = {'make'}
 
 if vim.fn.has('nightly') then
   local orig_notify = vim.notify
