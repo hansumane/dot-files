@@ -30,21 +30,10 @@ lvim.lsp.buffer_mappings.normal_mode.gr = {
 }
 
 function SetNumber(toggle)
-  if toggle then
-    if #vim.opt.colorcolumn:get() ~= 0 or not vim.opt.number:get() then
-      vim.opt.colorcolumn = {}
-    else
-      vim.opt.colorcolumn = {91, 141}
-    end
-    vim.opt.number = true
-    vim.opt.cursorline = true
-    vim.opt.relativenumber = true
-  else
-    vim.opt.colorcolumn = {}
-    vim.opt.number = false
-    vim.opt.cursorline = false
-    vim.opt.relativenumber = false
-  end
+  vim.opt.colorcolumn = toggle and {91, 141} or {}
+  vim.opt.number = toggle and true or false
+  vim.opt.cursorline = toggle and true or false
+  vim.opt.relativenumber = toggle and true or false
 end
 
 function SetIndent(settings)
@@ -63,23 +52,6 @@ function SetIndent(settings)
     vim.opt.expandtab = true
   end
 end
-
-vim.cmd [[
-command! SN :lua SetNumber(true)
-command! USN :lua SetNumber(false)
-command! S2 :lua SetIndent{spaces = 2}
-command! S4 :lua SetIndent{spaces = 4}
-command! S8 :lua SetIndent{spaces = 8}
-command! T2 :lua SetIndent{spaces = 2, tabs = 2, noexpand = true}
-command! T4 :lua SetIndent{spaces = 4, tabs = 4, noexpand = true}
-command! T8 :lua SetIndent{spaces = 8, tabs = 8, noexpand = true}
-command! M2 :lua SetIndent{spaces = 2, tabs = 4, noexpand = true}
-command! M4 :lua SetIndent{spaces = 4, tabs = 8, noexpand = true}
-command! MG :lua SetIndent{spaces = 2, tabs = 8, noexpand = true}
-]]
-
-vim.opt.number = false
-SetNumber(true)
 
 lvim.format_on_save.enabled = false
 lvim.builtin.nvimtree.setup.view.adaptive_size = true
@@ -138,6 +110,25 @@ lvim.builtin.lualine.sections.lualine_y = {
 
 lvim.autocommands = {
   {
+    'VimEnter', {
+      callback = function ()
+        vim.cmd [[
+        command! SN :lua SetNumber(true)
+        command! USN :lua SetNumber(false)
+        command! S2 :lua SetIndent{spaces = 2}
+        command! S4 :lua SetIndent{spaces = 4}
+        command! S8 :lua SetIndent{spaces = 8}
+        command! T2 :lua SetIndent{spaces = 2, tabs = 2, noexpand = true}
+        command! T4 :lua SetIndent{spaces = 4, tabs = 4, noexpand = true}
+        command! T8 :lua SetIndent{spaces = 8, tabs = 8, noexpand = true}
+        command! M2 :lua SetIndent{spaces = 2, tabs = 4, noexpand = true}
+        command! M4 :lua SetIndent{spaces = 4, tabs = 8, noexpand = true}
+        command! MG :lua SetIndent{spaces = 2, tabs = 8, noexpand = true}
+        highlight ColorColumn guibg='#292e42'
+        ]]
+        SetNumber(true)
+      end
+    },
     'QuitPre', {
       callback = function ()
         local tree_wins = {}
