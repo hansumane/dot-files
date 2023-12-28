@@ -30,10 +30,21 @@ lvim.lsp.buffer_mappings.normal_mode.gr = {
 }
 
 function SetNumber(toggle)
-  vim.opt.number = toggle and true or false
-  vim.opt.colorcolumn = toggle and {91, 140} or {}
-  vim.opt.cursorline = toggle and true or false
-  vim.opt.relativenumber = toggle and true or false
+  if toggle then
+    if #vim.opt.colorcolumn:get() ~= 0 or not vim.opt.number:get() then
+      vim.opt.colorcolumn = {}
+    else
+      vim.opt.colorcolumn = {91, 141}
+    end
+    vim.opt.number = true
+    vim.opt.cursorline = true
+    vim.opt.relativenumber = true
+  else
+    vim.opt.colorcolumn = {}
+    vim.opt.number = false
+    vim.opt.cursorline = false
+    vim.opt.relativenumber = false
+  end
 end
 
 function SetIndent(settings)
@@ -67,6 +78,7 @@ command! M4 :lua SetIndent{spaces = 4, tabs = 8, noexpand = true}
 command! MG :lua SetIndent{spaces = 2, tabs = 8, noexpand = true}
 ]]
 
+vim.opt.number = false
 SetNumber(true)
 
 lvim.format_on_save.enabled = false
@@ -153,6 +165,7 @@ lvim.autocommands = {
 }
 
 lvim.plugins = {
+--[[
   {
     'catppuccin/nvim',
     name = "catppuccin",
@@ -163,7 +176,6 @@ lvim.plugins = {
       lvim.colorscheme = 'catppuccin'
     end
   },
---[[
   {
     'sainnhe/everforest',
     priority = 1500,
