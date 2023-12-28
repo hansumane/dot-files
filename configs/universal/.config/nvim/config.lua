@@ -131,6 +131,8 @@ lvim.autocommands = {
         SetNumber(true)
       end
     },
+  },
+  {
     'QuitPre', {
       callback = function ()
         local tree_wins = {}
