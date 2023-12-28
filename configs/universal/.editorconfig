@@ -9,17 +9,12 @@ indent_style = space
 indent_size = 4
 tab_width = 8
 
-[*.{xml,html,build,sh*,zsh*,bash*,yang*}]
+[*.{lua,xml,html,build,sh*,zsh*,bash*,yang*}]
 indent_style = space
 indent_size = 2
-tab_width = 2
+tab_width = 8
 
 [{configure.ac,Makefile,Makefile.*,*.{s,vim*,git*}}]
 indent_style = tab
 indent_size = 8
-tab_width = 8
-
-[*.{c,h}]
-indent_style = space
-indent_size = 2
 tab_width = 8
