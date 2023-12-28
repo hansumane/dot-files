@@ -21,7 +21,7 @@ lvim.keys.normal_mode['<S-n>'] = '<cmd>BufferLineMovePrev<CR>'
 lvim.keys.normal_mode['<S-m>'] = '<cmd>BufferLineMoveNext<CR>'
 
 lvim.builtin.which_key.mappings.j = {'<cmd>noh<CR>', 'No Highlight'}
-lvim.builtin.which_key.vmappings.k = {":sort<CR>", 'Sort Lines'}
+lvim.builtin.which_key.vmappings.k = {':sort<CR>', 'Sort Lines'}
 lvim.builtin.which_key.mappings.lt = {'<cmd>TodoTelescope<CR>', 'TODOs'}
 
 lvim.lsp.buffer_mappings.normal_mode.gr = {
@@ -56,12 +56,12 @@ end
 lvim.format_on_save.enabled = false
 lvim.builtin.nvimtree.setup.view.adaptive_size = true
 
-lvim.builtin.telescope.defaults.initial_mode = "normal"
-lvim.builtin.telescope.defaults.layout_strategy = "horizontal"
+lvim.builtin.telescope.defaults.initial_mode = 'normal'
+lvim.builtin.telescope.defaults.layout_strategy = 'horizontal'
 lvim.builtin.telescope.defaults.layout_config.width = 0.9
 lvim.builtin.telescope.defaults.layout_config.height = 0.9
 lvim.builtin.telescope.defaults.layout_config.preview_width = 0.55
-lvim.builtin.telescope.defaults.layout_config.prompt_position = "top"
+lvim.builtin.telescope.defaults.layout_config.prompt_position = 'top'
 
 lvim.builtin.treesitter.auto_install = true
 lvim.builtin.treesitter.sync_install = false
@@ -79,7 +79,7 @@ lvim.lsp.installer.setup.ensure_installed = {
 }
 
 local components = require'lvim.core.lualine.components'
-lvim.builtin.lualine.sections.lualine_a = {"mode"}
+lvim.builtin.lualine.sections.lualine_a = {'mode'}
 lvim.builtin.lualine.sections.lualine_x = {
   components.lsp,
   components.filetype,
@@ -188,7 +188,7 @@ lvim.plugins = {
 --]]
   {
     'folke/todo-comments.nvim',
-    dependencies = {"nvim-lua/plenary.nvim"},
+    dependencies = {'nvim-lua/plenary.nvim'},
     opts = {}
   }
 }
@@ -234,7 +234,7 @@ if vim.fn.has('nightly') then
   local filter_notify = function (text, level, opts)
     if (type(text) == 'string' and
         (string.find(text, 'vim.lsp.util.parse_snippet is deprecated :help deprecated') or
-         string.find(text, 'in function \'parse_snippet\''))) then
+         string.find(text, "in function 'parse_snippet'"))) then
       return
     end
     orig_notify(text, level, opts)
