@@ -124,8 +124,10 @@ lvim.autocommands = {
         command! M2 :lua SetIndent{spaces = 2, tabs = 4, noexpand = true}
         command! M4 :lua SetIndent{spaces = 4, tabs = 8, noexpand = true}
         command! MG :lua SetIndent{spaces = 2, tabs = 8, noexpand = true}
-        highlight ColorColumn guibg='#292e42'
         ]]
+        if lvim.colorscheme == "lunar" then
+          vim.cmd[[highlight ColorColumn guibg='#292e42']]
+        end
         SetNumber(true)
       end
     },
