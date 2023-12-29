@@ -195,7 +195,7 @@ edP () {
 
 edC () {
   if [[ ! -f ./compile_flags.txt ]]; then
-    echo '-std=gnu++20' > ./compile_flags.txt
+    echo '-std=c++20' > ./compile_flags.txt
     echo '-Wall' >> ./compile_flags.txt
     echo '-Wextra' >> ./compile_flags.txt
     echo '-Wformat' >> ./compile_flags.txt
@@ -215,19 +215,11 @@ edC () {
   fi
 }
 
-fas () {
-  if (( $# == 0 )); then
-    echo 'ERROR: No source file(s) given!'; return 1
-  else
-    gcc -Wall -Wextra -Wformat -Wpedantic -o out-$(basename $1 .s) $@
-  fi
-}
-
 fcc () {
   if (( $# == 0 )); then
     echo 'ERROR: No source file(s) given!'; return 1
   else
-    gcc -s -O3 -std=gnu17 -Wall -Wextra -Wformat -Wpedantic -o out-$(basename $1 .c) $@
+    gcc -g -O2 -std=gnu17 -Wall -Wextra -Wformat -Wpedantic -o out-$(basename $1 .c) $@
   fi
 }
 
@@ -235,7 +227,7 @@ fcp () {
   if (( $# == 0 )); then
     echo 'ERROR: No source file(s) given!'; return 1
   else
-    g++ -s -O3 -std=c++20 -Wall -Wextra -Wformat -Wpedantic -o out-$(basename $1 .cpp) $@
+    g++ -g -O2 -std=c++20 -Wall -Wextra -Wformat -Wpedantic -o out-$(basename $1 .cpp) $@
   fi
 }
 
