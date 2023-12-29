@@ -3,7 +3,7 @@
 vim.opt.mouse = 'nv'
 vim.opt.scrolloff = 3
 vim.g.c_syntax_for_h = true
-vim.opt.listchars = {tab = '⋅ >', trail = '␣'}
+--vim.opt.listchars = {tab = '⋅ >', trail = '␣'}
 vim.cmd[[set iskeyword-=_]]
 
 vim.opt.keymap = 'russian-jcukenwin'
@@ -32,7 +32,7 @@ lvim.lsp.buffer_mappings.normal_mode.gr = {
 
 function SetNumber(toggle)
   vim.opt.colorcolumn = toggle and {91, 141} or {}
-  vim.opt.list = toggle and true or false
+  --vim.opt.list = toggle and true or false
   vim.opt.number = toggle and true or false
   vim.opt.cursorline = toggle and true or false
   vim.opt.relativenumber = toggle and true or false
@@ -55,7 +55,7 @@ function SetIndent(settings)
   end
 end
 
-lvim.builtin.indentlines.active = false
+--lvim.builtin.indentlines.active = false
 --lvim.builtin.indentlines.options.use_treesitter = false
 
 lvim.format_on_save.enabled = false
