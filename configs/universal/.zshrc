@@ -58,6 +58,10 @@ alias edM="$EDITOR Makefile"
 alias edcr="$EDITOR ~/.git-credentials"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
 
+vg () {
+  valgrind --show-error-list=yes --leak-check=full --show-leak-kinds=all $@
+}
+
 bt () {
   bat --tabs=8 $@
 }
