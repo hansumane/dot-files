@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -e
 
 NYELLOW=$'\e[0;33m'
@@ -49,7 +48,7 @@ case $OSTYPE in
         yay -Sc --repo --noconfirm
         ;;
 
-      *openSUSE\ Tumbleweed*)
+      *"openSUSE Tumbleweed"*)
         echo "${NYELLOW}Running ${BGREEN}OpenSUSE Tumbleweed${NYELLOW} updates.${NRST}"
         PIP_FLAGS="--break-system-packages $PIP_FLAGS"
         sudo zypper ref && sudo zypper dup
