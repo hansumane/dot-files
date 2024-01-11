@@ -1,4 +1,4 @@
--std=gnu++20
+-std=c++20
 -Wall
 -Wextra
 -Wformat
