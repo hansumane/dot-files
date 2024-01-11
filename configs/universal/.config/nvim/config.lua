@@ -1,10 +1,12 @@
 -- LunarVim (lvim) config
 
+local use_indent_lines = true
+
 vim.opt.mouse = 'nv'
 vim.opt.scrolloff = 3
 vim.g.c_syntax_for_h = true
---vim.opt.listchars = {tab = '⋅ >', trail = '␣'}
 vim.cmd[[set iskeyword-=_]]
+if not use_indent_lines then vim.opt.listchars = {tab = '⋅ >', trail = '␣'} end
 
 vim.opt.keymap = 'russian-jcukenwin'
 vim.opt.iminsert = 0
@@ -32,10 +34,10 @@ lvim.lsp.buffer_mappings.normal_mode.gr = {
 
 function SetNumber(toggle)
   vim.opt.colorcolumn = toggle and {91, 141} or {}
-  --vim.opt.list = toggle and true or false
   vim.opt.number = toggle and true or false
   vim.opt.cursorline = toggle and true or false
   vim.opt.relativenumber = toggle and true or false
+  if not use_indent_lines then vim.opt.list = toggle and true or false end
 end
 
 function SetIndent(settings)
@@ -55,8 +57,13 @@ function SetIndent(settings)
   end
 end
 
---lvim.builtin.indentlines.active = false
---lvim.builtin.indentlines.options.use_treesitter = false
+if not use_indent_lines then
+  lvim.builtin.indentlines.options.use_treesitter = false
+  lvim.builtin.indentlines.active = false
+else
+  lvim.builtin.indentlines.options.use_treesitter = true
+  lvim.builtin.indentlines.active = true
+end
 
 lvim.format_on_save.enabled = false
 lvim.builtin.nvimtree.setup.view.adaptive_size = true
