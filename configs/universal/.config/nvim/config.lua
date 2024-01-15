@@ -33,7 +33,7 @@ lvim.lsp.buffer_mappings.normal_mode.gr = {
 }
 
 function SetNumber(toggle)
-  vim.opt.colorcolumn = toggle and {91, 141} or {}
+  vim.opt.colorcolumn = toggle and {81, 91, 101, 121, 141} or {}
   vim.opt.number = toggle and true or false
   vim.opt.cursorline = toggle and true or false
   vim.opt.relativenumber = toggle and true or false
