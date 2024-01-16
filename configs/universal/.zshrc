@@ -227,7 +227,7 @@ fcc () {
   if (( $# == 0 )); then
     echo 'ERROR: No source file(s) given!'; return 1
   else
-    gcc -g -O2 -std=gnu17 -Wall -Wextra -Wformat -Wpedantic -o out-$(basename $1 .c) $@
+    gcc -g -O2 -std=gnu11 -Wall -Wextra -Wformat -Wpedantic -o out-$(basename $1 .c) $@
   fi
 }
 
