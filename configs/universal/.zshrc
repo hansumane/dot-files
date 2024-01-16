@@ -41,7 +41,6 @@ alias crr='cr -r'
 alias cr='cargo run'
 alias ds='doom sync'
 alias t='cd;c;tmux -u'
-alias ded='emacs --daemon'
 alias eza="$LOCAL_LANG eza"
 
 alias la='eza -a'
@@ -71,6 +70,11 @@ cl () {
   case $TERM in
     *screen* ) tmux clear-history ;;
   esac
+}
+
+ded () {
+  emacsclient -e '(kill-emacs)' &> /dev/null
+  emacs --daemon
 }
 
 alias gitd='git diff'
