@@ -74,7 +74,9 @@ cl () {
 
 ded () {
   emacsclient -e '(kill-emacs)' &> /dev/null
-  emacs --daemon
+  if (( $# == 0 )); then
+    emacs --daemon
+  fi
 }
 
 alias gitd='git diff'
