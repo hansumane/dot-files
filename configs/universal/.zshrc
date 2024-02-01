@@ -90,8 +90,8 @@ alias gita='git add -A && git commit --amend --reset-author --no-edit'
 alias gitl='git log --date=format-local:"%d/%m/%Y %H:%M:%S" --pretty=format:"%h %ad | %an >>> %s%d" --graph'
 
 giti () {
-  GIT_IGNORE_DIR_PATH=$(git rev-parse --show-toplevel) || return 1
-  GIT_IGNORE_FILE_PATH=$GIT_IGNORE_DIR_PATH/.gitignore
+  local GIT_IGNORE_DIR_PATH=$(git rev-parse --show-toplevel) || return 1
+  local GIT_IGNORE_FILE_PATH=$GIT_IGNORE_DIR_PATH/.gitignore
   cd $GIT_IGNORE_DIR_PATH
   $SUDO_CMD rm -rf $(git ls-files --others --ignored --exclude-from=${GIT_IGNORE_FILE_PATH} --directory)
   cd -
@@ -107,7 +107,7 @@ gitc () {
 }
 
 gitup () {
-  BRANCH=$(git rev-parse --abbrev-ref HEAD)
+  local BRANCH=$(git rev-parse --abbrev-ref HEAD)
   if (( $# == 0 )); then
     read "ANS?No commit name given, git pull ($BRANCH)? [Y/n] "
     case $ANS in
@@ -172,7 +172,7 @@ rfmt () {
   if (( $# == 0 )); then
     echo 'ERROR: No source file given!'; return 1
   else
-    TEMP_FN="$(basename "$1" .rs)~.rs"
+    local TEMP_FN="$(basename "$1" .rs)~.rs"
     cp "$1" "$TEMP_FN"
     rustfmt "$TEMP_FN"
     diff -u "$1" "$TEMP_FN" | bat --tabs=8
@@ -217,8 +217,8 @@ edC () {
 
   $EDITOR ./compile_flags.txt
 
-  GIT_TOPDIR="$(git rev-parse --show-toplevel)" || return 0
-  GIT_INFODIR="$GIT_TOPDIR/.git/info"
+  local GIT_TOPDIR="$(git rev-parse --show-toplevel)" || return 0
+  local GIT_INFODIR="$GIT_TOPDIR/.git/info"
   mkdir -p "$GIT_INFODIR" && touch "$GIT_INFODIR/exclude"
   if ! grep -Fxq 'compile_flags.txt' "$GIT_INFODIR/exclude"; then
     echo 'compile_flags.txt' >> "$GIT_INFODIR/exclude"
@@ -251,14 +251,43 @@ frs () {
   fi
 }
 
+alias mvnresolve='mvn clean install dependency:resolve'
+alias mvnbuild='mvn clean package'
+alias mvndo='mvnbuild && mvnrun'
+
+mvnew () {
+  if (( $# == 0 )); then
+    echo 'ERROR: No groupId and artifactId was set! (example: mvnew com.example.com:my-app)'
+  fi
+
+  local GROUP_ID=$(echo "$1" | cut -d':' -f1)
+  local ARTIFACT_ID=$(echo "$1" | cut -d':' -f2)
+
+  mvn archetype:generate -DgroupId="$GROUP_ID" -DartifactId="$ARTIFACT_ID" -DarchetypeArtifactId=maven-archetype-quickstart
+  sed -i '/<url>.*<\/url>/a \  <properties>\n    <maven\.compiler\.source>21<\/maven\.compiler\.source>\n    <maven\.compiler\.target>21<\/maven\.compiler\.target>\n    <project\.build\.sourceEncoding>UTF\-8<\/project\.build\.sourceEncoding>\n  <\/properties>' "$ARTIFACT_ID/pom.xml"
+}
+
+mvnrun () {
+  if (( $# == 0 )); then
+    echo 'ERROR: No main class specified'
+  fi
+
+  local JAVA_INDEX=$(echo "$1" | awk -F 'java/' '{print length($1) + 6}')
+  local CLASS_PATH=$(echo "$1" | cut -c $JAVA_INDEX- | tr '/' '.')
+  local RESULT=$(basename "$CLASS_PATH" .java)
+
+  echo "classpath: $RESULT"
+  mvn exec:java -Dexec.mainClass="$RESULT"
+}
+
 update_path () {
   setopt shwordsplit
 
-    TOBPATH="/bin /usr/sbin /usr/bin"
+    local TOBPATH="/bin /usr/sbin /usr/bin"
   TOBPATH+=" /usr/local/sbin /usr/local/bin"
   TOBPATH+=" $HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin"
 
-    TOLPATH="/libexec /lib /lib64"
+    local TOLPATH="/libexec /lib /lib64"
   TOLPATH+=" /usr/libexec /usr/lib /usr/lib64"
   TOLPATH+=" /usr/local/libexec /usr/local/lib /usr/local/lib64"
   TOLPATH+=" $HOME/.local/lib"
