@@ -9,9 +9,9 @@ fi
 
 TEMPDIR="$HOME/.itemp"
 if [[ -d "$TEMPDIR" ]]; then
-  rm -rf "$TEMPDIR"
+  rm -rvf "$TEMPDIR"
 fi
-mkdir -p "$TEMPDIR"
+mkdir -vp "$TEMPDIR"
 cd "$TEMPDIR"
 
 case $OSTYPE in
@@ -32,9 +32,19 @@ if [[ -z "$NVIM_PREFIX" ]]; then NVIM_PREFIX="/usr/local"; fi
 
 # neovim nightly (vim > vi replacement)
 curl -fLO "https://github.com/neovim/neovim/releases/download/nightly/$NVIM_FN.tar.gz"
-tar xf "$NVIM_FN.tar.gz"
+tar xvf "$NVIM_FN.tar.gz"
 sudo mkdir -vp "${NVIM_DESTDIR}${NVIM_PREFIX}"
-sudo cp -vrf "$NVIM_FN"/* "${NVIM_DESTDIR}${NVIM_PREFIX}"
+sudo mkdir -vp "${NVIM_DESTDIR}${NVIM_PREFIX}/share"
+sudo cp -vrf "$NVIM_FN/bin" "${NVIM_DESTDIR}${NVIM_PREFIX}"
+sudo cp -vrf "$NVIM_FN/share/applications" "${NVIM_DESTDIR}${NVIM_PREFIX}/share"
+sudo cp -vrf "$NVIM_FN/share/icons" "${NVIM_DESTDIR}${NVIM_PREFIX}/share"
+sudo cp -vrf "$NVIM_FN/share/locale" "${NVIM_DESTDIR}${NVIM_PREFIX}/share"
+sudo cp -vrf "$NVIM_FN/share/nvim" "${NVIM_DESTDIR}${NVIM_PREFIX}/share"
+if [[ -L "${NVIM_DESTDIR}${NVIM_PREFIX}/share/man" ]]; then
+  sudo cp -vrf "$NVIM_FN/share/man"/* "${NVIM_DESTDIR}${NVIM_PREFIX}/share/man"
+else
+  sudo cp -vrf "$NVIM_FN/share/man" "${NVIM_DESTDIR}${NVIM_PREFIX}/share"
+fi
 
 cd
-rm -rf "$TEMPDIR"
+rm -rvf "$TEMPDIR"
