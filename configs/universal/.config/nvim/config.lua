@@ -79,11 +79,13 @@ lvim.builtin.treesitter.auto_install = true
 lvim.builtin.treesitter.sync_install = false
 lvim.builtin.treesitter.highlight.enable = true
 
+vim.lsp.set_log_level("off");
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {'pyright'})
 lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
   return server ~= 'jedi_language_server'
 end, lvim.lsp.automatic_configuration.skipped_servers)
 
+--lvim.builtin.treesitter.auto_install = false
 lvim.lsp.automatic_servers_installation = false
 lvim.lsp.installer.setup.automatic_installation = false
 lvim.lsp.installer.setup.ensure_installed = {
@@ -245,15 +247,15 @@ require'lvim.lsp.manager'.setup('rust_analyzer', lsp_options)
 require'lvim.lsp.manager'.setup('lua_ls', lsp_options)
 lvim.builtin.treesitter.ignore_install = {'make'}
 
-if vim.fn.has('nightly') then
-  local orig_notify = vim.notify
-  local filter_notify = function (text, level, opts)
-    if (type(text) == 'string' and
-        (string.find(text, 'vim.lsp.util.parse_snippet is deprecated :help deprecated') or
-         string.find(text, "in function 'parse_snippet'"))) then
-      return
-    end
-    orig_notify(text, level, opts)
-  end
-  vim.notify = filter_notify
-end
+--if vim.fn.has('nightly') then
+--  local orig_notify = vim.notify
+--  local filter_notify = function (text, level, opts)
+--    if (type(text) == 'string' and
+--        (string.find(text, 'vim.lsp.util.parse_snippet is deprecated :help deprecated') or
+--         string.find(text, "in function 'parse_snippet'"))) then
+--      return
+--    end
+--    orig_notify(text, level, opts)
+--  end
+--  vim.notify = filter_notify
+--end
