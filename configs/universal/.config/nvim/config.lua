@@ -87,7 +87,10 @@ end, lvim.lsp.automatic_configuration.skipped_servers)
 lvim.lsp.automatic_servers_installation = false
 lvim.lsp.installer.setup.automatic_installation = false
 lvim.lsp.installer.setup.ensure_installed = {
-  'lua_ls', 'clangd', 'rust_analyzer', 'jedi_language_server'
+  'lua_ls', 'clangd', 'rust_analyzer', 'jedi_language_server', 'jdtls'
+}
+lvim.builtin.treesitter.ignore_install = {
+  'make'
 }
 
 local components = require'lvim.core.lualine.components'
@@ -201,6 +204,16 @@ lvim.plugins = {
       lvim.colorscheme = 'zenbones'
     end
   },
+  {
+    'sainnhe/gruvbox-material',
+    priority = 1500,
+    config = function ()
+      vim.opt.background = 'dark'
+      lvim.colorscheme = 'gruvbox-material'
+      vim.g.gruvbox_material_background = 'hard' -- medium (default), soft
+      vim.g.gruvbox_material_better_performance = 1
+    end
+  },
 --]]
   {
     'folke/todo-comments.nvim',
@@ -209,7 +222,7 @@ lvim.plugins = {
   }
 }
 
-local lsp_options = {
+require'lvim.lsp.manager'.setup('rust_analyzer', {
   settings = {
     ['rust-analyzer'] = {
       lens = {
@@ -224,7 +237,11 @@ local lsp_options = {
           enable = true
         }
       }
-    },
+    }
+  }
+})
+require'lvim.lsp.manager'.setup('lua_ls', {
+  settings = {
     Lua = {
       runtime = {
         version = 'Lua 5.4',
@@ -239,11 +256,13 @@ local lsp_options = {
       --]]
     }
   }
-}
-
-require'lvim.lsp.manager'.setup('rust_analyzer', lsp_options)
-require'lvim.lsp.manager'.setup('lua_ls', lsp_options)
-lvim.builtin.treesitter.ignore_install = {'make'}
+})
+require'lvim.lsp.manager'.setup('jdtls', {
+  cmd = {
+    'jdtls',
+    '--jvm-arg=-javaagent:' .. vim.fn.stdpath'data' .. '/mason/packages/jdtls/lombok.jar'
+  },
+})
 
 if vim.fn.has('nightly') then
   local orig_notify = vim.notify
@@ -257,3 +276,11 @@ if vim.fn.has('nightly') then
   end
   vim.notify = filter_notify
 end
+
+--[
+-- to make clipboard work with windows,
+-- just install the win32yank and put it on path,
+-- for example,
+-- C:\bin\win32yank.exe and C:\bin is on path
+-- https://github.com/equalsraf/win32yank/releases
+--]
