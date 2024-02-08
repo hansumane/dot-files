@@ -210,9 +210,11 @@ edC () {
     echo '-Wextra' >> ./compile_flags.txt
     echo '-Wformat' >> ./compile_flags.txt
     echo '-Wpedantic' >> ./compile_flags.txt
-    echo '-Wno-vla' >> ./compile_flags.txt
-    echo '-Wno-unused-variable' >> ./compile_flags.txt
-    echo '-Wno-unused-parameter' >> ./compile_flags.txt
+    echo '-Wno-gnu-conditional-omitted-operand' >> ./compile_flags.txt
+    echo '-Wno-gnu-zero-variadic-macro-arguments' >> ./compile_flags.txt
+    echo '#-Wno-vla' >> ./compile_flags.txt
+    echo '#-Wno-unused-variable' >> ./compile_flags.txt
+    echo '#-Wno-unused-parameter' >> ./compile_flags.txt
   fi
 
   $EDITOR ./compile_flags.txt
