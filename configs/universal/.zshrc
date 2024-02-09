@@ -163,7 +163,7 @@ indchk () {
     echo 'Error: No source file given!'; return 1
   else
     indent -gnu -nut -l79 -lc82 $1 -o $1\~ &&  # -npcs
-    diff -u $1 $1\~ | bat
+    diff -u $1 $1\~ | bat --tabs=8
     rm -rf $1\~
   fi
 }
@@ -205,11 +205,12 @@ edP () {
 
 edC () {
   if [[ ! -f ./compile_flags.txt ]]; then
-    echo '-std=c++20' > ./compile_flags.txt
+    echo '-std=gnu11' > ./compile_flags.txt
     echo '-Wall' >> ./compile_flags.txt
     echo '-Wextra' >> ./compile_flags.txt
     echo '-Wformat' >> ./compile_flags.txt
     echo '-Wpedantic' >> ./compile_flags.txt
+    echo '-Wno-gnu-empty-struct' >> ./compile_flags.txt
     echo '-Wno-gnu-conditional-omitted-operand' >> ./compile_flags.txt
     echo '-Wno-gnu-zero-variadic-macro-arguments' >> ./compile_flags.txt
     echo '#-Wno-vla' >> ./compile_flags.txt
