@@ -162,9 +162,12 @@ indchk () {
   if (( $# == 0 )); then
     echo 'Error: No source file given!'; return 1
   else
-    indent -gnu -nut -l79 -lc82 $1 -o $1\~ &&  # -npcs
-    diff -u $1 $1\~ | bat --tabs=8
-    rm -rf $1\~
+    if [[ ! -f "$1" ]]; then
+      echo "Error: No such file: $1"; return 1
+    fi
+    indent -gnu -nut -l79 -lc82 "$1" -o "$1~" &&  # -npcs
+    diff -u "$1" "$1~" | bat
+    rm -rf "$1~"
   fi
 }
 
@@ -172,6 +175,9 @@ rfmt () {
   if (( $# == 0 )); then
     echo 'ERROR: No source file given!'; return 1
   else
+    if [[ ! -f "$1" ]]; then
+      echo "Error: No such file: $1"; return 1
+    fi
     local TEMP_FN="$(basename "$1" .rs)~.rs"
     cp "$1" "$TEMP_FN"
     rustfmt "$TEMP_FN"
@@ -293,6 +299,7 @@ update_path () {
     local TOLPATH="/libexec /lib /lib64"
   TOLPATH+=" /usr/libexec /usr/lib /usr/lib64"
   TOLPATH+=" /usr/local/libexec /usr/local/lib /usr/local/lib64"
+# TOLPATH+=" /usr/lib/jvm/java-21-openjdk/lib"
   TOLPATH+=" $HOME/.local/lib"
 
   for DIR in $TOBPATH; do
