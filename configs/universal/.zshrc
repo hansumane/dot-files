@@ -37,6 +37,7 @@ alias rrs="$SUDO_CMD rm -rf"
 alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"
 
 alias v="$EDITOR"
+alias vd="$EDITOR ."
 alias crr='cr -r'
 alias cr='cargo run'
 alias ds='doom sync'
