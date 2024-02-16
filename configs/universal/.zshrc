@@ -216,6 +216,7 @@ edC () {
     echo '-Wextra' >> ./compile_flags.txt
     echo '-Wformat' >> ./compile_flags.txt
     echo '-Wpedantic' >> ./compile_flags.txt
+    echo '-Wno-variadic-macros' >> ./compile_flags.txt
     echo '-Wno-gnu-empty-struct' >> ./compile_flags.txt
     echo '-Wno-gnu-binary-literal' >> ./compile_flags.txt
     echo '-Wno-gnu-conditional-omitted-operand' >> ./compile_flags.txt
