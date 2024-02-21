@@ -79,7 +79,7 @@ lvim.builtin.treesitter.auto_install = true
 lvim.builtin.treesitter.sync_install = false
 lvim.builtin.treesitter.highlight.enable = true
 
-vim.lsp.set_log_level("off");
+vim.lsp.set_log_level('off');
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {'pyright'})
 lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
   return server ~= 'jedi_language_server'
@@ -142,7 +142,7 @@ lvim.autocommands = {
         command! M4 :lua SetIndent{spaces = 4, tabs = 8, noexpand = true}
         command! MG :lua SetIndent{spaces = 2, tabs = 8, noexpand = true}
         ]]
-        if lvim.colorscheme == "lunar" then
+        if lvim.colorscheme == 'lunar' then
           vim.cmd[[highlight ColorColumn guibg='#292e42']]
         end
         SetNumber(true)
@@ -180,7 +180,7 @@ lvim.plugins = {
 --[[
   {
     'catppuccin/nvim',
-    name = "catppuccin",
+    name = 'catppuccin',
     priority = 1500,
     config = function ()
       vim.opt.background = 'dark'
@@ -266,23 +266,25 @@ require'lvim.lsp.manager'.setup('jdtls', {
   },
 })
 
---if vim.fn.has('nightly') then
---  local orig_notify = vim.notify
---  local filter_notify = function (text, level, opts)
---    if (type(text) == 'string' and
---        (string.find(text, 'vim.lsp.util.parse_snippet is deprecated :help deprecated') or
---         string.find(text, "in function 'parse_snippet'"))) then
---      return
---    end
---    orig_notify(text, level, opts)
---  end
---  vim.notify = filter_notify
---end
+--[[
+if vim.fn.has('nightly') then
+  local orig_notify = vim.notify
+  local filter_notify = function (text, level, opts)
+    if (type(text) == 'string' and
+        (string.find(text, 'vim.lsp.util.parse_snippet is deprecated :help deprecated') or
+         string.find(text, "in function 'parse_snippet'"))) then
+      return
+    end
+    orig_notify(text, level, opts)
+  end
+  vim.notify = filter_notify
+end
+--]]
 
---[
--- to make clipboard work with windows,
--- just install the win32yank and put it on path,
--- for example,
--- C:\bin\win32yank.exe and C:\bin is on path
--- https://github.com/equalsraf/win32yank/releases
---]
+--[[
+    to make clipboard work with windows,
+    just install the win32yank and put it on path,
+    for example,
+    C:\bin\win32yank.exe and C:\bin is on path
+    https://github.com/equalsraf/win32yank/releases
+--]]
