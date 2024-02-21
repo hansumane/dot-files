@@ -1,0 +1,9 @@
+#%PAM-1.0
+#
+# PAM configuration file for the swaylock screen locker. By default, it includes
+# the 'login' configuration file (see /etc/pam.d/login)
+#
+# put into /etc/pam.d/swaylock
+# if manually installed with pam feature
+
+auth include login
