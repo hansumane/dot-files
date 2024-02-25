@@ -79,7 +79,7 @@ lvim.builtin.treesitter.auto_install = true
 lvim.builtin.treesitter.sync_install = false
 lvim.builtin.treesitter.highlight.enable = true
 
-vim.lsp.set_log_level('off');
+vim.lsp.set_log_level('off')
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {'pyright'})
 lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
   return server ~= 'jedi_language_server'
