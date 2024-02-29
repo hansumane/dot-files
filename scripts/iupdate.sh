@@ -12,7 +12,7 @@ echo '-> /fonts/ .'
 if [[ ! -d "${CURRENT_DIR}/fonts" ]]; then
   cd "${CURRENT_DIR}"
   echo '---> cloning /fonts/ ...'
-  git clone --depth=1 git@github.com:hansumane/fonts.git &> /dev/null
+  git clone --depth=1 https://github.com/hansumane/fonts.git &> /dev/null
   echo '---> /fonts/ cloned.'
 else
   cd "${CURRENT_DIR}/fonts"
@@ -25,7 +25,7 @@ echo '-> /wallpapers/ .'
 if [[ ! -d "${CURRENT_DIR}/wallpapers" ]]; then
   cd "${CURRENT_DIR}"
   echo '---> cloning /wallpapers/ ...'
-  git clone --depth=1 git@github.com:hansumane/wallpapers.git &> /dev/null
+  git clone --depth=1 https://github.com/hansumane/wallpapers.git &> /dev/null
   echo '---> /wallpapers/ cloned.'
 else
   cd "${CURRENT_DIR}/wallpapers"
