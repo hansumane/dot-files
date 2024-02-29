@@ -32,8 +32,24 @@ lvim.lsp.buffer_mappings.normal_mode.gr = {
   'References'
 }
 
+local cc_dict = {
+  ['i'] = 81,
+  ['81'] = 91,
+  ['91'] = 101,
+  ['101'] = 121,
+  ['121'] = 81,
+}
+
+lvim.keys.normal_mode['<C-j>'] = function ()
+  if vim.opt.number:get() then
+    local cc = vim.opt.colorcolumn:get()[1]
+    vim.opt.colorcolumn = {cc_dict[cc]}
+    print(cc_dict[cc] - 1)
+  end
+end
+
 function SetNumber(toggle)
-  vim.opt.colorcolumn = toggle and {81, 91, 101, 121, 141} or {}
+  vim.opt.colorcolumn = toggle and {cc_dict['i']} or {}
   vim.opt.number = toggle and true or false
   vim.opt.cursorline = toggle and true or false
   vim.opt.relativenumber = toggle and true or false
