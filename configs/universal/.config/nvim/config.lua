@@ -114,6 +114,15 @@ lvim.lsp.installer.setup.automatic_installation = false
 lvim.lsp.installer.setup.ensure_installed = {
   'lua_ls', 'clangd', 'rust_analyzer', 'pyright', 'jdtls'
 } --+ flake8, black
+lvim.builtin.treesitter.ensure_installed = {
+  'bash',
+  'c', 'cpp', 'cmake', 'meson',
+  'java', 'lua', 'python', 'rust',
+  'vim', 'vimdoc',
+  'dockerfile', 'json', 'toml', 'xml', 'yaml', 'ssh_config',
+  'comment', 'markdown', 'markdown_inline', 'query', 'regex',
+  'git_config', 'git_rebase', 'gitattributes', 'gitcommit', 'gitignore'
+}
 lvim.builtin.treesitter.ignore_install = {
   'make'
 }
