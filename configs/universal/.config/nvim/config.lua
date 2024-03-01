@@ -33,7 +33,7 @@ lvim.lsp.buffer_mappings.normal_mode.gr = {
 }
 
 local cc_dict = {
-  ['i'] = 81,
+  ['i'] = 91,
   ['81'] = 91,
   ['91'] = 101,
   ['101'] = 121,
@@ -102,7 +102,7 @@ lvim.builtin.treesitter.auto_install = true
 lvim.builtin.treesitter.sync_install = false
 lvim.builtin.treesitter.highlight.enable = true
 
-vim.lsp.set_log_level('off')
+vim.lsp.set_log_level'off'
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {'pyright'})
 -- lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
 --   return server ~= 'jedi_language_server'
@@ -113,7 +113,7 @@ lvim.lsp.automatic_servers_installation = false
 lvim.lsp.installer.setup.automatic_installation = false
 lvim.lsp.installer.setup.ensure_installed = {
   'lua_ls', 'clangd', 'rust_analyzer', 'pyright', 'jdtls'
-}
+} --+ flake8, black
 lvim.builtin.treesitter.ignore_install = {
   'make'
 }
@@ -293,6 +293,27 @@ require'lvim.lsp.manager'.setup('lua_ls', {
     }
   }
 })
+
+local linters = require'lvim.lsp.null-ls.linters'
+local formatters = require'lvim.lsp.null-ls.formatters'
+
+linters.setup{
+  {
+    command = 'flake8',
+    args = {'--max-line-length', '120'},
+    filetypes = {'python'}
+  }
+}
+formatters.setup{
+  {
+    command = 'black',
+    filetypes = {'python'}
+  },
+  {
+    command = 'google-java-format',
+    filetypes = {'java'}
+  }
+}
 
 --[[
 if vim.fn.has('nightly') then
