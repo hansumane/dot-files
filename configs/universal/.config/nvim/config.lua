@@ -40,11 +40,18 @@ local cc_dict = {
   ['121'] = 81,
 }
 
+local cc_fix = function ()
+  if lvim.colorscheme == 'lunar' then
+    vim.cmd[[highlight ColorColumn guibg='#292e42']]
+  end
+end
+
 lvim.keys.normal_mode['<C-j>'] = function ()
   if vim.opt.number:get() then
     local cc = vim.opt.colorcolumn:get()[1]
     vim.opt.colorcolumn = {cc_dict[cc]}
     print(cc_dict[cc] - 1)
+    cc_fix()
   end
 end
 
@@ -96,16 +103,16 @@ lvim.builtin.treesitter.sync_install = false
 lvim.builtin.treesitter.highlight.enable = true
 
 vim.lsp.set_log_level('off')
-vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {'pyright'})
-lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
-  return server ~= 'jedi_language_server'
-end, lvim.lsp.automatic_configuration.skipped_servers)
+-- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {'pyright'})
+-- lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
+--   return server ~= 'jedi_language_server'
+-- end, lvim.lsp.automatic_configuration.skipped_servers)
 
 --lvim.builtin.treesitter.auto_install = false
 lvim.lsp.automatic_servers_installation = false
 lvim.lsp.installer.setup.automatic_installation = false
 lvim.lsp.installer.setup.ensure_installed = {
-  'lua_ls', 'clangd', 'rust_analyzer', 'jedi_language_server', 'jdtls'
+  'lua_ls', 'clangd', 'rust_analyzer', 'pyright', 'jdtls'
 }
 lvim.builtin.treesitter.ignore_install = {
   'make'
@@ -158,9 +165,7 @@ lvim.autocommands = {
         command! M4 :lua SetIndent{spaces = 4, tabs = 8, noexpand = true}
         command! MG :lua SetIndent{spaces = 2, tabs = 8, noexpand = true}
         ]]
-        if lvim.colorscheme == 'lunar' then
-          vim.cmd[[highlight ColorColumn guibg='#292e42']]
-        end
+        cc_fix()
         SetNumber(true)
       end
     },
@@ -240,6 +245,19 @@ lvim.plugins = {
   }
 }
 
+require'lvim.lsp.manager'.setup('pyright', {
+  settings = {
+    python = {
+      pythonPath = 'python3'
+    }
+  }
+})
+require'lvim.lsp.manager'.setup('jdtls', {
+  cmd = {
+    'jdtls',
+    '--jvm-arg=-javaagent:' .. vim.fn.stdpath'data' .. '/mason/packages/jdtls/lombok.jar'
+  },
+})
 require'lvim.lsp.manager'.setup('rust_analyzer', {
   settings = {
     ['rust-analyzer'] = {
@@ -274,12 +292,6 @@ require'lvim.lsp.manager'.setup('lua_ls', {
       --]]
     }
   }
-})
-require'lvim.lsp.manager'.setup('jdtls', {
-  cmd = {
-    'jdtls',
-    '--jvm-arg=-javaagent:' .. vim.fn.stdpath'data' .. '/mason/packages/jdtls/lombok.jar'
-  },
 })
 
 --[[
