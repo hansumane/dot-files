@@ -43,7 +43,7 @@ lvim.lsp.buffer_mappings.normal_mode.gr = {
 }
 
 local cc_dict = {
-  ['i'] = 91,
+  init = 91,
   ['81'] = 91,
   ['91'] = 101,
   ['101'] = 121,
@@ -66,7 +66,7 @@ lvim.keys.normal_mode['<C-j>'] = function ()
 end
 
 function SetNumber(toggle)
-  vim.opt.colorcolumn = toggle and {cc_dict['i']} or {}
+  vim.opt.colorcolumn = toggle and {cc_dict.init} or {}
   vim.opt.number = toggle and true or false
   vim.opt.cursorline = toggle and true or false
   vim.opt.relativenumber = toggle and true or false
