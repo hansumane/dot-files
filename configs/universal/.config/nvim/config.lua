@@ -241,14 +241,6 @@ lvim.plugins = {
     end
   },
   {
-    'mcchrish/zenbones.nvim',
-    dependencies = {'rktjmp/lush.nvim'},
-    config = function ()
-      vim.opt.background = 'dark'
-      lvim.colorscheme = 'zenbones'
-    end
-  },
-  {
     'sainnhe/gruvbox-material',
     priority = 1500,
     lazy = false,
