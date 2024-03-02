@@ -51,7 +51,7 @@ local cc_dict = {
 }
 
 local cc_fix = function ()
-  if lvim.colorscheme == 'lunar' then
+  if lvim.colorscheme == 'lunar' or lvim.colorscheme == 'tokyonight' then
     vim.cmd[[highlight ColorColumn guibg='#292e42']]
   end
 end
@@ -222,6 +222,7 @@ lvim.plugins = {
     'catppuccin/nvim',
     name = 'catppuccin',
     priority = 1500,
+    lazy = false,
     config = function ()
       vim.opt.background = 'dark'
       require'catppuccin'.setup{flavour = 'mocha'}
@@ -231,6 +232,7 @@ lvim.plugins = {
   {
     'sainnhe/everforest',
     priority = 1500,
+    lazy = false,
     config = function ()
       vim.opt.background = 'dark'
       vim.g.everforest_background = 'hard'
@@ -249,14 +251,32 @@ lvim.plugins = {
   {
     'sainnhe/gruvbox-material',
     priority = 1500,
+    lazy = false,
     config = function ()
       vim.opt.background = 'dark'
-      lvim.colorscheme = 'gruvbox-material'
       vim.g.gruvbox_material_background = 'hard' -- medium (default), soft
       vim.g.gruvbox_material_better_performance = 1
+      lvim.colorscheme = 'gruvbox-material'
     end
   },
 --]]
+  {
+    'folke/tokyonight.nvim',
+    priority = 1500,
+    lazy = false,
+    config = function()
+      vim.opt.background = 'dark'
+      require'tokyonight'.setup{
+        style = 'night',
+        light_style = 'day',          -- from lightest to darkest:
+        day_brightness = 0.25,        --  1. storm (default)
+        terminal_colors = true,       --  2. moon
+        comments = { italic = true }, --  3. night (lunarvim)
+        keywords = { italic = true },
+      }
+      lvim.colorscheme = 'tokyonight'
+    end
+  },
   {
     'folke/todo-comments.nvim',
     dependencies = {'nvim-lua/plenary.nvim'},
