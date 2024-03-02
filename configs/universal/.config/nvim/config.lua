@@ -1,12 +1,22 @@
 -- LunarVim (lvim) config
 
-local use_indent_lines = true
+local use_indent_lines = false
 
 vim.opt.mouse = 'nv'
 vim.opt.scrolloff = 3
 vim.g.c_syntax_for_h = true
 vim.cmd[[set iskeyword-=_]]
-if not use_indent_lines then vim.opt.listchars = {tab = '⋅ >', trail = '␣'} end
+if not use_indent_lines then
+  vim.opt.showbreak = '↪'
+  vim.opt.listchars = {
+    -- eol = '↲',
+    space = '⋅',
+    tab = '│ →',
+    trail = '␣',
+    precedes = '⟨',
+    extends = '⟩',
+  }
+end
 
 vim.opt.keymap = 'russian-jcukenwin'
 vim.opt.iminsert = 0
