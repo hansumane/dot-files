@@ -133,7 +133,7 @@ lvim.builtin.treesitter.ensure_installed = {
   'bash',
   'c', 'cpp', 'cmake', 'meson',
   'java', 'lua', 'python', 'rust',
-  'vim', 'vimdoc',
+  'vim', 'vimdoc', 'norg',
   'dockerfile', 'json', 'toml', 'xml', 'yaml', 'ssh_config',
   'comment', 'markdown', 'markdown_inline', 'query', 'regex',
   'git_config', 'git_rebase', 'gitattributes', 'gitcommit', 'gitignore'
@@ -272,6 +272,32 @@ lvim.plugins = {
         keywords = { italic = true },
       }
       lvim.colorscheme = 'tokyonight'
+    end
+  },
+  {
+    'nvim-neorg/neorg',
+    ft = 'norg',
+    tag = 'v7.0.0',
+    build = ':Neorg sync-parsers',
+    dependencies = {'nvim-lua/plenary.nvim'},
+    config = function ()
+      require'neorg'.setup{
+        load = {
+          ['core.defaults'] = {},
+          ['core.concealer'] = {},
+          ['core.dirman'] = {
+            config = {
+              workspaces = {
+                notes = '~/notes'
+              },
+              default_workspace = 'notes'
+            }
+          }
+        }
+      }
+
+      vim.wo.foldlevel = 99
+      vim.wo.conceallevel = 2
     end
   },
   {
