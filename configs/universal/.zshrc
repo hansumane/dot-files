@@ -41,7 +41,8 @@ alias vd="$EDITOR ."
 alias crr='cr -r'
 alias cr='cargo run'
 alias ds='doom sync'
-alias t='cd;c;tmux -u'
+alias t='cd;c;tmux -u new-session -A -s'
+alias tl='c;tmux list-sessions'
 alias eza="$LOCAL_LANG eza"
 
 alias la='eza -a'
