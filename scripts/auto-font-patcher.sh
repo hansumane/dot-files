@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -xe
 
-FONTNAME="CascadiaCodePL"
-EXTENSION=".otf"
+FONTNAME="JetBrainsMono"
+EXTENSION=".ttf"
 DIRNAME="$(pwd)"
 
 if [[ ! -d "${DIRNAME}/nerd-fonts" ]]; then
@@ -14,7 +14,8 @@ if [[ ! -d "${DIRNAME}/nerd-fonts" ]]; then
 else
   cd "${DIRNAME}/nerd-fonts"
   git reset --hard HEAD
-  git pull --rebase
+  git fetch --all
+  git pull
 fi
 
 $EDITOR "${DIRNAME}/nerd-fonts/font-patcher"
@@ -25,7 +26,7 @@ else
   mkdir -p "${DIRNAME}/${FONTNAME}All/${FONTNAME}Patched"
 fi
 
-for FONT in "${DIRNAME}/${FONTNAME}All/*${EXTENSION}"; do
+for FONT in "${DIRNAME}/${FONTNAME}All/"*"${EXTENSION}"; do
   "${DIRNAME}/nerd-fonts/font-patcher" \
   "${FONT}" --careful --complete --progressbars --outputdir \
   "${DIRNAME}/${FONTNAME}All/${FONTNAME}Patched"
