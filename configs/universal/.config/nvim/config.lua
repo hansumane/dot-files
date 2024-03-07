@@ -10,8 +10,8 @@ if not use_indent_lines then
   vim.opt.showbreak = '↪'
   vim.opt.listchars = {
     -- eol = '↲',
+    tab = '   ',
     space = '⋅',
-    tab = '│ →',
     trail = '␣',
     precedes = '⟨',
     extends = '⟩',
@@ -21,6 +21,10 @@ end
 vim.opt.keymap = 'russian-jcukenwin'
 vim.opt.iminsert = 0
 vim.opt.imsearch = 0
+
+-- vim.wo.wrap = true
+-- vim.wo.linebreak = true
+-- vim.wo.list = false
 
 lvim.builtin.which_key.mappings['w'] = {}
 lvim.builtin.which_key.mappings['h'] = {}
