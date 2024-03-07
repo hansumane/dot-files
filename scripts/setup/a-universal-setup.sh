@@ -39,3 +39,6 @@ XDG_VIDEOS_DIR="$HOME/Others/Videos"' > ~/.config/user-dirs.dirs
 # cp -f ${CURRENT_DIR}/configs/universal/.vimrc ~/.config/nvim/init.vim
 # sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim \
 #   --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim';
+
+# tpm (tmux plugin manager; prefix + I - install; prefix + U - update)
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
