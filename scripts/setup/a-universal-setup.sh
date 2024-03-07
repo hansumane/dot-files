@@ -41,4 +41,6 @@ XDG_VIDEOS_DIR="$HOME/Others/Videos"' > ~/.config/user-dirs.dirs
 #   --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim';
 
 # tpm (tmux plugin manager; prefix + I - install; prefix + U - update)
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+git clone --depth=1 --recursive \
+  https://github.com/tmux-plugins/tpm \
+  ~/.tmux/plugins/tpm
