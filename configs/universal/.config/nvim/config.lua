@@ -1,12 +1,22 @@
 -- LunarVim (lvim) config
 
-local use_indent_lines = true
+local use_indent_lines = false
 
 vim.opt.mouse = 'nv'
 vim.opt.scrolloff = 3
 vim.g.c_syntax_for_h = true
 vim.cmd[[set iskeyword-=_]]
-if not use_indent_lines then vim.opt.listchars = {tab = '⋅ >', trail = '␣'} end
+if not use_indent_lines then
+  vim.opt.showbreak = '↪'
+  vim.opt.listchars = {
+    -- eol = '↲',
+    space = '⋅',
+    tab = '│ →',
+    trail = '␣',
+    precedes = '⟨',
+    extends = '⟩',
+  }
+end
 
 vim.opt.keymap = 'russian-jcukenwin'
 vim.opt.iminsert = 0
@@ -33,7 +43,7 @@ lvim.lsp.buffer_mappings.normal_mode.gr = {
 }
 
 local cc_dict = {
-  ['i'] = 91,
+  init = 91,
   ['81'] = 91,
   ['91'] = 101,
   ['101'] = 121,
@@ -41,7 +51,7 @@ local cc_dict = {
 }
 
 local cc_fix = function ()
-  if lvim.colorscheme == 'lunar' then
+  if lvim.colorscheme == 'lunar' or lvim.colorscheme == 'tokyonight' then
     vim.cmd[[highlight ColorColumn guibg='#292e42']]
   end
 end
@@ -56,7 +66,7 @@ lvim.keys.normal_mode['<C-j>'] = function ()
 end
 
 function SetNumber(toggle)
-  vim.opt.colorcolumn = toggle and {cc_dict['i']} or {}
+  vim.opt.colorcolumn = toggle and {cc_dict.init} or {}
   vim.opt.number = toggle and true or false
   vim.opt.cursorline = toggle and true or false
   vim.opt.relativenumber = toggle and true or false
@@ -212,6 +222,7 @@ lvim.plugins = {
     'catppuccin/nvim',
     name = 'catppuccin',
     priority = 1500,
+    lazy = false,
     config = function ()
       vim.opt.background = 'dark'
       require'catppuccin'.setup{flavour = 'mocha'}
@@ -221,6 +232,7 @@ lvim.plugins = {
   {
     'sainnhe/everforest',
     priority = 1500,
+    lazy = false,
     config = function ()
       vim.opt.background = 'dark'
       vim.g.everforest_background = 'hard'
@@ -229,24 +241,34 @@ lvim.plugins = {
     end
   },
   {
-    'mcchrish/zenbones.nvim',
-    dependencies = {'rktjmp/lush.nvim'},
-    config = function ()
-      vim.opt.background = 'dark'
-      lvim.colorscheme = 'zenbones'
-    end
-  },
-  {
     'sainnhe/gruvbox-material',
     priority = 1500,
+    lazy = false,
     config = function ()
       vim.opt.background = 'dark'
-      lvim.colorscheme = 'gruvbox-material'
       vim.g.gruvbox_material_background = 'hard' -- medium (default), soft
       vim.g.gruvbox_material_better_performance = 1
+      lvim.colorscheme = 'gruvbox-material'
     end
   },
 --]]
+  {
+    'folke/tokyonight.nvim',
+    priority = 1500,
+    lazy = false,
+    config = function()
+      vim.opt.background = 'dark'
+      require'tokyonight'.setup{
+        style = 'night',
+        light_style = 'day',          -- from lightest to darkest:
+        day_brightness = 0.25,        --  1. storm (default)
+        terminal_colors = true,       --  2. moon
+        comments = { italic = true }, --  3. night (lunarvim)
+        keywords = { italic = true },
+      }
+      lvim.colorscheme = 'tokyonight'
+    end
+  },
   {
     'folke/todo-comments.nvim',
     dependencies = {'nvim-lua/plenary.nvim'},
