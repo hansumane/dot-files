@@ -4,6 +4,8 @@ case "$TERM" in
   * ) export TERM="xterm-256color" ;;
 esac
 export EDITOR='nvim'
+export AWK_CMD='awk'
+export SED_CMD='sed'
 export SUDO_CMD='sudo'
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_COMPDUMP="$ZSH/cache/.zcompdump-$HOST"
@@ -278,7 +280,7 @@ mvnew () {
   local ARTIFACT_ID=$(echo "$1" | cut -d':' -f2)
 
   mvn archetype:generate -DgroupId="$GROUP_ID" -DartifactId="$ARTIFACT_ID" -DarchetypeArtifactId=maven-archetype-quickstart
-  sed -i '/<url>.*<\/url>/a \  <properties>\n    <maven\.compiler\.source>21<\/maven\.compiler\.source>\n    <maven\.compiler\.target>21<\/maven\.compiler\.target>\n    <project\.build\.sourceEncoding>UTF\-8<\/project\.build\.sourceEncoding>\n  <\/properties>' "$ARTIFACT_ID/pom.xml"
+  $SED_CMD -i '/<url>.*<\/url>/a \  <properties>\n    <maven\.compiler\.source>21<\/maven\.compiler\.source>\n    <maven\.compiler\.target>21<\/maven\.compiler\.target>\n    <project\.build\.sourceEncoding>UTF\-8<\/project\.build\.sourceEncoding>\n  <\/properties>' "$ARTIFACT_ID/pom.xml"
 }
 
 mvnrun () {
@@ -286,7 +288,7 @@ mvnrun () {
     echo 'ERROR: No main class specified'
   fi
 
-  local JAVA_INDEX=$(echo "$1" | awk -F 'java/' '{print length($1) + 6}')
+  local JAVA_INDEX=$(echo "$1" | $AWK_CMD -F 'java/' '{print length($1) + 6}')
   local CLASS_PATH=$(echo "$1" | cut -c $JAVA_INDEX- | tr '/' '.')
   local RESULT=$(basename "$CLASS_PATH" .java)
 
@@ -309,19 +311,19 @@ update_path () {
 
   for DIR in $TOBPATH; do
     if [[ -d $DIR ]]; then
-      export PATH="$(echo -n ":$PATH:" | sed "s/:$(echo -n "$DIR" | sed 's/\//\\\//g'):/:/g")"
+      export PATH="$(echo -n ":$PATH:" | $SED_CMD "s/:$(echo -n "$DIR" | $SED_CMD 's/\//\\\//g'):/:/g")"
       export PATH="$DIR:$PATH"
     fi
   done
-  export PATH="$(echo -n ":$PATH:" | sed 's/:\+/:/g' | sed 's/^:\(.*\):$/\1/g')"
+  export PATH="$(echo -n ":$PATH:" | $SED_CMD 's/:\+/:/g' | $SED_CMD 's/^:\(.*\):$/\1/g')"
 
   for DIR in $TOLPATH; do
     if [[ -d $DIR ]]; then
-      export LD_LIBRARY_PATH="$(echo -n ":$LD_LIBRARY_PATH:" | sed "s/:$(echo -n "$DIR" | sed 's/\//\\\//g'):/:/g" | sed 's/^:\(.*\):$/\1/g')"
+      export LD_LIBRARY_PATH="$(echo -n ":$LD_LIBRARY_PATH:" | $SED_CMD "s/:$(echo -n "$DIR" | $SED_CMD 's/\//\\\//g'):/:/g" | $SED_CMD 's/^:\(.*\):$/\1/g')"
       export LD_LIBRARY_PATH="$DIR:$LD_LIBRARY_PATH"
     fi
   done
-  export LD_LIBRARY_PATH="$(echo -n ":$LD_LIBRARY_PATH:" | sed 's/:\+/:/g' | sed 's/^:\(.*\):$/\1/g')"
+  export LD_LIBRARY_PATH="$(echo -n ":$LD_LIBRARY_PATH:" | $SED_CMD 's/:\+/:/g' | $SED_CMD 's/^:\(.*\):$/\1/g')"
 
   unsetopt shwordsplit
 }
