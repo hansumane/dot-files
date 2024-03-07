@@ -128,7 +128,7 @@ lvim.lsp.automatic_servers_installation = false
 lvim.lsp.installer.setup.automatic_installation = false
 lvim.lsp.installer.setup.ensure_installed = {
   'lua_ls', 'clangd', 'rust_analyzer', 'pyright', 'jdtls'
-} --+ flake8, black
+} --+ flake8, black, google-java-format
 lvim.builtin.treesitter.ensure_installed = {
   'bash',
   'c', 'cpp', 'cmake', 'meson',
