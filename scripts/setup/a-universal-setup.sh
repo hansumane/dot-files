@@ -10,22 +10,22 @@ else
 fi
 
 cd; sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-mkdir -p ~/.oh-my-zsh/custom/plugins/; cd ~/.oh-my-zsh/custom/plugins/
+mkdir -p ~/.oh-my-zsh/custom/plugins; cd ~/.oh-my-zsh/custom/plugins
 git clone --depth=1 --recursive https://github.com/zsh-users/zsh-syntax-highlighting.git
 git clone --depth=1 --recursive https://github.com/zsh-users/zsh-autosuggestions.git
 
-mkdir -p ~/.oh-my-zsh/custom/themes/; cd ~/.oh-my-zsh/custom/themes/
+mkdir -p ~/.oh-my-zsh/custom/themes; cd ~/.oh-my-zsh/custom/themes
 cp -f ${CURRENT_DIR}/themes/zsh_themes/* .
 
-mkdir -p ~/.local/bin/ ~/.config/nvim/
+mkdir -p ~/.local/bin ~/.config/nvim
 cp -f ${CURRENT_DIR}/scripts/newup.sh ~
 cp -f ${CURRENT_DIR}/configs/universal/.zshrc ~
 cp -f ${CURRENT_DIR}/configs/universal/.gitconfig ~
 cp -f ${CURRENT_DIR}/configs/universal/.tmux.conf ~
-cp -rf ${CURRENT_DIR}/configs/universal/.config/doom/ ~/.config/
+cp -rf ${CURRENT_DIR}/configs/universal/.config/doom ~/.config
 
-mkdir -p ~/Desktop/ ~/Downloads/ ~/Others/; cd ~/Others/
-mkdir -p etc/ Coding/ Documents/ Music/ Pictures/ Shared/ Templates/ Videos/
+mkdir -p ~/Desktop ~/Downloads ~/Others; cd ~/Others
+mkdir -p etc Coding Documents Music Pictures Shared Templates Videos
 echo 'XDG_DESKTOP_DIR="$HOME/Desktop"
 XDG_DOWNLOAD_DIR="$HOME/Downloads"
 XDG_TEMPLATES_DIR="$HOME/Others/Templates"

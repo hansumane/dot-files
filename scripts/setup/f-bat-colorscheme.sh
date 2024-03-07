@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -e
 
 if command -v bat &> /dev/null; then
