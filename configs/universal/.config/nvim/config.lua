@@ -1,6 +1,6 @@
 -- LunarVim (lvim) config
 
-local use_indent_lines = false
+local use_indent_lines = true
 
 vim.opt.mouse = 'nv'
 vim.opt.scrolloff = 3
@@ -256,7 +256,6 @@ lvim.plugins = {
       lvim.colorscheme = 'gruvbox-material'
     end
   },
---]]
   {
     'folke/tokyonight.nvim',
     priority = 1500,
@@ -274,6 +273,26 @@ lvim.plugins = {
       lvim.colorscheme = 'tokyonight'
     end
   },
+--]]
+  {
+    'rebelot/kanagawa.nvim',
+    priority = 1500,
+    lazy = false,
+    config = function()
+      vim.opt.background = 'dark'
+      require'kanagawa'.setup{
+        compile = false,
+        commentStyle = {italic = true},
+        keywordStyle = {italic = true},
+        statementStyle = {bold = true},
+        background = {
+          dark = 'dragon', -- wave
+          light = 'lotus'
+        }
+      }
+      lvim.colorscheme = 'kanagawa'
+    end
+  },
   {
     'nvim-neorg/neorg',
     ft = 'norg',
@@ -288,7 +307,7 @@ lvim.plugins = {
           ['core.dirman'] = {
             config = {
               workspaces = {
-                notes = '~/notes'
+                notes = '~/Others/Documents/notes'
               },
               default_workspace = 'notes'
             }
