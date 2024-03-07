@@ -5,6 +5,15 @@ local use_indent_lines = false
 vim.opt.mouse = 'nv'
 vim.opt.scrolloff = 3
 vim.g.c_syntax_for_h = true
+
+vim.opt.keymap = 'russian-jcukenwin'
+vim.opt.iminsert = 0
+vim.opt.imsearch = 0
+
+-- vim.wo.wrap = true
+-- vim.wo.linebreak = true
+-- vim.wo.list = false
+
 vim.cmd[[set iskeyword-=_]]
 if not use_indent_lines then
   vim.opt.showbreak = '↪'
@@ -17,14 +26,6 @@ if not use_indent_lines then
     extends = '⟩',
   }
 end
-
-vim.opt.keymap = 'russian-jcukenwin'
-vim.opt.iminsert = 0
-vim.opt.imsearch = 0
-
--- vim.wo.wrap = true
--- vim.wo.linebreak = true
--- vim.wo.list = false
 
 lvim.builtin.which_key.mappings['w'] = {}
 lvim.builtin.which_key.mappings['h'] = {}
