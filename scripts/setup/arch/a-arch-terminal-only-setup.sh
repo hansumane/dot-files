@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -e
 
 if [[ ! $(pwd | rev | cut -d'/' -f4 | rev) = 'dot-files' ]] ||
@@ -15,7 +14,7 @@ fi
 
 sudo pacman -Sy --needed \
   curl lazygit git zip unzip tar gzip bzip2 xz \
-  neovim zsh exa bat btop hexyl
+  neovim zsh eza bat btop hexyl ripgrep fd
 
 if ( lscpu | grep Intel &> /dev/null ); then
   sudo pacman -S --needed intel-ucode
@@ -25,10 +24,12 @@ else
   echo 'your CPU is neither Intel nor AMD =['
 fi
 
+# archlinux-java status               # command for changing default java version
+# /usr/lib/jvm/java-<XX>-openjdk/lib  # and add this path to LD_LIBRARY_PATH
 sudo pacman -S --needed \
   tmux calc tree openssh man-db man-pages npm \
   neofetch base-devel clang cmake colorgcc nodejs \
-  wireguard-tools jdk17-openjdk jre17-openjdk \
+  wireguard-tools jdk-openjdk jdk17-openjdk jre17-openjdk \
   indent python-pip
 
 mkdir -p ~/Downloads; cd ~/Downloads
