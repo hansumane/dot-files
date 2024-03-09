@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-
-set -e;
+set -e
 
 if [[ ! $(pwd | rev | cut -d'/' -f4 | rev) = 'dot-files' ]] ||
    [[ ! $(pwd | rev | cut -d'/' -f3 | rev) = 'scripts' ]] ||

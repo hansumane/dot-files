@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -e
 
 if [[ ! $(pwd | rev | cut -d'/' -f4 | rev) = 'dot-files' ]] ||
@@ -14,15 +13,15 @@ else
 fi
 
 sudo pacman -Sy --needed \
-  plasma ark dolphin dolphin-plugins konsole okular emacs \
+  plasma ark dolphin dolphin-plugins okular emacs kitty alacritty \
   kate gwenview elisa spectacle okteta plasma-wayland-session \
-  kwalletmanager neochat konversation \
-  flatpak xdg-desktop-portal-kde kitty \
+  kwalletmanager neochat konversation inter-font \
+  flatpak xdg-desktop-portal-kde xdg-desktop-portal \
   pavucontrol-qt qpwgraph networkmanager-openvpn \
-  firefox firefox-i18n-ru \
-  zathura zathura-pdf-mupdf zathura-djvu
+  firefox firefox-i18n-ru zathura zathura-pdf-mupdf zathura-djvu
 
-cp -rf ${CURRENT_DIR}/configs/universal/.config/kitty/ ~/.config/
+cp -rf ${CURRENT_DIR}/configs/universal/.config/kitty ~/.config
+cp -rf ${CURRENT_DIR}/configs/universal/.config/alacritty ~/.config
 
 flatpak update
 sudo mkinitcpio -P

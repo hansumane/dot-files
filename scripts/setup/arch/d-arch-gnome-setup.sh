@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -e
 
 if [[ ! $(pwd | rev | cut -d'/' -f4 | rev) = 'dot-files' ]] ||
@@ -14,10 +13,12 @@ else
 fi
 
 sudo pacman -Sy --needed \
-  gtk2 gtk3 gtk4 gtk-engine-murrine \
-  gnome gnome-tweaks gnome-themes-extra \
+  gtk-engine-murrine gtk2 gtk3 gtk4 qt5ct qt6ct qt5-wayland qt6-wayland \
+  gnome gnome-tweaks gnome-themes-extra kvantum \
   flatpak xdg-desktop-portal-gnome \
-  pavucontrol helvum networkmanager-openvpn openssh \
+  xdg-desktop-portal-gtk xdg-desktop-portal \
+  pavucontrol helvum openssh kitty alacritty inter-font \
+  nm-connection-editor network-manager-applet networkmanager-openvpn \
   libayatana-appindicator libappindicator-gtk2 libappindicator-gtk3 \
   firefox firefox-i18n-ru zathura zathura-pdf-mupdf zathura-djvu
 
