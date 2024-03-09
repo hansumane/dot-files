@@ -33,6 +33,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias c='cl'
 alias b='bt'
+alias t='tm'
 alias q='exit'
 alias rr='rm -rf'
 alias rrs="$SUDO_CMD rm -rf"
@@ -43,8 +44,7 @@ alias vd="$EDITOR ."
 alias crr='cr -r'
 alias cr='cargo run'
 alias ds='doom sync'
-alias t='cd;c;tmux -u new-session -A -s'
-alias tl='c;tmux list-sessions'
+alias tl='clear; tmux list-sessions'
 alias eza="$LOCAL_LANG eza"
 
 alias la='eza -a'
@@ -74,6 +74,15 @@ cl () {
   case $TERM in
     *screen* ) tmux clear-history ;;
   esac
+}
+
+tm () {
+  cd; clear
+  if (( $# == 0 )); then
+    tmux -u new-session -A -s "main"
+  else
+    tmux -u new-session -A -s $@
+  fi
 }
 
 ded () {
