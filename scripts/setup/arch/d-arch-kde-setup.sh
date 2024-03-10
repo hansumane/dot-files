@@ -14,11 +14,12 @@ fi
 
 sudo pacman -Sy --needed \
   plasma ark dolphin dolphin-plugins okular emacs kitty alacritty \
-  kate gwenview elisa spectacle okteta plasma-wayland-session \
-  kwalletmanager neochat konversation inter-font \
+  kate gwenview elisa spectacle okteta plasma-wayland-protocols \
+  kwalletmanager neochat konversation xwaylandvideobridge inter-font \
   flatpak xdg-desktop-portal-kde xdg-desktop-portal \
   pavucontrol-qt qpwgraph networkmanager-openvpn \
-  firefox firefox-i18n-ru zathura zathura-pdf-mupdf zathura-djvu
+  firefox firefox-i18n-ru zathura zathura-pdf-mupdf zathura-djvu \
+  tesseract-data-eng tesseract-data-rus
 
 cp -rf ${CURRENT_DIR}/configs/universal/.config/kitty ~/.config
 cp -rf ${CURRENT_DIR}/configs/universal/.config/alacritty ~/.config
