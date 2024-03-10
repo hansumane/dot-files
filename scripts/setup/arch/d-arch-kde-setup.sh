@@ -25,6 +25,8 @@ cp -rf ${CURRENT_DIR}/configs/universal/.config/kitty ~/.config
 cp -rf ${CURRENT_DIR}/configs/universal/.config/alacritty ~/.config
 
 flatpak update
+set +e
 sudo mkinitcpio -P
+set -e
 sudo update-grub
 sudo systemctl enable sddm

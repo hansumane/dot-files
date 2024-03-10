@@ -15,15 +15,16 @@ fi
 sudo pacman -Sy --needed \
   gtk-engine-murrine gtk2 gtk3 gtk4 qt5ct qt6ct qt5-wayland qt6-wayland \
   gnome gnome-tweaks gnome-themes-extra kvantum \
-  flatpak xdg-desktop-portal-gnome \
-  xdg-desktop-portal-gtk xdg-desktop-portal \
+  flatpak xdg-desktop-portal-gnome xdg-desktop-portal-gtk xdg-desktop-portal \
   pavucontrol helvum openssh kitty alacritty inter-font \
   nm-connection-editor network-manager-applet networkmanager-openvpn \
   libayatana-appindicator libappindicator-gtk2 libappindicator-gtk3 \
   firefox firefox-i18n-ru zathura zathura-pdf-mupdf zathura-djvu
 
 flatpak update
+set +e
 sudo mkinitcpio -P
+set -e
 sudo update-grub
 sudo systemctl enable gdm
 
