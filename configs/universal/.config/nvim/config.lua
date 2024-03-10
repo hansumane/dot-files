@@ -1,6 +1,6 @@
 -- LunarVim (lvim) config
 
-local use_indent_lines = true
+local use_indent_lines = false
 
 vim.opt.mouse = 'nv'
 vim.opt.scrolloff = 3
@@ -134,7 +134,7 @@ lvim.builtin.treesitter.ensure_installed = {
   'c', 'cpp', 'cmake', 'meson',
   'java', 'lua', 'python', 'rust',
   'vim', 'vimdoc', 'norg',
-  'dockerfile', 'json', 'toml', 'xml', 'yaml', 'ssh_config',
+  'dockerfile', 'json', 'toml', 'yaml',
   'comment', 'markdown', 'markdown_inline', 'query', 'regex',
   'git_config', 'git_rebase', 'gitattributes', 'gitcommit', 'gitignore'
 }
@@ -222,7 +222,6 @@ lvim.autocommands = {
 }
 
 lvim.plugins = {
---[[
   {
     'catppuccin/nvim',
     name = 'catppuccin',
@@ -234,6 +233,7 @@ lvim.plugins = {
       lvim.colorscheme = 'catppuccin'
     end
   },
+--[[
   {
     'sainnhe/everforest',
     priority = 1500,
@@ -273,7 +273,6 @@ lvim.plugins = {
       lvim.colorscheme = 'tokyonight'
     end
   },
---]]
   {
     'rebelot/kanagawa.nvim',
     priority = 1500,
@@ -293,10 +292,11 @@ lvim.plugins = {
       lvim.colorscheme = 'kanagawa'
     end
   },
+--]]
   {
     'nvim-neorg/neorg',
     ft = 'norg',
-    tag = 'v7.0.0',
+    version = 'v7.0.0',
     build = ':Neorg sync-parsers',
     dependencies = {'nvim-lua/plenary.nvim'},
     config = function ()
