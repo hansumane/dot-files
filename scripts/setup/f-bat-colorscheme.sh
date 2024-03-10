@@ -9,8 +9,10 @@ if command -v bat &> /dev/null; then
   rm -rf $DIR
   mkdir -p $DIR/themes
   cd $DIR/themes
-  curl -fLO https://raw.githubusercontent.com/catppuccin/bat/main/Catppuccin-mocha.tmTheme
-  echo '--theme="Catppuccin-mocha"' > $FILE
+  curl -fL \
+    https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Mocha.tmTheme \
+    -o catppuccin-mocha.tmTheme
+  echo '--theme="catppuccin-mocha"' > $FILE
   bat cache --build
 
 fi
