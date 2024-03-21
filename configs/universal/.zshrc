@@ -201,7 +201,8 @@ rfmt () {
 }
 
 ptchk() {
-  PTCHK_IGNORES="SPDX_LICENSE_TAG,LOGGING_CONTINUATION,SPLIT_STRING"
+  local PTCHK_IGNORES="SPDX_LICENSE_TAG,SPLIT_STRING,LOGGING_CONTINUATION"
+       PTCHK_IGNORES+=",BLOCK_COMMENT_STYLE"
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
@@ -226,7 +227,7 @@ edP () {
 
 edC () {
   if [[ ! -f ./compile_flags.txt ]]; then
-    echo '-std=gnu11' > ./compile_flags.txt
+    echo '-std=gnu17' > ./compile_flags.txt
     echo '-Wall' >> ./compile_flags.txt
     echo '-Wextra' >> ./compile_flags.txt
     echo '-Wformat' >> ./compile_flags.txt
@@ -255,7 +256,7 @@ fcc () {
   if (( $# == 0 )); then
     echo 'ERROR: No source file(s) given!'; return 1
   else
-    gcc -g -O2 -std=gnu11 -Wall -Wextra -Wformat -Wpedantic -o out-$(basename $1 .c) $@
+    gcc -g -O2 -std=gnu17 -Wall -Wextra -Wformat -Wpedantic -o out-$(basename $1 .c) $@
   fi
 }
 
@@ -309,15 +310,16 @@ mvnrun () {
 update_path () {
   setopt shwordsplit
 
-    local TOBPATH="/bin /usr/sbin /usr/bin"
-  TOBPATH+=" /usr/local/sbin /usr/local/bin"
-  TOBPATH+=" $HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin"
+  local TOBPATH="/bin /usr/sbin /usr/bin"
+       TOBPATH+=" /usr/local/sbin /usr/local/bin"
+       TOBPATH+=" $HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin"
 
-    local TOLPATH="/libexec /lib /lib64"
-  TOLPATH+=" /usr/libexec /usr/lib /usr/lib64"
-  TOLPATH+=" /usr/local/libexec /usr/local/lib /usr/local/lib64"
-# TOLPATH+=" /usr/lib/jvm/java-21-openjdk/lib"
-  TOLPATH+=" $HOME/.local/lib"
+  local TOLPATH="/libexec /lib /lib64"
+       TOLPATH+=" /usr/libexec /usr/lib /usr/lib64"
+       TOLPATH+=" /usr/local/libexec /usr/local/lib /usr/local/lib64"
+#      TOLPATH+=" /usr/lib/jvm/java-21-openjdk/lib"
+#      TOLPATH+=" /usr/lib64/jvm/java-21-openjdk/lib"
+       TOLPATH+=" $HOME/.local/lib"
 
   for DIR in $TOBPATH; do
     if [[ -d $DIR ]]; then
