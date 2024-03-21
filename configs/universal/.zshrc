@@ -3,10 +3,9 @@ case "$TERM" in
   *screen* ) ;;
   * ) export TERM="xterm-256color" ;;
 esac
-export EDITOR='nvim'
 export AWK_CMD='awk'
 export SED_CMD='sed'
-export SUDO_CMD='sudo'
+export EDITOR="$(which nvim)"
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_COMPDUMP="$ZSH/cache/.zcompdump-$HOST"
 export PYTHONDONTWRITEBYTECODE='1'
@@ -20,6 +19,10 @@ export LESS_TERMCAP_us=$'\e[01;37m'
 export LESS_TERMCAP_me=$'\e[0m'
 export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_ue=$'\e[0m'
+
+# sudo
+export SUDO_CMD='sudo'
+alias $SUDO_CMD="$SUDO_CMD "
 
 # local defines
 FOLDER_ICON='  '
@@ -36,7 +39,8 @@ alias b='bt'
 alias t='tm'
 alias q='exit'
 alias rr='rm -rf'
-alias ip='ip --color=auto'
+alias ip='ip -c=always'
+alias bridge='bridge -c=always'
 alias rrs="$SUDO_CMD rm -rf"
 alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"
 
