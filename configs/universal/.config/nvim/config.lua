@@ -65,7 +65,7 @@ lvim.keys.normal_mode['<C-j>'] = function ()
   if vim.opt.number:get() then
     local cc = vim.opt.colorcolumn:get()[1]
     vim.opt.colorcolumn = {cc_dict[cc]}
-    print(cc_dict[cc] - 1)
+    print("" .. (cc_dict[cc] - 1))
     cc_fix()
   end
 end
@@ -132,9 +132,9 @@ lvim.lsp.installer.setup.ensure_installed = {
 lvim.builtin.treesitter.ensure_installed = {
   'bash',
   'c', 'cpp', 'cmake', 'meson',
-  'java', 'lua', 'python', 'rust',
-  'vim', 'vimdoc', 'norg',
-  'dockerfile', 'json', 'toml', 'yaml',
+  'java', 'lua', 'python', 'rust', 'php',
+  'vim', 'vimdoc', 'org', 'norg',
+  'dockerfile', 'json', 'toml',
   'comment', 'markdown', 'markdown_inline', 'query', 'regex',
   'git_config', 'git_rebase', 'gitattributes', 'gitcommit', 'gitignore'
 }
@@ -245,6 +245,8 @@ lvim.plugins = {
       lvim.colorscheme = 'everforest'
     end
   },
+--]]
+--[[
   {
     'sainnhe/gruvbox-material',
     priority = 1500,
@@ -256,6 +258,8 @@ lvim.plugins = {
       lvim.colorscheme = 'gruvbox-material'
     end
   },
+--]]
+--[[
   {
     'folke/tokyonight.nvim',
     priority = 1500,
@@ -273,6 +277,8 @@ lvim.plugins = {
       lvim.colorscheme = 'tokyonight'
     end
   },
+--]]
+--[[
   {
     'rebelot/kanagawa.nvim',
     priority = 1500,
@@ -293,6 +299,7 @@ lvim.plugins = {
     end
   },
 --]]
+--[[
   {
     'nvim-neorg/neorg',
     ft = 'norg',
@@ -317,6 +324,23 @@ lvim.plugins = {
 
       vim.wo.foldlevel = 99
       vim.wo.conceallevel = 2
+    end
+  },
+-]]
+  {
+    'rcarriga/nvim-notify',
+    priority = 1490,
+    lazy = false,
+    config = function()
+      local _print = print
+      local notify = require'notify'
+      notify.setup{background_colour='#000000'}
+      vim.notify = notify
+      vim.print = notify
+      print = function(...)
+        notify(...)
+        _print(...)
+      end
     end
   },
   {
@@ -395,21 +419,6 @@ formatters.setup{
     filetypes = {'java'}
   }
 }
-
---[[
-if vim.fn.has('nightly') then
-  local orig_notify = vim.notify
-  local filter_notify = function (text, level, opts)
-    if (type(text) == 'string' and
-        (string.find(text, 'vim.lsp.util.parse_snippet is deprecated :help deprecated') or
-         string.find(text, "in function 'parse_snippet'"))) then
-      return
-    end
-    orig_notify(text, level, opts)
-  end
-  vim.notify = filter_notify
-end
---]]
 
 --[[
     to make clipboard work with windows,
