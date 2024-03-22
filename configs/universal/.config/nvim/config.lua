@@ -334,9 +334,10 @@ lvim.plugins = {
     config = function()
       local _print = print
       local notify = require'notify'
-      notify.setup{background_colour='#000000'}
+
       vim.notify = notify
       vim.print = notify
+
       print = function(...)
         notify(...)
         _print(...)
