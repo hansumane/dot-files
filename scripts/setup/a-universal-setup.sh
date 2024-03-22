@@ -18,6 +18,7 @@ git clone --depth=1 --recursive https://github.com/zsh-users/zsh-autosuggestions
 
 mkdir -p ~/.oh-my-zsh/custom/themes; cd ~/.oh-my-zsh/custom/themes
 cp -f ${CURRENT_DIR}/themes/zsh_themes/* .
+git clone --depth=1 --recursive https://github.com/romkatv/powerlevel10k.git
 
 mkdir -p ~/.local/bin
 cp -f ${CURRENT_DIR}/scripts/newup.sh ~
@@ -36,11 +37,6 @@ XDG_DOCUMENTS_DIR="$HOME/Others/Documents"
 XDG_MUSIC_DIR="$HOME/Others/Music"
 XDG_PICTURES_DIR="$HOME/Others/Pictures"
 XDG_VIDEOS_DIR="$HOME/Others/Videos"' > ~/.config/user-dirs.dirs
-
-# vim-plug for neovim (deprecated)
-# cp -f ${CURRENT_DIR}/configs/universal/.vimrc ~/.config/nvim/init.vim
-# sh -c 'curl -fLo ~/.local/share/nvim/site/autoload/plug.vim \
-#   --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim';
 
 # tpm (tmux plugin manager; prefix + I - install; prefix + U - update)
 git clone --depth=1 --recursive https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

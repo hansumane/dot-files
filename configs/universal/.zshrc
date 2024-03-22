@@ -28,10 +28,10 @@ alias $SUDO_CMD="$SUDO_CMD "
 FOLDER_ICON='  '
 EZA_GIT='--git'
 EZA_ICONS='--icons'
-ZSH_THEME='undollar'
+ZSH_THEME='powerlevel10k/powerlevel10k'
 LOCAL_LANG='LANG=en_US.UTF-8'
 
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(zsh-syntax-highlighting zsh-autosuggestions)  # git
 source $ZSH/oh-my-zsh.sh
 
 alias c='cl'
