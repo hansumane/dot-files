@@ -82,12 +82,13 @@ cl () {
 }
 
 tm () {
-  cd; clear
+  cd
   if (( $# == 0 )); then
     tmux -u new-session -A -s "main"
   else
     tmux -u new-session -A -s $@
   fi
+  cd -
 }
 
 ded () {
