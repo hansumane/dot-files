@@ -38,9 +38,14 @@ lvim.keys.normal_mode['<S-l>'] = '<cmd>BufferLineCycleNext<CR>'
 lvim.keys.normal_mode['<S-n>'] = '<cmd>BufferLineMovePrev<CR>'
 lvim.keys.normal_mode['<S-m>'] = '<cmd>BufferLineMoveNext<CR>'
 
-lvim.builtin.which_key.mappings.j = {'<cmd>noh<CR>', 'No Highlight'}
 lvim.builtin.which_key.vmappings.k = {':sort<CR>', 'Sort Lines'}
+lvim.builtin.which_key.mappings.j = {'<cmd>noh<CR>', 'No Highlight'}
 lvim.builtin.which_key.mappings.lt = {'<cmd>TodoTelescope<CR>', 'TODOs'}
+
+lvim.builtin.which_key.mappings.se = {
+  [[<cmd>lua require'telescope.builtin'.live_grep{additional_args = function(opts) return {'--pcre2'} end}<CR>]],
+  'PCRE2'
+}
 
 lvim.lsp.buffer_mappings.normal_mode.gr = {
   [[<cmd>lua require'telescope.builtin'.lsp_references()<CR>]],
