@@ -340,6 +340,11 @@ lvim.plugins = {
       local _print = print
       local notify = require'notify'
 
+      notify.setup{
+        fps = 60,
+        render = 'compact',
+      }
+
       vim.notify = notify
       vim.print = notify
 
