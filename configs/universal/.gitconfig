@@ -2,7 +2,7 @@
 	autocrlf = input
 	safecrlf = warn
 	quotepath = off
-	pager = bat
+	pager = bat --tabs=8
 [init]
 	defaultBranch = main
 [credential]
