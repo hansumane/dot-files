@@ -34,13 +34,15 @@ LOCAL_LANG='LANG=en_US.UTF-8'
 plugins=(zsh-syntax-highlighting zsh-autosuggestions)  # git
 source $ZSH/oh-my-zsh.sh
 
+alias ip='ip --color=auto'
+alias grep='grep --color=auto'
+alias bridge='bridge --color=auto'
+
 alias c='cl'
 alias b='bt'
 alias t='tm'
 alias q='exit'
 alias rr='rm -rf'
-alias ip='ip -c=always'
-alias bridge='bridge -c=always'
 alias rrs="$SUDO_CMD rm -rf"
 alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"
 
