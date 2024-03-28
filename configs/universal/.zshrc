@@ -5,7 +5,7 @@ case "$TERM" in
 esac
 export AWK_CMD='awk'
 export SED_CMD='sed'
-export EDITOR="$(which nvim)"
+export EDITOR='nvim'  # "$HOME/.local/bin/lvim"
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_COMPDUMP="$ZSH/cache/.zcompdump-$HOST"
 export PYTHONDONTWRITEBYTECODE='1'
