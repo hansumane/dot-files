@@ -100,13 +100,13 @@ ded () {
 
 alias gitd='git diff'
 alias gits='git status'
-alias gite='gitr && cd ..'
 alias gitb='git branch -a'
 alias gitp='git reset --hard HEAD'
 alias 'gitp^'='git reset --hard HEAD^'
+alias gitf='git fetch --all && git status'
 alias gitr='cd $(git rev-parse --show-toplevel)'
 alias gita='git add -A && git commit --amend --reset-author --no-edit'
-alias gitl='git log --date=format-local:"%d/%m/%Y %H:%M:%S" --pretty=format:"%h %ad | %an >>> %s%d" --graph'
+alias gitl='git log --graph --pretty=format="%C(red)%h%C(reset) | %s %C(green)(%cr)%C(reset) %C(blue)%an%C(reset) %C(bold magenta)<%ae>%C(reset)%C(yellow)%d%C(reset)"'
 
 giti () {
   local GIT_IGNORE_DIR_PATH=$(git rev-parse --show-toplevel) || return 1
@@ -122,41 +122,6 @@ gitc () {
   else
     git config --local user.name "$1"
     git config --local user.email "$2"
-  fi
-}
-
-gitup () {
-  local BRANCH=$(git rev-parse --abbrev-ref HEAD)
-  if (( $# == 0 )); then
-    read "ANS?No commit name given, git pull ($BRANCH)? [Y/n] "
-    case $ANS in
-      [Nn] ) echo 'Exiting...';;
-      *    ) git pull; git status;;
-    esac
-  else
-    read "ANS?Commit name given, git push ($BRANCH)? [Y/n] "
-    case $ANS in
-      [Nn] ) echo 'Exiting...' ;;
-      *    )
-        if git config --local --list | grep -q 'user.name' &&
-           git config --local --list | grep -q 'user.email'; then
-          echo "user.name: $(git config --local 'user.name')"
-          echo "user.email: $(git config --local 'user.email')"
-          read 'ANS?Are these ok? [Y/n] '
-          case $ANS in
-            [Nn] ) echo 'Exiting...' ;;
-            *    )
-              git add -A; git commit -m "$1"
-              git push -u origin $BRANCH
-              git status
-              ;;
-          esac
-        else
-          echo 'git user.name or user.email not set, exiting...'
-          return 1
-        fi
-        ;;
-    esac
   fi
 }
 
