@@ -149,6 +149,22 @@ lvim.builtin.treesitter.ignore_install = {
 
 local components = require'lvim.core.lualine.components'
 lvim.builtin.lualine.sections.lualine_a = {'mode'}
+lvim.builtin.lualine.sections.lualine_b = {
+  function ()
+    local isvm = vim.fn.mode():find("[vV]")
+    if not isvm then return "" end
+
+    local starts = vim.fn.line("v")
+    local ends = vim.fn.line(".")
+    local lines = starts <= ends and ends - starts + 1 or starts - ends + 1
+
+    if lines <= 1 then
+      return "" .. vim.fn.wordcount().visual_chars .. "C"
+    else
+      return "" .. lines .. "L"
+    end
+  end
+}
 lvim.builtin.lualine.sections.lualine_x = {
   components.lsp,
   components.filetype,
