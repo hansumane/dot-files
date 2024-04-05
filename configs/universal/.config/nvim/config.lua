@@ -38,19 +38,21 @@ lvim.keys.normal_mode['<S-l>'] = '<cmd>BufferLineCycleNext<CR>'
 lvim.keys.normal_mode['<S-n>'] = '<cmd>BufferLineMovePrev<CR>'
 lvim.keys.normal_mode['<S-m>'] = '<cmd>BufferLineMoveNext<CR>'
 
-lvim.builtin.which_key.vmappings.k = {':sort<CR>', 'Sort Lines'}
-lvim.builtin.which_key.mappings.j = {'<cmd>noh<CR>', 'No Highlight'}
-lvim.builtin.which_key.mappings.lt = {'<cmd>TodoTelescope<CR>', 'TODOs'}
-
+lvim.builtin.which_key.mappings.lt = {
+  '<cmd>TodoTelescope<CR>',
+  'TODOs'
+}
 lvim.builtin.which_key.mappings.se = {
   [[<cmd>lua require'telescope.builtin'.live_grep{additional_args = function(opts) return {'--pcre2'} end}<CR>]],
   'PCRE2'
 }
-
 lvim.lsp.buffer_mappings.normal_mode.gr = {
   [[<cmd>lua require'telescope.builtin'.lsp_references()<CR>]],
   'References'
 }
+
+lvim.builtin.which_key.vmappings.k = {':sort<CR>', 'Sort Lines'}
+lvim.builtin.which_key.mappings.j = {'<cmd>noh<CR>', 'No Highlight'}
 
 local cc_dict = {
   init = 91,
@@ -320,34 +322,28 @@ lvim.plugins = {
     end
   },
 --]]
---[[
   {
-    'nvim-neorg/neorg',
-    ft = 'norg',
-    version = 'v7.0.0',
-    build = ':Neorg sync-parsers',
-    dependencies = {'nvim-lua/plenary.nvim'},
-    config = function ()
-      require'neorg'.setup{
-        load = {
-          ['core.defaults'] = {},
-          ['core.concealer'] = {},
-          ['core.dirman'] = {
-            config = {
-              workspaces = {
-                notes = '~/Others/Documents/notes'
-              },
-              default_workspace = 'notes'
-            }
-          }
-        }
+    'lyz-code/telescope-orgmode.nvim',
+    config = function()
+      require'telescope'.load_extension'orgmode'
+      lvim.builtin.which_key.mappings.lh = {
+        [[<cmd>lua require'telescope'.extensions.orgmode.search_headings()<CR>]],
+        'Telescope OrgMode Search Headings'
       }
-
-      vim.wo.foldlevel = 99
-      vim.wo.conceallevel = 2
+    end,
+  },
+  {
+    'nvim-orgmode/orgmode',
+    event = 'VeryLazy',
+    dependencies = {'akinsho/org-bullets.nvim'},
+    config = function()
+      require'org-bullets'.setup()
+      require'orgmode'.setup{
+        org_agenda_files = '~/Others/Documents/orgfiles/**/*',
+        org_default_notes_file = '~/Others/Documents/orgfiles/rawid.org'
+      }
     end
   },
--]]
   {
     'rcarriga/nvim-notify',
     priority = 1490,
@@ -371,7 +367,19 @@ lvim.plugins = {
     end
   },
   {
+    'junegunn/vim-easy-align',
+    priority = 1480,
+    lazy = false,
+    config = function()
+      vim.cmd[[
+      xmap ga <Plug>(EasyAlign)
+      nmap ga <Plug>(EasyAlign)
+      ]]
+    end
+  },
+  {
     'folke/todo-comments.nvim',
+    lazy = false,
     dependencies = {'nvim-lua/plenary.nvim'},
     opts = {}
   }
