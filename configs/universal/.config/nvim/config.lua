@@ -323,9 +323,13 @@ lvim.plugins = {
   },
 --]]
   {
-    'lyz-code/telescope-orgmode.nvim',
+    'hansumane/telescope-orgmode.nvim',
     config = function()
       require'telescope'.load_extension'orgmode'
+      lvim.builtin.which_key.mappings.r = {
+        [[<cmd>lua require'telescope'.extensions.orgmode.refile_heading()<CR>]],
+        'Telescope OrgMode Refile Headings'
+      }
       lvim.builtin.which_key.mappings.lh = {
         [[<cmd>lua require'telescope'.extensions.orgmode.search_headings()<CR>]],
         'Telescope OrgMode Search Headings'
