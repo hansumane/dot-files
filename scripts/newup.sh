@@ -133,7 +133,7 @@ if command -v doom &> /dev/null; then
   git pull --rebase
 
   cd -
-  doom sync -u -j$(nproc) && doom doctor | cat && doom sync -U -j$(nproc)
+  doom sync -u --jobs $(nproc) && doom doctor | cat && doom sync -U --jobs $(nproc)
 fi
 
 if command -v nvim &> /dev/null; then
