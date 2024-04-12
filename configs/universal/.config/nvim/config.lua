@@ -38,6 +38,10 @@ lvim.keys.normal_mode['<S-l>'] = '<cmd>BufferLineCycleNext<CR>'
 lvim.keys.normal_mode['<S-n>'] = '<cmd>BufferLineMovePrev<CR>'
 lvim.keys.normal_mode['<S-m>'] = '<cmd>BufferLineMoveNext<CR>'
 
+lvim.builtin.which_key.mappings.xx = {
+  '<cmd>TroubleToggle<CR>',
+  'Buffer Diagnostics (Trouble)'
+}
 lvim.builtin.which_key.mappings.lt = {
   '<cmd>TodoTelescope<CR>',
   'TODOs'
@@ -344,7 +348,7 @@ lvim.plugins = {
       require'org-bullets'.setup()
       require'orgmode'.setup{
         org_agenda_files = '~/Others/Documents/orgfiles/**/*',
-        org_default_notes_file = '~/Others/Documents/orgfiles/rawid.org'
+        org_default_notes_file = '~/Others/Documents/orgfiles/rawid_new.org'
       }
     end
   },
@@ -380,6 +384,12 @@ lvim.plugins = {
       nmap ga <Plug>(EasyAlign)
       ]]
     end
+  },
+  {
+    'folke/trouble.nvim',
+    lazy = false,
+    dependencies = {'nvim-tree/nvim-web-devicons'},
+    opts = {}
   },
   {
     'folke/todo-comments.nvim',
