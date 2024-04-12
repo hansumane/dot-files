@@ -230,7 +230,7 @@ fcc () {
   if (( $# == 0 )); then
     echo 'ERROR: No source file(s) given!'; return 1
   else
-    gcc -march=native -g -pg -O2 -pipe \
+    gcc -march=native -ggdb -O2 -pipe \
         -std='gnu17' -Wall -Wextra -Wformat -Wpedantic \
         -o out-$(basename $1 .c) $@
   fi
@@ -240,7 +240,7 @@ fcp () {
   if (( $# == 0 )); then
     echo 'ERROR: No source file(s) given!'; return 1
   else
-    g++ -march=native -g -pg -O2 -pipe \
+    g++ -march=native -ggdb -O2 -pipe \
         -std='c++20' -Wall -Wextra -Wformat -Wpedantic \
         -o out-$(basename $1 .cpp) $@
   fi
