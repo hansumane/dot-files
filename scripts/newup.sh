@@ -51,6 +51,7 @@ case $OSTYPE in
       *"openSUSE Tumbleweed"*)
         echo "${NYELLOW}Running ${BGREEN}OpenSUSE Tumbleweed${NYELLOW} updates.${NRST}"
         PIP_FLAGS="--break-system-packages $PIP_FLAGS"
+        sudo systemctl stop packagekit
         sudo zypper ref && sudo zypper dup
         ;;
 
@@ -124,7 +125,15 @@ fi
 
 if command -v doom &> /dev/null; then
   echo "${NYELLOW}Running ${BMAGENTA}DOOM Emacs${NYELLOW} update.${NRST}"
-  doom sync && doom upgrade && doom doctor | cat && doom sync
+  # doom sync && doom upgrade && doom doctor | cat && doom sync
+
+  cd "$(dirname $(which doom))"
+  git reset --hard HEAD
+  git fetch --all
+  git pull --rebase
+
+  cd -
+  doom sync -u -j$(nproc) && doom doctor | cat && doom sync -U -j$(nproc)
 fi
 
 if command -v nvim &> /dev/null; then
