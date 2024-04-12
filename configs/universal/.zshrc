@@ -50,14 +50,14 @@ alias v="$EDITOR"
 alias vd="$EDITOR ."
 alias crr='cr -r'
 alias cr='cargo run'
-alias ds='doom sync'
+alias ds='doom sync -U'
 alias tl='clear; tmux list-sessions'
 alias eza="$LOCAL_LANG eza"
 
 alias la='eza -a'
 alias lx="eza $EZA_ICONS -albh $EZA_GIT --classify --group --group-directories-first"
 alias ll="eza $EZA_ICONS -albh $EZA_GIT --classify --no-user --group-directories-first"
-alias lt='eza $EZA_ICONS -albh $EZA_GIT --classify --no-user --group-directories-first -T'
+alias lt="eza $EZA_ICONS -albh $EZA_GIT --classify --no-user --group-directories-first -T"
 alias cla='cpwd;la'
 alias cll='cpwd;ll'
 alias clx='cpwd;lx'
@@ -94,7 +94,7 @@ tm () {
 }
 
 ded () {
-  emacsclient -e '(kill-emacs)' &> /dev/null
+  emacsclient -e '(kill-emacs)' > /dev/null 2>&1
   if (( $# == 0 )); then
     emacs --daemon
   fi
@@ -173,14 +173,13 @@ rfmt () {
 }
 
 ptchk() {
-  local PTCHK_IGNORES="SPDX_LICENSE_TAG,SPLIT_STRING,LOGGING_CONTINUATION"
-       PTCHK_IGNORES+=",BLOCK_COMMENT_STYLE"
+  local PTCHK_IGNORES="SPDX_LICENSE_TAG"
+      PTCHK_IGNORES+=",SPLIT_STRING"
+      PTCHK_IGNORES+=",LOGGING_CONTINUATION"
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
-    checkpatch.pl --no-tree --strict --max-line-length=90 --file --ignore $PTCHK_IGNORES $@
-      # SPDX_LICENSE_TAG,CONCATENATED_STRING,PREFER_KERNEL_TYPES,SPLIT_STRING,PREFER_DEFINED_ATTRIBUTE_MACRO,BLOCK_COMMENT_STYLE,OPEN_ENDED_LINE,IF_0 $@
-      # SPDX_LICENSE_TAG,CONCATENATED_STRING,PREFER_KERNEL_TYPES,SPLIT_STRING,SSCANF_TO_KSTRTO,FSF_MAILING_ADDRESS,OPEN_ENDED_LINE,VOLATILE,CAMELCASE,BLOCK_COMMENT_STYLE,QUOTED_WHITESPACE_BEFORE_NEWLINE,PREFER_DEFINED_ATTRIBUTE_MACRO,IF_0
+    checkpatch.pl --no-tree --strict --max-line-length=90 --ignore $PTCHK_IGNORES --file $@
   fi
 }
 
@@ -232,7 +231,7 @@ fcc () {
     echo 'ERROR: No source file(s) given!'; return 1
   else
     gcc -march=native -g -pg -O2 -pipe \
-        -std=gnu17 -Wall -Wextra -Wformat -Wpedantic \
+        -std='gnu17' -Wall -Wextra -Wformat -Wpedantic \
         -o out-$(basename $1 .c) $@
   fi
 }
@@ -242,7 +241,7 @@ fcp () {
     echo 'ERROR: No source file(s) given!'; return 1
   else
     g++ -march=native -g -pg -O2 -pipe \
-        -std=c++20 -Wall -Wextra -Wformat -Wpedantic \
+        -std='c++20' -Wall -Wextra -Wformat -Wpedantic \
         -o out-$(basename $1 .cpp) $@
   fi
 }
