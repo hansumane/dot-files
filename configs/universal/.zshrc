@@ -94,10 +94,12 @@ tm () {
 }
 
 ded () {
+  cd
   emacsclient -e '(kill-emacs)' > /dev/null 2>&1
   if (( $# == 0 )); then
     emacs --daemon
   fi
+  cd -
 }
 
 alias gitd='git diff'
