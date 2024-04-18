@@ -103,6 +103,7 @@ ded () {
 }
 
 alias gitd='git diff'
+alias gitc='git commit'
 alias gits='git status'
 alias gitb='git branch -a'
 alias gitup='git fetch --all && git status'
@@ -122,7 +123,7 @@ giti () {
   cd -
 }
 
-gitc () {
+gitcfg () {
   if (( $# == 0 )); then
     git config --local --list | bat
   else
