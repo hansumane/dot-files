@@ -15,17 +15,14 @@ vim.opt.imsearch = 0
 -- vim.wo.list = false
 
 vim.cmd[[set iskeyword-=_]]
-if not use_indent_lines then
-  vim.opt.showbreak = '↪'
-  vim.opt.listchars = {
-    -- eol = '↲',
-    tab = '   ',
-    space = '⋅',
-    trail = '␣',
-    precedes = '⟨',
-    extends = '⟩',
-  }
-end
+vim.opt.showbreak = '↪'
+vim.opt.listchars = {
+  tab = not use_indent_lines and '   ' or nil,
+  space = not use_indent_lines and '⋅' or nil,
+  trail = '␣',
+  precedes = '⟨',
+  extends = '⟩',
+}
 
 lvim.builtin.which_key.mappings['w'] = {}
 lvim.builtin.which_key.mappings['h'] = {}
@@ -86,7 +83,7 @@ function SetNumber(toggle)
   vim.opt.number = toggle and true or false
   vim.opt.cursorline = toggle and true or false
   vim.opt.relativenumber = toggle and true or false
-  if not use_indent_lines then vim.opt.list = toggle and true or false end
+  vim.opt.list = toggle and true or false
 end
 
 function SetIndent(settings)
@@ -99,11 +96,7 @@ function SetIndent(settings)
   vim.opt.tabstop = tabst
   vim.opt.softtabstop = stabs
 
-  if noexpand then
-    vim.opt.expandtab = false
-  else
-    vim.opt.expandtab = true
-  end
+  vim.opt.expandtab = not noexpand and true or false
 end
 
 if not use_indent_lines then
