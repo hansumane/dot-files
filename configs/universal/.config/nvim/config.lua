@@ -10,10 +10,6 @@ vim.opt.keymap = 'russian-jcukenwin'
 vim.opt.iminsert = 0
 vim.opt.imsearch = 0
 
--- vim.wo.wrap = true
--- vim.wo.linebreak = true
--- vim.wo.list = false
-
 vim.cmd[[set iskeyword-=_]]
 vim.opt.showbreak = '↪'
 vim.opt.listchars = {
@@ -57,6 +53,7 @@ lvim.builtin.which_key.mappings.j = {'<cmd>noh<CR>', 'No Highlight'}
 
 local cc_dict = {
   init = 91,
+  current = 91,
   ['81'] = 91,
   ['91'] = 101,
   ['101'] = 121,
@@ -72,13 +69,17 @@ end
 lvim.keys.normal_mode['<C-j>'] = function ()
   if vim.opt.number:get() then
     local cc = vim.opt.colorcolumn:get()[1]
-    vim.opt.colorcolumn = {cc_dict[cc]}
-    print("" .. (cc_dict[cc] - 1))
+    local new_cc = cc_dict[cc]
+    vim.opt.textwidth = new_cc - 1
+    vim.opt.colorcolumn = {new_cc}
+    cc_dict.current = new_cc
+    print("" .. (new_cc - 1))
     cc_fix()
   end
 end
 
 function SetNumber(toggle)
+  vim.opt.textwidth = toggle and (cc_dict.init - 1) or {}
   vim.opt.colorcolumn = toggle and {cc_dict.init} or {}
   vim.opt.number = toggle and true or false
   vim.opt.cursorline = toggle and true or false
@@ -236,6 +237,15 @@ lvim.autocommands = {
             vim.api.nvim_win_close(w, true)
           end
         end
+      end
+    }
+  },
+  {
+    'FileType', {
+      pattern = "org",
+      callback = function ()
+        vim.wo.wrap = true
+        vim.wo.linebreak = true
       end
     }
   }
