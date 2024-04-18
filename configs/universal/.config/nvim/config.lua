@@ -128,19 +128,15 @@ vim.lsp.set_log_level'off'
 --   return server ~= 'jedi_language_server'
 -- end, lvim.lsp.automatic_configuration.skipped_servers)
 
---lvim.builtin.treesitter.auto_install = false
+-- lvim.builtin.treesitter.auto_install = false
 lvim.lsp.automatic_servers_installation = false
 lvim.lsp.installer.setup.automatic_installation = false
 lvim.lsp.installer.setup.ensure_installed = {
   'lua_ls', 'clangd', 'rust_analyzer', 'pyright', 'jdtls'
-} --+ flake8, black, google-java-format
+} -- flake8, black, google-java-format --
 lvim.builtin.treesitter.ensure_installed = {
-  'bash',
-  'c', 'cpp', 'cmake', 'meson',
-  'java', 'lua', 'python', 'rust', 'php',
-  'vim', 'vimdoc', 'org', 'norg',
-  'dockerfile', 'json', 'toml',
-  'comment', 'markdown', 'markdown_inline', 'query', 'regex',
+  'bash', 'c', 'cpp', 'java', 'lua', 'python', 'rust', 'php',
+  'vim', 'vimdoc', 'org', 'norg', 'comment', 'markdown', 'markdown_inline',
   'git_config', 'git_rebase', 'gitattributes', 'gitcommit', 'gitignore'
 }
 lvim.builtin.treesitter.ignore_install = {
