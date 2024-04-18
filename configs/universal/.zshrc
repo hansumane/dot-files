@@ -209,6 +209,7 @@ edC () {
     echo '-Wextra' >> ./compile_flags.txt
     echo '-Wformat' >> ./compile_flags.txt
     echo '-Wpedantic' >> ./compile_flags.txt
+    echo '-Winline' >> ./compile_flags.txt
     echo '-Wno-variadic-macros' >> ./compile_flags.txt
     echo '-Wno-gnu-empty-struct' >> ./compile_flags.txt
     echo '-Wno-gnu-binary-literal' >> ./compile_flags.txt
@@ -237,7 +238,7 @@ fcc () {
     echo 'ERROR: No source file(s) given!'; return 1
   else
     gcc -march=native -ggdb -O2 -pipe \
-        -std='gnu17' -Wall -Wextra -Wformat -Wpedantic \
+        -std='gnu17' -Wall -Wextra -Wformat -Wpedantic -Winline \
         -o out-$(basename $1 .c) $@
   fi
 }
@@ -247,7 +248,7 @@ fcp () {
     echo 'ERROR: No source file(s) given!'; return 1
   else
     g++ -march=native -ggdb -O2 -pipe \
-        -std='c++20' -Wall -Wextra -Wformat -Wpedantic \
+        -std='c++20' -Wall -Wextra -Wformat -Wpedantic -Winline \
         -o out-$(basename $1 .cpp) $@
   fi
 }
