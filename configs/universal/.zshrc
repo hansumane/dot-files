@@ -202,6 +202,8 @@ edP () {
   fi
 }
 
+alias edCi='edC i'
+
 edC () {
   if [[ ! -f ./compile_flags.txt ]]; then
     echo '-std=gnu17' > ./compile_flags.txt
@@ -215,13 +217,14 @@ edC () {
     echo '-Wno-gnu-binary-literal' >> ./compile_flags.txt
     echo '-Wno-gnu-conditional-omitted-operand' >> ./compile_flags.txt
     echo '-Wno-gnu-zero-variadic-macro-arguments' >> ./compile_flags.txt
+    echo '-Wno-gnu-statement-expression-from-macro-expansion' >> ./compile_flags.txt
     echo '#-Wno-vla' >> ./compile_flags.txt
     echo '#-Wno-unused-variable' >> ./compile_flags.txt
     echo '#-Wno-unused-parameter' >> ./compile_flags.txt
   fi
 
   $EDITOR ./compile_flags.txt
-  (( $# != 0 )) && return 0
+  (( $# == 0 )) && return 0
 
   local GIT_TOPDIR="$(git rev-parse --show-toplevel)" || return 0
   local GIT_INFODIR="$GIT_TOPDIR/.git/info"
