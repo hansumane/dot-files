@@ -22,13 +22,13 @@ lvim.builtin.which_key.mappings['h'] = {}
 lvim.builtin.terminal.open_mapping = '<C-t>'
 
 lvim.keys.insert_mode['<C-\\>'] = '<C-6>'
-lvim.keys.insert_mode['<C-t>'] = '<C-v><C-i>'
+lvim.keys.insert_mode['<C-r>'] = '<C-v><C-i>'
 lvim.keys.normal_mode['<S-h>'] = '<cmd>BufferLineCyclePrev<CR>'
 lvim.keys.normal_mode['<S-l>'] = '<cmd>BufferLineCycleNext<CR>'
 lvim.keys.normal_mode['<S-n>'] = '<cmd>BufferLineMovePrev<CR>'
 lvim.keys.normal_mode['<S-m>'] = '<cmd>BufferLineMoveNext<CR>'
 
-lvim.builtin.which_key.mappings.xx = {
+lvim.builtin.which_key.mappings.lx = {
   '<cmd>TroubleToggle<CR>',
   'Buffer Diagnostics (Trouble)'
 }
