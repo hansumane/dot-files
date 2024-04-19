@@ -1,7 +1,5 @@
 -- LunarVim (lvim) config
 
-local use_indent_lines = false
-
 vim.opt.mouse = 'nv'
 vim.opt.scrolloff = 3
 vim.g.c_syntax_for_h = true
@@ -13,8 +11,7 @@ vim.opt.imsearch = 0
 vim.cmd[[set iskeyword-=_]]
 vim.opt.showbreak = '↪'
 vim.opt.listchars = {
-  tab = not use_indent_lines and '   ' or nil,
-  space = not use_indent_lines and '⋅' or nil,
+  tab = '   ',
   trail = '␣',
   precedes = '⟨',
   extends = '⟩',
@@ -78,6 +75,27 @@ lvim.keys.normal_mode['<C-j>'] = function ()
   end
 end
 
+lvim.keys.normal_mode['<C-k>'] = function ()
+  if not vim.opt.listchars:get().space then
+    require'indent_blankline.commands'.disable()
+    vim.opt.listchars = {
+      tab = '|->',
+      space = '⋅',
+      trail = '␣',
+      precedes = '⟨',
+      extends = '⟩',
+    }
+  else
+    vim.opt.listchars = {
+      tab = '   ',
+      trail = '␣',
+      precedes = '⟨',
+      extends = '⟩',
+    }
+    require'indent_blankline.commands'.enable()
+  end
+end
+
 function SetNumber(toggle)
   vim.opt.textwidth = toggle and (cc_dict.init - 1) or {}
   vim.opt.colorcolumn = toggle and {cc_dict.init} or {}
@@ -100,16 +118,9 @@ function SetIndent(settings)
   vim.opt.expandtab = not noexpand and true or false
 end
 
-if not use_indent_lines then
-  lvim.builtin.indentlines.options.use_treesitter = false
-  lvim.builtin.indentlines.active = false
-else
-  lvim.builtin.indentlines.options.use_treesitter = true
-  lvim.builtin.indentlines.active = true
-end
-
 lvim.format_on_save.enabled = false
 lvim.builtin.nvimtree.setup.view.adaptive_size = true
+lvim.builtin.indentlines.options.use_treesitter = true
 
 lvim.builtin.telescope.defaults.initial_mode = 'normal'
 lvim.builtin.telescope.defaults.layout_strategy = 'horizontal'
