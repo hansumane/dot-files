@@ -409,6 +409,12 @@ lvim.plugins = {
   }
 }
 
+-- fix for clangd multiple offset encodings warning
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.offsetEncoding = {'utf-16'}
+require'lvim.lsp.manager'.setup('clangd', {
+  capabilities = capabilities
+})
 require'lvim.lsp.manager'.setup('pyright', {
   settings = {
     python = {
@@ -476,6 +482,10 @@ formatters.setup{
   {
     command = 'google-java-format',
     filetypes = {'java'}
+  },
+  {
+    command = 'clang-format',
+    filetypes = {'c', 'cpp'}
   }
 }
 
