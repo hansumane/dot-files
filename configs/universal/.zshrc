@@ -31,7 +31,7 @@ EZA_ICONS='--icons'
 ZSH_THEME='powerlevel10k/powerlevel10k'
 LOCAL_LANG='LANG=en_US.UTF-8'
 
-# removed plugins: (git)
+# removed plugins: (git zsh-vi-mode)
 plugins=(zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
