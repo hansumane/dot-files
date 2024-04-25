@@ -371,8 +371,8 @@ lvim.plugins = {
       local notify = require'notify'
 
       notify.setup{
-        fps = 60,
         render = 'compact',
+        stages = 'static'
       }
 
       vim.notify = notify
