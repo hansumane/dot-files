@@ -31,7 +31,8 @@ EZA_ICONS='--icons'
 ZSH_THEME='powerlevel10k/powerlevel10k'
 LOCAL_LANG='LANG=en_US.UTF-8'
 
-plugins=(zsh-syntax-highlighting zsh-autosuggestions)  # git
+# removed plugins: (git)
+plugins=(zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 alias ip='ip --color=auto'
@@ -112,7 +113,7 @@ alias gita='git add -A && git commit --amend --reset-author --no-edit'
 alias gitl='git log --graph --pretty=format:"%C(red)%h%C(reset) | %s %C(green)(%cr)%C(reset) %C(blue)%an%C(reset) %C(bold magenta)<%ae>%C(reset)%C(yellow)%d%C(reset)"'
 alias gitll='git log --graph --date=format-local:"%Y/%m/%d %H:%M" --pretty=format:"%C(red)%h%C(reset) | %s %C(green)(%cd)%C(reset) %C(blue)%an%C(reset) %C(bold magenta)<%ae>%C(reset)%C(yellow)%d%C(reset)"'
 
-# git diff --cache    # shows differences between HEAD and currently staged changed
+# git diff --cache    # shows differences between HEAD and currently staged changes
 # git add -p [file]   # interactively adds hunks from optional file
 # git reset -p [file] # interactively unstage hunks from optional file
 
