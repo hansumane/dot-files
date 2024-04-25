@@ -273,7 +273,7 @@ alias mvndo='mvnbuild && mvnrun'
 
 mvnew () {
   if (( $# == 0 )); then
-    echo 'ERROR: No groupId and artifactId was set! (example: mvnew com.example.com:my-app)'
+    echo 'ERROR: No groupId and artifactId was set! (example: mvnew com.example.com:my-app)'; return 1
   fi
 
   local GROUP_ID=$(echo "$1" | cut -d':' -f1)
@@ -285,7 +285,7 @@ mvnew () {
 
 mvnrun () {
   if (( $# == 0 )); then
-    echo 'ERROR: No main class specified'
+    echo 'ERROR: No main class specified'; return 1
   fi
 
   local JAVA_INDEX=$(echo "$1" | $AWK_CMD -F 'java/' '{print length($1) + 6}')
