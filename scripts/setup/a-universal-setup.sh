@@ -18,6 +18,7 @@ cd; sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/inst
 mkdir -p ~/.oh-my-zsh/custom/plugins; cd ~/.oh-my-zsh/custom/plugins
 git clone --depth=1 --recursive https://github.com/zsh-users/zsh-syntax-highlighting.git
 git clone --depth=1 --recursive https://github.com/zsh-users/zsh-autosuggestions.git
+git clone --depth=1 --recursive https://github.com/jeffreytse/zsh-vi-mode.git
 
 # install themes for oh-my-zsh
 mkdir -p ~/.oh-my-zsh/custom/themes; cd ~/.oh-my-zsh/custom/themes
