@@ -77,9 +77,9 @@ end
 
 lvim.keys.normal_mode['<C-k>'] = function ()
   if not vim.opt.listchars:get().space then
-    require'indent_blankline.commands'.disable()
+    require'indent_blankline.commands'.disable(true)
     vim.opt.listchars = {
-      tab = '|->',
+      tab = '-->',
       space = '⋅',
       trail = '␣',
       precedes = '⟨',
@@ -92,7 +92,7 @@ lvim.keys.normal_mode['<C-k>'] = function ()
       precedes = '⟨',
       extends = '⟩',
     }
-    require'indent_blankline.commands'.enable()
+    require'indent_blankline.commands'.enable(true)
   end
 end
 
