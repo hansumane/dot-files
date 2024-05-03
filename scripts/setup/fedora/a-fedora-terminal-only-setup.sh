@@ -21,7 +21,7 @@ sudo dnf update -y
 
 sudo dnf install -y \
   curl wget git zip unzip tar gzip bzip2 xz \
-  nano tmux neovim zsh eza bat hexyl calc croc \
+  tmux calc neovim zsh eza bat btop hexyl croc \
   nodejs npm yarnpkg python3-pip wireguard-tools \
   java-21-openjdk-devel python3-devel \
   make automake kernel-devel \
