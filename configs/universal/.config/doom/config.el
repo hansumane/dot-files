@@ -53,11 +53,11 @@
     :hook (org-mode . org-auto-tangle-mode)
     :config (setq org-auto-tangle-default t))
 
-(use-package! catppuccin-theme
-    :config
-    (setq doom-theme 'catppuccin
-          catppuccin-flavor 'mocha)
-    (catppuccin-reload))
+;; (use-package! catppuccin-theme
+;;     :config
+;;     (setq doom-theme 'catppuccin
+;;           catppuccin-flavor 'mocha)
+;;     (catppuccin-reload))
 
 ;; (use-package! gruber-darker-theme
 ;;     :config (setq doom-theme 'gruber-darker))

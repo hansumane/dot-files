@@ -4,3 +4,4 @@
 (package! catppuccin-theme)
 (package! org-auto-tangle)
 (package! yang-mode)
+(package! dts-mode)
