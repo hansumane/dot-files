@@ -11,7 +11,8 @@ BMAGENTA=$'\e[1;35m'
 BWHITE=$'\e[1;37m'
 NRST=$'\e[0m'
 
-PIP_PACKAGES="pynvim pylint jedi 'python-lsp-server[all]'"
+# pynvim pylint jedi 'python-lsp-server[all]'
+PIP_PACKAGES=""
 SU_PIP_PACKAGES=""
 PIP_FLAGS="-U"
 
