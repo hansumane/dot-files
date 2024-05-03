@@ -53,8 +53,6 @@
     :hook (org-mode . org-auto-tangle-mode)
     :config (setq org-auto-tangle-default t))
 
-(load! "~/.config/doom/manual/yang-mode.el")
-
 (use-package! catppuccin-theme
     :config
     (setq doom-theme 'catppuccin
