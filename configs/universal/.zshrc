@@ -88,20 +88,14 @@ cl () {
 
 tm () {
   cd
-  if (( $# == 0 )); then
-    tmux -u new-session -A -s "main"
-  else
-    tmux -u new-session -A -s $@
-  fi
+  (( $# == 0 )) && tmux -u new-session -A -s "main" || tmux -u new-session -A -s "$@"
   cd -
 }
 
 ded () {
   cd
   emacsclient -e '(kill-emacs)' > /dev/null 2>&1
-  if (( $# == 0 )); then
-    emacs --daemon
-  fi
+  (( $# == 0 )) && doom run --daemon
   cd -
 }
 
