@@ -3,6 +3,8 @@ case "$TERM" in
   *screen* ) ;;
   * ) export TERM="xterm-256color" ;;
 esac
+export CC='gcc'
+export CPP='g++'
 export AWK_CMD='awk'
 export SED_CMD='sed'
 export EDITOR='nvim'  # "$HOME/.local/bin/lvim"
@@ -241,8 +243,9 @@ fcc () {
   if (( $# == 0 )); then
     echo 'ERROR: No source file(s) given!'; return 1
   else
-    gcc -march=native -ggdb -O2 -pipe \
-        -std='gnu17' -Wall -Wextra -Wformat -Wpedantic -Winline \
+    $CC -ggdb -O2 -pipe -std='gnu17' \
+        -Wall -Wextra -Wformat -Wpedantic -Winline \
+        -Wno-gnu-binary-literal \
         -o out-$(basename $1 .c) $@
   fi
 }
@@ -251,9 +254,9 @@ fcp () {
   if (( $# == 0 )); then
     echo 'ERROR: No source file(s) given!'; return 1
   else
-    g++ -march=native -ggdb -O2 -pipe \
-        -std='c++20' -Wall -Wextra -Wformat -Wpedantic -Winline \
-        -o out-$(basename $1 .cpp) $@
+    $CPP -ggdb -O2 -pipe -std='c++20' \
+         -Wall -Wextra -Wformat -Wpedantic -Winline \
+         -o out-$(basename $1 .cpp) $@
   fi
 }
 
