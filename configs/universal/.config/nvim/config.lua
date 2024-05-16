@@ -259,6 +259,7 @@ lvim.autocommands = {
 }
 
 lvim.plugins = {
+--[[
   {
     'catppuccin/nvim',
     name = 'catppuccin',
@@ -270,6 +271,7 @@ lvim.plugins = {
       lvim.colorscheme = 'catppuccin'
     end
   },
+--]]
 --[[
   {
     'sainnhe/everforest',
@@ -298,25 +300,6 @@ lvim.plugins = {
 --]]
 --[[
   {
-    'folke/tokyonight.nvim',
-    priority = 1500,
-    lazy = false,
-    config = function()
-      vim.opt.background = 'dark'
-      require'tokyonight'.setup{
-        style = 'night',
-        light_style = 'day',          -- from lightest to darkest:
-        day_brightness = 0.25,        --  1. storm (default)
-        terminal_colors = true,       --  2. moon
-        comments = { italic = true }, --  3. night (lunarvim)
-        keywords = { italic = true },
-      }
-      lvim.colorscheme = 'tokyonight'
-    end
-  },
---]]
---[[
-  {
     'rebelot/kanagawa.nvim',
     priority = 1500,
     lazy = false,
@@ -336,6 +319,23 @@ lvim.plugins = {
     end
   },
 --]]
+  {
+    'folke/tokyonight.nvim',
+    priority = 1500,
+    lazy = false,
+    config = function()
+      vim.opt.background = 'dark'
+      require'tokyonight'.setup{
+        style = 'night',
+        light_style = 'day',          -- from lightest to darkest:
+        day_brightness = 0.25,        --  1. storm (default)
+        terminal_colors = true,       --  2. moon
+        comments = { italic = true }, --  3. night (lunarvim)
+        keywords = { italic = true },
+      }
+      lvim.colorscheme = 'tokyonight'
+    end
+  },
   {
     'hansumane/telescope-orgmode.nvim',
     config = function()
