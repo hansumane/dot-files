@@ -54,7 +54,8 @@ alias vd="$EDITOR ."
 alias cr='cargo run'
 alias crr='cargo run -r'
 alias tl='clear; tmux list-sessions'
-alias ds="doom sync -U --jobs $(nproc)"
+alias dsu="doom sync -u --jobs $(nproc)"
+alias dsU="doom sync -U --jobs $(nproc)"
 alias eza="$LOCAL_LANG eza"
 
 alias la='eza -a'
