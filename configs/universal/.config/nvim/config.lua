@@ -441,7 +441,14 @@ lvim.plugins = {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.offsetEncoding = {'utf-16'}
 require'lvim.lsp.manager'.setup('clangd', {
-  capabilities = capabilities
+  capabilities = capabilities,
+  cmd = {
+    'clangd',
+    '-j=4',
+    '--malloc-trim',
+    '--background-index',
+    '--pch-storage=memory'
+  }
 })
 require'lvim.lsp.manager'.setup('pyright', {
   settings = {
