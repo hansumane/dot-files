@@ -267,7 +267,12 @@ lvim.plugins = {
     lazy = false,
     config = function ()
       vim.opt.background = 'dark'
-      require'catppuccin'.setup{flavour = 'mocha'}
+      require'catppuccin'.setup{
+        background = {
+          dark = 'mocha',
+          light = 'latte'
+        }
+      }
       lvim.colorscheme = 'catppuccin'
     end
   },
@@ -319,6 +324,7 @@ lvim.plugins = {
     end
   },
 --]]
+--[[
   {
     'folke/tokyonight.nvim',
     priority = 1500,
@@ -334,6 +340,28 @@ lvim.plugins = {
         keywords = { italic = true },
       }
       lvim.colorscheme = 'tokyonight'
+    end
+  },
+--]]
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    priority = 1500,
+    lazy = false,
+    config = function()
+      vim.opt.background = 'dark'
+      require'rose-pine'.setup{
+        variant = 'auto',      -- auto, main, moon, dawn
+        dark_variant = 'main', -- main, moon, dawn
+        highlight_groups = {
+          IndentBlanklineChar = {fg = 'muted'},
+          IndentBlanklineSpaceChar = {fg = 'muted'},
+          IndentBlanklineSpaceCharBlankline = {fg = 'muted'},
+          IndentBlanklineContextChar = {fg = 'subtle'},
+          IndentBlanklineContextSpaceChar = {fg = 'subtle'},
+        }
+      }
+      lvim.colorscheme = 'rose-pine'
     end
   },
   {
