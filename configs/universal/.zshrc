@@ -204,21 +204,28 @@ alias edCi='edC i'
 
 edC () {
   if [[ ! -f ./compile_flags.txt ]]; then
-    echo '-std=gnu17' > ./compile_flags.txt
+    echo '-O2' > ./compile_flags.txt
+    echo '-std=gnu17' >> ./compile_flags.txt
+    echo >> ./compile_flags.txt
     echo '-Wall' >> ./compile_flags.txt
     echo '-Wextra' >> ./compile_flags.txt
     echo '-Wformat' >> ./compile_flags.txt
     echo '-Wpedantic' >> ./compile_flags.txt
     echo '-Winline' >> ./compile_flags.txt
+    echo >> ./compile_flags.txt
+    echo '-Werror=inline' >> ./compile_flags.txt
+    echo >> ./compile_flags.txt
+    echo '-Wno-varargs' >> ./compile_flags.txt
     echo '-Wno-variadic-macros' >> ./compile_flags.txt
     echo '-Wno-gnu-empty-struct' >> ./compile_flags.txt
     echo '-Wno-gnu-binary-literal' >> ./compile_flags.txt
     echo '-Wno-gnu-conditional-omitted-operand' >> ./compile_flags.txt
     echo '-Wno-gnu-zero-variadic-macro-arguments' >> ./compile_flags.txt
     echo '-Wno-gnu-statement-expression-from-macro-expansion' >> ./compile_flags.txt
-    echo '#-Wno-vla' >> ./compile_flags.txt
-    echo '#-Wno-unused-variable' >> ./compile_flags.txt
-    echo '#-Wno-unused-parameter' >> ./compile_flags.txt
+    echo >> ./compile_flags.txt
+    echo '# -Wno-vla' >> ./compile_flags.txt
+    echo '# -Wno-unused-variable' >> ./compile_flags.txt
+    echo '# -Wno-unused-parameter' >> ./compile_flags.txt
   fi
 
   $EDITOR ./compile_flags.txt
@@ -238,9 +245,9 @@ fcc () {
   if (( $# == 0 )); then
     echo 'ERROR: No source file(s) given!'; return 1
   else
-    $CC -ggdb -O2 -pipe -std='gnu17' \
+    $CC -O2 -pipe -std='gnu17' \
         -Wall -Wextra -Wformat -Wpedantic -Winline \
-        -Wno-gnu-binary-literal \
+        -Werror=inline -Wno-gnu-binary-literal \
         -o out-$(basename $1 .c) $@
   fi
 }
@@ -249,8 +256,8 @@ fcp () {
   if (( $# == 0 )); then
     echo 'ERROR: No source file(s) given!'; return 1
   else
-    $CPP -ggdb -O2 -pipe -std='c++20' \
-         -Wall -Wextra -Wformat -Wpedantic -Winline \
+    $CPP -O2 -pipe -std='c++20' \
+         -Wall -Wextra -Wformat -Wpedantic -Winline -Werror=inline \
          -o out-$(basename $1 .cpp) $@
   fi
 }
