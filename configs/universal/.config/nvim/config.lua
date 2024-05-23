@@ -147,9 +147,9 @@ lvim.lsp.installer.setup.ensure_installed = {
 } -- flake8, black, google-java-format --
 lvim.builtin.treesitter.ensure_installed = {
   'bash', 'c', 'cpp', 'java', 'lua', 'python', 'rust', 'php',
-  'vim', 'vimdoc', 'org', 'norg', 'comment', 'markdown', 'markdown_inline',
+  'vim', 'vimdoc', 'org', 'comment', 'markdown', 'markdown_inline',
   'git_config', 'git_rebase', 'gitattributes', 'gitcommit', 'gitignore'
-}
+} -- norg --
 lvim.builtin.treesitter.ignore_install = {
   'make'
 }
@@ -258,58 +258,61 @@ lvim.autocommands = {
   }
 }
 
-lvim.plugins = {
---[[
-  {
+local background = 'dark'
+local themes = {
+  catppuccin = {
     'catppuccin/nvim',
     name = 'catppuccin',
     priority = 1500,
     lazy = false,
     config = function ()
-      vim.opt.background = 'dark'
+      vim.opt.background = background
       require'catppuccin'.setup{
         background = {
           dark = 'mocha',
           light = 'latte'
-        }
+        },
+        custom_highlights = function(colors)
+          return {
+            IndentBlanklineChar = {fg = colors.surface0},
+            IndentBlanklineSpaceChar = {fg = colors.surface0},
+            IndentBlanklineSpaceCharBlankline = {fg = colors.surface0},
+            IndentBlanklineContextChar = {fg = colors.surface2},
+            IndentBlanklineContextSpaceChar = {fg = colors.surface2},
+          }
+        end
       }
       lvim.colorscheme = 'catppuccin'
     end
   },
---]]
---[[
-  {
+  everforest = {
     'sainnhe/everforest',
     priority = 1500,
     lazy = false,
     config = function ()
-      vim.opt.background = 'dark'
+      vim.opt.background = background
       vim.g.everforest_background = 'hard'
       vim.g.everforest_better_performance = 1
       lvim.colorscheme = 'everforest'
     end
   },
---]]
---[[
-  {
+  gruvbox_material = {
     'sainnhe/gruvbox-material',
     priority = 1500,
     lazy = false,
     config = function ()
-      vim.opt.background = 'dark'
+      vim.opt.background = background
       vim.g.gruvbox_material_background = 'hard' -- medium (default), soft
       vim.g.gruvbox_material_better_performance = 1
       lvim.colorscheme = 'gruvbox-material'
     end
   },
---]]
---[[
-  {
+  kanagawa = {
     'rebelot/kanagawa.nvim',
     priority = 1500,
     lazy = false,
     config = function()
-      vim.opt.background = 'dark'
+      vim.opt.background = background
       require'kanagawa'.setup{
         compile = false,
         commentStyle = {italic = true},
@@ -323,14 +326,12 @@ lvim.plugins = {
       lvim.colorscheme = 'kanagawa'
     end
   },
---]]
---[[
-  {
+  tokyonight = {
     'folke/tokyonight.nvim',
     priority = 1500,
     lazy = false,
     config = function()
-      vim.opt.background = 'dark'
+      vim.opt.background = background
       require'tokyonight'.setup{
         style = 'night',
         light_style = 'day',          -- from lightest to darkest:
@@ -342,14 +343,13 @@ lvim.plugins = {
       lvim.colorscheme = 'tokyonight'
     end
   },
---]]
-  {
+  rose_pine = {
     'rose-pine/neovim',
     name = 'rose-pine',
     priority = 1500,
     lazy = false,
     config = function()
-      vim.opt.background = 'dark'
+      vim.opt.background = background
       require'rose-pine'.setup{
         variant = 'auto',      -- auto, main, moon, dawn
         dark_variant = 'main', -- main, moon, dawn
@@ -363,7 +363,11 @@ lvim.plugins = {
       }
       lvim.colorscheme = 'rose-pine'
     end
-  },
+  }
+}
+
+lvim.plugins = {
+  themes.catppuccin,
   {
     'hansumane/telescope-orgmode.nvim',
     config = function()
