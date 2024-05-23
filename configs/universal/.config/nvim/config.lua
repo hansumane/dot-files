@@ -443,12 +443,13 @@ lvim.plugins = {
 
 -- fix for clangd multiple offset encodings warning
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+local max_threads = #vim.loop.cpu_info() -- require'luv'.available_parallelism()
 capabilities.offsetEncoding = {'utf-16'}
 require'lvim.lsp.manager'.setup('clangd', {
   capabilities = capabilities,
   cmd = {
     'clangd',
-    '-j=4',
+    '-j=' .. max_threads,
     '--malloc-trim',
     '--background-index',
     '--pch-storage=memory'
