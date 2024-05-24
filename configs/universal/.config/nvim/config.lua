@@ -17,6 +17,42 @@ vim.opt.listchars = {
   extends = '⟩',
 }
 
+local cc_dict_init = 81
+local cc_dict = {
+  init = cc_dict_init,
+  current = cc_dict_init,
+  ['81'] = 91,
+  ['91'] = 101,
+  ['101'] = 121,
+  ['121'] = 81,
+}
+
+local update_cc = function(info, new_cc)
+  if not new_cc then
+    new_cc = cc_dict[vim.opt.colorcolumn:get()[1]] or cc_dict.init
+  end
+
+  cc_dict.current = new_cc
+  vim.opt.textwidth = new_cc - 1
+  if vim.opt.number:get() then
+    vim.opt.colorcolumn = {new_cc}
+  end
+
+  if info then
+    print(info .. "cc: " .. (new_cc - 1))
+  end
+end
+
+require'editorconfig'.properties.max_line_length = function(_, val)
+  local n = tonumber(val)
+  if n then
+    update_cc(nil, n + 1)
+  else
+    assert(val == 'off', 'editorconfig: max_line_length: not number or "off"')
+    update_cc(nil, cc_dict.init)
+  end
+end
+
 lvim.builtin.which_key.mappings['w'] = {}
 lvim.builtin.which_key.mappings['h'] = {}
 lvim.builtin.terminal.open_mapping = '<C-t>'
@@ -48,31 +84,9 @@ lvim.lsp.buffer_mappings.normal_mode.gr = {
 lvim.builtin.which_key.vmappings.k = {':sort<CR>', 'Sort Lines'}
 lvim.builtin.which_key.mappings.j = {'<cmd>noh<CR>', 'No Highlight'}
 
-local cc_dict = {
-  init = 91,
-  current = 91,
-  ['81'] = 91,
-  ['91'] = 101,
-  ['101'] = 121,
-  ['121'] = 81,
-}
 
-local cc_fix = function ()
-  if lvim.colorscheme == 'lunar' or lvim.colorscheme == 'tokyonight' then
-    vim.cmd[[highlight ColorColumn guibg='#292e42']]
-  end
-end
-
-lvim.keys.normal_mode['<C-j>'] = function ()
-  if vim.opt.number:get() then
-    local cc = vim.opt.colorcolumn:get()[1]
-    local new_cc = cc_dict[cc]
-    vim.opt.textwidth = new_cc - 1
-    vim.opt.colorcolumn = {new_cc}
-    cc_dict.current = new_cc
-    print("" .. (new_cc - 1))
-    cc_fix()
-  end
+lvim.keys.normal_mode['<C-j>'] = function()
+  update_cc("")
 end
 
 lvim.keys.normal_mode['<C-k>'] = function ()
@@ -97,8 +111,8 @@ lvim.keys.normal_mode['<C-k>'] = function ()
 end
 
 function SetNumber(toggle)
-  vim.opt.textwidth = toggle and (cc_dict.init - 1) or {}
-  vim.opt.colorcolumn = toggle and {cc_dict.init} or {}
+  vim.opt.textwidth = toggle and (cc_dict.current - 1) or 0
+  vim.opt.colorcolumn = toggle and {cc_dict.current} or {}
   vim.opt.number = toggle and true or false
   vim.opt.cursorline = toggle and true or false
   vim.opt.relativenumber = toggle and true or false
@@ -114,7 +128,6 @@ function SetIndent(settings)
   vim.opt.shiftwidth = shift
   vim.opt.tabstop = tabst
   vim.opt.softtabstop = stabs
-
   vim.opt.expandtab = not noexpand and true or false
 end
 
@@ -217,7 +230,6 @@ lvim.autocommands = {
         command! M4 :lua SetIndent{spaces = 4, tabs = 8, noexpand = true}
         command! MG :lua SetIndent{spaces = 2, tabs = 8, noexpand = true}
         ]]
-        cc_fix()
         SetNumber(true)
       end
     },
@@ -339,6 +351,14 @@ local themes = {
         terminal_colors = true,       --  2. moon
         comments = { italic = true }, --  3. night (lunarvim)
         keywords = { italic = true },
+        on_highlights = function(hl, c)
+          hl.ColorColumn = {bg = c.bg_highlight}
+          hl.IndentBlanklineChar = {fg = c.bg_highlight}
+          hl.IndentBlanklineSpaceChar = {fg = c.bg_highlight}
+          hl.IndentBlanklineSpaceCharBlankline = {fg = c.bg_highlight}
+          hl.IndentBlanklineContextChar = {fg = c.dark3}
+          hl.IndentBlanklineContextSpaceChar = {fg = c.dark3}
+        end
       }
       lvim.colorscheme = 'tokyonight'
     end
@@ -367,7 +387,7 @@ local themes = {
 }
 
 lvim.plugins = {
-  themes.catppuccin,
+  themes.tokyonight,
   {
     'hansumane/telescope-orgmode.nvim',
     config = function()
