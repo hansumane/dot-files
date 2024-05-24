@@ -5,6 +5,7 @@ charset = utf-8
 end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
+max_line_length = 90
 indent_style = space
 indent_size = 4
 tab_width = 8
@@ -14,7 +15,7 @@ indent_style = space
 indent_size = 2
 tab_width = 8
 
-[{configure.ac,Makefile,Makefile.*,*.{s,c,h,vim*,git*}}]
+[{configure.ac,Makefile*,*.{s,c,h,vim*,git*}}]
 indent_style = tab
 indent_size = 8
 tab_width = 8
