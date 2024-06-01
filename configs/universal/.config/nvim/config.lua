@@ -64,8 +64,8 @@ lvim.keys.normal_mode['<S-l>'] = '<cmd>BufferLineCycleNext<CR>'
 lvim.keys.normal_mode['<S-n>'] = '<cmd>BufferLineMovePrev<CR>'
 lvim.keys.normal_mode['<S-m>'] = '<cmd>BufferLineMoveNext<CR>'
 
-lvim.builtin.which_key.mappings.lx = {
-  '<cmd>TroubleToggle<CR>',
+lvim.builtin.which_key.mappings.ld = {
+  '<cmd>Trouble diagnostics toggle focus=true filter.buf=0<CR>',
   'Buffer Diagnostics (Trouble)'
 }
 lvim.builtin.which_key.mappings.lt = {
