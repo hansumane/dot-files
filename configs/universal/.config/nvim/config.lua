@@ -457,7 +457,22 @@ lvim.plugins = {
     'folke/todo-comments.nvim',
     lazy = false,
     dependencies = {'nvim-lua/plenary.nvim'},
-    opts = {}
+    opts = {
+      keywords = {
+        FIX = { icon = " ", color = "error", alt = {"FIXME", "BUG", "ISSUE"} },
+        WARN = { icon = " ", color = "warning", alt = {"WARNING"} },
+        REV = { icon = " ", color = "review", alt = {"REVIEW"} },
+        NOTE = { icon = " ", color = "hint", alt = {"INFO"} },
+        TODO = { icon = " ", color = "info" }
+      },
+      colors = {
+        warning = {"DiagnosticWarn", "WarningMsg", "#FBBF24"},
+        error = {"DiagnosticError", "ErrorMsg", "#DC2626"},
+        review = {"DiagnosticRev", "#BB9AF7"},
+        hint = {"DiagnosticHint", "#10B981"},
+        info = {"DiagnosticInfo", "#2563EB"},
+      }
+    }
   }
 }
 
