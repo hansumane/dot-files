@@ -64,6 +64,10 @@ lvim.keys.normal_mode['<S-l>'] = '<cmd>BufferLineCycleNext<CR>'
 lvim.keys.normal_mode['<S-n>'] = '<cmd>BufferLineMovePrev<CR>'
 lvim.keys.normal_mode['<S-m>'] = '<cmd>BufferLineMoveNext<CR>'
 
+lvim.lsp.buffer_mappings.normal_mode.gr = {
+  [[<cmd>lua require'telescope.builtin'.lsp_references()<CR>]],
+  'References'
+}
 lvim.builtin.which_key.mappings.ld = {
   '<cmd>Trouble diagnostics toggle focus=true filter.buf=0<CR>',
   'Buffer Diagnostics (Trouble)'
@@ -76,9 +80,9 @@ lvim.builtin.which_key.mappings.se = {
   [[<cmd>lua require'telescope.builtin'.live_grep{additional_args = function(opts) return {'--pcre2'} end}<CR>]],
   'PCRE2'
 }
-lvim.lsp.buffer_mappings.normal_mode.gr = {
-  [[<cmd>lua require'telescope.builtin'.lsp_references()<CR>]],
-  'References'
+lvim.builtin.which_key.mappings.t = {
+  [[<cmd>lua vim.opt.background = ((vim.opt.background:get() == 'dark' and 'light') or 'dark')<CR>]],
+  'Change dark/light'
 }
 
 lvim.builtin.which_key.vmappings.k = {':sort<CR>', 'Sort Lines'}
