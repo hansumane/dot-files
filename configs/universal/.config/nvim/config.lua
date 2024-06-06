@@ -392,6 +392,7 @@ local themes = {
   }
 }
 
+local _print = print
 lvim.plugins = {
   themes.tokyonight,
   {
@@ -425,7 +426,6 @@ lvim.plugins = {
     priority = 1490,
     lazy = false,
     config = function()
-      local _print = print
       local notify = require'notify'
 
       notify.setup{
