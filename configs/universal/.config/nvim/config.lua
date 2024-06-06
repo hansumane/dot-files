@@ -103,7 +103,7 @@ lvim.keys.normal_mode['<C-k>'] = function ()
       precedes = '⟨',
       extends = '⟩',
     }
-    print("Indent Guidelines: off")
+    vim.notify("Indent Guidelines: off")
   else
     vim.opt.listchars = {
       tab = '   ',
@@ -112,7 +112,7 @@ lvim.keys.normal_mode['<C-k>'] = function ()
       extends = '⟩',
     }
     require'indent_blankline.commands'.enable(true)
-    print("Indent Guidelines: on")
+    vim.notify("Indent Guidelines: on")
   end
 end
 
