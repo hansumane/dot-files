@@ -17,10 +17,10 @@ vim.opt.listchars = {
   extends = '⟩',
 }
 
-local cc_dict_init = 81
+local cd_init = 81
 local cc_dict = {
-  init = cc_dict_init,
-  current = cc_dict_init,
+  init = cd_init,
+  current = cd_init,
   ['81'] = 91,
   ['91'] = 101,
   ['101'] = 121,
