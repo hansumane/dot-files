@@ -391,6 +391,15 @@ local themes = {
       }
       lvim.colorscheme = 'rose-pine'
     end
+  },
+  lackluster = {
+    'slugbyte/lackluster.nvim',
+    priority = 1500,
+    lazy = false,
+    config = function()
+      vim.opt.background = background
+      lvim.colorscheme = 'lackluster-hack'
+    end
   }
 }
 
