@@ -27,6 +27,7 @@ local cc_dict = {
   ['121'] = 81,
 }
 
+local enable_guidelines = true
 local update_cc = function(info, new_cc)
   if not new_cc then
     new_cc = cc_dict[vim.opt.colorcolumn:get()[1]] or cc_dict.init
@@ -95,7 +96,7 @@ end
 
 lvim.keys.normal_mode['<C-k>'] = function ()
   if not vim.opt.listchars:get().space then
-    require'indent_blankline.commands'.disable(true)
+    if enable_guidelines then require'indent_blankline.commands'.disable(true) end
     vim.opt.listchars = {
       tab = '-->',
       space = '⋅',
@@ -111,7 +112,7 @@ lvim.keys.normal_mode['<C-k>'] = function ()
       precedes = '⟨',
       extends = '⟩',
     }
-    require'indent_blankline.commands'.enable(true)
+    if enable_guidelines then require'indent_blankline.commands'.enable(true) end
     vim.notify("Indent Guidelines: on")
   end
 end
@@ -140,6 +141,7 @@ end
 lvim.format_on_save.enabled = false
 lvim.builtin.nvimtree.setup.view.adaptive_size = true
 lvim.builtin.indentlines.options.use_treesitter = true
+if not enable_guidelines then lvim.builtin.indentlines.active = false end
 
 lvim.builtin.telescope.defaults.initial_mode = 'normal'
 lvim.builtin.telescope.defaults.layout_strategy = 'horizontal'
