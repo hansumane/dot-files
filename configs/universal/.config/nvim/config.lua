@@ -68,7 +68,7 @@ lvim.lsp.buffer_mappings.normal_mode.gr = {
   [[<cmd>lua require'telescope.builtin'.lsp_references()<CR>]],
   'References'
 }
-lvim.builtin.which_key.mappings.ld = {
+lvim.builtin.which_key.mappings.lx = {
   '<cmd>Trouble diagnostics toggle focus=true filter.buf=0<CR>',
   'Buffer Diagnostics (Trouble)'
 }
