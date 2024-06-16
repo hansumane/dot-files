@@ -54,6 +54,36 @@ require'editorconfig'.properties.max_line_length = function(_, val)
   end
 end
 
+RestoreBG = function(store)
+  local mode = ((store and 'w') or 'r')
+  local new_theme = ((vim.opt.background:get() == 'dark' and 'light') or 'dark')
+  local file, err = io.open(vim.env.HOME .. "/.config/lvim/theme.txt", mode)
+
+  if store then
+    if not file then
+      vim.notify("Cannot open background file: " .. err, vim.log.levels.ERROR)
+    else
+      file:write(new_theme)
+      file:close()
+    end
+
+    vim.opt.background = new_theme
+    return new_theme
+  else
+    if not file then
+      return 'dark'
+    end
+
+    for line in file:lines() do
+      new_theme = ((line == 'light' and 'light') or 'dark')
+      break
+    end
+
+    file:close()
+    return new_theme
+  end
+end
+
 lvim.builtin.which_key.mappings['w'] = {}
 lvim.builtin.which_key.mappings['h'] = {}
 lvim.builtin.terminal.open_mapping = '<C-t>'
@@ -82,7 +112,7 @@ lvim.builtin.which_key.mappings.se = {
   'PCRE2'
 }
 lvim.builtin.which_key.mappings.t = {
-  [[<cmd>lua vim.opt.background = ((vim.opt.background:get() == 'dark' and 'light') or 'dark')<CR>]],
+  [[<cmd>lua RestoreBG(true)<CR>]],
   'Change dark/light'
 }
 
@@ -278,7 +308,7 @@ lvim.autocommands = {
   }
 }
 
-local background = 'dark'
+local background = RestoreBG(false)
 local themes = {
   catppuccin = {
     'catppuccin/nvim',
