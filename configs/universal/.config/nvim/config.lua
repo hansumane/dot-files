@@ -57,11 +57,11 @@ end
 RestoreBG = function(store)
   local mode = ((store and 'w') or 'r')
   local new_theme = ((vim.opt.background:get() == 'dark' and 'light') or 'dark')
-  local file, err = io.open(vim.env.HOME .. "/.config/lvim/theme.txt", mode)
+  local file, err = io.open(vim.fn.stdpath'config' .. '/theme.txt', mode)
 
   if store then
     if not file then
-      vim.notify("Cannot open background file: " .. err, vim.log.levels.ERROR)
+      vim.notify('Cannot open background file: ' .. err, vim.log.levels.ERROR)
     else
       file:write(new_theme)
       file:close()
