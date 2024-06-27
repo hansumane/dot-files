@@ -80,6 +80,19 @@ bt () {
   bat --tabs=8 $@
 }
 
+hxl () {
+  setopt shwordsplit
+  if (( $# == 0 )); then
+    echo 'Error: No file(s) given!'; return 1
+  else
+    for FN in "$@"; do
+      echo "$FN"
+      hexyl "$FN"
+    done
+  fi
+  unsetopt shwordsplit
+}
+
 cl () {
   clear
   case $TERM in
