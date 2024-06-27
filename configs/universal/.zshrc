@@ -259,8 +259,8 @@ fcc () {
     echo 'ERROR: No source file(s) given!'; return 1
   else
     $CC -O2 -pipe -std='gnu17' \
-        -Wall -Wextra -Wformat -Wpedantic -Winline \
-        -Werror=inline -Wno-gnu-binary-literal \
+        -Wall -Wextra -Wformat -Wpedantic -Winline -Werror=inline \
+        -Wno-variadic-macros \
         -o out-$(basename $1 .c) $@
   fi
 }
