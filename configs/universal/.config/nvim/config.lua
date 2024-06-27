@@ -357,6 +357,18 @@ local themes = {
       lvim.colorscheme = 'gruvbox-material'
     end
   },
+  sonokai = {
+    'sainnhe/sonokai',
+    priority = 1500,
+    lazy = false,
+    config = function ()
+      -- default, atlantis, andromeda, shusia, maia, espresso
+      vim.g.sonokai_style = 'default'
+      vim.g.sonokai_enable_italic = true
+      vim.g.sonokai_better_performance = 1
+      lvim.colorscheme = 'sonokai'
+    end
+  },
   kanagawa = {
     'rebelot/kanagawa.nvim',
     priority = 1500,
