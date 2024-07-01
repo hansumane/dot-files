@@ -521,15 +521,15 @@ lvim.plugins = {
         FIX = { icon = " ", color = "error", alt = {"FIXME", "BUG", "ISSUE"} },
         WARN = { icon = " ", color = "warning", alt = {"WARNING"} },
         REV = { icon = " ", color = "review", alt = {"REVIEW"} },
-        NOTE = { icon = " ", color = "hint", alt = {"INFO"} },
-        TODO = { icon = " ", color = "info" }
+        NOTE = { icon = " ", color = "note", alt = {"INFO"} },
+        TODO = { icon = " ", color = "todo" }
       },
       colors = {
-        warning = {"DiagnosticWarn", "WarningMsg", "#FBBF24"},
         error = {"DiagnosticError", "ErrorMsg", "#DC2626"},
+        warning = {"DiagnosticWarn", "WarningMsg", "#FBBF24"},
         review = {"DiagnosticRev", "#BB9AF7"},
-        hint = {"DiagnosticHint", "#10B981"},
-        info = {"DiagnosticInfo", "#2563EB"},
+        note = {"DiagnosticHint", "#10B981"},
+        todo = {"DiagnosticInfo", "#2563EB"},
       }
     }
   }
