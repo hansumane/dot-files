@@ -429,8 +429,6 @@ local themes = {
           IndentBlanklineSpaceCharBlankline = {fg = 'overlay'},
           IndentBlanklineContextChar = {fg = 'highlight_med'},
           IndentBlanklineContextSpaceChar = {fg = 'highlight_med'},
-          ['@lsp.type.comment.c'] = {link = '@comment'},
-          ['@lsp.type.comment.cpp'] = {link = '@comment'},
         }
       }
       lvim.colorscheme = 'rose-pine'
