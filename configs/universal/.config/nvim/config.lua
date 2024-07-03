@@ -429,6 +429,8 @@ local themes = {
           IndentBlanklineSpaceCharBlankline = {fg = 'muted'},
           IndentBlanklineContextChar = {fg = 'subtle'},
           IndentBlanklineContextSpaceChar = {fg = 'subtle'},
+          ['@lsp.type.comment.c'] = {link = '@comment'},
+          ['@lsp.type.comment.cpp'] = {link = '@comment'},
         }
       }
       lvim.colorscheme = 'rose-pine'
@@ -447,7 +449,7 @@ local themes = {
 
 local _print = print
 lvim.plugins = {
-  themes.tokyonight,
+  themes.rose_pine,
   {
     'hansumane/telescope-orgmode.nvim',
     config = function()
