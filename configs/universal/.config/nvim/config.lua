@@ -40,7 +40,7 @@ local update_cc = function(info, new_cc)
   end
 
   if info then
-    print(info .. "cc: " .. (new_cc - 1))
+    print(info .. 'cc: ' .. (new_cc - 1))
   end
 end
 
@@ -54,7 +54,7 @@ require'editorconfig'.properties.max_line_length = function(_, val)
   end
 end
 
-RestoreBG = function(store)
+function RestoreBG(store)
   local mode = ((store and 'w') or 'r')
   local new_theme = ((vim.opt.background:get() == 'dark' and 'light') or 'dark')
   local file, err = io.open(vim.fn.stdpath'config' .. '/theme.txt', mode)
@@ -121,10 +121,10 @@ lvim.builtin.which_key.mappings.j = {'<cmd>noh<CR>', 'No Highlight'}
 
 
 lvim.keys.normal_mode['<C-j>'] = function()
-  update_cc("")
+  update_cc('')
 end
 
-lvim.keys.normal_mode['<C-k>'] = function ()
+lvim.keys.normal_mode['<C-k>'] = function()
   if not vim.opt.listchars:get().space then
     if enable_guidelines then require'indent_blankline.commands'.disable(true) end
     vim.opt.listchars = {
@@ -134,7 +134,7 @@ lvim.keys.normal_mode['<C-k>'] = function ()
       precedes = '⟨',
       extends = '⟩',
     }
-    vim.notify("Indent Guidelines: off")
+    vim.notify'Indent Guidelines: off'
   else
     vim.opt.listchars = {
       tab = '   ',
@@ -143,7 +143,7 @@ lvim.keys.normal_mode['<C-k>'] = function ()
       extends = '⟩',
     }
     if enable_guidelines then require'indent_blankline.commands'.enable(true) end
-    vim.notify("Indent Guidelines: on")
+    vim.notify'Indent Guidelines: on'
   end
 end
 
@@ -208,25 +208,25 @@ lvim.builtin.treesitter.ignore_install = {
 local components = require'lvim.core.lualine.components'
 lvim.builtin.lualine.sections.lualine_a = {'mode'}
 lvim.builtin.lualine.sections.lualine_b = {
-  function ()
-    local isvm = vim.fn.mode():find("[vV]")
-    if not isvm then return "" end
+  function()
+    local isvm = vim.fn.mode():find('[vV]')
+    if not isvm then return '' end
 
-    local starts = vim.fn.line("v")
-    local ends = vim.fn.line(".")
+    local starts = vim.fn.line('v')
+    local ends = vim.fn.line('.')
     local lines = starts <= ends and ends - starts + 1 or starts - ends + 1
 
     if lines <= 1 then
-      return "" .. vim.fn.wordcount().visual_chars .. "C"
+      return '' .. vim.fn.wordcount().visual_chars .. 'C'
     else
-      return "" .. lines .. "L"
+      return '' .. lines .. 'L'
     end
   end
 }
 lvim.builtin.lualine.sections.lualine_x = {
   components.lsp,
   components.filetype,
-  function ()
+  function()
     if vim.opt.iminsert:get() ~= 0 then
       return 'RU'
     else
@@ -235,7 +235,7 @@ lvim.builtin.lualine.sections.lualine_x = {
   end
 }
 lvim.builtin.lualine.sections.lualine_y = {
-  function ()
+  function()
     local shift = vim.opt.shiftwidth:get()
     local tabst = vim.opt.tabstop:get()
     local expand = vim.opt.expandtab:get()
@@ -254,8 +254,8 @@ lvim.builtin.lualine.sections.lualine_y = {
 lvim.autocommands = {
   {
     'VimEnter', {
-      callback = function ()
-        vim.cmd [[
+      callback = function()
+        vim.cmd[[
         command! SN :lua SetNumber(true)
         command! USN :lua SetNumber(false)
         command! S2 :lua SetIndent{spaces = 2}
@@ -274,7 +274,7 @@ lvim.autocommands = {
   },
   {
     'QuitPre', {
-      callback = function ()
+      callback = function()
         local tree_wins = {}
         local floating_wins = {}
         local wins = vim.api.nvim_list_wins()
@@ -299,8 +299,8 @@ lvim.autocommands = {
   },
   {
     'FileType', {
-      pattern = "org",
-      callback = function ()
+      pattern = 'org',
+      callback = function()
         vim.wo.wrap = true
         vim.wo.linebreak = true
       end
@@ -315,7 +315,7 @@ local themes = {
     name = 'catppuccin',
     priority = 1500,
     lazy = false,
-    config = function ()
+    config = function()
       vim.opt.background = background
       require'catppuccin'.setup{
         background = {
@@ -339,7 +339,7 @@ local themes = {
     'sainnhe/everforest',
     priority = 1500,
     lazy = false,
-    config = function ()
+    config = function()
       vim.opt.background = background
       vim.g.everforest_background = 'hard'
       vim.g.everforest_better_performance = 1
@@ -350,7 +350,7 @@ local themes = {
     'sainnhe/gruvbox-material',
     priority = 1500,
     lazy = false,
-    config = function ()
+    config = function()
       vim.opt.background = background
       vim.g.gruvbox_material_background = 'hard' -- medium (default), soft
       vim.g.gruvbox_material_better_performance = 1
@@ -361,7 +361,7 @@ local themes = {
     'sainnhe/sonokai',
     priority = 1500,
     lazy = false,
-    config = function ()
+    config = function()
       -- default, atlantis, andromeda, shusia, maia, espresso
       vim.g.sonokai_style = 'default'
       vim.g.sonokai_enable_italic = true
@@ -518,18 +518,18 @@ lvim.plugins = {
     dependencies = {'nvim-lua/plenary.nvim'},
     opts = {
       keywords = {
-        FIX = { icon = " ", color = "error", alt = {"FIXME", "BUG", "ISSUE"} },
-        WARN = { icon = " ", color = "warning", alt = {"WARNING"} },
-        REV = { icon = " ", color = "review", alt = {"REVIEW"} },
-        NOTE = { icon = " ", color = "note", alt = {"INFO"} },
-        TODO = { icon = " ", color = "todo" }
+        FIX = { icon = ' ', color = 'error', alt = {'FIXME', 'BUG', 'ISSUE'} },
+        WARN = { icon = ' ', color = 'warning', alt = {'WARNING'} },
+        REV = { icon = ' ', color = 'review', alt = {'REVIEW'} },
+        NOTE = { icon = ' ', color = 'note', alt = {'INFO'} },
+        TODO = { icon = ' ', color = 'todo' }
       },
       colors = {
-        error = {"DiagnosticError", "ErrorMsg", "#DC2626"},
-        warning = {"DiagnosticWarn", "WarningMsg", "#FBBF24"},
-        review = {"DiagnosticRev", "#BB9AF7"},
-        note = {"DiagnosticHint", "#10B981"},
-        todo = {"DiagnosticInfo", "#2563EB"},
+        error = {'DiagnosticError', 'ErrorMsg', '#DC2626'},
+        warning = {'DiagnosticWarn', 'WarningMsg', '#FBBF24'},
+        review = {'DiagnosticRev', '#BB9AF7'},
+        note = {'DiagnosticHint', '#10B981'},
+        todo = {'DiagnosticInfo', '#2563EB'},
       }
     }
   }
