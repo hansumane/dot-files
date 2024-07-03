@@ -424,11 +424,11 @@ local themes = {
         variant = 'auto',      -- auto, main, moon, dawn
         dark_variant = 'main', -- main, moon, dawn
         highlight_groups = {
-          IndentBlanklineChar = {fg = 'muted'},
-          IndentBlanklineSpaceChar = {fg = 'muted'},
-          IndentBlanklineSpaceCharBlankline = {fg = 'muted'},
-          IndentBlanklineContextChar = {fg = 'subtle'},
-          IndentBlanklineContextSpaceChar = {fg = 'subtle'},
+          IndentBlanklineChar = {fg = 'overlay'},
+          IndentBlanklineSpaceChar = {fg = 'overlay'},
+          IndentBlanklineSpaceCharBlankline = {fg = 'overlay'},
+          IndentBlanklineContextChar = {fg = 'highlight_med'},
+          IndentBlanklineContextSpaceChar = {fg = 'highlight_med'},
           ['@lsp.type.comment.c'] = {link = '@comment'},
           ['@lsp.type.comment.cpp'] = {link = '@comment'},
         }
