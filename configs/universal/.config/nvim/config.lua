@@ -520,18 +520,18 @@ lvim.plugins = {
     dependencies = {'nvim-lua/plenary.nvim'},
     opts = {
       keywords = {
-        FIX = { icon = ' ', color = 'error', alt = {'FIXME', 'BUG', 'ISSUE'} },
+        FIX  = { icon = ' ', color = 'error', alt = {'FIXME', 'BUG', 'ISSUE'} },
         WARN = { icon = ' ', color = 'warning', alt = {'WARNING'} },
-        REV = { icon = ' ', color = 'review', alt = {'REVIEW'} },
+        REV  = { icon = ' ', color = 'review', alt = {'REVIEW'} },
         NOTE = { icon = ' ', color = 'note', alt = {'INFO'} },
         TODO = { icon = ' ', color = 'todo' }
       },
       colors = {
-        error = {'DiagnosticError', 'ErrorMsg', '#DC2626'},
-        warning = {'DiagnosticWarn', 'WarningMsg', '#FBBF24'},
-        review = {'DiagnosticRev', '#BB9AF7'},
-        note = {'DiagnosticHint', '#10B981'},
-        todo = {'DiagnosticInfo', '#2563EB'},
+        error   = {'@comment.error'},
+        warning = {'@comment.warning'},
+        review  = {'@comment.hint'},
+        note    = {'@comment.note'},
+        todo    = {'@comment.todo'}
       }
     }
   }
