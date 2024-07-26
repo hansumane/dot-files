@@ -445,9 +445,34 @@ local themes = {
   }
 }
 
+local opt_plugins = {
+  todo_comments = {
+    'folke/todo-comments.nvim',
+    lazy = false,
+    dependencies = {'nvim-lua/plenary.nvim'},
+    opts = {
+      keywords = {
+        FIX  = { icon = ' ', color = 'error', alt = {'FIXME', 'BUG', 'ISSUE'} },
+        WARN = { icon = ' ', color = 'warning', alt = {'WARNING'} },
+        REV  = { icon = ' ', color = 'review', alt = {'REVIEW'} },
+        NOTE = { icon = ' ', color = 'note', alt = {'INFO'} },
+        TODO = { icon = ' ', color = 'todo' }
+      },
+      colors = {
+        error   = {'@comment.error'},
+        warning = {'@comment.warning'},
+        review  = {'@comment.hint'},
+        note    = {'@comment.note'},
+        todo    = {'@comment.todo'}
+      }
+    }
+  }
+}
+
 local _print = print
 lvim.plugins = {
   themes.rose_pine,
+  opt_plugins.todo_comments,
   {
     'hansumane/telescope-orgmode.nvim',
     config = function()
@@ -511,27 +536,6 @@ lvim.plugins = {
     lazy = false,
     dependencies = {'nvim-tree/nvim-web-devicons'},
     opts = {}
-  },
-  {
-    'folke/todo-comments.nvim',
-    lazy = false,
-    dependencies = {'nvim-lua/plenary.nvim'},
-    opts = {
-      keywords = {
-        FIX  = { icon = ' ', color = 'error', alt = {'FIXME', 'BUG', 'ISSUE'} },
-        WARN = { icon = ' ', color = 'warning', alt = {'WARNING'} },
-        REV  = { icon = ' ', color = 'review', alt = {'REVIEW'} },
-        NOTE = { icon = ' ', color = 'note', alt = {'INFO'} },
-        TODO = { icon = ' ', color = 'todo' }
-      },
-      colors = {
-        error   = {'@comment.error'},
-        warning = {'@comment.warning'},
-        review  = {'@comment.hint'},
-        note    = {'@comment.note'},
-        todo    = {'@comment.todo'}
-      }
-    }
   }
 }
 
