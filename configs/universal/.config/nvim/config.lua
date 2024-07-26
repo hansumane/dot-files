@@ -195,7 +195,7 @@ lvim.lsp.automatic_servers_installation = false
 lvim.lsp.installer.setup.automatic_installation = false
 lvim.lsp.installer.setup.ensure_installed = {
   'lua_ls', 'clangd', 'rust_analyzer', 'pyright', 'jdtls'
-} -- flake8, black, google-java-format --
+} -- black, google-java-format --
 lvim.builtin.treesitter.ensure_installed = {
   'bash', 'c', 'cpp', 'java', 'lua', 'python', 'rust', 'php',
   'vim', 'vimdoc', 'org', 'comment', 'markdown', 'markdown_inline',
@@ -602,17 +602,7 @@ require'lvim.lsp.manager'.setup('lua_ls', {
   }
 })
 
-local linters = require'lvim.lsp.null-ls.linters'
-local formatters = require'lvim.lsp.null-ls.formatters'
-
-linters.setup{
-  {
-    command = 'flake8',
-    args = {'--max-line-length', '120'},
-    filetypes = {'python'}
-  }
-}
-formatters.setup{
+require'lvim.lsp.null-ls.formatters'.setup{
   {
     command = 'black',
     filetypes = {'python'}
