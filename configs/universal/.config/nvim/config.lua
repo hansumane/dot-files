@@ -36,7 +36,7 @@ local update_cc = function(info, new_cc)
   cc_dict.current = new_cc
   vim.opt.textwidth = new_cc - 1
   if vim.opt.number:get() then
-    vim.opt.colorcolumn = {new_cc}
+    vim.opt.colorcolumn = { new_cc }
   end
 
   if info then
@@ -108,7 +108,7 @@ lvim.builtin.which_key.mappings.lt = {
   'TODOs'
 }
 lvim.builtin.which_key.mappings.se = {
-  [[<cmd>lua require'telescope.builtin'.live_grep{additional_args = function(opts) return {'--pcre2'} end}<CR>]],
+  [[<cmd>lua require'telescope.builtin'.live_grep{ additional_args = function(opts) return { '--pcre2' } end }<CR>]],
   'PCRE2'
 }
 lvim.builtin.which_key.mappings.t = {
@@ -116,9 +116,8 @@ lvim.builtin.which_key.mappings.t = {
   'Change dark/light'
 }
 
-lvim.builtin.which_key.vmappings.k = {':sort<CR>', 'Sort Lines'}
-lvim.builtin.which_key.mappings.j = {'<cmd>noh<CR>', 'No Highlight'}
-
+lvim.builtin.which_key.vmappings.k = { ':sort<CR>', 'Sort Lines' }
+lvim.builtin.which_key.mappings.j = { '<cmd>noh<CR>', 'No Highlight' }
 
 lvim.keys.normal_mode['<C-j>'] = function()
   update_cc('')
@@ -149,7 +148,7 @@ end
 
 function SetNumber(toggle)
   vim.opt.textwidth = toggle and (cc_dict.current - 1) or 0
-  vim.opt.colorcolumn = toggle and {cc_dict.current} or {}
+  vim.opt.colorcolumn = toggle and { cc_dict.current } or {}
   vim.opt.number = toggle and true or false
   vim.opt.cursorline = toggle and true or false
   vim.opt.relativenumber = toggle and true or false
@@ -185,7 +184,7 @@ lvim.builtin.treesitter.sync_install = false
 lvim.builtin.treesitter.highlight.enable = true
 
 vim.lsp.set_log_level'off'
--- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, {'pyright'})
+-- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { 'pyright' })
 -- lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
 --   return server ~= 'jedi_language_server'
 -- end, lvim.lsp.automatic_configuration.skipped_servers)
@@ -206,7 +205,7 @@ lvim.builtin.treesitter.ignore_install = {
 }
 
 local components = require'lvim.core.lualine.components'
-lvim.builtin.lualine.sections.lualine_a = {'mode'}
+lvim.builtin.lualine.sections.lualine_a = { 'mode' }
 lvim.builtin.lualine.sections.lualine_b = {
   function()
     local isvm = vim.fn.mode():find('[vV]')
@@ -258,15 +257,15 @@ lvim.autocommands = {
         vim.cmd[[
         command! SN :lua SetNumber(true)
         command! USN :lua SetNumber(false)
-        command! S2 :lua SetIndent{spaces = 2}
-        command! S4 :lua SetIndent{spaces = 4}
-        command! S8 :lua SetIndent{spaces = 8}
-        command! T2 :lua SetIndent{spaces = 2, tabs = 2, noexpand = true}
-        command! T4 :lua SetIndent{spaces = 4, tabs = 4, noexpand = true}
-        command! T8 :lua SetIndent{spaces = 8, tabs = 8, noexpand = true}
-        command! M2 :lua SetIndent{spaces = 2, tabs = 4, noexpand = true}
-        command! M4 :lua SetIndent{spaces = 4, tabs = 8, noexpand = true}
-        command! MG :lua SetIndent{spaces = 2, tabs = 8, noexpand = true}
+        command! S2 :lua SetIndent{ spaces = 2 }
+        command! S4 :lua SetIndent{ spaces = 4 }
+        command! S8 :lua SetIndent{ spaces = 8 }
+        command! T2 :lua SetIndent{ spaces = 2, tabs = 2, noexpand = true }
+        command! T4 :lua SetIndent{ spaces = 4, tabs = 4, noexpand = true }
+        command! T8 :lua SetIndent{ spaces = 8, tabs = 8, noexpand = true }
+        command! M2 :lua SetIndent{ spaces = 2, tabs = 4, noexpand = true }
+        command! M4 :lua SetIndent{ spaces = 4, tabs = 8, noexpand = true }
+        command! MG :lua SetIndent{ spaces = 2, tabs = 8, noexpand = true }
         ]]
         SetNumber(true)
       end
@@ -324,11 +323,11 @@ local themes = {
         },
         custom_highlights = function(colors)
           return {
-            IndentBlanklineChar = {fg = colors.surface0},
-            IndentBlanklineSpaceChar = {fg = colors.surface0},
-            IndentBlanklineSpaceCharBlankline = {fg = colors.surface0},
-            IndentBlanklineContextChar = {fg = colors.surface2},
-            IndentBlanklineContextSpaceChar = {fg = colors.surface2},
+            IndentBlanklineChar = { fg = colors.surface0 },
+            IndentBlanklineSpaceChar = { fg = colors.surface0 },
+            IndentBlanklineSpaceCharBlankline = { fg = colors.surface0 },
+            IndentBlanklineContextChar = { fg = colors.surface2 },
+            IndentBlanklineContextSpaceChar = { fg = colors.surface2 },
           }
         end
       }
@@ -377,9 +376,9 @@ local themes = {
       vim.opt.background = background
       require'kanagawa'.setup{
         compile = false,
-        commentStyle = {italic = true},
-        keywordStyle = {italic = true},
-        statementStyle = {bold = true},
+        commentStyle = { italic = true },
+        keywordStyle = { italic = true },
+        statementStyle = { bold = true },
         background = {
           dark = 'dragon', -- wave
           light = 'lotus'
@@ -402,12 +401,12 @@ local themes = {
         comments = { italic = true }, --  3. night (lunarvim)
         keywords = { italic = true },
         on_highlights = function(hl, c)
-          hl.ColorColumn = {bg = c.bg_highlight}
-          hl.IndentBlanklineChar = {fg = c.bg_highlight}
-          hl.IndentBlanklineSpaceChar = {fg = c.bg_highlight}
-          hl.IndentBlanklineSpaceCharBlankline = {fg = c.bg_highlight}
-          hl.IndentBlanklineContextChar = {fg = c.dark3}
-          hl.IndentBlanklineContextSpaceChar = {fg = c.dark3}
+          hl.ColorColumn = { bg = c.bg_highlight }
+          hl.IndentBlanklineChar = { fg = c.bg_highlight }
+          hl.IndentBlanklineSpaceChar = { fg = c.bg_highlight }
+          hl.IndentBlanklineSpaceCharBlankline = { fg = c.bg_highlight }
+          hl.IndentBlanklineContextChar = { fg = c.dark3 }
+          hl.IndentBlanklineContextSpaceChar = { fg = c.dark3 }
         end
       }
       lvim.colorscheme = 'tokyonight'
@@ -424,11 +423,11 @@ local themes = {
         variant = 'auto',      -- auto, main, moon, dawn
         dark_variant = 'main', -- main, moon, dawn
         highlight_groups = {
-          IndentBlanklineChar = {fg = 'overlay'},
-          IndentBlanklineSpaceChar = {fg = 'overlay'},
-          IndentBlanklineSpaceCharBlankline = {fg = 'overlay'},
-          IndentBlanklineContextChar = {fg = 'highlight_med'},
-          IndentBlanklineContextSpaceChar = {fg = 'highlight_med'},
+          IndentBlanklineChar = { fg = 'overlay' },
+          IndentBlanklineSpaceChar = { fg = 'overlay' },
+          IndentBlanklineSpaceCharBlankline = { fg = 'overlay' },
+          IndentBlanklineContextChar = { fg = 'highlight_med' },
+          IndentBlanklineContextSpaceChar = { fg = 'highlight_med' },
         }
       }
       lvim.colorscheme = 'rose-pine'
@@ -449,21 +448,21 @@ local opt_plugins = {
   todo_comments = {
     'folke/todo-comments.nvim',
     lazy = false,
-    dependencies = {'nvim-lua/plenary.nvim'},
+    dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {
       keywords = {
-        FIX  = { icon = ' ', color = 'error', alt = {'FIXME', 'BUG', 'ISSUE'} },
-        WARN = { icon = ' ', color = 'warning', alt = {'WARNING'} },
-        REV  = { icon = ' ', color = 'review', alt = {'REVIEW'} },
-        NOTE = { icon = ' ', color = 'note', alt = {'INFO'} },
+        FIX  = { icon = ' ', color = 'error', alt = { 'FIXME', 'BUG', 'ISSUE' } },
+        WARN = { icon = ' ', color = 'warning', alt = { 'WARNING' } },
+        REV  = { icon = ' ', color = 'review', alt = { 'REVIEW' } },
+        NOTE = { icon = ' ', color = 'note', alt = { 'INFO' } },
         TODO = { icon = ' ', color = 'todo' }
       },
       colors = {
-        error   = {'@comment.error'},
-        warning = {'@comment.warning'},
-        review  = {'@comment.hint'},
-        note    = {'@comment.note'},
-        todo    = {'@comment.todo'}
+        error   = { '@comment.error' },
+        warning = { '@comment.warning' },
+        review  = { '@comment.hint' },
+        note    = { '@comment.note' },
+        todo    = { '@comment.todo' }
       }
     }
   }
@@ -490,7 +489,7 @@ lvim.plugins = {
   {
     'nvim-orgmode/orgmode',
     event = 'VeryLazy',
-    dependencies = {'akinsho/org-bullets.nvim'},
+    dependencies = { 'akinsho/org-bullets.nvim' },
     config = function()
       require'org-bullets'.setup()
       require'orgmode'.setup{
@@ -534,7 +533,7 @@ lvim.plugins = {
   {
     'folke/trouble.nvim',
     lazy = false,
-    dependencies = {'nvim-tree/nvim-web-devicons'},
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {}
   }
 }
@@ -542,7 +541,7 @@ lvim.plugins = {
 -- fix for clangd multiple offset encodings warning
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local max_threads = #vim.loop.cpu_info() -- require'luv'.available_parallelism()
-capabilities.offsetEncoding = {'utf-16'}
+capabilities.offsetEncoding = { 'utf-16' }
 require'lvim.lsp.manager'.setup('clangd', {
   capabilities = capabilities,
   cmd = {
@@ -605,15 +604,15 @@ require'lvim.lsp.manager'.setup('lua_ls', {
 require'lvim.lsp.null-ls.formatters'.setup{
   {
     command = 'black',
-    filetypes = {'python'}
+    filetypes = { 'python' }
   },
   {
     command = 'google-java-format',
-    filetypes = {'java'}
+    filetypes = { 'java' }
   },
   {
     command = 'clang-format',
-    filetypes = {'c', 'cpp'}
+    filetypes = { 'c', 'cpp' }
   }
 }
 
