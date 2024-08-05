@@ -8,7 +8,7 @@ vim.opt.keymap = 'russian-jcukenwin'
 vim.opt.iminsert = 0
 vim.opt.imsearch = 0
 
-vim.cmd[[set iskeyword-=_]]
+-- vim.cmd[[set iskeyword-=_]]
 vim.opt.showbreak = '↪'
 vim.opt.listchars = {
   tab = '   ',
@@ -94,6 +94,8 @@ lvim.keys.normal_mode['<S-h>'] = '<cmd>BufferLineCyclePrev<CR>'
 lvim.keys.normal_mode['<S-l>'] = '<cmd>BufferLineCycleNext<CR>'
 lvim.keys.normal_mode['<S-n>'] = '<cmd>BufferLineMovePrev<CR>'
 lvim.keys.normal_mode['<S-m>'] = '<cmd>BufferLineMoveNext<CR>'
+lvim.keys.normal_mode['<C-c><C-g>'] = '<cmd>Cscope find g<CR>'
+lvim.keys.normal_mode['<C-c><C-r>'] = '<cmd>Cscope find c<CR>'
 
 lvim.lsp.buffer_mappings.normal_mode.gr = {
   [[<cmd>lua require'telescope.builtin'.lsp_references()<CR>]],
@@ -484,7 +486,16 @@ lvim.plugins = {
         [[<cmd>lua require'telescope'.extensions.orgmode.search_headings()<CR>]],
         'Telescope OrgMode Search Headings'
       }
-    end,
+    end
+  },
+  {
+    'dhananjaylatkar/cscope_maps.nvim',
+    opts = {
+      prefix = '<C-c>',
+      cscope = {
+        picker = 'telescope'
+      }
+    }
   },
   {
     'nvim-orgmode/orgmode',
