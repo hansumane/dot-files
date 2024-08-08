@@ -40,7 +40,7 @@ local update_cc = function(info, new_cc)
   end
 
   if info then
-    print(info .. 'cc: ' .. (new_cc - 1))
+    vim.print(info .. 'cc: ' .. (new_cc - 1))
   end
 end
 
@@ -135,7 +135,7 @@ lvim.keys.normal_mode['<C-k>'] = function()
       precedes = '⟨',
       extends = '⟩',
     }
-    vim.notify'Indent Guidelines: off'
+    vim.print'Indent Guidelines: off'
   else
     vim.opt.listchars = {
       tab = '   ',
@@ -144,7 +144,7 @@ lvim.keys.normal_mode['<C-k>'] = function()
       extends = '⟩',
     }
     if enable_guidelines then require'indent_blankline.commands'.enable(true) end
-    vim.notify'Indent Guidelines: on'
+    vim.print'Indent Guidelines: on'
   end
 end
 
@@ -470,7 +470,6 @@ local opt_plugins = {
   }
 }
 
-local _print = print
 lvim.plugins = {
   themes.rose_pine,
   opt_plugins.todo_comments,
@@ -522,12 +521,6 @@ lvim.plugins = {
       }
 
       vim.notify = notify
-      vim.print = notify
-
-      print = function(...)
-        notify(...)
-        _print(...)
-      end
     end
   },
   {
