@@ -452,6 +452,16 @@ local themes = {
       vim.opt.background = background
       lvim.colorscheme = "lackluster-hack"
     end
+  },
+  gruber_darker = {
+    "hansumane/gruber-darker-neovim",
+    priority = 1500,
+    lazy = false,
+    config = function()
+      require("gruber-darker").setup()
+      vim.opt.background = background
+      lvim.colorscheme = "gruber-darker"
+    end
   }
 }
 
@@ -480,7 +490,7 @@ local opt_plugins = {
 }
 
 lvim.plugins = {
-  themes.rose_pine,
+  themes.gruber_darker,
   opt_plugins.todo_comments,
   {
     "hansumane/telescope-orgmode.nvim",
