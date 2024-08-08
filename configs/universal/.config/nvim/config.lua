@@ -1,30 +1,30 @@
 -- LunarVim (lvim) config
 
-vim.opt.mouse = 'nv'
+vim.opt.mouse = "nv"
 vim.opt.scrolloff = 3
 vim.g.c_syntax_for_h = true
 
-vim.opt.keymap = 'russian-jcukenwin'
+vim.opt.keymap = "russian-jcukenwin"
 vim.opt.iminsert = 0
 vim.opt.imsearch = 0
 
 -- vim.cmd[[set iskeyword-=_]]
-vim.opt.showbreak = '↪'
+vim.opt.showbreak = "↪"
 vim.opt.listchars = {
-  tab = '   ',
-  trail = '␣',
-  precedes = '⟨',
-  extends = '⟩',
+  tab = "   ",
+  trail = "␣",
+  precedes = "⟨",
+  extends = "⟩",
 }
 
 local cd_init = 81
 local cc_dict = {
   init = cd_init,
   current = cd_init,
-  ['81'] = 91,
-  ['91'] = 101,
-  ['101'] = 121,
-  ['121'] = 81,
+  ["81"] = 91,
+  ["91"] = 101,
+  ["101"] = 121,
+  ["121"] = 81,
 }
 
 local enable_guidelines = true
@@ -40,28 +40,28 @@ local update_cc = function(info, new_cc)
   end
 
   if info then
-    vim.print(info .. 'cc: ' .. (new_cc - 1))
+    vim.print(info .. "cc: " .. (new_cc - 1))
   end
 end
 
-require'editorconfig'.properties.max_line_length = function(_, val)
+require("editorconfig").properties.max_line_length = function(_, val)
   local n = tonumber(val)
   if n then
     update_cc(nil, n + 1)
   else
-    assert(val == 'off', 'editorconfig: max_line_length: not number or "off"')
+    assert(val == "off", 'editorconfig: max_line_length: not number or "off"')
     update_cc(nil, cc_dict.init)
   end
 end
 
 function RestoreBG(store)
-  local mode = ((store and 'w') or 'r')
-  local new_theme = ((vim.opt.background:get() == 'dark' and 'light') or 'dark')
-  local file, err = io.open(vim.fn.stdpath'config' .. '/theme.txt', mode)
+  local mode = ((store and "w") or "r")
+  local new_theme = ((vim.opt.background:get() == "dark" and "light") or "dark")
+  local file, err = io.open(vim.fn.stdpath("config") .. "/theme.txt", mode)
 
   if store then
     if not file then
-      vim.notify('Cannot open background file: ' .. err, vim.log.levels.ERROR)
+      vim.notify("Cannot open background file: " .. err, vim.log.levels.ERROR)
     else
       file:write(new_theme)
       file:close()
@@ -71,11 +71,11 @@ function RestoreBG(store)
     return new_theme
   else
     if not file then
-      return 'dark'
+      return "dark"
     end
 
     for line in file:lines() do
-      new_theme = ((line == 'light' and 'light') or 'dark')
+      new_theme = ((line == "light" and "light") or "dark")
       break
     end
 
@@ -84,67 +84,68 @@ function RestoreBG(store)
   end
 end
 
-lvim.builtin.which_key.mappings['w'] = {}
-lvim.builtin.which_key.mappings['h'] = {}
-lvim.builtin.terminal.open_mapping = '<C-t>'
+lvim.builtin.which_key.mappings["w"] = {}
+lvim.builtin.which_key.mappings["h"] = {}
+lvim.builtin.terminal.open_mapping = "<C-t>"
 
-lvim.keys.insert_mode['<C-\\>'] = '<C-6>'
-lvim.keys.insert_mode['<C-r>'] = '<C-v><C-i>'
-lvim.keys.normal_mode['<S-h>'] = '<cmd>BufferLineCyclePrev<CR>'
-lvim.keys.normal_mode['<S-l>'] = '<cmd>BufferLineCycleNext<CR>'
-lvim.keys.normal_mode['<S-n>'] = '<cmd>BufferLineMovePrev<CR>'
-lvim.keys.normal_mode['<S-m>'] = '<cmd>BufferLineMoveNext<CR>'
-lvim.keys.normal_mode['<C-c><C-g>'] = '<cmd>Cscope find g<CR>'
-lvim.keys.normal_mode['<C-c><C-r>'] = '<cmd>Cscope find c<CR>'
+lvim.keys.insert_mode["<C-\\>"] = "<C-6>"
+lvim.keys.insert_mode["<C-r>"] = "<C-v><C-i>"
+lvim.keys.normal_mode["<S-h>"] = "<cmd>BufferLineCyclePrev<CR>"
+lvim.keys.normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<CR>"
+lvim.keys.normal_mode["<S-n>"] = "<cmd>BufferLineMovePrev<CR>"
+lvim.keys.normal_mode["<S-m>"] = "<cmd>BufferLineMoveNext<CR>"
+lvim.keys.normal_mode["<C-c><C-g>"] = "<cmd>Cscope find g<CR>"
+lvim.keys.normal_mode["<C-c><C-r>"] = "<cmd>Cscope find c<CR>"
 
 lvim.lsp.buffer_mappings.normal_mode.gr = {
-  [[<cmd>lua require'telescope.builtin'.lsp_references()<CR>]],
-  'References'
+  [[<cmd>lua require("telescope.builtin").lsp_references()<CR>]],
+  "References"
 }
 lvim.builtin.which_key.mappings.lx = {
-  '<cmd>Trouble diagnostics toggle focus=true filter.buf=0<CR>',
-  'Buffer Diagnostics (Trouble)'
+  [[<cmd>Trouble diagnostics toggle focus=true filter.buf=0<CR>]],
+  "Buffer Diagnostics (Trouble)"
 }
 lvim.builtin.which_key.mappings.lt = {
-  '<cmd>TodoTelescope<CR>',
-  'TODOs'
+  [[<cmd>TodoTelescope<CR>]],
+  "TODOs"
 }
 lvim.builtin.which_key.mappings.se = {
-  [[<cmd>lua require'telescope.builtin'.live_grep{ additional_args = function(opts) return { '--pcre2' } end }<CR>]],
-  'PCRE2'
+  [[<cmd>lua require("telescope.builtin").live_grep({ additional_args = function(opts) return { "--pcre2" } end })<CR>]],
+  "PCRE2"
 }
 lvim.builtin.which_key.mappings.t = {
   [[<cmd>lua RestoreBG(true)<CR>]],
   'Change dark/light'
 }
 
-lvim.builtin.which_key.vmappings.k = { ':sort<CR>', 'Sort Lines' }
-lvim.builtin.which_key.mappings.j = { '<cmd>noh<CR>', 'No Highlight' }
+-- :sort<CR> is intentional, <cmd>sort<CR> doesn't work
+lvim.builtin.which_key.vmappings.k = { ":sort<CR>", "Sort Lines" }
+lvim.builtin.which_key.mappings.j = { "<cmd>noh<CR>", "No Highlight" }
 
-lvim.keys.normal_mode['<C-j>'] = function()
-  update_cc('')
+lvim.keys.normal_mode["<C-j>"] = function()
+  update_cc("")
 end
 
-lvim.keys.normal_mode['<C-k>'] = function()
+lvim.keys.normal_mode["<C-k>"] = function()
   if not vim.opt.listchars:get().space then
-    if enable_guidelines then require'indent_blankline.commands'.disable(true) end
+    if enable_guidelines then require("indent_blankline.commands").disable(true) end
     vim.opt.listchars = {
-      tab = '-->',
-      space = '⋅',
-      trail = '␣',
-      precedes = '⟨',
-      extends = '⟩',
+      tab = "-->",
+      space = "⋅",
+      trail = "␣",
+      precedes = "⟨",
+      extends = "⟩",
     }
-    vim.print'Indent Guidelines: off'
+    vim.print("Indent Guidelines: off")
   else
     vim.opt.listchars = {
-      tab = '   ',
-      trail = '␣',
-      precedes = '⟨',
-      extends = '⟩',
+      tab = "   ",
+      trail = "␣",
+      precedes = "⟨",
+      extends = "⟩",
     }
-    if enable_guidelines then require'indent_blankline.commands'.enable(true) end
-    vim.print'Indent Guidelines: on'
+    if enable_guidelines then require("indent_blankline.commands").enable(true) end
+    vim.print("Indent Guidelines: on")
   end
 end
 
@@ -174,53 +175,53 @@ lvim.builtin.nvimtree.setup.view.adaptive_size = true
 lvim.builtin.indentlines.options.use_treesitter = true
 if not enable_guidelines then lvim.builtin.indentlines.active = false end
 
-lvim.builtin.telescope.defaults.initial_mode = 'normal'
-lvim.builtin.telescope.defaults.layout_strategy = 'horizontal'
+lvim.builtin.telescope.defaults.initial_mode = "normal"
+lvim.builtin.telescope.defaults.layout_strategy = "horizontal"
 lvim.builtin.telescope.defaults.layout_config.width = 0.9
 lvim.builtin.telescope.defaults.layout_config.height = 0.9
 lvim.builtin.telescope.defaults.layout_config.preview_width = 0.55
-lvim.builtin.telescope.defaults.layout_config.prompt_position = 'top'
+lvim.builtin.telescope.defaults.layout_config.prompt_position = "top"
 
 lvim.builtin.treesitter.auto_install = true
 lvim.builtin.treesitter.sync_install = false
 lvim.builtin.treesitter.highlight.enable = true
 
-vim.lsp.set_log_level'off'
--- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { 'pyright' })
+vim.lsp.set_log_level"off"
+-- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
 -- lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
---   return server ~= 'jedi_language_server'
+--   return server ~= "jedi_language_server"
 -- end, lvim.lsp.automatic_configuration.skipped_servers)
 
 -- lvim.builtin.treesitter.auto_install = false
 lvim.lsp.automatic_servers_installation = false
 lvim.lsp.installer.setup.automatic_installation = false
 lvim.lsp.installer.setup.ensure_installed = {
-  'lua_ls', 'clangd', 'rust_analyzer', 'pyright', 'jdtls'
+  "lua_ls", "clangd", "rust_analyzer", "pyright", "jdtls"
 } -- black, google-java-format --
 lvim.builtin.treesitter.ensure_installed = {
-  'bash', 'c', 'cpp', 'java', 'lua', 'python', 'rust', 'php',
-  'vim', 'vimdoc', 'org', 'comment', 'markdown', 'markdown_inline',
-  'git_config', 'git_rebase', 'gitattributes', 'gitcommit', 'gitignore'
+  "bash", "c", "cpp", "java", "lua", "python", "rust", "php",
+  "vim", "vimdoc", "org", "comment", "markdown", "markdown_inline",
+  "git_config", "git_rebase", "gitattributes", "gitcommit", "gitignore"
 } -- norg --
 lvim.builtin.treesitter.ignore_install = {
-  'make'
+  "make"
 }
 
-local components = require'lvim.core.lualine.components'
-lvim.builtin.lualine.sections.lualine_a = { 'mode' }
+local components = require("lvim.core.lualine.components")
+lvim.builtin.lualine.sections.lualine_a = { "mode" }
 lvim.builtin.lualine.sections.lualine_b = {
   function()
-    local isvm = vim.fn.mode():find('[vV]')
-    if not isvm then return '' end
+    local isvm = vim.fn.mode():find("[vV]")
+    if not isvm then return "" end
 
-    local starts = vim.fn.line('v')
-    local ends = vim.fn.line('.')
+    local starts = vim.fn.line("v")
+    local ends = vim.fn.line(".")
     local lines = starts <= ends and ends - starts + 1 or starts - ends + 1
 
     if lines <= 1 then
-      return '' .. vim.fn.wordcount().visual_chars .. 'C'
+      return "" .. vim.fn.wordcount().visual_chars .. "C"
     else
-      return '' .. lines .. 'L'
+      return "" .. lines .. "L"
     end
   end
 }
@@ -229,9 +230,9 @@ lvim.builtin.lualine.sections.lualine_x = {
   components.filetype,
   function()
     if vim.opt.iminsert:get() ~= 0 then
-      return 'RU'
+      return "RU"
     else
-      return 'EN'
+      return "EN"
     end
   end
 }
@@ -240,13 +241,13 @@ lvim.builtin.lualine.sections.lualine_y = {
     local shift = vim.opt.shiftwidth:get()
     local tabst = vim.opt.tabstop:get()
     local expand = vim.opt.expandtab:get()
-    local result = shift .. '/' .. tabst .. '-'
+    local result = shift .. "/" .. tabst .. "-"
     if expand then
-      result = result .. 'S'
+      result = result .. "S"
     elseif shift ~= tabst then
-      result = result .. 'M'
+      result = result .. "M"
     else
-      result = result .. 'T'
+      result = result .. "T"
     end
     return result
   end
@@ -254,7 +255,7 @@ lvim.builtin.lualine.sections.lualine_y = {
 
 lvim.autocommands = {
   {
-    'VimEnter', {
+    "VimEnter", {
       callback = function()
         vim.cmd[[
         command! SN :lua SetNumber(true)
@@ -274,7 +275,7 @@ lvim.autocommands = {
     },
   },
   {
-    'QuitPre', {
+    "QuitPre", {
       callback = function()
         local tree_wins = {}
         local floating_wins = {}
@@ -282,10 +283,10 @@ lvim.autocommands = {
 
         for _, w in ipairs(wins) do
           local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(w))
-          if bufname:match'NvimTree_' ~= nil then
+          if bufname:match("NvimTree_") ~= nil then
             table.insert(tree_wins, w)
           end
-          if vim.api.nvim_win_get_config(w).relative ~= '' then
+          if vim.api.nvim_win_get_config(w).relative ~= "" then
             table.insert(floating_wins, w)
           end
         end
@@ -299,8 +300,8 @@ lvim.autocommands = {
     }
   },
   {
-    'FileType', {
-      pattern = 'org',
+    "FileType", {
+      pattern = "org",
       callback = function()
         vim.wo.wrap = true
         vim.wo.linebreak = true
@@ -312,16 +313,16 @@ lvim.autocommands = {
 local background = RestoreBG(false)
 local themes = {
   catppuccin = {
-    'catppuccin/nvim',
-    name = 'catppuccin',
+    "catppuccin/nvim",
+    name = "catppuccin",
     priority = 1500,
     lazy = false,
     config = function()
       vim.opt.background = background
-      require'catppuccin'.setup{
+      require("catppuccin").setup({
         background = {
-          dark = 'mocha',
-          light = 'latte'
+          dark = "mocha",
+          light = "latte"
         },
         custom_highlights = function(colors)
           return {
@@ -332,72 +333,72 @@ local themes = {
             IndentBlanklineContextSpaceChar = { fg = colors.surface2 },
           }
         end
-      }
-      lvim.colorscheme = 'catppuccin'
+      })
+      lvim.colorscheme = "catppuccin"
     end
   },
   everforest = {
-    'sainnhe/everforest',
+    "sainnhe/everforest",
     priority = 1500,
     lazy = false,
     config = function()
       vim.opt.background = background
-      vim.g.everforest_background = 'hard'
+      vim.g.everforest_background = "hard"
       vim.g.everforest_better_performance = 1
-      lvim.colorscheme = 'everforest'
+      lvim.colorscheme = "everforest"
     end
   },
   gruvbox_material = {
-    'sainnhe/gruvbox-material',
+    "sainnhe/gruvbox-material",
     priority = 1500,
     lazy = false,
     config = function()
       vim.opt.background = background
-      vim.g.gruvbox_material_background = 'hard' -- medium (default), soft
+      vim.g.gruvbox_material_background = "hard" -- medium (default), soft
       vim.g.gruvbox_material_better_performance = 1
-      lvim.colorscheme = 'gruvbox-material'
+      lvim.colorscheme = "gruvbox-material"
     end
   },
   sonokai = {
-    'sainnhe/sonokai',
+    "sainnhe/sonokai",
     priority = 1500,
     lazy = false,
     config = function()
       -- default, atlantis, andromeda, shusia, maia, espresso
-      vim.g.sonokai_style = 'default'
+      vim.g.sonokai_style = "default"
       vim.g.sonokai_enable_italic = true
       vim.g.sonokai_better_performance = 1
-      lvim.colorscheme = 'sonokai'
+      lvim.colorscheme = "sonokai"
     end
   },
   kanagawa = {
-    'rebelot/kanagawa.nvim',
+    "rebelot/kanagawa.nvim",
     priority = 1500,
     lazy = false,
     config = function()
       vim.opt.background = background
-      require'kanagawa'.setup{
+      require("kanagawa").setup({
         compile = false,
         commentStyle = { italic = true },
         keywordStyle = { italic = true },
         statementStyle = { bold = true },
         background = {
-          dark = 'dragon', -- wave
-          light = 'lotus'
+          dark = "dragon", -- wave
+          light = "lotus"
         }
-      }
-      lvim.colorscheme = 'kanagawa'
+      })
+      lvim.colorscheme = "kanagawa"
     end
   },
   tokyonight = {
-    'folke/tokyonight.nvim',
+    "folke/tokyonight.nvim",
     priority = 1500,
     lazy = false,
     config = function()
       vim.opt.background = background
-      require'tokyonight'.setup{
-        style = 'night',
-        light_style = 'day',          -- from lightest to darkest:
+      require("tokyonight").setup({
+        style = "night",
+        light_style = "day",          -- from lightest to darkest:
         day_brightness = 0.25,        --  1. storm (default)
         terminal_colors = true,       --  2. moon
         comments = { italic = true }, --  3. night (lunarvim)
@@ -410,61 +411,61 @@ local themes = {
           hl.IndentBlanklineContextChar = { fg = c.dark3 }
           hl.IndentBlanklineContextSpaceChar = { fg = c.dark3 }
         end
-      }
-      lvim.colorscheme = 'tokyonight'
+      })
+      lvim.colorscheme = "tokyonight"
     end
   },
   rose_pine = {
-    'rose-pine/neovim',
-    name = 'rose-pine',
+    "rose-pine/neovim",
+    name = "rose-pine",
     priority = 1500,
     lazy = false,
     config = function()
       vim.opt.background = background
-      require'rose-pine'.setup{
-        variant = 'auto',      -- auto, main, moon, dawn
-        dark_variant = 'main', -- main, moon, dawn
+      require("rose-pine").setup({
+        variant = "auto",      -- auto, main, moon, dawn
+        dark_variant = "main", -- main, moon, dawn
         highlight_groups = {
-          IndentBlanklineChar = { fg = 'overlay' },
-          IndentBlanklineSpaceChar = { fg = 'overlay' },
-          IndentBlanklineSpaceCharBlankline = { fg = 'overlay' },
-          IndentBlanklineContextChar = { fg = 'highlight_med' },
-          IndentBlanklineContextSpaceChar = { fg = 'highlight_med' },
+          IndentBlanklineChar = { fg = "overlay" },
+          IndentBlanklineSpaceChar = { fg = "overlay" },
+          IndentBlanklineSpaceCharBlankline = { fg = "overlay" },
+          IndentBlanklineContextChar = { fg = "highlight_med" },
+          IndentBlanklineContextSpaceChar = { fg = "highlight_med" },
         }
-      }
-      lvim.colorscheme = 'rose-pine'
+      })
+      lvim.colorscheme = "rose-pine"
     end
   },
   lackluster = {
-    'slugbyte/lackluster.nvim',
+    "slugbyte/lackluster.nvim",
     priority = 1500,
     lazy = false,
     config = function()
       vim.opt.background = background
-      lvim.colorscheme = 'lackluster-hack'
+      lvim.colorscheme = "lackluster-hack"
     end
   }
 }
 
 local opt_plugins = {
   todo_comments = {
-    'folke/todo-comments.nvim',
+    "folke/todo-comments.nvim",
     lazy = false,
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
       keywords = {
-        FIX  = { icon = ' ', color = 'error', alt = { 'FIXME', 'BUG', 'ISSUE' } },
-        WARN = { icon = ' ', color = 'warning', alt = { 'WARNING' } },
-        REV  = { icon = ' ', color = 'review', alt = { 'REVIEW' } },
-        NOTE = { icon = ' ', color = 'note', alt = { 'INFO' } },
-        TODO = { icon = ' ', color = 'todo' }
+        FIX  = { icon = " ", color = "error", alt = { "FIXME", "BUG", "ISSUE" } },
+        WARN = { icon = " ", color = "warning", alt = { "WARNING" } },
+        REV  = { icon = " ", color = "review", alt = { "REVIEW" } },
+        NOTE = { icon = " ", color = "note", alt = { "INFO" } },
+        TODO = { icon = " ", color = "todo" }
       },
       colors = {
-        error   = { '@comment.error' },
-        warning = { '@comment.warning' },
-        review  = { '@comment.hint' },
-        note    = { '@comment.note' },
-        todo    = { '@comment.todo' }
+        error   = { "@comment.error" },
+        warning = { "@comment.warning" },
+        review  = { "@comment.hint" },
+        note    = { "@comment.note" },
+        todo    = { "@comment.todo" }
       }
     }
   }
@@ -474,57 +475,57 @@ lvim.plugins = {
   themes.rose_pine,
   opt_plugins.todo_comments,
   {
-    'hansumane/telescope-orgmode.nvim',
+    "hansumane/telescope-orgmode.nvim",
     config = function()
-      require'telescope'.load_extension'orgmode'
+      require("telescope").load_extension("orgmode")
       lvim.builtin.which_key.mappings.r = {
-        [[<cmd>lua require'telescope'.extensions.orgmode.refile_heading()<CR>]],
-        'Telescope OrgMode Refile Headings'
+        [[<cmd>lua require("telescope").extensions.orgmode.refile_heading()<CR>]],
+        "Telescope OrgMode Refile Headings"
       }
       lvim.builtin.which_key.mappings.lh = {
-        [[<cmd>lua require'telescope'.extensions.orgmode.search_headings()<CR>]],
-        'Telescope OrgMode Search Headings'
+        [[<cmd>lua require("telescope").extensions.orgmode.search_headings()<CR>]],
+        "Telescope OrgMode Search Headings"
       }
     end
   },
   {
-    'dhananjaylatkar/cscope_maps.nvim',
+    "dhananjaylatkar/cscope_maps.nvim",
     opts = {
-      prefix = '<C-c>',
+      prefix = "<C-c>",
       cscope = {
-        picker = 'telescope'
+        picker = "telescope"
       }
     }
   },
   {
-    'nvim-orgmode/orgmode',
-    event = 'VeryLazy',
-    dependencies = { 'akinsho/org-bullets.nvim' },
+    "nvim-orgmode/orgmode",
+    event = "VeryLazy",
+    dependencies = { "akinsho/org-bullets.nvim" },
     config = function()
-      require'org-bullets'.setup()
-      require'orgmode'.setup{
-        org_agenda_files = '~/Others/Documents/orgfiles/**/*',
-        org_default_notes_file = '~/Others/Documents/orgfiles/rawid_new.org'
-      }
+      require("org-bullets").setup()
+      require("orgmode").setup({
+        org_agenda_files = "~/Others/Documents/orgfiles/**/*",
+        org_default_notes_file = "~/Others/Documents/orgfiles/rawid_new.org"
+      })
     end
   },
   {
-    'rcarriga/nvim-notify',
+    "rcarriga/nvim-notify",
     priority = 1490,
     lazy = false,
     config = function()
-      local notify = require'notify'
+      local notify = require("notify")
 
-      notify.setup{
-        render = 'compact',
-        stages = 'static'
-      }
+      notify.setup({
+        render = "compact",
+        stages = "static"
+      })
 
       vim.notify = notify
     end
   },
   {
-    'junegunn/vim-easy-align',
+    "junegunn/vim-easy-align",
     priority = 1480,
     lazy = false,
     config = function()
@@ -535,48 +536,48 @@ lvim.plugins = {
     end
   },
   {
-    'folke/trouble.nvim',
+    "folke/trouble.nvim",
     lazy = false,
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {}
   }
 }
 
 -- fix for clangd multiple offset encodings warning
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-local max_threads = #vim.loop.cpu_info() -- require'luv'.available_parallelism()
-capabilities.offsetEncoding = { 'utf-16' }
-require'lvim.lsp.manager'.setup('clangd', {
+local max_threads = #vim.loop.cpu_info() -- require("luv").available_parallelism()
+capabilities.offsetEncoding = { "utf-16" }
+require("lvim.lsp.manager").setup("clangd", {
   capabilities = capabilities,
   cmd = {
-    'clangd',
-    '-j=' .. max_threads,
-    -- '--malloc-trim',  -- incompatible with MacOS
-    '--background-index',
-    '--pch-storage=memory'
+    "clangd",
+    "-j=" .. max_threads,
+    -- "--malloc-trim",  -- incompatible with MacOS
+    "--background-index",
+    "--pch-storage=memory"
   }
 })
-require'lvim.lsp.manager'.setup('pyright', {
+require("lvim.lsp.manager").setup("pyright", {
   settings = {
     python = {
-      pythonPath = 'python3'
+      pythonPath = "python3"
     }
   }
 })
-require'lvim.lsp.manager'.setup('jdtls', {
+require("lvim.lsp.manager").setup("jdtls", {
   cmd = {
-    'jdtls',
-    '--jvm-arg=-javaagent:' .. vim.fn.stdpath'data' .. '/mason/packages/jdtls/lombok.jar'
+    "jdtls",
+    "--jvm-arg=-javaagent:" .. vim.fn.stdpath"data" .. "/mason/packages/jdtls/lombok.jar"
   },
 })
-require'lvim.lsp.manager'.setup('rust_analyzer', {
+require("lvim.lsp.manager").setup("rust_analyzer", {
   settings = {
-    ['rust-analyzer'] = {
+    ["rust-analyzer"] = {
       lens = {
         enable = false
       },
       checkOnSave = {
-        command = 'clippy'
+        command = "clippy"
       },
       diagnostics = {
         enable = true,
@@ -587,17 +588,17 @@ require'lvim.lsp.manager'.setup('rust_analyzer', {
     }
   }
 })
-require'lvim.lsp.manager'.setup('lua_ls', {
+require("lvim.lsp.manager").setup("lua_ls", {
   settings = {
     Lua = {
       runtime = {
-        version = 'Lua 5.4',
+        version = "Lua 5.4",
       },
       --[[
       workspace = {
         library = {
-          ['~/virtual/definitions'] = true,
-          ['~/virtual/vm_mount/usr/share/lua/5.4'] = true,
+          ["~/virtual/definitions"] = true,
+          ["~/virtual/vm_mount/usr/share/lua/5.4"] = true,
         }
       }
       --]]
@@ -605,20 +606,20 @@ require'lvim.lsp.manager'.setup('lua_ls', {
   }
 })
 
-require'lvim.lsp.null-ls.formatters'.setup{
+require("lvim.lsp.null-ls.formatters").setup({
   {
-    command = 'black',
-    filetypes = { 'python' }
+    command = "black",
+    filetypes = { "python" }
   },
   {
-    command = 'google-java-format',
-    filetypes = { 'java' }
+    command = "google-java-format",
+    filetypes = { "java" }
   },
   {
-    command = 'clang-format',
-    filetypes = { 'c', 'cpp' }
+    command = "clang-format",
+    filetypes = { "c", "cpp" }
   }
-}
+})
 
 --[[
     to make clipboard work with windows,
