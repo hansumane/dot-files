@@ -109,6 +109,10 @@ lvim.builtin.which_key.vmappings.i = {
   [[<cmd>Inspect<CR>]],
   "Inspect"
 }
+lvim.builtin.which_key.mappings.h = {
+  [[<cmd>Telescope highlights<CR>]],
+  "Highlights"
+}
 lvim.builtin.which_key.mappings.lx = {
   [[<cmd>Trouble diagnostics toggle focus=true filter.buf=0<CR>]],
   "Buffer Diagnostics (Trouble)"
