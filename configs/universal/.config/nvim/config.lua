@@ -511,11 +511,18 @@ local opt_plugins = {
         todo    = { "@comment.todo" }
       }
     }
+  },
+  deadcolumn = {
+    "Bekaboo/deadcolumn.nvim",
+    priority = 1490,
+    lazy = false,
+    opts = {}
   }
 }
 
 lvim.plugins = {
   themes.kanagawa,
+  opt_plugins.deadcolumn,
   opt_plugins.todo_comments,
   {
     "hansumane/telescope-orgmode.nvim",
@@ -554,7 +561,7 @@ lvim.plugins = {
   },
   {
     "rcarriga/nvim-notify",
-    priority = 1490,
+    priority = 1480,
     lazy = false,
     config = function()
       local notify = require("notify")
@@ -569,7 +576,7 @@ lvim.plugins = {
   },
   {
     "junegunn/vim-easy-align",
-    priority = 1480,
+    priority = 1470,
     lazy = false,
     config = function()
       vim.cmd[[
