@@ -395,9 +395,15 @@ local themes = {
         keywordStyle = { italic = true },
         statementStyle = { bold = true },
         background = {
-          dark = "dragon", -- wave
-          light = "lotus"
-        }
+          dark = "wave", -- default dark
+          -- dark = "dragon", -- alternative dark
+          light = "lotus" -- default light
+        },
+        overrides = function(--[[colors]])
+          return {
+            -- HighLight = { fg = colors.palette.sumiInk4 }
+          }
+        end
       })
       lvim.colorscheme = "kanagawa"
     end
@@ -453,8 +459,23 @@ local themes = {
     priority = 1500,
     lazy = false,
     config = function()
+      local lackluster = require("lackluster")
       vim.opt.background = background
+      require("nvim-web-devicons").setup({
+        color_icons = false,
+        override = {
+          ["default_icon"] = {
+            color = lackluster.color.gray4,
+            name = "Default"
+          }
+        }
+      })
       lvim.colorscheme = "lackluster-hack"
+      require('lualine').setup({
+        options = {
+          theme = "lackluster"
+        }
+      })
     end
   },
   gruber_darker = {
@@ -494,7 +515,7 @@ local opt_plugins = {
 }
 
 lvim.plugins = {
-  themes.gruber_darker,
+  themes.kanagawa,
   opt_plugins.todo_comments,
   {
     "hansumane/telescope-orgmode.nvim",
