@@ -522,7 +522,11 @@ local opt_plugins = {
     "Bekaboo/deadcolumn.nvim",
     priority = 1490,
     lazy = false,
-    opts = {}
+    opts = {
+      modes = function()
+        return true
+      end
+    }
   }
 }
 
