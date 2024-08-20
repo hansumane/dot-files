@@ -399,9 +399,15 @@ local themes = {
           -- dark = "dragon", -- alternative dark
           light = "lotus" -- default light
         },
-        overrides = function(--[[colors]])
+        overrides = function(colors)
           return {
-            -- HighLight = { fg = colors.palette.sumiInk4 }
+            ["@lsp.type.comment.c"] = { link = "@comment" },
+            ["@lsp.type.comment.cpp"] = { link = "@comment" },
+            ["@comment.hint"] = {
+              bg = colors.theme.diag.ok,
+              fg = colors.theme.ui.fg_reverse,
+              bold = true
+            },
           }
         end
       })
