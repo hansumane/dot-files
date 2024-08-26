@@ -216,7 +216,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "git_config", "git_rebase", "gitattributes", "gitcommit", "gitignore"
 } -- norg --
 lvim.builtin.treesitter.ignore_install = {
-  "make"
+  "make", "tmux"
 }
 
 local components = require("lvim.core.lualine.components")
