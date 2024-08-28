@@ -44,7 +44,7 @@ alias bridge='bridge --color=auto'
 alias c='cl'
 alias b='bt'
 alias t='tm'
-alias q='exit'
+alias q='exit 0'
 alias rr='rm -rf'
 alias rrs="$SUDO_CMD rm -rf"
 alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"
@@ -54,8 +54,9 @@ alias vd="$EDITOR ."
 alias cr='cargo run'
 alias crr='cargo run -r'
 alias tl='clear; tmux list-sessions'
-alias dsu="doom sync -u --jobs $(nproc)"
-alias dsU="doom sync -U --jobs $(nproc)"
+alias ds='doom sync'
+alias dsu="ds -u --jobs $(getconf _NPROCESSORS_ONLN)"
+alias dsnou="ds -U --jobs $(getconf _NPROCESSORS_ONLN)"
 alias eza="$LOCAL_LANG eza"
 
 alias la='eza -a'
@@ -102,7 +103,7 @@ cl () {
 
 tm () {
   cd
-  (( $# == 0 )) && tmux -u new-session -A -s "main" || tmux -u new-session -A -s "$@"
+  (( $# == 0 )) && tmux -u new-session -A -s "1" || tmux -u new-session -A -s "$@"
   cd -
 }
 
@@ -217,7 +218,6 @@ alias edCi='edC i'
 
 edC () {
   if [[ ! -f ./compile_flags.txt ]]; then
-    echo '-O2' > ./compile_flags.txt
     echo '-std=gnu17' >> ./compile_flags.txt
     echo >> ./compile_flags.txt
     echo '-Wall' >> ./compile_flags.txt
@@ -230,15 +230,13 @@ edC () {
     echo >> ./compile_flags.txt
     echo '-Wno-varargs' >> ./compile_flags.txt
     echo '-Wno-variadic-macros' >> ./compile_flags.txt
+    echo '-Wno-unused-parameter' >> ./compile_flags.txt
+    echo '-Wno-unused-but-set-variable' >> ./compile_flags.txt
     echo '-Wno-gnu-empty-struct' >> ./compile_flags.txt
     echo '-Wno-gnu-binary-literal' >> ./compile_flags.txt
     echo '-Wno-gnu-conditional-omitted-operand' >> ./compile_flags.txt
     echo '-Wno-gnu-zero-variadic-macro-arguments' >> ./compile_flags.txt
     echo '-Wno-gnu-statement-expression-from-macro-expansion' >> ./compile_flags.txt
-    echo >> ./compile_flags.txt
-    echo '# -Wno-vla' >> ./compile_flags.txt
-    echo '# -Wno-unused-variable' >> ./compile_flags.txt
-    echo '# -Wno-unused-parameter' >> ./compile_flags.txt
   fi
 
   $EDITOR ./compile_flags.txt
