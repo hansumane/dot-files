@@ -140,13 +140,13 @@ fi
 if command -v doom &> /dev/null; then
   echo "${NYELLOW}Running ${BMAGENTA}DOOM Emacs${NYELLOW} update.${NRST}"
 
-  cd "$(dirname $(which doom))"
+  cd "$(dirname $(dirname $(which doom)))"
   git reset --hard HEAD &> /dev/null
   git fetch --all &> /dev/null
   git pull --rebase
 
   cd - &> /dev/null
-  doom sync -u --jobs $(nproc) && doom doctor | cat && doom sync -U --jobs $(nproc)
+  doom upgrade --jobs $(getconf _NPROCESSORS_ONLN)
 fi
 
 if command -v nvim &> /dev/null; then
