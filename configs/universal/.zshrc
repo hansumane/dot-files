@@ -345,4 +345,7 @@ update_path () {
   unsetopt shwordsplit
 }
 
+source /usr/share/fzf/shell/key-bindings.zsh
+source /usr/share/fzf/shell/completion.zsh
+
 update_path
