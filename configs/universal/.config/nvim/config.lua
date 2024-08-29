@@ -543,7 +543,7 @@ local opt_plugins = {
 }
 
 lvim.plugins = {
-  themes.kanagawa,
+  themes.catppuccin,
   opt_plugins.deadcolumn,
   opt_plugins.todo_comments,
   {
