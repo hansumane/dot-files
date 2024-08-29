@@ -115,6 +115,7 @@ ded () {
 }
 
 alias gitd='git diff'
+alias gitdc='git diff --cached'
 alias gitc='git commit'
 alias gits='git status'
 alias gitb='git branch -a'
