@@ -281,6 +281,7 @@ lvim.autocommands = {
         command! M2 :lua SetIndent{ spaces = 2, tabs = 4, noexpand = true }
         command! M4 :lua SetIndent{ spaces = 4, tabs = 8, noexpand = true }
         command! MG :lua SetIndent{ spaces = 2, tabs = 8, noexpand = true }
+        Cscope db add /home/user/path/to/cscope.out:/home/user/path/to
         ]]
         SetNumber(true)
       end
