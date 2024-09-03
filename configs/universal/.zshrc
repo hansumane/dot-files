@@ -347,7 +347,12 @@ update_path () {
   unsetopt shwordsplit
 }
 
-source /usr/share/fzf/shell/key-bindings.zsh
-source /usr/share/fzf/shell/completion.zsh
+if [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
+  source /usr/share/fzf/key-bindings.zsh
+  source /usr/share/fzf/completion.zsh
+else
+  source /usr/share/fzf/shell/key-bindings.zsh
+  source /usr/share/fzf/shell/completion.zsh
+fi
 
 update_path
