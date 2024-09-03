@@ -14,7 +14,7 @@ fi
 
 sudo pacman -Sy --needed \
   curl lazygit git zip unzip tar gzip bzip2 xz \
-  neovim zsh eza bat btop hexyl ripgrep fd
+  neovim zsh eza bat btop hexyl ripgrep fd fzf
 
 if ( lscpu | grep Intel &> /dev/null ); then
   sudo pacman -S --needed intel-ucode

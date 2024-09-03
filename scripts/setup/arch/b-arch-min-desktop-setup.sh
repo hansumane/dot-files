@@ -16,7 +16,7 @@ fi
 
 sudo pacman -Sy --needed \
   curl lazygit git zip unzip tar gzip bzip2 xz \
-  neovim zsh eza bat btop hexyl ripgrep fd
+  neovim zsh eza bat btop hexyl ripgrep fd fzf
 
 sudo pacman -S --needed \
   wireplumber pipewire pipewire-alsa pipewire-pulse pipewire-jack
