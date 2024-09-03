@@ -4,7 +4,8 @@ case "$TERM" in
   * ) export TERM="xterm-256color" ;;
 esac
 export CC='gcc'
-export CPP='g++'
+export CPP='cpp'
+export CXX='g++'
 export AWK_CMD='awk'
 export SED_CMD='sed'
 export EDITOR='nvim'  # "$HOME/.local/bin/lvim"
