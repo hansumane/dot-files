@@ -17,12 +17,13 @@
       ;(c-mode . "gnu")
       (other . "doom")))
 
-(map! :leader "k" #'sort-lines)
-(map! :leader "j" #'evil-ex-nohighlight)
-(map! :leader "c D" #'lsp-find-references)
 (set-input-method  ; C-\ to switch
     'russian-computer)
 (toggle-input-method)
+
+(map! :leader :desc "Sort lines" "k" #'sort-lines)
+(map! :leader :desc "No highlight" "j" #'evil-ex-nohighlight)
+(map! :leader "c D" #'lsp-find-references)
 
 (custom-theme-set-faces! 'doom-one
     '(line-number-current-line
@@ -45,7 +46,7 @@
          :foreground "#fec061"))
 
 (setq org-ellipsis " ▼ "
-      org-directory "~/org/"
+      org-directory "~/Others/Documents/orgfiles"
       org-hide-emphasis-markers t
       org-superstar-itembullet-alist '((?+ . ?➤) (?- . ?✦))
       org-superstar-headline-bullets-list '("◉" "○" "✸" "✿" "○" "✸" "✿"))
@@ -53,11 +54,11 @@
     :hook (org-mode . org-auto-tangle-mode)
     :config (setq org-auto-tangle-default t))
 
-;; (use-package! catppuccin-theme
-;;     :config
-;;     (setq doom-theme 'catppuccin
-;;           catppuccin-flavor 'mocha)
-;;     (catppuccin-reload))
+(use-package! catppuccin-theme
+    :config
+    (setq doom-theme 'catppuccin
+          catppuccin-flavor 'mocha)
+    (catppuccin-reload))
 
 ;; (use-package! gruber-darker-theme
 ;;     :config (setq doom-theme 'gruber-darker))
@@ -68,6 +69,16 @@
 ;;                   evil-normal-state-cursor '(box "#dc322f")
 ;;                   evil-insert-state-cursor '(bar "#dc322f")
 ;;                   evil-visual-state-cursor '(hollow "#dc322f")))
+
+(setq-default display-fill-column-indicator-character ?▏)
+(defun set-fill-column-from-editorconfig (props)
+    "Set `fill-column' from the `max_line_length' property in .editorconfig."
+    (let ((max-line-length (gethash 'max_line_length props)))
+        (when max-line-length
+            (setq fill-column (string-to-number max-line-length)))))
+(add-hook 'editorconfig-after-apply-functions #'set-fill-column-from-editorconfig)
+(add-hook 'prog-mode-hook #'display-fill-column-indicator-mode)
+(add-hook 'text-mode-hook #'display-fill-column-indicator-mode)
 
 ;; org-mode settings
 ;; #+language: ru

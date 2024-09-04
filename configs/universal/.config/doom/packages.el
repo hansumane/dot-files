@@ -1,6 +1,7 @@
-;;; $DOOMDIR/packages.el -*- no-byte-compile: t; -*-
+;; -*- no-byte-compile: t; -*-
+;;; $DOOMDIR/packages.el
 
-(package! gruber-darker-theme)
+;(package! gruber-darker-theme)
 (package! catppuccin-theme)
 (package! org-auto-tangle)
 (package! yang-mode)
