@@ -23,6 +23,14 @@ export LESS_TERMCAP_me=$'\e[0m'
 export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_ue=$'\e[0m'
 
+# fzf colors (catppuccin mocha)
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--color=selected-bg:#45475a \
+--multi"
+
 # sudo
 export SUDO_CMD='sudo'
 alias $SUDO_CMD="$SUDO_CMD "
@@ -347,12 +355,8 @@ update_path () {
   unsetopt shwordsplit
 }
 
-if [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
-  source /usr/share/fzf/key-bindings.zsh
-  source /usr/share/fzf/completion.zsh
-else
-  source /usr/share/fzf/shell/key-bindings.zsh
-  source /usr/share/fzf/shell/completion.zsh
+if command -v fzf &> /dev/null; then
+  source <(fzf --zsh)
 fi
 
 update_path
