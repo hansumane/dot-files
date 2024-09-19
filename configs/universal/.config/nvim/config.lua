@@ -3,6 +3,7 @@
 vim.opt.mouse = "nv"
 vim.opt.scrolloff = 3
 vim.g.c_syntax_for_h = true
+vim.g.c_style = ""
 
 vim.opt.keymap = "russian-jcukenwin"
 vim.opt.iminsert = 0
@@ -196,7 +197,10 @@ lvim.builtin.telescope.defaults.layout_config.prompt_position = "top"
 
 lvim.builtin.treesitter.auto_install = true
 lvim.builtin.treesitter.sync_install = false
+lvim.builtin.treesitter.indent.enable = false
 lvim.builtin.treesitter.highlight.enable = true
+table.insert(lvim.builtin.treesitter.indent.disable, "c")
+table.insert(lvim.builtin.treesitter.indent.disable, "cpp")
 
 vim.lsp.set_log_level"off"
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
@@ -318,6 +322,17 @@ lvim.autocommands = {
       callback = function()
         vim.wo.wrap = true
         vim.wo.linebreak = true
+      end
+    }
+  },
+  {
+    "FileType", {
+      pattern = "c,cpp",
+      callback = function()
+        if vim.g.c_style == "GNU" then
+          vim.bo.cindent = true
+          vim.bo.cinoptions = "(0,f0,t0,:s,^-s,>2s,{s,Ws,n-s" -- sw=2 ts=8 noet
+        end
       end
     }
   }
