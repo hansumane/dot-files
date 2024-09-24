@@ -655,7 +655,7 @@ require("lvim.lsp.manager").setup("pyright", {
 require("lvim.lsp.manager").setup("jdtls", {
   cmd = {
     "jdtls",
-    "--jvm-arg=-javaagent:" .. vim.fn.stdpath"data" .. "/mason/packages/jdtls/lombok.jar"
+    "--jvm-arg=-javaagent:" .. vim.fn.stdpath("data") .. "/mason/packages/jdtls/lombok.jar"
   },
 })
 require("lvim.lsp.manager").setup("rust_analyzer", {
