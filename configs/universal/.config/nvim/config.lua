@@ -648,7 +648,7 @@ require("lvim.lsp.manager").setup("clangd", {
 require("lvim.lsp.manager").setup("pyright", {
   settings = {
     python = {
-      pythonPath = "python3"
+      pythonPath = "/usr/bin/python3.11"
     }
   }
 })
