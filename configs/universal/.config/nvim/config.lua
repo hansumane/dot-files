@@ -197,7 +197,7 @@ lvim.builtin.telescope.defaults.layout_config.prompt_position = "top"
 
 lvim.builtin.treesitter.auto_install = true
 lvim.builtin.treesitter.sync_install = false
-lvim.builtin.treesitter.indent.enable = false
+lvim.builtin.treesitter.indent.enable = true
 lvim.builtin.treesitter.highlight.enable = true
 table.insert(lvim.builtin.treesitter.indent.disable, "c")
 table.insert(lvim.builtin.treesitter.indent.disable, "cpp")
@@ -215,7 +215,7 @@ lvim.lsp.installer.setup.ensure_installed = {
   "lua_ls", "clangd", "rust_analyzer", "pyright", "jdtls"
 } -- black, google-java-format --
 lvim.builtin.treesitter.ensure_installed = {
-  "bash", "c", "cpp", "java", "lua", "python", "rust", "php",
+  "c", "cpp", "bash", "java", "lua", "python", "rust", "php",
   "vim", "vimdoc", "org", "comment", "markdown", "markdown_inline",
   "git_config", "git_rebase", "gitattributes", "gitcommit", "gitignore"
 } -- norg --
