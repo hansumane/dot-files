@@ -1,4 +1,10 @@
-;; Packages
+'(Before-Startup)
+
+(set-frame-font "Iosevka 14" nil t)
+(add-to-list 'default-frame-alist
+  '(fullscreen . maximized))
+
+'(Packages)
 
 (require 'package)
 (add-to-list 'package-archives
@@ -14,6 +20,7 @@
   :demand t
   :bind (("<escape>" . keyboard-escape-quit))
   :init
+ (setq evil-want-C-u-scroll t)
   (setq evil-want-keybinding nil)
   (setq evil-undo-system 'undo-redo)
   :config
@@ -37,10 +44,10 @@
   :config
   (smex-initialize))
 
-;; Keybinds
+'(Keybinds)
 
 (global-set-key (kbd "M-x") 'smex)
-; (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 (evil-ex-define-cmd "E" 'evil-edit)
@@ -50,9 +57,7 @@
 (define-key evil-normal-state-map (kbd "SPC j") 'evil-ex-nohighlight)
 (define-key evil-visual-state-map (kbd "SPC k") 'evil-ex-sort)
 
-(define-key evil-normal-state-map (kbd "C-m") 'compile)
-
-;; Other settings
+'(Other-settings)
 
 (set-input-method  ; C-\ to switch
   'russian-computer)

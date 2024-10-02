@@ -2,6 +2,7 @@
  '(auto-save-default nil)
  '(auto-save-list-file-prefix nil)
  '(column-number-mode t)
+ '(delete-selection-mode nil)
  '(display-line-numbers-type 'relative)
  '(global-display-line-numbers-mode t)
  '(ido-mode 'both nil (ido))
@@ -9,8 +10,6 @@
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
- '(package-selected-packages
-      '(smex editorconfig gruvbox-theme evil-collection evil))
  '(pop-up-windows t)
  '(switch-to-buffer-in-dedicated-window 'pop)
  '(tab-width 4)
