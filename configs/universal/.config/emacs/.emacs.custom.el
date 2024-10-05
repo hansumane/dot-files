@@ -5,6 +5,7 @@
  '(delete-selection-mode nil)
  '(display-line-numbers-type 'relative)
  '(eglot-autoshutdown t)
+ '(eglot-ignored-server-capabilities '(:inlayHintProvider))
  '(evil-want-C-u-scroll t)
  '(evil-want-keybinding nil)
  '(global-display-line-numbers-mode t)
