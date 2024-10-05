@@ -34,6 +34,9 @@
   :ensure t
   :config (load-theme 'gruvbox :no-confirm))
 
+(use-package git-gutter
+  :ensure t)
+
 (use-package editorconfig ;; File Formatting from .editorconfig
   :ensure t
   :config (editorconfig-mode 1))

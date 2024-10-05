@@ -8,6 +8,7 @@
  '(eglot-autoshutdown t)
  '(eglot-ignored-server-capabilities '(:inlayHintProvider))
  '(global-display-line-numbers-mode t)
+ '(global-git-gutter-mode t)
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
