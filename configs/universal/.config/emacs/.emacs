@@ -7,13 +7,12 @@
 ;; Packages
 
 (require 'package)
-(package-initialize)
 (add-to-list 'package-archives
   '("melpa" . "https://melpa.org/packages/") t)
 
-(dolist (package '(use-package))
-  (unless (package-installed-p package)
-    (package-install package)))
+(package-initialize)
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
 
 (use-package evil ;; Basic Vim Bindings for Emacs
   :ensure t
@@ -39,9 +38,13 @@
   :ensure t
   :config (editorconfig-mode 1))
 
-(use-package smex ;; IDO for M-x
+(use-package ivy
   :ensure t
-  :config (smex-initialize))
+  :config (ivy-mode 1))
+
+(use-package evil-nerd-commenter
+  :ensure t
+  :config (evilnc-default-hotkeys))
 
 (use-package company ;; Completion and Suggestions
   :ensure t
@@ -61,22 +64,16 @@
         "--background-index"
         "--pch-storage=memory"))))
 
-(use-package which-key
+(use-package which-key ;; Shows Keybinding Descriptions
   :ensure t
   :config (which-key-mode))
 
 ;; Keybinds
 
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-
-(evil-ex-define-cmd "E" 'evil-edit)
-
-(define-key evil-motion-state-map "SPC" nil)
 (define-key evil-normal-state-map (kbd "C-k") 'whitespace-mode)
 (define-key evil-normal-state-map (kbd "SPC j") 'evil-ex-nohighlight)
 (define-key evil-visual-state-map (kbd "SPC k") 'evil-ex-sort)
+(define-key evil-visual-state-map (kbd "g c") 'evilnc-comment-operator)
 
 ;; Other Settings
 
