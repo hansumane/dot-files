@@ -22,33 +22,26 @@
   (setq evil-want-C-u-scroll t)
   (setq evil-want-keybinding nil)
   (setq evil-undo-system 'undo-redo)
-  :bind
-  (("<escape>" . keyboard-escape-quit))
-  :config
-  (evil-mode t))
+  :bind (("<escape>" . keyboard-escape-quit))
+  :config (evil-mode t))
 
 (use-package evil-collection ;; Vim Bindings for various Emacs modes
   :after evil
   :ensure t
-  :init
-  (setq evil-want-integration t)
-  :config
-  (evil-collection-init))
+  :init (setq evil-want-integration t)
+  :config (evil-collection-init))
 
 (use-package gruvbox-theme ;; Nice Theme
   :ensure t
-  :config
-  (load-theme 'gruvbox :no-confirm))
+  :config (load-theme 'gruvbox :no-confirm))
 
 (use-package editorconfig ;; File Formatting from .editorconfig
   :ensure t
-  :config
-  (editorconfig-mode 1))
+  :config (editorconfig-mode 1))
 
 (use-package smex ;; IDO for M-x
   :ensure t
-  :config
-  (smex-initialize))
+  :config (smex-initialize))
 
 (use-package company ;; Completion and Suggestions
   :ensure t
