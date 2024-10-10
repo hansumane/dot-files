@@ -13,6 +13,9 @@
  '(inhibit-startup-screen t)
  '(make-backup-files nil)
  '(menu-bar-mode nil)
+ '(org-safe-remote-resources
+      '("\\`https://fniessen\\.github\\.io/org-html-themes/org/theme-bigblow\\.setup\\'"))
+ '(org-startup-truncated nil)
  '(pop-up-windows t)
  '(scroll-margin 2)
  '(switch-to-buffer-in-dedicated-window 'pop)

@@ -34,20 +34,23 @@
   :ensure t
   :config (load-theme 'gruvbox :no-confirm))
 
-(use-package git-gutter
+(use-package git-gutter ;; Shows Git Diff for Buffer File
   :ensure t)
 
 (use-package editorconfig ;; File Formatting from .editorconfig
   :ensure t
   :config (editorconfig-mode 1))
 
-(use-package ivy
+(use-package ivy ;; Better ido Replacement
   :ensure t
   :config (ivy-mode 1))
 
-(use-package evil-nerd-commenter
+(use-package evil-nerd-commenter ;; g c to Comment
+  :after evil
   :ensure t
-  :config (evilnc-default-hotkeys))
+  :config
+  (evilnc-default-hotkeys)
+  (define-key evil-visual-state-map (kbd "g c") 'evilnc-comment-operator))
 
 (use-package company ;; Completion and Suggestions
   :ensure t
@@ -76,7 +79,6 @@
 (define-key evil-normal-state-map (kbd "C-k") 'whitespace-mode)
 (define-key evil-normal-state-map (kbd "SPC j") 'evil-ex-nohighlight)
 (define-key evil-visual-state-map (kbd "SPC k") 'evil-ex-sort)
-(define-key evil-visual-state-map (kbd "g c") 'evilnc-comment-operator)
 
 ;; Other Settings
 
