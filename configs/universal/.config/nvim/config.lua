@@ -202,7 +202,7 @@ lvim.builtin.indentlines.options.use_treesitter = true
 table.insert(lvim.builtin.treesitter.indent.disable, "c")
 table.insert(lvim.builtin.treesitter.indent.disable, "cpp")
 
-vim.lsp.set_log_level"off"
+vim.lsp.set_log_level("off")
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
 -- lvim.lsp.automatic_configuration.skipped_servers = vim.tbl_filter(function(server)
 --   return server ~= "jedi_language_server"
