@@ -63,9 +63,9 @@ alias vd="$EDITOR ."
 alias cr='cargo run'
 alias crr='cargo run -r'
 alias tl='clear; tmux list-sessions'
-alias ds='doom sync'
-alias dsu="ds -u --jobs $(getconf _NPROCESSORS_ONLN)"
-alias dsnou="ds -U --jobs $(getconf _NPROCESSORS_ONLN)"
+alias ds="doom sync --jobs $(getconf _NPROCESSORS_ONLN)"
+alias dsu="ds -u"
+alias dsnou="ds -U"
 alias eza="$LOCAL_LANG eza"
 
 alias la='eza -a'
