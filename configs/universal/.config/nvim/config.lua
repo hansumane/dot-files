@@ -185,7 +185,6 @@ end
 
 lvim.format_on_save.enabled = false
 lvim.builtin.nvimtree.setup.view.adaptive_size = true
-lvim.builtin.indentlines.options.use_treesitter = true
 if not enable_guidelines then lvim.builtin.indentlines.active = false end
 
 lvim.builtin.telescope.defaults.initial_mode = "normal"
@@ -199,6 +198,7 @@ lvim.builtin.treesitter.auto_install = true
 lvim.builtin.treesitter.sync_install = false
 lvim.builtin.treesitter.indent.enable = true
 lvim.builtin.treesitter.highlight.enable = true
+lvim.builtin.indentlines.options.use_treesitter = true
 table.insert(lvim.builtin.treesitter.indent.disable, "c")
 table.insert(lvim.builtin.treesitter.indent.disable, "cpp")
 
