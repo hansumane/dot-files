@@ -577,7 +577,7 @@ lvim.plugins = {
   },
   {
     "dhananjaylatkar/cscope_maps.nvim",
-    commit = "6d3222eca3748c8276578a37373ae939b49df38f",
+    -- commit = "6d3222eca3748c8276578a37373ae939b49df38f",
     opts = {
       prefix = "<C-c>",
       cscope = {
