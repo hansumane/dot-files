@@ -33,9 +33,6 @@ cp -f ${CURRENT_DIR}/configs/universal/.gitconfig ~
 cp -f ${CURRENT_DIR}/configs/universal/.tmux.conf ~
 cp -rf ${CURRENT_DIR}/configs/universal/.config/doom ~/.config
 
-# install tpm, tmux plugin manager (prefix + I (install) | prefix + U (update))
-git clone --depth=1 --recursive https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
 case $OSTYPE in
   *linux-gnu*)
     mkdir -p ~/Desktop ~/Downloads ~/Others; cd ~/Others
