@@ -145,7 +145,6 @@ if command -v doom &> /dev/null; then
   git fetch --all &> /dev/null
   git pull --rebase
 
-  cd - &> /dev/null
   doom upgrade --jobs $(getconf _NPROCESSORS_ONLN)
 fi
 
