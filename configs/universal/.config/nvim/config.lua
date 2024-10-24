@@ -119,8 +119,8 @@ lvim.builtin.which_key.mappings.lx = {
   "Buffer Diagnostics (Trouble)"
 }
 lvim.builtin.which_key.mappings.lt = {
-  [[<cmd>TodoTelescope<CR>]],
-  "TODOs"
+  [[<cmd>Trouble todo toggle focus=true<CR>]],
+  "Buffer Diagnostics (Trouble)"
 }
 lvim.builtin.which_key.mappings.se = {
   [[<cmd>lua require("telescope.builtin").live_grep({ additional_args = function(opts) return { "--pcre2" } end })<CR>]],
