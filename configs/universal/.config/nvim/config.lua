@@ -371,7 +371,7 @@ local themes = {
     lazy = false,
     config = function()
       vim.opt.background = background
-      vim.g.everforest_background = "hard"
+      vim.g.everforest_background = "hard" -- hard, medium (default), soft
       vim.g.everforest_better_performance = 1
       lvim.colorscheme = "everforest"
     end
@@ -382,7 +382,7 @@ local themes = {
     lazy = false,
     config = function()
       vim.opt.background = background
-      vim.g.gruvbox_material_background = "hard" -- medium (default), soft
+      vim.g.gruvbox_material_background = "medium" -- hard, medium (default), soft
       vim.g.gruvbox_material_better_performance = 1
       lvim.colorscheme = "gruvbox-material"
     end
