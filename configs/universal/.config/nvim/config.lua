@@ -519,20 +519,24 @@ local opt_plugins = {
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
       keywords = {
+        -- FIX
         -- FIX: test
         -- FIXME: test
         -- BUG: test
         -- ISSUE: test
         FIX  = { icon = " ", color = "error", alt = { "FIXME", "BUG", "ISSUE" } },
+        -- WARN
         -- WARN: test
         -- WARNING: test
         WARN = { icon = " ", color = "warning", alt = { "WARNING" } },
         -- REV: test
         -- REVIEW: test
         REV  = { icon = " ", color = "review", alt = { "REVIEW" } },
+        -- NOTE
         -- NOTE: test
         -- INFO: test
         NOTE = { icon = " ", color = "note", alt = { "INFO" } },
+        -- TODO
         -- TODO: test
         TODO = { icon = " ", color = "todo" }
       },
