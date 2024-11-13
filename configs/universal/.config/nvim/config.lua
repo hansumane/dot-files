@@ -482,6 +482,15 @@ local themes = {
     lazy = false,
     config = function()
       local lackluster = require("lackluster")
+      lackluster.setup({
+        tweak_highlight = {
+          IndentBlanklineChar = { overwrite = true, link = "Whitespace" },
+          IndentBlanklineSpaceChar = { overwrite = true, link = "Whitespace" },
+          IndentBlanklineSpaceCharBlankline = { overwrite = true, link = "Whitespace" },
+          IndentBlanklineContextChar = { overwrite = true, link = "SpecialComment" },
+          IndentBlanklineContextSpaceChar = { overwrite = true, link = "SpecialComment" }
+        }
+      })
       vim.opt.background = background
       require("nvim-web-devicons").setup({
         color_icons = false,
@@ -562,7 +571,7 @@ local opt_plugins = {
 }
 
 lvim.plugins = {
-  themes.catppuccin,
+  themes.lackluster,
   opt_plugins.deadcolumn,
   opt_plugins.todo_comments,
   {
