@@ -518,6 +518,17 @@ local themes = {
       vim.opt.background = background
       lvim.colorscheme = "gruber-darker"
     end
+  },
+  onedark = {
+    "navarasu/onedark.nvim",
+    priority = 1500,
+    lazy = false,
+    config = function()
+      local onedark = require("onedark")
+      onedark.setup(--[[{ style = "darker" }]])
+      vim.opt.background = background
+      lvim.colorscheme = "onedark"  -- onedark.load()
+    end
   }
 }
 
