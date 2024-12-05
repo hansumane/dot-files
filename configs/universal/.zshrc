@@ -252,9 +252,10 @@ edC () {
   $EDITOR ./compile_flags.txt
   (( $# == 0 )) && return 0
 
+  local TRUE_PATH="$(readlink -f $PWD)"
   local GIT_TOPDIR="$(git rev-parse --show-toplevel)" || return 0
   local GIT_INFODIR="$GIT_TOPDIR/.git/info"
-  local GIT_WDDIFF="${PWD#"$GIT_TOPDIR"}"
+  local GIT_WDDIFF="${TRUE_PATH#"$GIT_TOPDIR"}"
 
   mkdir -p "$GIT_INFODIR" && touch "$GIT_INFODIR/exclude"
   if ! grep -Fxq "$GIT_WDDIFF/compile_flags.txt" "$GIT_INFODIR/exclude"; then
