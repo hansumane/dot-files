@@ -1,5 +1,25 @@
 local autocmd = vim.api.nvim_create_autocmd
 
+autocmd("VimEnter", {
+  callback = function()
+    vim.cmd[[
+      command! SN :lua SetNumber(true)
+      command! USN :lua SetNumber(false)
+      command! S2 :lua SetIndent({ spaces = 2 })
+      command! S4 :lua SetIndent({ spaces = 4 })
+      command! S8 :lua SetIndent({ spaces = 8 })
+      command! T2 :lua SetIndent({ spaces = 2, tabs = 2, noexpand = true })
+      command! T4 :lua SetIndent({ spaces = 4, tabs = 4, noexpand = true })
+      command! T8 :lua SetIndent({ spaces = 8, tabs = 8, noexpand = true })
+      command! M2 :lua SetIndent({ spaces = 2, tabs = 4, noexpand = true })
+      command! M4 :lua SetIndent({ spaces = 4, tabs = 8, noexpand = true })
+      command! MG :lua SetIndent({ spaces = 2, tabs = 8, noexpand = true })
+      Cscope db add /home/kid/linux/linux-6.11.9/cscope.out:/home/kid/linux/linux-6.11.9
+    ]]
+    SetNumber(true)
+  end
+})
+
 autocmd("QuitPre", {
   callback = function()
     local tree_wins = {}
