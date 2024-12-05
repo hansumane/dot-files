@@ -1,0 +1,13 @@
+--- a/lua/nvchad/configs/lspconfig.lua
++++ b/lua/nvchad/configs/lspconfig.lua
+@@ -22,7 +22,9 @@ M.on_attach = function(_, bufnr)
+   map("n", "<leader>ra", require "nvchad.lsp.renamer", opts "NvRenamer")
+
+   map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts "Code action")
+-  map("n", "gr", vim.lsp.buf.references, opts "Show references")
++  -- map("n", "gr", vim.lsp.buf.references, opts "Show references")
++  map("n", "gr", '<cmd> lua require("telescope.builtin").lsp_references()<CR>')
++  map("n", "<leader>cr", require "nvchad.lsp.renamer", opts "rename")
+ end
+
+ -- disable semanticTokens

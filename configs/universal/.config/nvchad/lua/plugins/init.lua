@@ -76,19 +76,23 @@ return {
     },
   },
 
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      auto_install = true,
+      ignore_install = { "make", "tmux" },
+      ensure_installed = {
+        "c", "cpp", "bash", "java", "lua", "python", "rust", "php",
+        "vim", "vimdoc", "org", "comment", "markdown", "markdown_inline",
+        "git_config", "git_rebase", "gitattributes", "gitcommit", "gitignore",
+      },
+    },
+  },
+
   -- {
   --   "neovim/nvim-lspconfig",
   --   config = function()
   --     require "configs.lspconfig"
   --   end,
-  -- },
-
-  -- {
-  --   "nvim-treesitter/nvim-treesitter",
-  --   opts = {
-  --     ensure_installed = {
-  --       "vim", "lua", "vimdoc", "html", "css"
-  --     },
-  --   },
   -- },
 }
