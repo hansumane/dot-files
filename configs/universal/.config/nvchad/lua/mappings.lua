@@ -13,9 +13,6 @@ map("n", "<S-m>", function() require("nvchad.tabufline").move_buf( 1) end)
 map("n", "<leader>cc", function() require("nvchad.tabufline").close_buffer() end,
     { desc = "buffer close" })
 
-map("n", "<C-c><C-g>", "<cmd>Cscope find g<CR>")
-map("n", "<C-c><C-r>", "<cmd>Cscope find c<CR>")
-
 map("n", "<leader>k", ":sort<CR>", { desc = "Sort Lines" })
 map("n", "<leader>j", "<cmd>noh<CR>", { desc = "No Highlight" })
 
@@ -35,8 +32,7 @@ map("n", "<leader>ct", '<cmd>Trouble todo toggle focus=true<CR>',
 map("n", "<C-j>", function() cc_dict.update_cc("") end)
 map("n", "<C-k>", function()
   if not vim.opt.listchars:get().space then
-    -- TODO:
-    -- require("indent_blankline.commands").disable(true)
+    -- TODO: require("indent_blankline.commands").disable(true)
     vim.opt.listchars = {
       tab = "-->",
       space = "⋅",
@@ -52,8 +48,7 @@ map("n", "<C-k>", function()
       precedes = "⟨",
       extends = "⟩",
     }
-    -- TODO:
-    -- require("indent_blankline.commands").enable(true)
+    -- TODO: require("indent_blankline.commands").enable(true)
     vim.print("Indent Guidelines: on")
   end
 end)

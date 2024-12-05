@@ -1,8 +1,8 @@
-local cc_dict = require("my.ccdict")
+local cc_dict = require "my.ccdict"
 
 function SetNumber(toggle)
-  vim.opt.textwidth = toggle and (cc_dict.get("current") - 1) or 0
-  vim.opt.colorcolumn = toggle and { cc_dict.get("current") } or {}
+  vim.opt.textwidth = toggle and (cc_dict.get "current" - 1) or 0
+  vim.opt.colorcolumn = toggle and { cc_dict.get "current" } or {}
   vim.opt.number = toggle and true or false
   vim.opt.cursorline = toggle and true or false
   vim.opt.relativenumber = toggle and true or false
@@ -27,6 +27,6 @@ require("editorconfig").properties.max_line_length = function(_, val)
     cc_dict.update_cc(nil, n + 1)
   else
     assert(val == "off", 'editorconfig: max_line_length: not number or "off"')
-    cc_dict.update_cc(nil, cc_dict.get("init"))
+    cc_dict.update_cc(nil, cc_dict.get "init")
   end
 end

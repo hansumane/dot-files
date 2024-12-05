@@ -1,7 +1,7 @@
-CdInit = 81
-CcDict = {
-  init = CdInit,
-  current = CdInit,
+local cd_init = 81
+local cc_dict = {
+  init = cd_init,
+  current = cd_init,
   ["81"] = 91,
   ["91"] = 101,
   ["101"] = 121,
@@ -9,14 +9,14 @@ CcDict = {
 }
 
 return {
-  set = function(k, v) CcDict[k] = v end,
-  get = function(k) return CcDict[k] end,
+  set = function(k, v) cc_dict[k] = v end,
+  get = function(k) return cc_dict[k] end,
   update_cc = function(info, new_cc)
     if not new_cc then
-      new_cc = CcDict[vim.opt.colorcolumn:get()[1]] or CcDict.init
+      new_cc = cc_dict[vim.opt.colorcolumn:get()[1]] or cc_dict.init
     end
 
-    CcDict.current = new_cc
+    cc_dict.current = new_cc
     vim.opt.textwidth = new_cc - 1
     if vim.opt.number:get() then
       vim.opt.colorcolumn = { new_cc }
