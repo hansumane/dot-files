@@ -2,6 +2,7 @@ require "nvchad.options"
 
 vim.opt.mouse = "nv"
 vim.opt.scrolloff = 3
+vim.opt.autochdir = true
 vim.g.c_syntax_for_h = true
 
 vim.opt.keymap = "russian-jcukenwin"
