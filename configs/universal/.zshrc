@@ -33,7 +33,7 @@ export FZF_DEFAULT_OPTS=" \
 
 # sudo
 export SUDO_CMD='sudo'
-alias $SUDO_CMD="$SUDO_CMD "
+alias $SUDO_CMD="$SUDO_CMD env PATH=\$PATH"
 
 # local defines
 FOLDER_ICON='  '
