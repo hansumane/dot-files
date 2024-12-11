@@ -13,7 +13,7 @@ map("n", "<S-m>", function() require("nvchad.tabufline").move_buf( 1) end)
 map("n", "<leader>cc", function() require("nvchad.tabufline").close_buffer() end,
     { desc = "buffer close" })
 
-map("n", "<leader>k", ":sort<CR>", { desc = "Sort Lines" })
+map("v", "<leader>k", ":sort<CR>", { desc = "Sort Lines" })
 map("n", "<leader>j", "<cmd>noh<CR>", { desc = "No Highlight" })
 
 map("i", "<C-\\>", "<C-6>")
@@ -26,7 +26,7 @@ map("n", "<leader>fe",
     '<cmd>lua require("telescope.builtin").live_grep({' ..
     '  additional_args = function(opts) return { "--pcre2" } end })<CR>',
     { desc = "telescope find PCRE2" })
-map("n", "<leader>ct", '<cmd>Trouble todo toggle focus=true<CR>',
+map("n", "<leader>ft", '<cmd>Trouble todo toggle focus=true<CR>',
     { desc = "buffer todo" })
 
 map("n", "<C-j>", function() cc_dict.update_cc("") end)
