@@ -84,7 +84,9 @@ alias edcr="$EDITOR ~/.git-credentials"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
 
 vg () {
-  valgrind --show-error-list=yes --leak-check=full --show-leak-kinds=all $@
+  valgrind --show-error-list=yes \
+           --leak-check=full --show-leak-kinds=all \
+           --track-origins=yes $@
 }
 
 bt () {
