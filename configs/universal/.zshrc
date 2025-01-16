@@ -68,13 +68,15 @@ alias dsnou="ds -U"
 alias eza="$LOCAL_LANG eza"
 
 alias la='eza -a'
-alias lx="eza $EZA_ICONS -albh $EZA_GIT --classify --group --group-directories-first"
-alias ll="eza $EZA_ICONS -albh $EZA_GIT --classify --no-user --group-directories-first"
-alias lt="eza $EZA_ICONS -albh $EZA_GIT --classify --no-user --group-directories-first -T"
+alias lx="eza $EZA_ICONS -albh --classify --group --group-directories-first"
+alias ll="eza $EZA_ICONS -albh --classify --no-user --group-directories-first"
+alias lt="eza $EZA_ICONS -albh --classify --no-user --group-directories-first -T"
 alias cla='cpwd;la'
 alias cll='cpwd;ll'
 alias clx='cpwd;lx'
 alias cxl='cpwd;lx'
+alias glx='cpwd;lx --git'
+alias gxl='cpwd;lx --git'
 alias clt='cpwd;lt'
 
 alias edM="$EDITOR Makefile"
