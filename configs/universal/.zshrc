@@ -4,7 +4,6 @@ case "$TERM" in
   * ) export TERM="xterm-256color" ;;
 esac
 export CC='gcc'
-export CPP='cpp'
 export CXX='g++'
 export AWK_CMD='awk'
 export SED_CMD='sed'
