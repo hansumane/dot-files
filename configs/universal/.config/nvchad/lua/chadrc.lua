@@ -15,8 +15,8 @@ M.base46 = {
 
 M.ui = {
   statusline = {
-    order = { "mode", "vlines", "file", "git",
-              "%=", "lsp_msg", "%=",
+    order = { "mode", "file", "git",
+              "%=", "vlines", "lsp_msg", "%=",
               "lsp", "cwd", "klang" },
     modules = {
       vlines = function()
