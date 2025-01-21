@@ -266,6 +266,16 @@ edC () {
   fi
 }
 
+csb () {
+  if command -v cscope &> /dev/null; then
+    find . -type f '(' -name '*.c' -o -name '*.h' -o -iname '*.s' ')' -exec \
+      realpath --relative-to="$(pwd)" {} '+' | uniq | sort > cscope.files
+    cscope -b -q
+  else
+    echo "ERROR: 'cscope' is not available"; return 1
+  fi
+}
+
 fcc () {
   if (( $# == 0 )); then
     echo 'ERROR: No source file(s) given!'; return 1
