@@ -78,6 +78,7 @@ alias cxl='cpwd;lx'
 alias glx='cpwd;lx --git'
 alias gxl='cpwd;lx --git'
 alias clt='cpwd;lt'
+alias glt='cpwd;lt --git'
 
 alias edM="$EDITOR Makefile"
 alias edcr="$EDITOR ~/.git-credentials"
