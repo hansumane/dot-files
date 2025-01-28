@@ -1,7 +1,7 @@
 local lspconfig = require "lspconfig"
 
 local map = vim.keymap.set
-local servers = { "pyright" }
+local servers = { "pyright", "mesonlsp" }
 local nvlsp = require "nvchad.configs.lspconfig"
 
 local mya = function(client, bufnr)
