@@ -14,7 +14,7 @@ autocmd("VimEnter", {
       command! M2 :lua SetIndent({ spaces = 2, tabs = 4, noexpand = true })
       command! M4 :lua SetIndent({ spaces = 4, tabs = 8, noexpand = true })
       command! MG :lua SetIndent({ spaces = 2, tabs = 8, noexpand = true })
-      Cscope db add /path/to/cscope.out:/path/to
+      "Cs db add /path/to/cscope.out::@
     ]]
     SetNumber(true)
   end
