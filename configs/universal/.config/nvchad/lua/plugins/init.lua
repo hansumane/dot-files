@@ -40,12 +40,19 @@ return {
     "rcarriga/nvim-notify",
     lazy = false,
     config = function()
-      local notify = require("notify")
+      local _notify = require("notify")
 
-      notify.setup({
+      _notify.setup({
         render = "compact",
         stages = "static",
       })
+
+      local notify = function(msg, level, opts)
+        if msg == "cscope: db_build script is not found. Using default" then
+          return
+        end
+        _notify(msg, level, opts)
+      end
 
       vim.notify = notify
     end,
