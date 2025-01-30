@@ -66,3 +66,20 @@ lspconfig.clangd.setup {
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
 }
+
+-- rust_analyzer setup
+lspconfig.rust_analyzer.setup {
+  on_attach = mya,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  settings = {
+    ["rust-analyzer"] = {
+      lens = { enable = false },
+      checkOnSave = { command = "clippy" },
+      diagnostics = {
+        enable = true,
+        experimental = { enable = true }
+      }
+    }
+  }
+}
