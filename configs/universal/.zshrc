@@ -345,13 +345,6 @@ update_path () {
        TOBPATH+=" /usr/local/sbin /usr/local/bin"
        TOBPATH+=" $HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin"
 
-  local TOLPATH="/libexec /lib /lib64"
-       TOLPATH+=" /usr/libexec /usr/lib /usr/lib64"
-       TOLPATH+=" /usr/local/libexec /usr/local/lib /usr/local/lib64"
-#      TOLPATH+=" /usr/lib/jvm/java-21-openjdk/lib"
-#      TOLPATH+=" /usr/lib64/jvm/java-21-openjdk/lib"
-       TOLPATH+=" $HOME/.local/lib"
-
   for DIR in $TOBPATH; do
     if [[ -d $DIR ]]; then
       export PATH="$(echo -n ":$PATH:" | $SED_CMD "s/:$(echo -n "$DIR" | $SED_CMD 's/\//\\\//g'):/:/g")"
@@ -359,6 +352,16 @@ update_path () {
     fi
   done
   export PATH="$(echo -n ":$PATH:" | $SED_CMD 's/:\+/:/g' | $SED_CMD 's/^:\(.*\):$/\1/g')"
+
+  local TOLPATH="/libexec /lib /lib64"
+       TOLPATH+=" /usr/libexec /usr/lib /usr/lib64"
+       TOLPATH+=" /usr/local/libexec /usr/local/lib /usr/local/lib64"
+#      TOLPATH+=" /usr/lib/jvm/java-21-openjdk/lib"
+#      TOLPATH+=" /usr/lib64/jvm/java-21-openjdk/lib"
+       TOLPATH+=" $HOME/.local/lib"
+     if command -v rustc &> /dev/null; then
+       TOLPATH+=" $(rustc --print sysroot)/lib/rustlib/x86_64-unknown-linux-gnu/lib"
+     fi
 
   for DIR in $TOLPATH; do
     if [[ -d $DIR ]]; then
