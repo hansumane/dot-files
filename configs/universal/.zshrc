@@ -134,9 +134,11 @@ alias gits='git status'
 alias gitb='git branch -a'
 alias gitup='git fetch --all && git status'
 alias gitr='cd $(git rev-parse --show-toplevel)'
+alias gitrb='git rebase -i --root $(git rev-parse --abbrev-ref HEAD)'
 alias gita='git add -A && git commit --amend --reset-author --no-edit'
 alias gitl='git log --graph --pretty=format:"%C(red)%h%C(reset) | %s %C(green)(%cr)%C(reset) %C(blue)%an%C(reset) %C(bold magenta)<%ae>%C(reset)%C(yellow)%d%C(reset)"'
 alias gitll='git log --graph --date=format-local:"%Y/%m/%d %H:%M" --pretty=format:"%C(red)%h%C(reset) | %s %C(green)(%cd)%C(reset) %C(blue)%an%C(reset) %C(bold magenta)<%ae>%C(reset)%C(yellow)%d%C(reset)"'
+alias gitlll='git log --pretty=fuller'
 
 # git diff --cache    # shows differences between HEAD and currently staged changes
 # git add -p [file]   # interactively adds hunks from optional file
