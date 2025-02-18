@@ -542,30 +542,39 @@ local opt_plugins = {
         -- FIX
         -- FIX: test
         -- FIXME: test
-        -- BUG: test
+        -- ERROR: test
         -- ISSUE: test
-        FIX  = { icon = " ", color = "error", alt = { "FIXME", "BUG", "ISSUE" } },
+        -- BUG: test
+        FIX  = { icon = " ", color = "error",
+                 alt = { "FIXME", "ERROR", "ISSUE", "BUG" } },
         -- WARN
         -- WARN: test
         -- WARNING: test
-        WARN = { icon = " ", color = "warning", alt = { "WARNING" } },
+        -- HACK: test
+        WARN = { icon = " ", color = "warning",
+                 alt = { "WARNING", "HACK" } },
+        -- REV
         -- REV: test
         -- REVIEW: test
-        REV  = { icon = " ", color = "review", alt = { "REVIEW" } },
+        REV  = { icon = " ", color = "review",
+                 alt = { "REVIEW" } },
         -- NOTE
         -- NOTE: test
         -- INFO: test
-        NOTE = { icon = " ", color = "note", alt = { "INFO" } },
+        -- PERF: test
+        NOTE = { icon = " ", color = "note",
+                 alt = { "INFO", "PERF" } },
         -- TODO
         -- TODO: test
-        TODO = { icon = " ", color = "todo" }
+        TODO = { icon = " ", color = "todo",
+                 alt = { } }
       },
       colors = {
-        error   = { "DiagnosticError" },
-        warning = { "DiagnosticWarn" },
-        review  = { "DiagnosticOk" },
-        note    = { "DiagnosticHint" },
-        todo    = { "DiagnosticInfo" }
+        error   = { "@comment.error" },
+        warning = { "@comment.warning" },
+        review  = { "@comment.hint" },
+        note    = { "@comment.note" },
+        todo    = { "@comment.todo" }
       }
     }
   },
