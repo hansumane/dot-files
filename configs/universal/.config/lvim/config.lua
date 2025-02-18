@@ -591,7 +591,7 @@ local opt_plugins = {
 }
 
 lvim.plugins = {
-  themes.lackluster,
+  themes.rose_pine,
   opt_plugins.deadcolumn,
   opt_plugins.todo_comments,
   {
