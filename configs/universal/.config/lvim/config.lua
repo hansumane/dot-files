@@ -610,8 +610,8 @@ lvim.plugins = {
   },
   {
     "dhananjaylatkar/cscope_maps.nvim",
-    commit = "79452ca6b9bac87ff51ea543bb649c33bfe9e157",
-    -- commit = "6d3222eca3748c8276578a37373ae939b49df38f",
+    --1 commit = "79452ca6b9bac87ff51ea543bb649c33bfe9e157",
+    --2 commit = "6d3222eca3748c8276578a37373ae939b49df38f",
     opts = {
       prefix = "<C-c>",
       cscope = {
