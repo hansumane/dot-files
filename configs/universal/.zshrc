@@ -94,6 +94,10 @@ bt () {
   bat --tabs=8 $@
 }
 
+br () {
+  find . -type f -iname $@ -exec bat --tabs=8 {} '+'
+}
+
 hxl () {
   setopt shwordsplit
   if (( $# == 0 )); then
