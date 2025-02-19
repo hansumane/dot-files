@@ -277,8 +277,8 @@ csb () {
   if command -v cscope &> /dev/null; then
     find . -type f -name 'cscope.*' -delete
     find . -type f '(' -name '*.c' -o -name '*.h' -o -iname '*.s' ')' -exec \
-      realpath --relative-to="$(pwd)" {} '+' | uniq | sort > cscope.files
-    cscope -b -q $@  # csb -k to build in kernel mode
+      realpath --relative-to="$PWD" {} '+' | uniq | sort > cscope.files
+    cscope -b -q $@ -f cscope.out  # csb -k to build in kernel mode
   else
     echo "ERROR: 'cscope' is not available"; return 1
   fi
