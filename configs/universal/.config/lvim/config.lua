@@ -130,6 +130,10 @@ lvim.builtin.which_key.mappings.t = {
   [[<cmd>lua RestoreBG(true)<CR>]],
   'Change dark/light'
 }
+lvim.builtin.which_key.mappings.P = {
+  [[<cmd>Telescope projects<CR>]],
+  'Projects'
+}
 
 -- :sort<CR> is intentional, <cmd>sort<CR> doesn't work
 lvim.builtin.which_key.vmappings.k = { ":sort<CR>", "Sort Lines" }
@@ -186,6 +190,8 @@ end
 lvim.format_on_save.enabled = false
 lvim.builtin.nvimtree.setup.view.adaptive_size = true
 if not enable_guidelines then lvim.builtin.indentlines.active = false end
+
+lvim.builtin.project.patterns = { ".git", ".nvim_project_root" }
 
 lvim.builtin.telescope.defaults.initial_mode = "normal"
 lvim.builtin.telescope.defaults.layout_strategy = "horizontal"
