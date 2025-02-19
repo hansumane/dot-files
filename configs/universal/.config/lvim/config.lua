@@ -568,7 +568,7 @@ local opt_plugins = {
         -- NOTE: test
         -- INFO: test
         -- PERF: test
-        NOTE = { icon = " ", color = "note",
+        NOTE = { icon = " ", color = "note",
                  alt = { "INFO", "PERF" } },
         -- TODO
         -- TODO: test
