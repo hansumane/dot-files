@@ -262,7 +262,7 @@ edC () {
   $EDITOR ./compile_flags.txt
   (( $# == 0 )) && return 0
 
-  local TRUE_PATH="$(readlink -f $PWD)"
+  local TRUE_PATH="$(readlink -f "$PWD")"
   local GIT_TOPDIR="$(git rev-parse --show-toplevel)" || return 0
   local GIT_INFODIR="$GIT_TOPDIR/.git/info"
   local GIT_WDDIFF="${TRUE_PATH#"$GIT_TOPDIR"}"
