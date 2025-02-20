@@ -8,9 +8,12 @@ export CXX='g++'
 export AWK_CMD='awk'
 export SED_CMD='sed'
 export EDITOR='nvim'  # "$HOME/.local/bin/lvim"
+export PYTHONDONTWRITEBYTECODE='1'
+
+export HISTSIZE=131072
+export SAVEHIST=1048576
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_COMPDUMP="$ZSH/cache/.zcompdump-$HOST"
-export PYTHONDONTWRITEBYTECODE='1'
 
 # man colors
 export GROFF_NO_SGR='1'
