@@ -115,7 +115,12 @@ hxl () {
 }
 
 cl () {
-  clear
+  if command -v clear &> /dev/null; then
+    clear
+  else
+    printf "\033[H\033[J"
+  fi
+
   case $TERM in
     *screen* ) tmux clear-history ;;
   esac
