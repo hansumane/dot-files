@@ -222,11 +222,11 @@ lvim.lsp.installer.setup.ensure_installed = {
 } -- black, google-java-format --
 lvim.builtin.treesitter.ensure_installed = {
   "c", "cpp", "bash", "java", "lua", "python", "rust", "php",
-  "vim", "vimdoc", "org", "comment", "markdown", "markdown_inline",
+  "vim", "vimdoc", "comment", "markdown", "markdown_inline",
   "git_config", "git_rebase", "gitattributes", "gitcommit", "gitignore"
 } -- norg --
 lvim.builtin.treesitter.ignore_install = {
-  "make", "tmux"
+  "make", "tmux", "org"
 }
 
 local components = require("lvim.core.lualine.components")
