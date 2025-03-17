@@ -599,7 +599,7 @@ local opt_plugins = {
 lvim.plugins = {
   themes.rose_pine,
   opt_plugins.deadcolumn,
-  opt_plugins.todo_comments,
+  -- opt_plugins.todo_comments,
   {
     "hansumane/telescope-orgmode.nvim",
     config = function()
