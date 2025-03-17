@@ -545,7 +545,8 @@ local opt_plugins = {
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
       keywords = {
-        -- FIX
+        -- FIXME
+        -- ERROR
         -- FIX: test
         -- FIXME: test
         -- ERROR: test
