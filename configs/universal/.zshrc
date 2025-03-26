@@ -269,16 +269,18 @@ edC () {
     echo >> ./compile_flags.txt
     echo '-Wno-varargs' >> ./compile_flags.txt
     echo '-Wno-variadic-macros' >> ./compile_flags.txt
+    echo '-Wno-c23-extensions' >> ./compile_flags.txt
     echo '-Wno-unused-parameter' >> ./compile_flags.txt
     echo '-Wno-unused-but-set-variable' >> ./compile_flags.txt
     echo '-Wno-gnu-empty-struct' >> ./compile_flags.txt
+    echo '-Wno-gnu-pointer-arith' >> ./compile_flags.txt
     echo '-Wno-gnu-binary-literal' >> ./compile_flags.txt
     echo '-Wno-gnu-conditional-omitted-operand' >> ./compile_flags.txt
     echo '-Wno-gnu-zero-variadic-macro-arguments' >> ./compile_flags.txt
     echo '-Wno-gnu-statement-expression-from-macro-expansion' >> ./compile_flags.txt
   fi
 
-  $EDITOR ./compile_flags.txt
+  "$EDITOR" ./compile_flags.txt
   (( $# == 0 )) && return 0
 
   local TRUE_PATH="$(readlink -f "$PWD")"
