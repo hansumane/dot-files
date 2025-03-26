@@ -62,6 +62,7 @@ alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"
 
 alias v="$EDITOR"
 alias vd="$EDITOR ."
+alias z='zathura'
 alias cr='cargo run'
 alias crr='cargo run -r'
 alias tl='clear; tmux list-sessions'
