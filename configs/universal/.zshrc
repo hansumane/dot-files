@@ -88,6 +88,11 @@ alias edM="$EDITOR Makefile"
 alias edcr="$EDITOR ~/.git-credentials"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
 
+gr () {
+  $@ &> /dev/null &
+  disown
+}
+
 vg () {
   valgrind --show-error-list=yes \
            --leak-check=full --show-leak-kinds=all \
