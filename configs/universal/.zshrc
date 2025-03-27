@@ -99,7 +99,7 @@ bt () {
 }
 
 br () {
-  find . -type f -iname $@ -exec bat --tabs=8 {} '+'
+  find . '(' -type f -iname $@ ')' -exec bat --tabs=8 {} '+'
 }
 
 hxl () {
