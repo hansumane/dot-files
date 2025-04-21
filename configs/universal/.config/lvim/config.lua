@@ -681,7 +681,8 @@ require("lvim.lsp.manager").setup("clangd", {
   cmd = {
     "clangd",
     "-j=" .. max_threads,
-    -- "--malloc-trim",  -- incompatible with MacOS
+    "--clang-tidy",
+    "--malloc-trim",  -- incompatible with MacOS
     "--background-index",
     "--pch-storage=memory"
   }
