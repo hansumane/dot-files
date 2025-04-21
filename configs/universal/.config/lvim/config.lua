@@ -1,4 +1,5 @@
--- LunarVim (lvim) config
+-- NOTE: LunarVim config for release v1.4 works up to neovim 0.10.4
+-- (https://github.com/neovim/neovim/releases/tag/v0.10.4)
 
 vim.opt.mouse = "nv"
 vim.opt.scrolloff = 3
