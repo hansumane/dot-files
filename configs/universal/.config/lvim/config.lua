@@ -536,6 +536,34 @@ local themes = {
       vim.opt.background = background
       lvim.colorscheme = "onedark"  -- onedark.load()
     end
+  },
+  molokai = {
+    "tomasr/molokai",
+    priority = 1500,
+    lazy = false,
+    config = function()
+      vim.opt.background = background
+      lvim.colorscheme = "molokai"
+      vim.api.nvim_create_autocmd("ColorScheme", {
+        pattern = "molokai",
+        callback = function()
+          local highlights = {
+            ["@lsp.type.comment"] = {},
+            ["@lsp.type.comment.c"] = { link = "@comment" },
+            ["@lsp.type.comment.cpp"] = { link = "@comment" },
+
+            IndentBlanklineChar = { fg = "#313b3d" },
+            IndentBlanklineSpaceChar = { fg = "#313b3d" },
+            IndentBlanklineSpaceCharBlankline = { fg = "#313b3d" },
+            IndentBlanklineContextChar = { fg = "#465457" },
+            IndentBlanklineContextSpaceChar = { fg = "#465457" }
+          }
+          for group, highlight in pairs(highlights) do
+            vim.api.nvim_set_hl(0, group, highlight)
+          end
+        end,
+      })
+    end
   }
 }
 
