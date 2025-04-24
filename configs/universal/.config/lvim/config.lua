@@ -623,12 +623,24 @@ local opt_plugins = {
         return true
       end
     }
+  },
+  colorizer = {
+    "norcalli/nvim-colorizer.lua",
+    priority = 1490,
+    lazy = false,
+    config = function()
+      require("colorizer").setup({
+        lua = { RGB = false, RRGGBB = true, names = false },
+        vim = { RGB = false, RRGGBB = true, names = false }
+      })
+    end
   }
 }
 
 lvim.plugins = {
   themes.rose_pine,
   opt_plugins.deadcolumn,
+  -- opt_plugins.colorizer,
   -- opt_plugins.todo_comments,
   {
     "hansumane/telescope-orgmode.nvim",
