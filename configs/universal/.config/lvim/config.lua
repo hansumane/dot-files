@@ -564,6 +564,16 @@ local themes = {
         end,
       })
     end
+  },
+  monokai_pro = {
+    "loctvl842/monokai-pro.nvim",
+    priority = 1500,
+    lazy = false,
+    config = function()
+      require("monokai-pro").setup()
+      vim.opt.background = background
+      lvim.colorscheme = "monokai-pro"
+    end
   }
 }
 
@@ -638,7 +648,7 @@ local opt_plugins = {
 }
 
 lvim.plugins = {
-  themes.rose_pine,
+  themes.monokai_pro,
   opt_plugins.deadcolumn,
   -- opt_plugins.colorizer,
   -- opt_plugins.todo_comments,
