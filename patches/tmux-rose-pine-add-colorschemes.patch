@@ -1,0 +1,98 @@
+From a6b8a796479b05ded88a5787fc245978717b8d8b Mon Sep 17 00:00:00 2001
+From: Creasure <yurxo@bk.ru>
+Date: Tue, 29 Apr 2025 14:22:46 +0300
+Subject: [PATCH] Add monokai-pro, nordic, kanagawa colorschemes
+
+---
+ rose-pine.tmux | 67 ++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 65 insertions(+), 2 deletions(-)
+
+diff --git a/rose-pine.tmux b/rose-pine.tmux
+index 9d9e1ce..46912a3 100755
+--- a/rose-pine.tmux
++++ b/rose-pine.tmux
+@@ -102,6 +102,69 @@ main() {
+         thm_hl_med="#44415a";
+         thm_hl_high="#56526e";
+ 
++    elif [[ $theme == monokai ]]; then
++
++        thm_base="#2d2a2e";
++        thm_surface="#19181a";
++        thm_overlay="#221f22";
++
++        thm_muted="#939293";
++        thm_subtle="#c1c0c0";
++        thm_text="#fcfcfa";
++
++        thm_hl_low="#403e41";
++        thm_hl_med="#5b595c";
++        thm_hl_high="#727072";
++
++        thm_love="#ff6188";
++        thm_gold="#ffd866";
++        thm_rose="#78dce8";
++        thm_pine="#fc9867";
++        thm_foam="#a9dc76";
++        thm_iris="#ab9df2";
++
++    elif [[ $theme == nordic ]]; then
++
++        thm_base="#242933";
++        thm_surface="#191D24";
++        thm_overlay="#222630";
++
++        thm_muted="#4C566A";
++        thm_subtle="#60728A";
++        thm_text="#BBC3D4";
++
++        thm_hl_low="#242933";
++        thm_hl_med="#2E3440";
++        thm_hl_high="#3B4252";
++
++        thm_love="#B74E58";
++        thm_gold="#E7C173";
++        thm_rose="#80B3B2";
++        thm_pine="#CB775D";
++        thm_foam="#97B67C";
++        thm_iris="#A97EA1";
++
++    elif [[ $theme == kanagawa ]]; then
++
++        thm_base="#1F1F28";
++        thm_surface="#2A2A37";
++        thm_overlay="#363646";
++
++        thm_muted="#727169";
++        thm_subtle="#C8C093";
++        thm_text="#DCD7BA";
++
++        thm_hl_low="#1F1F28";
++        thm_hl_med="#2A2A37";
++        thm_hl_high="#363646";
++
++        thm_love="#E46876";
++        thm_gold="#C0A36E";
++        thm_rose="#7E9CD8";
++        thm_pine="#6A9589";
++        thm_foam="#76946A";
++        thm_iris="#957FB8";
++
+     fi
+ 
+     # Aggregating all commands into a single array
+@@ -165,9 +228,9 @@ main() {
+     window_directory="$(get_tmux_option "@rose_pine_show_pane_directory" "")"
+     readonly window_directory
+ 
+-    local window_separator 
++    local window_separator
+     window_separator="$(get_tmux_option "@rose_pine_window_separator" "")"
+-    readonly window_separator 
++    readonly window_separator
+ 
+     local default_window_behavior
+     default_window_behavior="$(get_tmux_option "@rose_pine_default_window_behavior" "")"
+-- 
+2.50.1
+
