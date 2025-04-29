@@ -1,0 +1,72 @@
+From 7d2bfca6434e5cf34c58b70dee52a6be565890b3 Mon Sep 17 00:00:00 2001
+From: Creasure <yurxo@bk.ru>
+Date: Fri, 16 Jan 2026 15:02:49 +0300
+Subject: [PATCH] fix(path): remove path prefix
+
+---
+ lua/neo-tree/command/parser.lua          |  3 ++-
+ lua/neo-tree/sources/filesystem/init.lua |  6 ++++++
+ lua/neo-tree/utils/init.lua              | 18 ++++++++++++++++++
+ 3 files changed, 26 insertions(+), 1 deletion(-)
+
+diff --git a/lua/neo-tree/command/parser.lua b/lua/neo-tree/command/parser.lua
+index e267adf..68d39d2 100644
+--- a/lua/neo-tree/command/parser.lua
++++ b/lua/neo-tree/command/parser.lua
+@@ -101,7 +101,8 @@ end
+ ---@param path string
+ ---@param validate_type string?
+ M.resolve_path = function(path, validate_type)
+-  local abs_path = utils.path_join(vim.fn.getcwd(), vim.fn.expand(path))
++  local abs_path = utils.path_join(vim.fn.getcwd(),
++                                   vim.fn.expand(utils.remove_path_prefix(path)))
+   if validate_type then
+     local stat = uv.fs_stat(abs_path)
+     if not stat or stat.type ~= validate_type then
+diff --git a/lua/neo-tree/sources/filesystem/init.lua b/lua/neo-tree/sources/filesystem/init.lua
+index b1c6a2a..cd546f2 100644
+--- a/lua/neo-tree/sources/filesystem/init.lua
++++ b/lua/neo-tree/sources/filesystem/init.lua
+@@ -192,6 +192,12 @@ end
+ ---@param callback function? Callback to call after the items are loaded.
+ M.navigate = function(state, path, path_to_reveal, callback, async)
+   state._ready = false
++  if path then
++    path = utils.remove_path_prefix(path)
++  end
++  if path_to_reveal then
++    path_to_reveal = utils.remove_path_prefix(path_to_reveal)
++  end
+   log.trace("navigate", path, path_to_reveal, async)
+   utils.debounce("filesystem_navigate", function()
+     M._navigate_internal(state, path, path_to_reveal, callback, async)
+diff --git a/lua/neo-tree/utils/init.lua b/lua/neo-tree/utils/init.lua
+index 570338e..9084de5 100644
+--- a/lua/neo-tree/utils/init.lua
++++ b/lua/neo-tree/utils/init.lua
+@@ -1620,4 +1620,22 @@ end
+ ---@type table<integer, integer[]>
+ M.prior_windows = {}
+ 
++-- Remove special prefixes so that they won't break other path functions
++---@param path string
++---@return string path
++M.remove_path_prefix = function(path)
++  local prefixes = {
++    "oil://",
++    "suda://",
++  }
++  for _, prefix in ipairs(prefixes) do
++    if path:sub(1, #prefix) == prefix then
++      return path:sub(#prefix + 1)
++    elseif path:sub(1, #prefix - 2) == prefix:sub(1, #prefix - 2) then
++      return path:sub(#prefix - 1)
++    end
++  end
++  return path
++end
++
+ return M
+-- 
+2.52.0
+
