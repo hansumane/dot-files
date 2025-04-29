@@ -1,0 +1,150 @@
+From 9ee99b4615a9fd1339e0a40cb119a86f2fcfa031 Mon Sep 17 00:00:00 2001
+From: Creasure <yurxo@bk.ru>
+Date: Fri, 30 Jan 2026 14:57:18 +0300
+Subject: [PATCH] devicetree: add support
+
+apply to tag 'melpa-stable/v0.13.20'
+---
+ .gitmodules                       |  6 ++
+ queries/devicetree/highlights.scm | 93 +++++++++++++++++++++++++++++++
+ repos/devicetree                  |  1 +
+ tree-sitter-langs.el              |  1 +
+ 4 files changed, 101 insertions(+)
+ create mode 100644 queries/devicetree/highlights.scm
+ create mode 160000 repos/devicetree
+
+diff --git a/.gitmodules b/.gitmodules
+index 581262a..d9da4df 100644
+--- a/.gitmodules
++++ b/.gitmodules
+@@ -709,3 +709,9 @@
+ 	update = none
+ 	ignore = dirty
+ 	branch = main
++[submodule "repos/devicetree"]
++	path = repos/devicetree
++	url = https://github.com/joelspadin/tree-sitter-devicetree.git
++	update = none
++	ignore = dirty
++	branch = main
+diff --git a/queries/devicetree/highlights.scm b/queries/devicetree/highlights.scm
+new file mode 100644
+index 0000000..d662391
+--- /dev/null
++++ b/queries/devicetree/highlights.scm
+@@ -0,0 +1,93 @@
++[
++    "/delete-node/"
++    "/delete-property/"
++    "/dts-v1/"
++    "/incbin/"
++    "/memreserve/"
++    "/omit-if-no-ref/"
++    "#define"
++    "#undef"
++    "#if"
++    "#elif"
++    "#else"
++    "#endif"
++    "#ifdef"
++    "#ifndef"
++] @keyword
++
++[
++    (preproc_include)
++    (dtsi_include)
++] @keyword.import
++
++[
++    ","
++    ":"
++    ";"
++    "@"
++] @punctuation.delimiter
++
++[
++    "("
++    ")"
++    "["
++    "]"
++    "{"
++    "}"
++    "<"
++    ">"
++] @punctuation.bracket
++
++[
++    "!"
++    "~"
++    "-"
++    "+"
++    "*"
++    "/"
++    "%"
++    "||"
++    "&&"
++    "|"
++    "^"
++    "&"
++    "=="
++    "!="
++    ">"
++    ">="
++    "<="
++    ">"
++    "<<"
++    ">>"
++] @operator
++
++(call_expression
++    function: (identifier) @function)
++
++(node
++    label: (identifier) @label)
++
++(property
++    label: (identifier) @label)
++
++(memory_reservation
++    label: (identifier) @label)
++
++(property
++    name: (identifier) @property)
++
++(identifier) @variable
++
++(unit_address) @tag
++
++(reference) @constant
++
++(comment) @comment
++
++(integer_literal) @number
++
++[
++  (string_literal)
++  (byte_string_literal)
++  (system_lib_string)
++] @string
+diff --git a/repos/devicetree b/repos/devicetree
+new file mode 160000
+index 0000000..e685f1f
+--- /dev/null
++++ b/repos/devicetree
+@@ -0,0 +1 @@
++Subproject commit e685f1f6ac1702b046415efb476444167d63e41a
+diff --git a/tree-sitter-langs.el b/tree-sitter-langs.el
+index 8990c71..d5a68d6 100644
+--- a/tree-sitter-langs.el
++++ b/tree-sitter-langs.el
+@@ -124,6 +124,7 @@ See `tree-sitter-langs-repos'."
+                  (crystal-mode           . crystal)
+                  (d-mode                 . d)
+                  (dart-mode              . dart)
++                 (dts-mode               . devicetree)
+                  (diff-mode              . diff)
+                  (dockerfile-mode        . dockerfile)
+                  (css-mode               . css)
+-- 
+2.53.0
+
