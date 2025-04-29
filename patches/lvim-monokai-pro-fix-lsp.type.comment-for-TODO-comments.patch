@@ -1,0 +1,27 @@
+From 10413f79af85311bdcd0e0a0c0f5d2720f756be5 Mon Sep 17 00:00:00 2001
+From: Creasure <yurxo@bk.ru>
+Date: Tue, 29 Apr 2025 14:11:52 +0300
+Subject: [PATCH] fix @lsp.type.comment for TODO comments
+
+---
+ lua/monokai-pro/theme/semantic_tokens.lua | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/lua/monokai-pro/theme/semantic_tokens.lua b/lua/monokai-pro/theme/semantic_tokens.lua
+index c775ed4..6cf11eb 100644
+--- a/lua/monokai-pro/theme/semantic_tokens.lua
++++ b/lua/monokai-pro/theme/semantic_tokens.lua
+@@ -9,7 +9,9 @@ M.setup = function(c, config, hp)
+     ["@lsp.type.boolean"]                       = { link = "@boolean" },
+     ["@lsp.type.builtinType"]                   = { link = "@type.builtin" },
+     ["@lsp.type.class"]                         = {}, -- use treesitter styles
+-    ["@lsp.type.comment"]                       = { link = "@comment" },
++    ["@lsp.type.comment"]                       = {}, -- it breaks TODO comments
++    ["@lsp.type.comment.c"]                     = { link = "@comment" },
++    ["@lsp.type.comment.cpp"]                   = { link = "@comment" },
+     ["@lsp.type.decorator"]                     = { link = "@attribute" },
+     ["@lsp.type.deriveHelper"]                  = { link = "@attribute" },
+     ["@lsp.type.enum"]                          = { link = "@type" },
+-- 
+2.49.0
+
