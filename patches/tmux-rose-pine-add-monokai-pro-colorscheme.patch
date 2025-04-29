@@ -1,0 +1,53 @@
+From 3ba51709a13a0a1db0a04b6fc2fe6ef8914ffe2e Mon Sep 17 00:00:00 2001
+From: Creasure <yurxo@bk.ru>
+Date: Tue, 29 Apr 2025 14:22:46 +0300
+Subject: [PATCH] add monokai-pro colorscheme
+
+---
+ rose-pine.tmux | 22 ++++++++++++++++++++--
+ 1 file changed, 20 insertions(+), 2 deletions(-)
+
+diff --git a/rose-pine.tmux b/rose-pine.tmux
+index 9d9e1ce..ad3560b 100755
+--- a/rose-pine.tmux
++++ b/rose-pine.tmux
+@@ -102,6 +102,24 @@ main() {
+         thm_hl_med="#44415a";
+         thm_hl_high="#56526e";
+ 
++    elif [[ $theme == monokai ]]; then
++
++        thm_base="#2d2a2e";
++        thm_surface="#19181a";
++        thm_overlay="#221f22";
++        thm_muted="#939293";
++        thm_subtle="#c1c0c0";
++        thm_text="#fcfcfa";
++        thm_love="#ff6188";
++        thm_gold="#ffd866";
++        thm_rose="#78dce8";
++        thm_pine="#fc9867";
++        thm_foam="#a9dc76";
++        thm_iris="#ab9df2";
++        thm_hl_low="#403e41";
++        thm_hl_med="#5b595c";
++        thm_hl_high="#727072";
++
+     fi
+ 
+     # Aggregating all commands into a single array
+@@ -165,9 +183,9 @@ main() {
+     window_directory="$(get_tmux_option "@rose_pine_show_pane_directory" "")"
+     readonly window_directory
+ 
+-    local window_separator 
++    local window_separator
+     window_separator="$(get_tmux_option "@rose_pine_window_separator" "")"
+-    readonly window_separator 
++    readonly window_separator
+ 
+     local default_window_behavior
+     default_window_behavior="$(get_tmux_option "@rose_pine_default_window_behavior" "")"
+-- 
+2.49.0
+
