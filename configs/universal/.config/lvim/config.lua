@@ -192,6 +192,7 @@ lvim.format_on_save.enabled = false
 lvim.builtin.nvimtree.setup.view.adaptive_size = true
 if not enable_guidelines then lvim.builtin.indentlines.active = false end
 
+lvim.builtin.bufferline.options.separator_style = "slant"
 lvim.builtin.project.patterns = { ".git", ".nvim_project_root" }
 
 lvim.builtin.telescope.defaults.initial_mode = "normal"
