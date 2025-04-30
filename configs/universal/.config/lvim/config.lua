@@ -641,7 +641,11 @@ local opt_plugins = {
     config = function()
       require("colorizer").setup({
         lua = { RGB = false, RRGGBB = true, names = false },
-        vim = { RGB = false, RRGGBB = true, names = false }
+        vim = { RGB = false, RRGGBB = true, names = false },
+        sh = { RGB = false, RRGGBB = true, names = false },
+        zsh = { RGB = false, RRGGBB = true, names = false },
+        bash = { RGB = false, RRGGBB = true, names = false },
+        tmux = { RGB = false, RRGGBB = true, names = false }
       })
     end
   }
