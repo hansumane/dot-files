@@ -263,6 +263,8 @@ alias edCi='edC i'
 edC () {
   if [[ ! -f ./compile_flags.txt ]]; then
     echo '-std=gnu17' >> ./compile_flags.txt
+    echo '-nostdinc' >> ./compile_flags.txt
+    echo '-nostdinc++' >> ./compile_flags.txt
     echo >> ./compile_flags.txt
     echo '-Wall' >> ./compile_flags.txt
     echo '-Wextra' >> ./compile_flags.txt
@@ -283,6 +285,10 @@ edC () {
     echo '-Wno-gnu-conditional-omitted-operand' >> ./compile_flags.txt
     echo '-Wno-gnu-zero-variadic-macro-arguments' >> ./compile_flags.txt
     echo '-Wno-gnu-statement-expression-from-macro-expansion' >> ./compile_flags.txt
+    echo >> ./compile_flags.txt
+    echo '-I/usr/local/include' >> ./compile_flags.txt
+    echo '-I/usr/include' >> ./compile_flags.txt
+    find /usr/lib*/gcc -type d -name include -exec echo -I{} >> ./compile_flags.txt \;
   fi
 
   "$EDITOR" ./compile_flags.txt
