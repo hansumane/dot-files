@@ -234,14 +234,15 @@ rfmt () {
   fi
 }
 
+export PTCHK_IGNORES="SPDX_LICENSE_TAG,FILE_PATH_CHANGES,COMMIT_MESSAGE"
+export PTCHK_MAX_LL=80
 ptchk() {
-  local PTCHK_IGNORES="SPDX_LICENSE_TAG"
-      PTCHK_IGNORES+=",FILE_PATH_CHANGES"
-      PTCHK_IGNORES+=",COMMIT_MESSAGE"
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
-    checkpatch.pl --no-tree --no-signoff --show-types --strict --max-line-length=80 --ignore $PTCHK_IGNORES $@
+    checkpatch.pl --no-tree --no-signoff --show-types --strict \
+                  --max-line-length=$PTCHK_MAX_LL \
+                  --ignore $PTCHK_IGNORES $@
   fi
 }
 
