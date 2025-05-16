@@ -587,7 +587,6 @@ local opt_plugins = {
       keywords = {
         -- FIXME
         -- ERROR
-        -- FIX: test
         -- FIXME: test
         -- ERROR: test
         -- ISSUE: test
@@ -783,8 +782,9 @@ require("lvim.lsp.manager").setup("lua_ls", {
       --[[
       workspace = {
         library = {
-          ["~/virtual/definitions"] = true,
-          ["~/virtual/vm_mount/usr/share/lua/5.4"] = true,
+          "/usr/share/lua/5.4",
+          -- "~/virtual/definitions",
+          -- "~/virtual/vm_mount/usr/share/lua/5.4",
         }
       }
       --]]
