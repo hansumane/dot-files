@@ -567,7 +567,7 @@ local themes = {
     end
   },
   monokai_pro = {
-    "loctvl842/monokai-pro.nvim",
+    "hansumane/monokai-pro.nvim",
     priority = 1500,
     lazy = false,
     config = function()
@@ -617,11 +617,11 @@ local opt_plugins = {
                  alt = { } }
       },
       colors = {
-        error   = { "@comment.error" },
-        warning = { "@comment.warning" },
-        review  = { "@comment.hint" },
-        note    = { "@comment.note" },
-        todo    = { "@comment.todo" }
+        error   = { "DiagnosticError" },
+        warning = { "DiagnosticWarn" },
+        review  = { "DiagnosticOk" },
+        note    = { "DiagnosticInfo" },
+        todo    = { "Todo" }
       }
     }
   },
@@ -655,7 +655,7 @@ local opt_plugins = {
 lvim.plugins = {
   themes.monokai_pro,
   opt_plugins.deadcolumn,
-  -- opt_plugins.colorizer,
+  opt_plugins.colorizer,
   -- opt_plugins.todo_comments,
   {
     "hansumane/telescope-orgmode.nvim",
