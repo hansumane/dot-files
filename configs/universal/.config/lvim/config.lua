@@ -120,7 +120,7 @@ lvim.builtin.which_key.mappings.lx = {
   "Buffer Diagnostics (Trouble)"
 }
 lvim.builtin.which_key.mappings.lt = {
-  [[<cmd>Trouble todo toggle focus=true<CR>]],
+  [[<cmd>Trouble todo toggle focus=true filter.buf=0<CR>]],
   "Buffer Diagnostics (Trouble)"
 }
 lvim.builtin.which_key.mappings.se = {
