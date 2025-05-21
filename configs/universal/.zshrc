@@ -46,7 +46,7 @@ LOCAL_LANG='LANG=en_US.UTF-8'
 
 # removed plugins: (git zsh-vi-mode)
 plugins=(zsh-syntax-highlighting zsh-autosuggestions)
-source $ZSH/oh-my-zsh.sh
+source "$ZSH/oh-my-zsh.sh"
 
 alias ip='ip --color=auto'
 alias grep='grep --color=auto'
@@ -107,17 +107,21 @@ br () {
   find . '(' -type f -iname $@ ')' -exec bat --tabs=8 {} '+'
 }
 
-hxl () {
+_hxl () {
   setopt shwordsplit
   if (( $# == 0 )); then
     echo 'Error: No file(s) given!'; return 1
   else
-    for FN in "$@"; do
+    for FN in $@; do
       echo "$FN"
       hexyl "$FN"
     done
   fi
   unsetopt shwordsplit
+}
+
+hxl () {
+  _hxl $@ | bat --tabs=8
 }
 
 cl () {
@@ -127,7 +131,7 @@ cl () {
     printf "\033[H\033[J"
   fi
 
-  case $TERM in
+  case "$TERM" in
     *screen* ) tmux clear-history ;;
   esac
 }
@@ -138,7 +142,7 @@ tm () {
   if (( $# == 0 )); then
     tmux -u new-session -A -s '1'
   else
-    if [[ "$1" = "c" ]] || [[ "$1" = "clear" ]] ; then
+    if [[ "$1" = 'c' ]] || [[ "$1" = 'clear' ]] ; then
       tmux clear-history > /dev/null 2>&1
     else
       tmux -u new-session -A -s $@
@@ -173,16 +177,21 @@ alias gitlll='git log --pretty=fuller'
 # git reset -p [file] # interactively unstage hunks from optional file
 
 giti () {
-  local GIT_IGNORE_DIR_PATH=$(git rev-parse --show-toplevel) || return 1
-  local GIT_IGNORE_FILE_PATH=$GIT_IGNORE_DIR_PATH/.gitignore
-  cd $GIT_IGNORE_DIR_PATH
-  $SUDO_CMD rm -rf $(git ls-files --others --ignored --exclude-from=${GIT_IGNORE_FILE_PATH} --directory)
+  if ! git rev-parse --show-toplevel &> /dev/null ; then
+    echo "'$PWD' is not inside any git repository"
+    return 1
+  fi
+
+  local GIT_IGNORE_DIR_PATH="$(git rev-parse --show-toplevel)"
+  local GIT_IGNORE_FILE_PATH="$GIT_IGNORE_DIR_PATH/.gitignore"
+  cd "$GIT_IGNORE_DIR_PATH"
+  $SUDO_CMD rm -rf $(git ls-files --others --ignored --exclude-from="$GIT_IGNORE_FILE_PATH" --directory)
   cd -
 }
 
 gitcfg () {
   if (( $# == 0 )); then
-    git config --local --list | bat
+    git config --local --list
   else
     git config --local user.name "$1"
     git config --local user.email "$2"
@@ -195,9 +204,9 @@ pya () {
     echo 'Error: No YANG file(s) given!'; return 1
   else
     rm -f /tmp/.__pya_temp_out
-    for var in "$@"; do
+    for var in $@; do
       echo >> /tmp/.__pya_temp_out
-      pyang -f tree $var >> /tmp/.__pya_temp_out
+      pyang -f tree "$var" >> /tmp/.__pya_temp_out
       echo >> /tmp/.__pya_temp_out
     done
     bat /tmp/.__pya_temp_out
@@ -214,7 +223,7 @@ indchk () {
       echo "Error: No such file: $1"; return 1
     fi
     indent -gnu -nut -l79 -lc82 "$1" -o "$1~" &&  # -npcs
-    diff -u "$1" "$1~" | bat
+    diff -u "$1" "$1~" | bat --tabs=8
     rm -rf "$1~"
   fi
 }
@@ -237,12 +246,13 @@ rfmt () {
 export PTCHK_IGNORES="SPDX_LICENSE_TAG,FILE_PATH_CHANGES,COMMIT_MESSAGE"
 export PTCHK_MAX_LL=80
 ptchk() {
+  echo "checkpatch.pl PTCHK_MAX_LL=$PTCHK_MAX_LL; PTCHK_IGNORES='$PTCHK_IGNORES'"
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
     checkpatch.pl --no-tree --no-signoff --show-types --strict \
-                  --max-line-length=$PTCHK_MAX_LL \
-                  --ignore $PTCHK_IGNORES $@
+                  --max-line-length="$PTCHK_MAX_LL" \
+                  --ignore "$PTCHK_IGNORES" $@
   fi
 }
 
@@ -250,11 +260,11 @@ edP () {
   if (( $# == 0 )); then
     echo 'Error: No file name given!'; return 1
   else
-    if [[ ! -f $1 ]]; then
-      echo "#!/usr/bin/env python3\n" > $1
-      echo 'if __name__ == "__main__":' >> $1
-      echo '    pass' >> $1
-      chmod +x $1
+    if [[ ! -f "$1" ]]; then
+      echo "#!/usr/bin/env python3\n" > "$1"
+      echo 'if __name__ == "__main__":' >> "$1"
+      echo '    pass' >> "$1"
+      chmod +x "$1"
     fi
   fi
 }
@@ -289,14 +299,15 @@ edC () {
     echo >> ./compile_flags.txt
     echo '-I/usr/local/include' >> ./compile_flags.txt
     echo '-I/usr/include' >> ./compile_flags.txt
-    find /usr/lib*/gcc -type d -name include -exec echo -I{} >> ./compile_flags.txt \;
+    find /usr/lib*/gcc -type d -name include -exec echo -I{} >> ./compile_flags.txt ';'
   fi
 
   "$EDITOR" ./compile_flags.txt
   (( $# == 0 )) && return 0
+  ! git rev-parse --show-toplevel &> /dev/null && return 0
 
   local TRUE_PATH="$(readlink -f "$PWD")"
-  local GIT_TOPDIR="$(git rev-parse --show-toplevel)" || return 0
+  local GIT_TOPDIR="$(git rev-parse --show-toplevel)"
   local GIT_INFODIR="$GIT_TOPDIR/.git/info"
   local GIT_WDDIFF="${TRUE_PATH#"$GIT_TOPDIR"}"
 
@@ -334,7 +345,7 @@ fcp () {
   else
     $CXX -O2 -pipe -std='c++20' \
          -Wall -Wextra -Wformat -Wpedantic -Winline -Werror=inline \
-         -o out-$(basename $1 .cpp) $@
+         -o out-$(basename "$1" .cpp) $@
   fi
 }
 
@@ -342,7 +353,7 @@ frs () {
   if (( $# == 0 )); then
     echo 'ERROR: No source file(s) given!'; return 1
   else
-    rustc -C opt-level=2 -o out-$(basename $1 .rs) $@
+    rustc -C opt-level=2 -o out-$(basename "$1" .rs) $@
     #     -C debuginfo=0 -C opt-level=3 -C lto='true' -C codegen-units=1 -C strip='symbols' -o out-$(basename $1 .rs) $@
     #     -C debuginfo=0 -C opt-level=3 -C codegen-units=1 -C strip=symbols -C prefer-dynamic
   fi
@@ -369,9 +380,9 @@ mvnrun () {
     echo 'ERROR: No main class specified'; return 1
   fi
 
-  local JAVA_INDEX=$(echo "$1" | $AWK_CMD -F 'java/' '{print length($1) + 6}')
-  local CLASS_PATH=$(echo "$1" | cut -c $JAVA_INDEX- | tr '/' '.')
-  local RESULT=$(basename "$CLASS_PATH" .java)
+  local JAVA_INDEX="$(echo "$1" | $AWK_CMD -F 'java/' '{print length($1) + 6}')"
+  local CLASS_PATH="$(echo "$1" | cut -c "$JAVA_INDEX-" | tr '/' '.')"
+  local RESULT="$(basename "$CLASS_PATH" .java)"
 
   echo "classpath: $RESULT"
   mvn exec:java -Dexec.mainClass="$RESULT"
