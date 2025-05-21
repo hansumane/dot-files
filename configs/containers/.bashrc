@@ -42,5 +42,16 @@ c () {
   fi
 }
 
+_hxl () {
+  for f in $@ ; do
+    echo "$f"
+    hexdump -vC "$f"
+  done
+}
+
+hxl () {
+  _hxl $@ | less --tabs=8
+}
+
 bind 'TAB:menu-complete'
 bind 'set completion-ignore-case on'
