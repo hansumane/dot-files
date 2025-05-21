@@ -10,8 +10,12 @@ set termguicolors
 colorscheme molokai
 
 let mapleader = " "
+function! SplitVifm()
+	let width = float2nr(&columns / 3)
+	execute 'leftabove vertical' width 'Vifm'
+endfunction
+nnoremap <leader>e :call SplitVifm()<CR>
 nnoremap <leader>b :CtrlPBuffer<CR>
-nnoremap <leader>e :vertical Vifm<CR>
 nnoremap <leader>c :bdelete<CR>
 
 let g:vifm_embed_term = 1
