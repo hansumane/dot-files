@@ -30,6 +30,8 @@ local cc_dict = {
 }
 
 local enable_guidelines = true
+local enable_bufferline = true
+
 local update_cc = function(info, new_cc)
   if not new_cc then
     new_cc = cc_dict[vim.opt.colorcolumn:get()[1]] or cc_dict.init
@@ -86,16 +88,27 @@ function RestoreBG(store)
   end
 end
 
+if enable_bufferline then
+  lvim.builtin.bufferline.active = true
+  lvim.builtin.bufferline.options.separator_style = "slant"
+  lvim.keys.normal_mode["<S-h>"] = "<cmd>BufferLineCyclePrev<CR>"
+  lvim.keys.normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<CR>"
+  lvim.keys.normal_mode["<S-n>"] = "<cmd>BufferLineMovePrev<CR>"
+  lvim.keys.normal_mode["<S-m>"] = "<cmd>BufferLineMoveNext<CR>"
+else
+  lvim.builtin.bufferline.active = false
+  lvim.keys.normal_mode["<S-h>"] = nil
+  lvim.keys.normal_mode["<S-l>"] = nil
+  lvim.keys.normal_mode["<S-n>"] = nil
+  lvim.keys.normal_mode["<S-m>"] = nil
+end
+
 lvim.builtin.which_key.mappings["w"] = {}
 lvim.builtin.which_key.mappings["h"] = {}
 lvim.builtin.terminal.open_mapping = "<C-t>"
 
 lvim.keys.insert_mode["<C-\\>"] = "<C-6>"
 lvim.keys.insert_mode["<C-r>"] = "<C-v><C-i>"
-lvim.keys.normal_mode["<S-h>"] = "<cmd>BufferLineCyclePrev<CR>"
-lvim.keys.normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<CR>"
-lvim.keys.normal_mode["<S-n>"] = "<cmd>BufferLineMovePrev<CR>"
-lvim.keys.normal_mode["<S-m>"] = "<cmd>BufferLineMoveNext<CR>"
 lvim.keys.normal_mode["<C-c><C-g>"] = "<cmd>Cscope find g<CR>"
 lvim.keys.normal_mode["<C-c><C-r>"] = "<cmd>Cscope find c<CR>"
 
@@ -190,10 +203,8 @@ end
 
 lvim.format_on_save.enabled = false
 lvim.builtin.nvimtree.setup.view.adaptive_size = true
-if not enable_guidelines then lvim.builtin.indentlines.active = false end
-
-lvim.builtin.bufferline.options.separator_style = "slant"
 lvim.builtin.project.patterns = { ".git", ".nvim_project_root" }
+if not enable_guidelines then lvim.builtin.indentlines.active = false end
 
 lvim.builtin.telescope.defaults.initial_mode = "normal"
 lvim.builtin.telescope.defaults.layout_strategy = "horizontal"
@@ -634,6 +645,17 @@ local opt_plugins = {
       end
     }
   },
+  ctrlp = {
+    "ctrlpvim/ctrlp.vim",
+    priority = 1490,
+    lazy = false,
+    config = function()
+      lvim.builtin.which_key.mappings.b = {
+        [[<cmd>CtrlPBuffer<CR>]],
+        "CtrlPBuffer"
+      }
+    end
+  },
   colorizer = {
     "norcalli/nvim-colorizer.lua",
     priority = 1490,
@@ -656,6 +678,7 @@ lvim.plugins = {
   opt_plugins.deadcolumn,
   opt_plugins.colorizer,
   -- opt_plugins.todo_comments,
+  enable_bufferline and {} or opt_plugins.ctrlp,
   {
     "hansumane/telescope-orgmode.nvim",
     config = function()
