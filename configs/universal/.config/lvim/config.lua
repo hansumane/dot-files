@@ -97,7 +97,13 @@ lvim.builtin.which_key.mappings["w"] = {}
 lvim.builtin.which_key.mappings["h"] = {}
 lvim.builtin.terminal.open_mapping = "<C-t>"
 
-lvim.keys.insert_mode["<C-\\>"] = "<C-6>"
+local switch_input_language = function()
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-6>", true, false, true), "n", true)
+  vim.defer_fn(require("lualine").refresh, 50)
+end
+lvim.keys.insert_mode["<C-\\>"] = switch_input_language
+lvim.keys.command_mode["<C-\\>"] = switch_input_language
+
 lvim.keys.insert_mode["<C-r>"] = "<C-v><C-i>"
 lvim.keys.normal_mode["<C-c><C-g>"] = "<cmd>Cscope find g<CR>"
 lvim.keys.normal_mode["<C-c><C-r>"] = "<cmd>Cscope find c<CR>"
@@ -254,11 +260,8 @@ lvim.builtin.lualine.sections.lualine_x = {
   components.lsp,
   components.filetype,
   function()
-    if vim.opt.iminsert:get() ~= 0 then
-      return "RU"
-    else
-      return "EN"
-    end
+    return (vim.opt.iminsert:get() == 0 and "iEN" or "iRU") .. "|" ..
+           (vim.opt.imsearch:get() == 0 and "sEN" or "sRU")
   end
 }
 lvim.builtin.lualine.sections.lualine_y = {
