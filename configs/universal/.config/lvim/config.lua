@@ -643,9 +643,14 @@ local opt_plugins = {
     priority = 1490,
     lazy = false,
     config = function()
+      vim.g.ctrlp_show_hidden = 1
       lvim.builtin.which_key.mappings.b = {
         [[<cmd>CtrlPBuffer<CR>]],
         "CtrlPBuffer"
+      }
+      lvim.builtin.which_key.mappings.f = {
+        [[<cmd>CtrlP<CR>]],
+        "CtrlP"
       }
     end
   },
