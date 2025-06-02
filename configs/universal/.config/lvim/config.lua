@@ -4,19 +4,19 @@
 vim.opt.mouse = "nv"
 vim.opt.scrolloff = 3
 vim.g.c_syntax_for_h = true
-vim.g.c_style = ""
+vim.g.c_style = ""  -- "GNU"
 
 vim.opt.keymap = "russian-jcukenwin"
 vim.opt.iminsert = 0
 vim.opt.imsearch = 0
 
 -- vim.cmd[[set iskeyword-=_]]
-vim.opt.showbreak = "↪"
+---@diagnostic disable-next-line
 vim.opt.listchars = {
   tab = "   ",
   trail = "␣",
   precedes = "⟨",
-  extends = "⟩",
+  extends = "⟩"
 }
 
 local cd_init = 81
@@ -39,7 +39,7 @@ local update_cc = function(info, new_cc)
   cc_dict.current = new_cc
   vim.opt.textwidth = new_cc - 1
   if vim.opt.number:get() then
-    vim.opt.colorcolumn = { new_cc }
+    vim.opt.colorcolumn = true and { new_cc } or {}
   end
 
   if info then
@@ -47,6 +47,7 @@ local update_cc = function(info, new_cc)
   end
 end
 
+---@diagnostic disable-next-line
 require("editorconfig").properties.max_line_length = function(_, val)
   local n = tonumber(val)
   if n then
@@ -87,32 +88,19 @@ function RestoreBG(store)
   end
 end
 
-lvim.builtin.bufferline.options.separator_style = "slant"
-lvim.keys.normal_mode["<S-h>"] = "<cmd>BufferLineCyclePrev<CR>"
-lvim.keys.normal_mode["<S-l>"] = "<cmd>BufferLineCycleNext<CR>"
-lvim.keys.normal_mode["<S-n>"] = "<cmd>BufferLineMovePrev<CR>"
-lvim.keys.normal_mode["<S-m>"] = "<cmd>BufferLineMoveNext<CR>"
+lvim.keys.term_mode["<Esc>"] = "<C-\\><C-n>"
+lvim.keys.insert_mode["<C-r>"] = "<C-v><C-i>"
+lvim.keys.normal_mode["<C-c><C-g>"] = "<cmd>Cscope find g<CR>"
+lvim.keys.normal_mode["<C-c><C-r>"] = "<cmd>Cscope find c<CR>"
 
 lvim.builtin.which_key.mappings["w"] = {}
 lvim.builtin.which_key.mappings["h"] = {}
 lvim.builtin.terminal.open_mapping = "<C-t>"
 
-local switch_input_language = function()
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-6>", true, false, true), "n", true)
-  vim.defer_fn(require("lualine").refresh, 50)
-end
-lvim.keys.insert_mode["<C-\\>"] = switch_input_language
-lvim.keys.command_mode["<C-\\>"] = switch_input_language
+-- :sort<CR> is intentional, <cmd>sort<CR> doesn't work
+lvim.builtin.which_key.vmappings.k = { ":sort<CR>", "Sort Lines" }
+lvim.builtin.which_key.mappings.j = { "<cmd>noh<CR>", "No Highlight" }
 
-lvim.keys.insert_mode["<C-r>"] = "<C-v><C-i>"
-lvim.keys.normal_mode["<C-c><C-g>"] = "<cmd>Cscope find g<CR>"
-lvim.keys.normal_mode["<C-c><C-r>"] = "<cmd>Cscope find c<CR>"
-lvim.keys.term_mode["<Esc>"] = "<C-\\><C-n>"
-
-lvim.lsp.buffer_mappings.normal_mode.gr = {
-  [[<cmd>lua require("telescope.builtin").lsp_references()<CR>]],
-  "References"
-}
 lvim.builtin.which_key.mappings.i = {
   [[<cmd>Inspect<CR>]],
   "Inspect"
@@ -120,6 +108,10 @@ lvim.builtin.which_key.mappings.i = {
 lvim.builtin.which_key.vmappings.i = {
   [[<cmd>Inspect<CR>]],
   "Inspect"
+}
+lvim.builtin.which_key.mappings.b = {
+  [[<cmd>Telescope buffers<CR>]],
+  "Buffers"
 }
 lvim.builtin.which_key.mappings.h = {
   [[<cmd>Telescope highlights<CR>]],
@@ -139,16 +131,35 @@ lvim.builtin.which_key.mappings.se = {
 }
 lvim.builtin.which_key.mappings.t = {
   [[<cmd>lua RestoreBG(true)<CR>]],
-  'Change dark/light'
+  "Change dark/light"
 }
 lvim.builtin.which_key.mappings.P = {
   [[<cmd>Telescope projects<CR>]],
-  'Projects'
+  "Projects"
+}
+lvim.lsp.buffer_mappings.normal_mode.gd = {
+  [[<cmd>lua require("telescope.builtin").lsp_definitions()<CR>]],
+  "Definitions"
+}
+lvim.lsp.buffer_mappings.normal_mode.gr = {
+  [[<cmd>lua require("telescope.builtin").lsp_references()<CR>]],
+  "References"
 }
 
--- :sort<CR> is intentional, <cmd>sort<CR> doesn't work
-lvim.builtin.which_key.vmappings.k = { ":sort<CR>", "Sort Lines" }
-lvim.builtin.which_key.mappings.j = { "<cmd>noh<CR>", "No Highlight" }
+lvim.builtin.bufferline.options.separator_style = "slant"
+lvim.builtin.bufferline.keymap.normal_mode = {
+  ["<S-h>"] = "<cmd>BufferLineCyclePrev<CR>",
+  ["<S-l>"] = "<cmd>BufferLineCycleNext<CR>",
+  ["<S-n>"] = "<cmd>BufferLineMovePrev<CR>",
+  ["<S-m>"] = "<cmd>BufferLineMoveNext<CR>"
+}
+
+local switch_input_language = function()
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-6>", true, false, true), "n", true)
+  vim.defer_fn(require("lualine").refresh, 50)
+end
+lvim.keys.insert_mode["<C-\\>"] = switch_input_language
+lvim.keys.command_mode["<C-\\>"] = switch_input_language
 
 lvim.keys.normal_mode["<C-j>"] = function()
   update_cc("")
@@ -157,23 +168,23 @@ end
 lvim.keys.normal_mode["<C-k>"] = function()
   if not vim.opt.listchars:get().space then
     if enable_guidelines then require("indent_blankline.commands").disable(true) end
+    ---@diagnostic disable-next-line
     vim.opt.listchars = {
       tab = "-->",
       space = "⋅",
       trail = "␣",
       precedes = "⟨",
-      extends = "⟩",
+      extends = "⟩"
     }
-    vim.print("Indent Guidelines: off")
   else
+    ---@diagnostic disable-next-line
     vim.opt.listchars = {
       tab = "   ",
       trail = "␣",
       precedes = "⟨",
-      extends = "⟩",
+      extends = "⟩"
     }
     if enable_guidelines then require("indent_blankline.commands").enable(true) end
-    vim.print("Indent Guidelines: on")
   end
 end
 
@@ -205,9 +216,9 @@ if not enable_guidelines then lvim.builtin.indentlines.active = false end
 
 lvim.builtin.telescope.defaults.initial_mode = "normal"
 lvim.builtin.telescope.defaults.layout_strategy = "horizontal"
-lvim.builtin.telescope.defaults.layout_config.width = 0.9
-lvim.builtin.telescope.defaults.layout_config.height = 0.9
-lvim.builtin.telescope.defaults.layout_config.preview_width = 0.55
+lvim.builtin.telescope.defaults.layout_config.width = 0.92
+lvim.builtin.telescope.defaults.layout_config.height = 0.92
+lvim.builtin.telescope.defaults.layout_config.preview_width = 0.5
 lvim.builtin.telescope.defaults.layout_config.prompt_position = "top"
 
 lvim.builtin.treesitter.auto_install = true
@@ -217,6 +228,11 @@ lvim.builtin.treesitter.highlight.enable = true
 lvim.builtin.indentlines.options.use_treesitter = true
 table.insert(lvim.builtin.treesitter.indent.disable, "c")
 table.insert(lvim.builtin.treesitter.indent.disable, "cpp")
+lvim.builtin.treesitter.ensure_installed = {
+  "c", "cpp", "bash", "java", "lua", "python", "rust", "php",
+  "vim", "vimdoc", "comment", "markdown", "markdown_inline",
+  "git_config", "git_rebase", "gitattributes", "gitcommit", "gitignore"
+} -- norg --
 
 vim.lsp.set_log_level("off")
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
@@ -224,17 +240,11 @@ vim.lsp.set_log_level("off")
 --   return server ~= "jedi_language_server"
 -- end, lvim.lsp.automatic_configuration.skipped_servers)
 
--- lvim.builtin.treesitter.auto_install = false
 lvim.lsp.automatic_servers_installation = false
 lvim.lsp.installer.setup.automatic_installation = false
 lvim.lsp.installer.setup.ensure_installed = {
   "lua_ls", "clangd", "rust_analyzer", "pyright", "jdtls"
 } -- black, google-java-format --
-lvim.builtin.treesitter.ensure_installed = {
-  "c", "cpp", "bash", "java", "lua", "python", "rust", "php",
-  "vim", "vimdoc", "comment", "markdown", "markdown_inline",
-  "git_config", "git_rebase", "gitattributes", "gitcommit", "gitignore"
-} -- norg --
 lvim.builtin.treesitter.ignore_install = {
   "make", "tmux", "org"
 }
@@ -326,15 +336,6 @@ lvim.autocommands = {
             vim.api.nvim_win_close(w, true)
           end
         end
-      end
-    }
-  },
-  {
-    "FileType", {
-      pattern = "org",
-      callback = function()
-        vim.wo.wrap = true
-        vim.wo.linebreak = true
       end
     }
   },
@@ -515,11 +516,6 @@ local themes = {
         }
       })
       lvim.colorscheme = "lackluster-hack"
-      require('lualine').setup({
-        options = {
-          theme = "lackluster"
-        }
-      })
     end
   },
   gruber_darker = {
@@ -550,6 +546,8 @@ local themes = {
     config = function()
       vim.opt.background = background
       lvim.colorscheme = "molokai"
+      lvim.builtin.lualine.options.theme = "seoul256"
+      require("lualine").setup()
       vim.api.nvim_create_autocmd("ColorScheme", {
         pattern = "molokai",
         callback = function()
@@ -639,22 +637,6 @@ local opt_plugins = {
       end
     }
   },
-  ctrlp = {
-    "ctrlpvim/ctrlp.vim",
-    priority = 1490,
-    lazy = false,
-    config = function()
-      vim.g.ctrlp_show_hidden = 1
-      lvim.builtin.which_key.mappings.b = {
-        [[<cmd>CtrlPBuffer<CR>]],
-        "CtrlPBuffer"
-      }
-      lvim.builtin.which_key.mappings.f = {
-        [[<cmd>CtrlP<CR>]],
-        "CtrlP"
-      }
-    end
-  },
   colorizer = {
     "norcalli/nvim-colorizer.lua",
     priority = 1490,
@@ -673,47 +655,17 @@ local opt_plugins = {
 }
 
 lvim.plugins = {
-  themes.monokai_pro,
+  themes.molokai,
   opt_plugins.deadcolumn,
   opt_plugins.colorizer,
-  opt_plugins.ctrlp,
   -- opt_plugins.todo_comments,
   {
-    "hansumane/telescope-orgmode.nvim",
-    config = function()
-      require("telescope").load_extension("orgmode")
-      lvim.builtin.which_key.mappings.r = {
-        [[<cmd>lua require("telescope").extensions.orgmode.refile_heading()<CR>]],
-        "Telescope OrgMode Refile Headings"
-      }
-      lvim.builtin.which_key.mappings.lh = {
-        [[<cmd>lua require("telescope").extensions.orgmode.search_headings()<CR>]],
-        "Telescope OrgMode Search Headings"
-      }
-    end
-  },
-  {
     "dhananjaylatkar/cscope_maps.nvim",
-    --1 commit = "79452ca6b9bac87ff51ea543bb649c33bfe9e157",
-    --2 commit = "6d3222eca3748c8276578a37373ae939b49df38f",
+    ft = { "c", "cpp" },
     opts = {
       prefix = "<C-c>",
-      cscope = {
-        picker = "telescope"
-      }
+      cscope = { picker = "telescope" }
     }
-  },
-  {
-    "nvim-orgmode/orgmode",
-    event = "VeryLazy",
-    dependencies = { "akinsho/org-bullets.nvim" },
-    config = function()
-      require("org-bullets").setup()
-      require("orgmode").setup({
-        org_agenda_files = "~/Others/Documents/orgfiles/**/*",
-        org_default_notes_file = "~/Others/Documents/orgfiles/rawid_new.org"
-      })
-    end
   },
   {
     "rcarriga/nvim-notify",
@@ -731,17 +683,6 @@ lvim.plugins = {
     end
   },
   {
-    "junegunn/vim-easy-align",
-    priority = 1470,
-    lazy = false,
-    config = function()
-      vim.cmd[[
-      xmap ga <Plug>(EasyAlign)
-      nmap ga <Plug>(EasyAlign)
-      ]]
-    end
-  },
-  {
     "folke/trouble.nvim",
     lazy = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -750,6 +691,7 @@ lvim.plugins = {
 }
 
 -- fix for clangd multiple offset encodings warning
+---@class lsp.ClientCapabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local max_threads = #vim.loop.cpu_info() -- require("luv").available_parallelism()
 capabilities.offsetEncoding = { "utf-16" }
@@ -757,7 +699,7 @@ require("lvim.lsp.manager").setup("clangd", {
   capabilities = capabilities,
   cmd = {
     "clangd",
-    "-j=" .. max_threads,
+    "-j=" .. (max_threads > 4 and 4 or max_threads),
     "--clang-tidy",
     "--malloc-trim",  -- incompatible with MacOS
     "--background-index",
