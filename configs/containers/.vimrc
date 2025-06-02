@@ -70,6 +70,7 @@ let g:syntastic_c_checkpatch_args = join([
 cnoremap <C-\> <C-6>
 inoremap <C-\> <C-6>
 inoremap <C-r> <C-v><C-i>
+tnoremap <Esc> <C-\><C-n>
 
 let mapleader = ' '
 nnoremap <silent> <leader>b :CtrlPBuffer<CR>
