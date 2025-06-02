@@ -2,15 +2,19 @@
 " 	" - themes -
 " 	Plug 'tomasr/molokai'
 " 	" - functional -
-" 	Plug 'vifm/vifm.vim'
+" 	Plug 'preservim/nerdtree'
 " 	Plug 'airblade/vim-rooter'
 " 	Plug 'ctrlpvim/ctrlp.vim'
+" 	Plug 'tpope/vim-fugitive'
 " 	" - code -
 " 	Plug 'vim-syntastic/syntastic'
 " 	Plug 'editorconfig/editorconfig-vim'
 " 	" - LSP -
-" 	" Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-" 	" - LSP alternative -
+" 	Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+" 	" = alternative =
+" 	" - functional -
+" 	" Plug 'vifm/vifm.vim'
+" 	" - LSP -
 " 	" Plug 'prabirshrestha/vim-lsp'
 " 	" Plug 'mattn/vim-lsp-settings'
 " 	" Plug 'prabirshrestha/asyncomplete.vim'
@@ -41,6 +45,10 @@ let g:vifm_embed_term = 1
 let g:vifm_embed_split = 1
 let g:vifm_exec_args = '-c :only'
 
+let NERDTreeShowHidden=1
+let g:NERDTreeDirArrowExpandable="+"
+let g:NERDTreeDirArrowCollapsible="~"
+
 let g:rooter_patterns = ['.git', '.vi_project_root']
 let g:rooter_change_directory_for_non_project_files = 'current'
 
@@ -66,7 +74,12 @@ function SplitVifm()
 	let l:width = float2nr(&columns / 3)
 	execute 'leftabove vertical ' . l:width . ' Vifm'
 endfunction
-nnoremap <leader>e :call SplitVifm()<CR>
+nnoremap <expr> <leader>e exists(':NERDTree')
+			\ ? (g:NERDTree.IsOpen()
+			   \ ? ':NERDTreeClose<CR>'
+			   \ : ':NERDTreeCWD<CR>')
+		      \ : exists(':Vifm')
+			\ ? ':call SplitVifm()<CR>' : 'e'
 
 function SplitTerm(mode)
 	if a:mode == 'r'
@@ -199,3 +212,4 @@ set statusline+=\ %{GetLang()}
 
 autocmd VimEnter * call SetNumbersFunction() | call UnsetListFunction()
 autocmd BufNewFile,BufRead *.its set filetype=dts
+autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
