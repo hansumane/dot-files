@@ -107,6 +107,7 @@ lvim.keys.command_mode["<C-\\>"] = switch_input_language
 lvim.keys.insert_mode["<C-r>"] = "<C-v><C-i>"
 lvim.keys.normal_mode["<C-c><C-g>"] = "<cmd>Cscope find g<CR>"
 lvim.keys.normal_mode["<C-c><C-r>"] = "<cmd>Cscope find c<CR>"
+lvim.keys.term_mode["<Esc>"] = "<C-\\><C-n>"
 
 lvim.lsp.buffer_mappings.normal_mode.gr = {
   [[<cmd>lua require("telescope.builtin").lsp_references()<CR>]],
