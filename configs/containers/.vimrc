@@ -70,22 +70,22 @@ inoremap <C-\> <C-6>
 inoremap <C-r> <C-v><C-i>
 
 let mapleader = ' '
-nnoremap <leader>b :CtrlPBuffer<CR>
-nnoremap <leader>c :bd<CR>
-nnoremap <leader>j :noh<CR>
+nnoremap <silent> <leader>b :CtrlPBuffer<CR>
+nnoremap <silent> <leader>l :CocList<CR>
+nnoremap <silent> <leader>j :noh<CR>
+nnoremap <silent> <leader>c :bd<CR>
 vnoremap <leader>k :sort<CR>
-nnoremap <leader>l :CocList<CR>
 
 function SplitVifm()
 	let l:width = float2nr(&columns / 3)
 	execute 'leftabove vertical ' . l:width . ' Vifm'
 endfunction
-nnoremap <expr> <leader>e exists(':NERDTree')
-			\ ? (g:NERDTree.IsOpen()
-			   \ ? ':NERDTreeClose<CR>'
-			   \ : ':NERDTreeCWD<CR>')
-		      \ : exists(':Vifm')
-			\ ? ':call SplitVifm()<CR>' : 'e'
+nnoremap <silent><expr> <leader>e exists(':NERDTree')
+				\ ? (g:NERDTree.IsOpen()
+				   \ ? ':NERDTreeClose<CR>'
+				   \ : ':NERDTreeCWD<CR>')
+				\ : exists(':Vifm')
+				  \ ? ':call SplitVifm()<CR>' : 'e'
 
 function SplitTerm(mode)
 	if a:mode == 'r'
