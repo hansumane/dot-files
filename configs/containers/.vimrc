@@ -1,4 +1,4 @@
-" call plug#begin('~/.vim/plugged')
+" call plug#begin()
 " 	" - themes -
 " 	Plug 'tomasr/molokai'
 " 	" - functional -
@@ -24,19 +24,25 @@
 set list
 set hidden
 set termguicolors
+
+set nobackup
+set nowritebackup
+set noundofile
+set noswapfile
+set noshowmode
+
 set mouse=nv
 set scrolloff=3
 set laststatus=2
 set updatetime=300
 
-set nobackup
-set nowritebackup
-set noundofile
-set noshowmode
-
 set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
+
+if has('nvim')
+	set clipboard+=unnamedplus
+endif
 
 set background=dark
 colorscheme molokai
