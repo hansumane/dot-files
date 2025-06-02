@@ -51,6 +51,7 @@ let g:syntastic_c_checkpatch_args = join([
 	\ 'SPDX_LICENSE_TAG,PREFER_KERNEL_TYPES',
 	\ ])
 
+cnoremap <C-\> <C-6>
 inoremap <C-\> <C-6>
 inoremap <C-r> <C-v><C-i>
 
@@ -183,7 +184,8 @@ function GetIndent()
 endfunction
 
 function GetLang()
-	return &iminsert == 0 ? '' : '-RU-'
+	return (&iminsert == 0 ? 'iEN|' : 'iRU|')
+	   \ . (&imsearch == 0 ? 'sEN ' : 'sRU ')
 endfunction
 
 set statusline=
@@ -193,7 +195,7 @@ set statusline+=%=
 set statusline+=\ %l:%c
 set statusline+=\ %{GetIndent()}
 set statusline+=%#CursorColumn#
-set statusline+=%{GetLang()}
+set statusline+=\ %{GetLang()}
 
 autocmd VimEnter * call SetNumbersFunction() | call UnsetListFunction()
 autocmd BufNewFile,BufRead *.its set filetype=dts
