@@ -191,6 +191,26 @@ function GetMode()
 		   \ l:mode, 'err: unknown mode: ' . l:mode) . ' '
 endfunction
 
+function GetSel()
+	let l:mode = mode()
+
+	if !(l:mode == 'v' || l:mode == 'V')
+		return ''
+	endif
+
+	let l:starts = line('v')
+	let l:ends = line('.')
+	let l:lines = l:starts <= l:ends
+		  \ ? l:ends - l:starts + 1
+		  \ : l:starts - l:ends + 1
+
+	if l:lines <= 1
+		return ':' . wordcount().visual_chars . 'C'
+	else
+		return ':' . l:lines . 'L'
+	endif
+endfunction
+
 function GetIndent()
 	let l:result = &shiftwidth . '/' . &tabstop . '-'
 	if &expandtab
@@ -207,13 +227,16 @@ function GetLang()
 	   \ . (&imsearch == 0 ? 'sEN ' : 'sRU ')
 endfunction
 
+let fg = synIDattr(hlID('Normal'), 'fg', 'gui')
+let bg = synIDattr(hlID('CursorColumn'), 'bg', 'gui')
+exec 'highlight MyCustomStatus guifg=' . fg . ' guibg=' . bg
+
 set statusline=
-set statusline+=%#CursorColumn#\ %{GetMode()}
-set statusline+=%#LineNr#\ %f\ %y
+set statusline+=%#MyCustomStatus#\ %{GetMode()}
+set statusline+=%#LineNr#\ %f\ %y\ %l%{GetSel()}
 set statusline+=%=
-set statusline+=\ %l:%c
 set statusline+=\ %{GetIndent()}
-set statusline+=%#CursorColumn#
+set statusline+=%#MyCustomStatus#
 set statusline+=\ %{GetLang()}
 
 autocmd VimEnter * call SetNumbersFunction() | call UnsetListFunction()
