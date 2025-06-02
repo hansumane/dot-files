@@ -35,6 +35,8 @@ set mouse=nv
 set scrolloff=3
 set laststatus=2
 set updatetime=300
+set timeoutlen=1000
+set ttimeoutlen=50
 
 set keymap=russian-jcukenwin
 set iminsert=0
