@@ -230,9 +230,9 @@ function GetLang()
 	   \ . (&imsearch == 0 ? 'sEN ' : 'sRU ')
 endfunction
 
-let fg = synIDattr(hlID('Normal'), 'fg', 'gui')
-let bg = synIDattr(hlID('CursorColumn'), 'bg', 'gui')
-exec 'highlight MyCustomStatus guifg=' . fg . ' guibg=' . bg
+exec 'highlight MyCustomStatus'
+ \ . ' guifg=' . synIDattr(hlID('Normal'), 'fg', 'gui')
+ \ . ' guibg=' . synIDattr(hlID('CursorColumn'), 'bg', 'gui')
 
 set statusline=
 set statusline+=%#MyCustomStatus#\ %{GetMode()}
