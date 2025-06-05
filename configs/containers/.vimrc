@@ -6,6 +6,7 @@
 " 	Plug 'airblade/vim-rooter'
 " 	Plug 'ctrlpvim/ctrlp.vim'
 " 	Plug 'tpope/vim-fugitive'
+" 	Plug 'airblade/vim-gitgutter'
 " 	" - code -
 " 	Plug 'vim-syntastic/syntastic'
 " 	Plug 'editorconfig/editorconfig-vim'
@@ -25,6 +26,12 @@ set list
 set hidden
 set termguicolors
 
+set hlsearch
+set incsearch
+set showmatch
+set ignorecase
+set smartcase
+
 set nobackup
 set nowritebackup
 set noundofile
@@ -42,12 +49,30 @@ set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
 
-if has('nvim')
-	set clipboard+=unnamedplus
-endif
-
 set background=dark
 colorscheme molokai
+
+if has('nvim')
+	set clipboard+=unnamedplus
+elseif has('clipboard')
+	nnoremap dd "+dd
+	vnoremap d "+d
+	nnoremap D "+D
+
+	nnoremap p "+p
+	vnoremap p "+p
+
+	nnoremap y "+y
+	vnoremap y "+y
+
+	nnoremap P "+P
+	vnoremap P "+P
+
+	nnoremap Y "+Y
+	vnoremap Y "+Y
+endif
+
+let g:c_style = '' " 'GNU'
 
 let g:vifm_embed_term = 1
 let g:vifm_embed_split = 1
@@ -112,10 +137,18 @@ endfunction
 nnoremap <silent> <C-k> :call ChangeListFunction()<CR>
 
 " FIXME: implement for vim-lsp too
+nnoremap <silent><expr> K exists('*CocHasProvider') && CocHasProvider('hover')
+			\ ? CocActionAsync('doHover') : 'K'
+nnoremap <expr> <leader>r exists('*CocHasProvider') && CocHasProvider('rename')
+			\ ? '<Plug>(coc-rename)' : 'r'
 nnoremap <silent><expr><nowait> gd exists('*CocHasProvider') && CocHasProvider('definition')
-			      \ ? '<Plug>(coc-definition)' : 'gd'
+				 \ ? '<Plug>(coc-definition)' : 'gd'
 nnoremap <silent><expr><nowait> gr exists('*CocHasProvider') && CocHasProvider('references')
-			      \ ? '<Plug>(coc-references)' : 'gr'
+				 \ ? '<Plug>(coc-references)' : 'gr'
+nnoremap <silent><expr><nowait> ga exists('*CocHasProvider') && CocHasProvider('codeAction')
+				 \ ? '<Plug>(coc-codeaction-cursor)' : 'ga'
+vnoremap <silent><expr><nowait> ga exists('*CocHasProvider') && CocHasProvider('codeAction')
+				 \ ? '<Plug>(coc-codeaction-selected)' : 'ga'
 
 inoremap <silent><expr> <C-j> exists('*coc#pum#visible') && coc#pum#visible()
 			    \ ? coc#pum#next(1)
@@ -160,27 +193,37 @@ function UnsetListFunction()
 endfunction
 command USL call UnsetListFunction()
 
-function SetIndent(n, mode)
-	let &shiftwidth = a:n
-	let &tabstop = a:n
-	let &softtabstop = a:n
+function CheckGNUStyle()
+	if g:c_style == "GNU"
+		setlocal cindent
+		setlocal cinoptions=(0,f0,t0,:s,^-s,>2s,{s,Ws,n-s
+	endif
+endfunction
 
-	if a:mode=='tabs'
-		set noexpandtab
-	elseif a:mode=='mixed'
-		let &tabstop=2 * a:n
+function SetIndent(spaces, tabs, noexpand)
+	let l:shift = a:spaces > 0 ? a:spaces : 4
+	let l:tabs = a:tabs > 0 ? a:tabs : 8
+
+	let &shiftwidth = l:shift
+	let &softtabstop = l:shift
+	let &tabstop = l:tabs
+
+	if a:noexpand
 		set noexpandtab
 	else
 		set expandtab
 	endif
 endfunction
 
-command S2 call SetIndent(2, '')
-command S4 call SetIndent(4, '')
-command T4 call SetIndent(4, 'tabs')
-command T8 call SetIndent(8, 'tabs')
-command M2 call SetIndent(2, 'mixed')
-command M4 call SetIndent(4, 'mixed')
+command S2 call SetIndent(2, 0, v:false)
+command S4 call SetIndent(4, 0, v:false)
+command S8 call SetIndent(8, 0, v:false)
+command T2 call SetIndent(2, 2, v:true)
+command T4 call SetIndent(4, 4, v:true)
+command T8 call SetIndent(8, 8, v:true)
+command M2 call SetIndent(2, 4, v:true)
+command M4 call SetIndent(4, 8, v:true)
+command MG call SetIndent(2, 8, v:true)
 
 function GetMode()
 	let l:mode = mode()
@@ -243,5 +286,6 @@ set statusline+=%#MyCustomStatus#
 set statusline+=\ %{GetLang()}
 
 autocmd VimEnter * call SetNumbersFunction() | call UnsetListFunction()
-autocmd BufNewFile,BufRead *.its set filetype=dts
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+autocmd BufNewFile,BufRead *.its set filetype=dts
+autocmd FileType c,cpp call CheckGNUStyle()
