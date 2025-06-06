@@ -8,6 +8,7 @@
 " 	Plug 'tpope/vim-fugitive'
 " 	Plug 'airblade/vim-gitgutter'
 " 	" - code -
+" 	Plug 'hansumane/c.vim'
 " 	Plug 'vim-syntastic/syntastic'
 " 	Plug 'editorconfig/editorconfig-vim'
 " 	" - LSP -
