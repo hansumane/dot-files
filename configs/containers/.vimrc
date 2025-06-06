@@ -7,6 +7,7 @@
 " 	Plug 'ctrlpvim/ctrlp.vim'
 " 	Plug 'tpope/vim-fugitive'
 " 	Plug 'airblade/vim-gitgutter'
+" 	Plug 'vim-scripts/autoload_cscope.vim'
 " 	" - code -
 " 	Plug 'hansumane/c.vim'
 " 	Plug 'vim-syntastic/syntastic'
