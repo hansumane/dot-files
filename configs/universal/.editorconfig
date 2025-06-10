@@ -25,3 +25,7 @@ indent_size = 8
 indent_style = tab
 max_line_length = 120
 indent_size = 8
+
+[*.{diff,patch}]
+insert_final_newline = false
+trim_trailing_whitespace = false
