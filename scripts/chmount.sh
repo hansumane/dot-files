@@ -5,6 +5,7 @@
 # nfs mount required kernel modules:
 # - /fs/nfs/nfs.ko
 # - /fs/nfs/nfsv4.ko
+# - /fs/nfs_common/grace.ko
 # - /fs/lockd/lockd.ko
 # - /net/sunrpc/sunrpc.ko
 # - /net/sunrpc/auth_gss/auth_rpcgss.ko
@@ -45,6 +46,18 @@ if [ "$1" = "umount" ] ; then
     $SUDO_CMD umount "$CHROOT_DIR/sys/kernel/debug"
     $SUDO_CMD umount "$CHROOT_DIR/sys/fs/fuse/connections"
     $SUDO_CMD umount "$CHROOT_DIR/sys/fs/pstore"
+    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/debug"
+    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/misc"
+    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/rdma"
+    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/pids"
+    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/perf_event"
+    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/freezer"
+    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/devices"
+    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/memory"
+    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/blkio"
+    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/cpuacct"
+    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/cpu"
+    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/cpuset"
     $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/unified"
     $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/openrc"
     $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup"
