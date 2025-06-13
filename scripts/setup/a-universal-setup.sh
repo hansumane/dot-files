@@ -7,12 +7,22 @@ if [[ ! $(pwd | rev | cut -d'/' -f3 | rev) = 'dot-files' ]] ||
   echo 'please go to /scripts/setup/ and run script from there!'
   exit 1
 else
-  cd $(git rev-parse --show-toplevel)
-  CURRENT_DIR=$(pwd)
+  cd "$(git rev-parse --show-toplevel)"
+  CURRENT_DIR="$(pwd)"
 fi
 
+case $OSTYPE in
+  *linux-android*)
+    pkg install -y \
+      curl wget git zip unzip tar gzip bzip2 xz-utils \
+      neovim zsh eza bat hexyl calc tmux gnupg which \
+      binutils clang python nodejs yarn openssh \
+      getconf man manpages -y
+    ;;
+esac
+
 # install oh-my-zsh
-cd; sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+cd; sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # install plugins for oh-my-zsh
 mkdir -p ~/.oh-my-zsh/custom/plugins; cd ~/.oh-my-zsh/custom/plugins
@@ -23,18 +33,21 @@ git clone --depth=1 --recursive https://github.com/jeffreytse/zsh-vi-mode.git
 # install themes for oh-my-zsh
 mkdir -p ~/.oh-my-zsh/custom/themes; cd ~/.oh-my-zsh/custom/themes
 git clone --depth=1 --recursive https://github.com/romkatv/powerlevel10k.git
-cp -f ${CURRENT_DIR}/themes/zsh_themes/* .
+cp -f  ${CURRENT_DIR}/themes/zsh_themes/* .
 
 # install configs
-mkdir -p ~/.config ~/.local/bin
-cp -f ${CURRENT_DIR}/scripts/newup.sh ~
-cp -f ${CURRENT_DIR}/configs/universal/.zshrc ~
-cp -f ${CURRENT_DIR}/configs/universal/.gitconfig ~
-cp -f ${CURRENT_DIR}/configs/universal/.tmux.conf ~
-cp -rf ${CURRENT_DIR}/configs/universal/.config/doom ~/.config
+mkdir -p ~/.local/bin ~/.config/nvim
+cp -f  ${CURRENT_DIR}/scripts/newup.sh ~
+cp -f  ${CURRENT_DIR}/configs/universal/.zshrc ~
+cp -f  ${CURRENT_DIR}/configs/universal/.gitconfig ~
+cp -f  ${CURRENT_DIR}/configs/universal/.tmux.conf ~
+cp -f  ${CURRENT_DIR}/configs/universal/.editorconfig ~
+cp -rf ${CURRENT_DIR}/configs/universal/.config/nvim/* ~/.config/nvim
 
 case $OSTYPE in
   *linux-gnu*)
+    cp -rf ${CURRENT_DIR}/configs/universal/.config/doom ~/.config
+
     mkdir -p ~/Desktop ~/Downloads ~/Others; cd ~/Others
     mkdir -p etc Coding Documents Music Pictures Shared Templates Videos
 
@@ -50,10 +63,17 @@ case $OSTYPE in
     ;;
 
   *linux-android*)
-    mkdir -p ~/Downloads ~/Others/Coding ~/Others/Documents
+    rm -f ~/../usr/etc/motd.sh
+    mkdir -p ~/.termux ~/Downloads ~/Others/Coding ~/Others/Documents
+
+    cp -f  ${CURRENT_DIR}/.termux/font.ttf ~/.termux
+    cp -f  ${CURRENT_DIR}/.termux/termux.properties ~/.termux
+    cp -f  ${CURRENT_DIR}/.termux/colors.properties ~/.termux
     ;;
 
   *darwin*)
+    cp -rf ${CURRENT_DIR}/configs/universal/.config/doom ~/.config
+
     mkdir -p ~/Others/Coding
     ;;
 esac
