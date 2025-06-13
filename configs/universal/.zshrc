@@ -303,7 +303,12 @@ edC () {
     echo '-Wno-gnu-conditional-omitted-operand' >> ./compile_flags.txt
     echo '# self-explanatory' >> ./compile_flags.txt
     echo >> ./compile_flags.txt
-    find /usr/lib*/gcc -type d -name include -exec echo -I{} >> ./compile_flags.txt ';'
+    if ! find /usr/lib*/gcc -type d -name include -exec \
+              echo -I{} >> ./compile_flags.txt ';' ; then
+      # fallback for termux
+      find "$PREFIX"/usr/lib*/clang -type d -name include -exec \
+           echo -I{} >> ./compile_flags.txt ';'
+    fi
     echo '-I/usr/local/include' >> ./compile_flags.txt
     echo '-I/usr/include' >> ./compile_flags.txt
   fi
