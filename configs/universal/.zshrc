@@ -7,7 +7,7 @@ export CC='gcc'
 export CXX='g++'
 export AWK_CMD='awk'
 export SED_CMD='sed'
-export EDITOR='nvim'  # "$HOME/.local/bin/lvim"
+export EDITOR='nvim'
 export PYTHONDONTWRITEBYTECODE='1'
 
 export HISTSIZE=131072
