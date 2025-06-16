@@ -98,6 +98,7 @@ let g:syntastic_c_checkpatch_args = join([
 let g:lsp_diagnostics_enabled = 1
 let g:lsp_diagnostics_virtual_text_enabled = 1
 let g:lsp_diagnostics_virtual_text_align = 'right'
+let g:lsp_settings_enable_suggestions = 0
 
 cnoremap <C-\> <C-6>
 inoremap <C-\> <C-6>
