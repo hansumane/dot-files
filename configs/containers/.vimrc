@@ -95,6 +95,10 @@ let g:syntastic_c_checkpatch_args = join([
 	\ 'SPDX_LICENSE_TAG,PREFER_KERNEL_TYPES',
 	\ ])
 
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_virtual_text_enabled = 1
+let g:lsp_diagnostics_virtual_text_align = 'right'
+
 cnoremap <C-\> <C-6>
 inoremap <C-\> <C-6>
 inoremap <C-r> <C-v><C-i>
