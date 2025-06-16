@@ -143,17 +143,26 @@ function ChangeListFunction()
 endfunction
 nnoremap <silent> <C-k> :call ChangeListFunction()<CR>
 
-" FIXME: implement for vim-lsp too
 nnoremap <silent><expr> K exists('*CocHasProvider') && CocHasProvider('hover')
-			\ ? CocActionAsync('doHover') : 'K'
+			\ ? CocActionAsync('doHover')
+		      \ : exists(':LspHover')
+			\ ? ':LspHover<CR>' : 'K'
 nnoremap <expr> <leader>r exists('*CocHasProvider') && CocHasProvider('rename')
-			\ ? '<Plug>(coc-rename)' : 'r'
+			\ ? '<Plug>(coc-rename)'
+		      \ : exists(':LspRename')
+			\ ? ':LspRename<CR>' : 'r'
 nnoremap <silent><expr><nowait> gd exists('*CocHasProvider') && CocHasProvider('definition')
-				 \ ? '<Plug>(coc-definition)' : 'gd'
+				 \ ? '<Plug>(coc-definition)'
+			       \ : exists(':LspDefinition')
+				 \ ? ':LspDefinition<CR>' : 'gd'
 nnoremap <silent><expr><nowait> gr exists('*CocHasProvider') && CocHasProvider('references')
-				 \ ? '<Plug>(coc-references)' : 'gr'
+				 \ ? '<Plug>(coc-references)'
+			       \ : exists(':LspReferences')
+				 \ ? ':LspReferences<CR>' : 'gr'
 nnoremap <silent><expr><nowait> ga exists('*CocHasProvider') && CocHasProvider('codeAction')
-				 \ ? '<Plug>(coc-codeaction-cursor)' : 'ga'
+				 \ ? '<Plug>(coc-codeaction-cursor)'
+			       \ : exists(':LspCodeAction')
+				 \ ? ':LspCodeAction<CR>' : 'ga'
 vnoremap <silent><expr><nowait> ga exists('*CocHasProvider') && CocHasProvider('codeAction')
 				 \ ? '<Plug>(coc-codeaction-selected)' : 'ga'
 
@@ -165,10 +174,10 @@ inoremap <silent><expr> <C-k> exists('*coc#pum#visible') && coc#pum#visible()
 			    \ ? coc#pum#prev(1)
 			  \ : pumvisible()
 			    \ ? "\<C-p>" : "\<C-k>"
-inoremap <silent><expr> <cr> exists('*coc#pum#visible') && coc#pum#visible()
+inoremap <silent><expr> <CR> exists('*coc#pum#visible') && coc#pum#visible()
 			   \ ? coc#_select_confirm()
 			 \ : exists('*asyncomplete#close_popup') && pumvisible()
-			   \ ? asyncomplete#close_popup() : "\<cr>"
+			   \ ? asyncomplete#close_popup() : "\<CR>"
 inoremap <silent><expr> <TAB> exists('*coc#pum#visible') && coc#pum#visible()
 			    \ ? coc#_select_confirm()
 			  \ : exists('*asyncomplete#close_popup') && pumvisible()
