@@ -101,11 +101,15 @@ inoremap <C-r> <C-v><C-i>
 tnoremap <Esc> <C-\><C-n>
 
 let mapleader = ' '
+
 nnoremap <silent> <leader>b :CtrlPBuffer<CR>
 nnoremap <silent> <leader>l :CocList<CR>
 nnoremap <silent> <leader>j :noh<CR>
 nnoremap <silent> <leader>c :bd<CR>
 vnoremap <leader>k :sort<CR>
+
+nnoremap <leader>gj <Plug>(GitGutterNextHunk)
+nnoremap <leader>gk <Plug>(GitGutterPrevHunk)
 
 function SplitVifm()
 	let l:width = float2nr(&columns / 3)
