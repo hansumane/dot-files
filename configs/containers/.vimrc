@@ -39,6 +39,9 @@ set nowritebackup
 set noswapfile
 set noshowmode
 
+set undofile
+set undodir=~/.vim/undodir
+
 set mouse=nv
 set scrolloff=3
 set laststatus=2
