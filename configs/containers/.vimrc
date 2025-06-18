@@ -77,6 +77,7 @@ elseif has('clipboard')
 endif
 
 let g:c_style = '' " 'GNU'
+let g:c_syntax_for_h = 1
 
 let g:vifm_embed_term = 1
 let g:vifm_embed_split = 1
