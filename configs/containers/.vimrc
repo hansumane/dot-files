@@ -36,7 +36,6 @@ set smartcase
 
 set nobackup
 set nowritebackup
-set noundofile
 set noswapfile
 set noshowmode
 
