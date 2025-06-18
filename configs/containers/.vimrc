@@ -51,7 +51,9 @@ set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
 
+set signcolumn=yes
 set background=dark
+
 colorscheme molokai
 
 if has('nvim')
