@@ -2,6 +2,7 @@
 " 	" - themes -
 " 	Plug 'tomasr/molokai'
 " 	" - functional -
+" 	Plug 'cohama/lexima.vim'
 " 	Plug 'preservim/nerdtree'
 " 	Plug 'airblade/vim-rooter'
 " 	Plug 'ctrlpvim/ctrlp.vim'
@@ -93,17 +94,20 @@ let g:rooter_patterns = ['.git', '.vi_project_root']
 let g:rooter_change_directory_for_non_project_files = 'current'
 let g:rooter_silent_chdir = 1
 
+let g:lexima_enable_basic_rules = 1
+let g:lexima_enable_newline_rules = 1
+
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_virtual_text_enabled = 1
+let g:lsp_diagnostics_virtual_text_align = 'right'
+let g:lsp_settings_enable_suggestions = 0
+
 let g:syntastic_c_checkpatch_exec = '/usr/local/bin/checkpatch.pl'
 let g:syntastic_c_checkpatch_args = join([
 	\ '--no-tree', '--no-signoff', '--show-types', '--strict',
 	\ '--max-line-length=90', '--ignore',
 	\ 'SPDX_LICENSE_TAG,PREFER_KERNEL_TYPES',
 	\ ])
-
-let g:lsp_diagnostics_enabled = 1
-let g:lsp_diagnostics_virtual_text_enabled = 1
-let g:lsp_diagnostics_virtual_text_align = 'right'
-let g:lsp_settings_enable_suggestions = 0
 
 cnoremap <C-\> <C-6>
 inoremap <C-\> <C-6>
