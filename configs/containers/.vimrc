@@ -148,14 +148,7 @@ endfunction
 nnoremap <leader>1 :call SplitTerm('b')<CR>
 nnoremap <leader>2 :call SplitTerm('r')<CR>
 
-function ChangeListFunction()
-	if g:is_list_full
-		call UnsetListFunction()
-	else
-		call SetListFunction()
-	endif
-endfunction
-nnoremap <silent> <C-k> :call ChangeListFunction()<CR>
+nnoremap <silent> <C-k> :call SetListFunction(!g:is_list_full)<CR>
 
 nnoremap <silent><expr> K exists('*CocHasProvider') && CocHasProvider('hover')
 			\ ? CocActionAsync('doHover')
@@ -197,31 +190,31 @@ inoremap <silent><expr> <TAB> exists('*coc#pum#visible') && coc#pum#visible()
 			  \ : exists('*asyncomplete#close_popup') && pumvisible()
 			    \ ? asyncomplete#close_popup() : "\<TAB>"
 
-function SetNumbersFunction()
-	set number
-	set cursorline
-	set relativenumber
+function SetNumbersFunction(enable)
+	if a:enable
+		set number
+		set cursorline
+		set relativenumber
+	else
+		set number &
+		set cursorline &
+		set relativenumber &
+	endif
 endfunction
-command SN call SetNumbersFunction()
+command SN call SetNumbersFunction(v:true)
+command USN call SetNumbersFunction(v:false)
 
-function UnsetNumbersFunction()
-	set number &
-	set cursorline &
-	set relativenumber &
+function SetListFunction(enable)
+	if a:enable
+		let g:is_list_full = v:true
+		set listchars=tab:-->,space:⋅,trail:␣,precedes:⟨,extends:⟩
+	else
+		let g:is_list_full = v:false
+		set listchars=tab:\ \ ,space:\ ,trail:␣,precedes:⟨,extends:⟩
+	endif
 endfunction
-command USN call UnsetNumbersFunction()
-
-function SetListFunction()
-	let g:is_list_full = 1
-	set listchars=tab:-->,space:⋅,trail:␣,precedes:⟨,extends:⟩
-endfunction
-command SL call SetListFunction()
-
-function UnsetListFunction()
-	let g:is_list_full = 0
-	set listchars=tab:\ \ ,space:\ ,trail:␣,precedes:⟨,extends:⟩
-endfunction
-command USL call UnsetListFunction()
+command SL call SetListFunction(v:true)
+command USL call SetListFunction(v:false)
 
 function CheckGNUStyle()
 	if g:c_style == "GNU"
@@ -315,7 +308,7 @@ set statusline+=\ %{GetIndent()}
 set statusline+=%#MyCustomStatus#
 set statusline+=\ %{GetLang()}
 
-autocmd VimEnter * call SetNumbersFunction() | call UnsetListFunction()
+autocmd VimEnter * call SetNumbersFunction(v:true) | call SetListFunction(v:false)
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 autocmd BufNewFile,BufRead *.its set filetype=dts
 autocmd FileType c,cpp call CheckGNUStyle()
