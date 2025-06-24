@@ -140,13 +140,9 @@ tm () {
   cd
 
   if (( $# == 0 )); then
-    tmux -u new-session -A -s '1'
+    tmux -u new-session -A -s ' '
   else
-    if [[ "$1" = 'c' ]] || [[ "$1" = 'clear' ]] ; then
-      tmux clear-history > /dev/null 2>&1
-    else
-      tmux -u new-session -A -s $@
-    fi
+    tmux -u new-session -A -s $@
   fi
 
   cd -
