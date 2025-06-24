@@ -8,22 +8,22 @@
 " 	Plug 'ctrlpvim/ctrlp.vim'
 " 	Plug 'tpope/vim-fugitive'
 " 	Plug 'airblade/vim-gitgutter'
-" 	Plug 'vim-scripts/autoload_cscope.vim'
 " 	" - code -
 " 	Plug 'hansumane/c.vim'
 " 	Plug 'vim-syntastic/syntastic'
 " 	Plug 'editorconfig/editorconfig-vim'
 " 	" - LSP -
 " 	" Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-" 	" = alternative =
+" 	" --== alternative ==--
 " 	" - functional -
 " 	" Plug 'vifm/vifm.vim'
+" 	Plug 'vim-scripts/autoload_cscope.vim'
 " 	" - LSP -
 " 	Plug 'prabirshrestha/vim-lsp'
 " 	Plug 'mattn/vim-lsp-settings'
 " 	Plug 'prabirshrestha/asyncomplete.vim'
-" 	Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " 	Plug 'prabirshrestha/asyncomplete-buffer.vim'
+" 	Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " call plug#end()
 
 set list
