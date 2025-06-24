@@ -53,5 +53,18 @@ hxl () {
   _hxl $@ | less --tabs=8
 }
 
+csb () {
+  if ! command -v ctags > /dev/null 2>&1 ; then
+    echo "ERROR: 'ctags' is not available"
+    return 1
+  fi
+
+  find . -type f '(' -name '*.c' -o -name '*.h' -o -iname '*.s' ')' -exec \
+    realpath --relative-to="$PWD" {} '+' | uniq | sort > tags.files
+
+  find . -type f -name 'tags' -delete
+  ctags -a -L tags.files -h '.h.H.hpp.hxx.h++'
+}
+
 bind 'TAB:menu-complete'
 bind 'set completion-ignore-case on'
