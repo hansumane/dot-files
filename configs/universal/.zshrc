@@ -324,14 +324,28 @@ edC () {
   fi
 }
 
+CSB_DO_CSCOPE=1  # false
+CSB_DO_CTAGS=0  # true
 csb () {
-  if command -v cscope &> /dev/null; then
-    find . -type f -name 'cscope.*' -delete
-    find . -type f '(' -name '*.c' -o -name '*.h' -o -iname '*.s' ')' -exec \
-      realpath --relative-to="$PWD" {} '+' | uniq | sort > cscope.files
+  command -v cscope &> /dev/null ; local have_cscope=$?
+  command -v ctags &> /dev/null ; local have_ctags=$?
+
+  if (( $have_cscope != 0 )) && (( $have_ctags != 0 )) ; then
+    echo "ERROR: 'cscope' and 'ctags' are not available"
+    return 1
+  fi
+
+  find . -type f '(' -name '*.c' -o -name '*.h' -o -iname '*.s' ')' -exec \
+    realpath --relative-to="$PWD" {} '+' | uniq | sort > cscope.files
+
+  if (( $have_cscope == 0 )) && (( $CSB_DO_CSCOPE == 0 )) ; then
+    find . -type f -name 'cscope.out.*' -delete
     cscope -b -q $@ -f cscope.out  # csb -k to build in kernel mode
-  else
-    echo "ERROR: 'cscope' is not available"; return 1
+  fi
+
+  if (( $have_ctags == 0 )) && (( $CSB_DO_CTAGS == 0 )) ; then
+    find . -type f -name 'tags' -delete
+    ctags -a -L cscope.files -h '.h.H.hpp.hxx.h++'
   fi
 }
 
