@@ -95,7 +95,7 @@ if [ ! -d "$CHROOT_DIR/bin" ] ; then
   $SUDO_CMD mount --bind        '/tmp'  "$CHROOT_DIR/tmp"
   $SUDO_CMD mount --make-slave          "$CHROOT_DIR/tmp"
 
-  if [ -f 'projects/.placeholder' ] && [ -f "$CHROOT_DIR/home/root/projects" ] ; then
+  if [ -f 'projects/.placeholder' ] && [ -d "$CHROOT_DIR/home/root/projects" ] ; then
     $SUDO_CMD mount --bind       'projects' "$CHROOT_DIR/home/root/projects"
     $SUDO_CMD mount --make-slave            "$CHROOT_DIR/home/root/projects"
   fi
