@@ -324,8 +324,8 @@ edC () {
   fi
 }
 
-CSB_DO_CSCOPE=1  # false
-CSB_DO_CTAGS=0  # true
+CSB_DO_CSCOPE=0  # true
+CSB_DO_CTAGS=1  # false
 csb () {
   command -v cscope &> /dev/null ; local have_cscope=$?
   command -v ctags &> /dev/null ; local have_ctags=$?
@@ -335,8 +335,14 @@ csb () {
     return 1
   fi
 
-  find . -type f '(' -name '*.c' -o -name '*.h' -o -iname '*.s' ')' -exec \
-    realpath --relative-to="$PWD" {} '+' | uniq | sort > cscope.files
+  find . -type f -iname '*.c'   -exec realpath --relative-to="$PWD" {} '+' | uniq >  cscope.files
+  find . -type f -iname '*.cpp' -exec realpath --relative-to="$PWD" {} '+' | uniq >> cscope.files
+  find . -type f -iname '*.cxx' -exec realpath --relative-to="$PWD" {} '+' | uniq >> cscope.files
+  find . -type f -iname '*.s'   -exec realpath --relative-to="$PWD" {} '+' | uniq >> cscope.files
+  find . -type f -iname '*.asm' -exec realpath --relative-to="$PWD" {} '+' | uniq >> cscope.files
+  find . -type f -iname '*.h'   -exec realpath --relative-to="$PWD" {} '+' | uniq >> cscope.files
+  find . -type f -iname '*.hpp' -exec realpath --relative-to="$PWD" {} '+' | uniq >> cscope.files
+  find . -type f -iname '*.hxx' -exec realpath --relative-to="$PWD" {} '+' | uniq >> cscope.files
 
   if (( $have_cscope == 0 )) && (( $CSB_DO_CSCOPE == 0 )) ; then
     find . -type f -name 'cscope.out.*' -delete
