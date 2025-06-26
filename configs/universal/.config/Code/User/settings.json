@@ -1,57 +1,51 @@
 {
     "window.zoomLevel": 1,
-    "editor.wordWrap": "bounded",
-    "editor.wordWrapColumn": 140,
+    "update.showReleaseNotes": false,
     "workbench.startupEditor": "none",
-    "workbench.iconTheme": "vscode-great-icons",
-    "workbench.colorTheme": "Catppuccin Mocha",
-    "editor.fontFamily": "Iosevka Nerd Font",
-    "editor.fontLigatures": true,
-    "editor.fontWeight": 600,
-    "editor.fontSize": 14,
-    "editor.rulers": [90, 140],
+    "workbench.colorTheme": "Monokai Pro",
+    "workbench.iconTheme": "Monokai Pro Icons",
+    "editor.lineHeight": 1.65,
+    "editor.fontWeight": 400,
+    "editor.fontFamily": "MonoLisa Nerd Font",
+    "editor.fontLigatures": "'liga', 'ss02', 'ss07', 'ss08', 'ss11'",
+    "editor.rulers": [80, 90],
     "editor.smoothScrolling": true,
     "editor.cursorSmoothCaretAnimation": "on",
+    "editor.inlayHints.enabled": "off",
+    "explorer.enableDragAndDrop": true,
+    "explorer.confirmDragAndDrop": false,
+    "security.workspace.trust.enabled": false,
+
+    /* https://marketplace.visualstudio.com/items?itemName=naumovs.color-highlight */
+    "color-highlight.markerType": "dot-before",
+
+    /* https://marketplace.visualstudio.com/items?itemName=vscodevim.vim */
+    "vim.useSystemClipboard": true,
+
+    /* https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight                      *
+     * for https://marketplace.visualstudio.com/items?itemName=monokai.theme-monokai-pro-vscode colorscheme */
+    "todohighlight.keywords": [
+        { "text": "TODO",    "color": "#2d2a2e", "backgroundColor": "#ab9df2", "overviewRulerColor": "rgba(171,157,242,0.8)" },
+        { "text": "FIXME",   "color": "#2d2a2e", "backgroundColor": "#ff6188", "overviewRulerColor": "rgba(255,97,136,0.8)" },
+        { "text": "ERROR",   "color": "#2d2a2e", "backgroundColor": "#ff6188", "overviewRulerColor": "rgba(255,97,136,0.8)" },
+        { "text": "ISSUE",   "color": "#2d2a2e", "backgroundColor": "#ff6188", "overviewRulerColor": "rgba(255,97,136,0.8)" },
+        { "text": "BUG",     "color": "#2d2a2e", "backgroundColor": "#ff6188", "overviewRulerColor": "rgba(255,97,136,0.8)" },
+        { "text": "WARNING", "color": "#2d2a2e", "backgroundColor": "#fc9867", "overviewRulerColor": "rgba(252,152,103,0.8)" },
+        { "text": "WARN",    "color": "#2d2a2e", "backgroundColor": "#fc9867", "overviewRulerColor": "rgba(252,152,103,0.8)" },
+        { "text": "NOTE",    "color": "#2d2a2e", "backgroundColor": "#78dce8", "overviewRulerColor": "rgba(120,220,232,0.8)" },
+        { "text": "INFO",    "color": "#2d2a2e", "backgroundColor": "#78dce8", "overviewRulerColor": "rgba(120,220,232,0.8)" },
+        { "text": "REVIEW",  "color": "#2d2a2e", "backgroundColor": "#b3f6c0", "overviewRulerColor": "rgba(179,246,192,0.8)" },
+        { "text": "REV",     "color": "#2d2a2e", "backgroundColor": "#b3f6c0", "overviewRulerColor": "rgba(179,246,192,0.8)" },
+    ],
+
+    /* https://marketplace.visualstudio.com/items?itemName=idanp.checkpatch */
     "checkpatch.checkpatchArgs": [
-        "--max-line-length=90",
+        "--max-line-length=80",
+        "--show-types",
+        "--no-signoff",
         "--no-tree",
         "--strict",
         "--ignore",
-        "SPDX_LICENSE_TAG,CONCATENATED_STRING,PREFER_KERNEL_TYPES,SPLIT_STRING,SSCANF_TO_KSTRTO,FSF_MAILING_ADDRESS,STRCPY,OPEN_ENDED_LINE,VOLATILE,CAMELCASE,BLOCK_COMMENT_STYLE,QUOTED_WHITESPACE_BEFORE_NEWLINE,PREFER_DEFINED_ATTRIBUTE_MACRO"
+        "SPDX_LICENSE_TAG,FILE_PATH_CHANGES,COMMIT_MESSAGE,PREFER_KERNEL_TYPES"
     ],
-    "todohighlight.isEnable": true,
-    "todohighlight.include": [
-        "*.c",
-        "*.h",
-        "*.py",
-        "*.lua",
-        "Makefile",
-        "Makefile.*"
-    ],
-    "todohighlight.keywords": [
-        {
-            "text": "TODO",
-            "color": "#24273a",
-            "backgroundColor": "#eed49f",
-            "overviewRulerColor": "rgba(238,212,159,0.8)"
-        },
-        {
-            "text": "FIXME",
-            "color": "#24273a",
-            "backgroundColor": "#8aadf4",
-            "overviewRulerColor": "rgba(138,173,244,0.8)"
-        },
-        {
-            "text": "NOTE",
-            "color": "#24273a",
-            "backgroundColor": "#a6da95",
-            "overviewRulerColor": "rgba(166,218,149,0.8)"
-        },
-        {
-            "text": "REVIEW",
-            "color": "#24273a",
-            "backgroundColor": "#cba6f7",
-            "overviewRulerColor": "rgba(203,166,247,0.8)"
-        }
-    ]
 }
