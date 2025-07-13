@@ -345,7 +345,7 @@ csb () {
   find . -type f -iname '*.hxx' -exec realpath --relative-to="$PWD" {} '+' | uniq >> cscope.files
 
   if (( $have_cscope == 0 )) && (( $CSB_DO_CSCOPE == 0 )) ; then
-    find . -type f -name 'cscope.out.*' -delete
+    find . -type f -name 'cscope.out*' -delete
     cscope -b -q $@ -f cscope.out  # csb -k to build in kernel mode
   fi
 
