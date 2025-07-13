@@ -48,9 +48,9 @@ LOCAL_LANG='LANG=en_US.UTF-8'
 plugins=(zsh-syntax-highlighting zsh-autosuggestions)
 source "$ZSH/oh-my-zsh.sh"
 
-alias ip='ip --color=auto'
 alias grep='grep --color=auto'
-alias bridge='bridge --color=auto'
+alias ip="$SUDO_CMD ip --color=auto"
+alias bridge="$SUDO_CMD bridge --color=auto"
 
 alias c='cl'
 alias b='bt'
