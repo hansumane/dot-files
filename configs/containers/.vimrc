@@ -174,14 +174,10 @@ nnoremap <silent><expr><nowait> ga exists('*CocHasProvider') && CocHasProvider('
 vnoremap <silent><expr><nowait> ga exists('*CocHasProvider') && CocHasProvider('codeAction')
 				 \ ? '<Plug>(coc-codeaction-selected)' : 'ga'
 
-inoremap <silent><expr> <C-j> exists('*coc#pum#visible') && coc#pum#visible()
-			    \ ? coc#pum#next(1)
-			  \ : pumvisible()
-			    \ ? "\<C-n>" : "\<C-j>"
-inoremap <silent><expr> <C-k> exists('*coc#pum#visible') && coc#pum#visible()
-			    \ ? coc#pum#prev(1)
-			  \ : pumvisible()
-			    \ ? "\<C-p>" : "\<C-k>"
+inoremap <silent><expr> <C-n> exists('*coc#pum#visible') && coc#pum#visible()
+			    \ ? coc#pum#next(1) : "\<C-n>"
+inoremap <silent><expr> <C-p> exists('*coc#pum#visible') && coc#pum#visible()
+			    \ ? coc#pum#prev(1) : "\<C-p>"
 inoremap <silent><expr> <CR> exists('*coc#pum#visible') && coc#pum#visible()
 			   \ ? coc#_select_confirm()
 			 \ : exists('*asyncomplete#close_popup') && pumvisible()
