@@ -28,7 +28,6 @@
 
 set list
 set hidden
-set termguicolors
 
 set hlsearch
 set incsearch
@@ -57,6 +56,10 @@ set imsearch=0
 
 set signcolumn=yes
 set background=dark
+
+set termguicolors
+filetype plugin indent on
+syntax enable
 
 colorscheme molokai
 
