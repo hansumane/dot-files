@@ -4,9 +4,10 @@ COLOR_RED=$'\e[31m'
 COLOR_GREEN=$'\e[1;32m'
 COLOR_RESET=$'\e[0m'
 
-DE_CLEAN_CACHE_IGNORE="bat chromium clangd emacs flatpak lvim mozilla nvim pip p10k-*"
-DE_CLEAN_CONFIG_IGNORE="alacritty bat btop chromium Code doom emacs eza GitKraken lvim\
-                        nvim user-dirs* *programmer"
+DE_CLEAN_CACHE_IGNORE="bat chromium clangd emacs flatpak kitty lvim mozilla nvim pip\
+                       p10k-*"
+DE_CLEAN_CONFIG_IGNORE="alacritty bat btop chromium Code doom emacs eza GitKraken kitty\
+                        lvim nvim user-dirs* *programmer"
 DE_CLEAN_LOCAL_SHARE_IGNORE="containers doom flatpak icons lunarvim lvim nvim *programmer"
 DE_CLEAN_LOCAL_STATE_IGNORE="lvim nvim *programmer"
 
