@@ -381,9 +381,10 @@ frs () {
   if (( $# == 0 )); then
     echo 'ERROR: No source file(s) given!'; return 1
   else
-    rustc -C opt-level=2 -o out-$(basename "$1" .rs) $@
-    #     -C debuginfo=0 -C opt-level=3 -C lto='true' -C codegen-units=1 -C strip='symbols' -o out-$(basename $1 .rs) $@
-    #     -C debuginfo=0 -C opt-level=3 -C codegen-units=1 -C strip=symbols -C prefer-dynamic
+    rustc -C debuginfo=0 -C opt-level=3 \
+          -C codegen-units=1 \
+          -C lto=fat -C strip=symbols \
+          -o out-$(basename $1 .rs) $@
   fi
 }
 
