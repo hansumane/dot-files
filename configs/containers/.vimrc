@@ -121,7 +121,6 @@ tnoremap <Esc> <C-\><C-n>
 let mapleader = ' '
 
 nnoremap <silent> <leader>b :CtrlPBuffer<CR>
-nnoremap <silent> <leader>l :CocList<CR>
 nnoremap <silent> <leader>j :noh<CR>
 nnoremap <silent> <leader>c :bd<CR>
 vnoremap <leader>k :sort<CR>
@@ -158,10 +157,14 @@ nnoremap <silent><expr> K exists('*CocHasProvider') && CocHasProvider('hover')
 			\ ? CocActionAsync('doHover')
 		      \ : exists(':LspHover')
 			\ ? ':LspHover<CR>' : 'K'
-nnoremap <expr> <leader>r exists('*CocHasProvider') && CocHasProvider('rename')
-			\ ? '<Plug>(coc-rename)'
-		      \ : exists(':LspRename')
-			\ ? ':LspRename<CR>' : 'r'
+nnoremap <silent><expr> <leader>lx exists(':CocList')
+				 \ ? ':CocList<CR>'
+			       \ : exists(':LspDocumentDiagnostics')
+				 \ ? ':LspDocumentDiagnostics<CR>' : 'lx'
+nnoremap <silent><expr> <leader>lr exists('*CocHasProvider') && CocHasProvider('rename')
+				 \ ? '<Plug>(coc-rename)'
+			       \ : exists(':LspRename')
+				 \ ? ':LspRename<CR>' : 'lr'
 nnoremap <silent><expr><nowait> gd exists('*CocHasProvider') && CocHasProvider('definition')
 				 \ ? '<Plug>(coc-definition)'
 			       \ : exists(':LspDefinition')
