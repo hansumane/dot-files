@@ -94,9 +94,11 @@ let NERDTreeShowHidden=1
 let g:NERDTreeDirArrowExpandable="+"
 let g:NERDTreeDirArrowCollapsible="~"
 
-let g:rooter_patterns = ['.git', '.vi_project_root']
 let g:rooter_change_directory_for_non_project_files = 'current'
 let g:rooter_silent_chdir = 1
+let g:rooter_patterns = [
+	\ '.vi_project_root', '.git', '.luarc.json', 'compile_flags.txt',
+	\ 'Cargo.toml' ]
 
 let g:lexima_enable_basic_rules = 1
 let g:lexima_enable_newline_rules = 1
