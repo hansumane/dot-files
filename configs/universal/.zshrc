@@ -247,7 +247,7 @@ ptchk() {
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
-    checkpatch.pl --no-tree --no-signoff --show-types --strict \
+    checkpatch.pl --no-tree --no-signoff --show-types --strict --file \
                   --max-line-length="$PTCHK_MAX_LL" \
                   --ignore "$PTCHK_IGNORES" $@
   fi
