@@ -39,7 +39,7 @@ fi
 # /usr/lib/jvm/java-<XX>-openjdk/lib  # and add this path to LD_LIBRARY_PATH
 sudo pacman -S --needed \
   tmux calc tree openssh man-db man-pages nodejs npm yarn \
-  neofetch base-devel clang cmake colorgcc jdk-openjdk jdk17-openjdk jre17-openjdk \
+  fastfetch base-devel clang cmake colorgcc jdk-openjdk jdk17-openjdk jre17-openjdk \
   wireguard-tools indent python-pip
 
 mkdir -p ~/Downloads; cd ~/Downloads
