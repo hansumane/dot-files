@@ -15,7 +15,7 @@ fi
 sudo pacman -Sy --needed \
   plasma ark dolphin dolphin-plugins okular emacs kitty alacritty \
   kate gwenview elisa spectacle okteta plasma-wayland-protocols \
-  kwalletmanager neochat konversation xwaylandvideobridge inter-font \
+  kwalletmanager neochat konversation inter-font \
   flatpak xdg-desktop-portal-kde xdg-desktop-portal \
   pavucontrol-qt qpwgraph networkmanager-openvpn \
   firefox firefox-i18n-ru zathura zathura-pdf-mupdf zathura-djvu \
