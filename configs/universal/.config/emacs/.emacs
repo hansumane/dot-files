@@ -1,8 +1,8 @@
 ;; Before Startup
 
-(set-frame-font "Iosevka 14" nil t)
-(add-to-list 'default-frame-alist
-  '(fullscreen . maximized))
+(set-frame-font "IosevkaTerm Nerd Font 18" nil t)
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+(add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 
 ;; Packages
 
@@ -14,77 +14,213 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
-(use-package evil ;; Basic Vim Bindings for Emacs
-  :ensure t
-  :demand t
-  :init
-  (setq evil-want-C-u-scroll t)
-  (setq evil-want-keybinding nil)
-  (setq evil-undo-system 'undo-redo)
-  :bind (("<escape>" . keyboard-escape-quit))
-  :config (evil-mode t))
+;; (use-package evil ;; Basic Vim Bindings for Emacs
+;;   :ensure t
+;;   :demand t
+;;   :init (setq evil-want-C-u-scroll t
+;;               evil-want-integration t
+;;               evil-want-keybinding nil
+;;               evil-undo-system 'undo-redo)
+;;   :bind (("<escape>" . keyboard-escape-quit))
+;;   :config (evil-mode t))
+;;
+;; (use-package evil-collection ;; Vim Bindings for various Emacs modes
+;;   :after evil
+;;   :ensure t
+;;   :init (setq evil-want-integration t)
+;;   :config (evil-collection-init))
+;;
+;; (use-package evil-nerd-commenter ;; g c to Comment
+;;   :after (evil evil-collection)
+;;   :ensure t
+;;   :config (evilnc-default-hotkeys)
+;;   (define-key evil-visual-state-map (kbd "g c") 'evilnc-comment-operator))
 
-(use-package evil-collection ;; Vim Bindings for various Emacs modes
-  :after evil
+(use-package catppuccin-theme ;; Theme
   :ensure t
-  :init (setq evil-want-integration t)
-  :config (evil-collection-init))
-
-(use-package gruvbox-theme ;; Nice Theme
-  :ensure t
-  :config (load-theme 'gruvbox :no-confirm))
-
-(use-package git-gutter ;; Shows Git Diff for Buffer File
-  :ensure t)
+  :init (setq catppuccin-flavor 'mocha)
+  :config (load-theme 'catppuccin :no-confirm))
 
 (use-package editorconfig ;; File Formatting from .editorconfig
   :ensure t
-  :config (editorconfig-mode 1))
-
-(use-package ivy ;; Better ido Replacement
-  :ensure t
-  :config (ivy-mode 1))
-
-(use-package evil-nerd-commenter ;; g c to Comment
-  :after evil
-  :ensure t
+  :hook prog-mode ;; (editorconfig-mode t)
   :config
-  (evilnc-default-hotkeys)
-  (define-key evil-visual-state-map (kbd "g c") 'evilnc-comment-operator))
+  (setq-default display-fill-column-indicator-character ?┃)
+  (defun set-fill-column-from-editorconfig (props)
+    (let ((max-line-length (gethash 'max_line_length props)))
+      (if (and max-line-length (not (string-empty-p max-line-length)))
+        (let ((max-length-number (string-to-number max-line-length)))
+          (when (> max-length-number 0)
+            (set-fill-column max-length-number))))))
+  (add-hook 'editorconfig-after-apply-functions #'set-fill-column-from-editorconfig)
+  (add-hook 'prog-mode-hook #'display-fill-column-indicator-mode))
 
-(use-package company ;; Completion and Suggestions
+(use-package orderless ;; Fuzzy
   :ensure t
-  :hook prog-mode)
+  :config (setq completion-styles (cons 'orderless completion-styles)))
 
-(use-package eglot ;; Language Server
+(use-package vertico ;; Better than ido and ivy
+  :after orderless
   :ensure t
+  :config (vertico-mode t))
+
+(use-package corfu ;; Corfu: Completion Overlay Region FUnction
+  :after orderless
+  :ensure t
+  :init (global-corfu-mode t)
+  :custom ((corfu-auto t)
+           (corfu-auto-prefix 2)
+           (corfu-cycle t)
+           (corfu-preview-current nil)))
+
+(use-package cape ;; File, Buffer, etc suggestions for Corfu
+  :after (vertico corfu)
+  :ensure t
+  :custom ((cape-dabbrev-check-other-buffers t)
+           (cape-dabbrev-downcase nil))
   :init
-  :hook
-  (c-mode . eglot-ensure)
-  (c++-mode . eglot-ensure)
-  :config
-  (add-to-list 'eglot-server-programs
-    '((c-mode c++-mode) .
-      ("clangd"
-        "-j=3"
-        "--background-index"
-        "--pch-storage=memory"))))
+  (add-to-list 'completion-at-point-functions 'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions 'cape-file)
+  (add-to-list 'completion-at-point-functions 'cape-keyword))
+
+(use-package marginalia ;; MiniBuffer Annotations
+  :after cape
+  :ensure t
+  :init (marginalia-mode t))
 
 (use-package which-key ;; Shows Keybinding Descriptions
   :ensure t
-  :config (which-key-mode))
+  :config (which-key-mode t))
 
-;; Keybinds
+(use-package ibuffer ;; Better buffer list
+  :ensure t
+  :init
+  (defun my/ibuffer/kill ()
+    (interactive)
+    (kill-this-buffer))
+  (defun my/ibuffer/revert-keep-scale ()
+    (interactive)
+    (let ((scale text-scale-mode-amount))
+      (revert-buffer :ignore-auto :noconfirm)
+      (text-scale-set scale)))
+  :bind (("C-x b" . ibuffer)
+         ("C-x k" . my/ibuffer/kill)
+         ("C-c r" . my/ibuffer/revert-keep-scale)))
 
-(define-key evil-normal-state-map (kbd "C-k") 'whitespace-mode)
-(define-key evil-normal-state-map (kbd "SPC j") 'evil-ex-nohighlight)
-(define-key evil-visual-state-map (kbd "SPC k") 'evil-ex-sort)
+(use-package flymake ;; Diagnostics
+  :ensure t
+  :hook prog-mode
+  :bind ("C-c l x" . flymake-show-buffer-diagnostics))
+
+(use-package git-gutter :ensure t) ;; Shows Git Diff for Buffer File
+(use-package vterm :ensure t) ;; Terminal
+(use-package magit :ensure t) ;; Git
+(use-package rg :ensure t) ;; Ripgrep finder
+
+;; Languages
+
+(setq-default c-default-style
+  '((java-mode . "java")
+    (awk-mode . "awk")
+    ((c-mode c-ts-mode) . "kernel")
+    (other . "bsd")))
+
+(use-package rust-mode :ensure t)
+
+(setq treesit-language-source-alist ;; <M-x> treesit-install-language-grammar <CR> {lang}
+  '((c "https://github.com/tree-sitter/tree-sitter-c")
+    (cpp "https://github.com/tree-sitter/tree-sitter-cpp")
+    (rust "https://github.com/tree-sitter/tree-sitter-rust")))
+
+(setq major-mode-remap-alist ;; NOTE: these are different modes with different hooks
+  '((c-mode . c-ts-mode)
+    (cpp-mode . cpp-ts-mode)
+    (rust-mode . rust-ts-mode)))
+
+(use-package xcscope ;; Cscope Tags
+  :ensure t
+  :custom (cscope-option-do-not-update-database t)
+  :hook ((c-ts-mode c++-ts-mode) . cscope-minor-mode)
+  :config (cscope-setup))
+
+(use-package tree-sitter-langs
+  :ensure t
+  :config
+  (setq tree-sitter-load-path
+    '("~/.emacs.d/tree-sitter/"))
+  (setq tree-sitter-major-mode-language-alist
+    '((c-ts-mode . c)
+      (c++-ts-mode . cpp)
+      (rust-ts-mode . rust))))
+
+(use-package tree-sitter
+  :after tree-sitter-langs
+  :ensure t
+  :hook ((c-ts-mode c++-ts-mode rust-ts-mode)
+         . tree-sitter-hl-mode))
+
+;; LSP
+
+;; (use-package lsp-mode
+;;   :ensure t
+;;   :init (setq lsp-keymap-prefix "C-c l")
+;;   :hook ((c-ts-mode . lsp-deferred)
+;;          (c++-ts-mode . lsp-deferred)
+;;          (rust-ts-mode . lsp-deferred)
+;;          (lsp-mode . lsp-enable-which-key-integration))
+;;   :commands (lsp lsp-deferred)
+;;   :config (setq
+;;             lsp-lens-enable nil
+;;             lsp-inlay-hints-mode nil
+;;             lsp-enable-on-type-formatting nil
+;;             lsp-enable-indentation nil))
+;;
+;; (use-package lsp-ui
+;;   :after lsp-mode
+;;   :ensure t)
+
+(use-package eglot
+  :ensure t
+  :hook ((c-ts-mode . eglot-ensure)
+         (c++-ts-mode . eglot-ensure)
+         (rust-ts-mode . eglot-ensure))
+  :custom ((eglot-autoreconnect t)
+           (eglot-autoshutdown t)
+           (eglot-ignored-server-capabilities
+             '(:inlayHintProvider :documentOnTypeFormattingProvider))))
 
 ;; Other Settings
 
-(set-input-method  ; C-\ to switch
+(set-input-method ;; C-\ to switch
   'russian-computer)
 (toggle-input-method)
+
+;; Emacs Settings
+
+(use-package emacs
+  :custom
+  (auto-save-default nil)
+  (auto-save-list-file-prefix nil)
+  (column-number-mode t)
+  (delete-selection-mode nil)
+  (display-line-numbers-type 'relative)
+  (global-display-line-numbers-mode t)
+  (global-git-gutter-mode t)
+  (indent-tabs-mode nil)
+  (inhibit-startup-screen t)
+  (make-backup-files nil)
+  (menu-bar-mode nil)
+  (org-startup-truncated nil)
+  (pop-up-windows t)
+  (ring-bell-function 'ignore)
+  (scroll-bar-mode nil)
+  (scroll-conservatively 1)
+  (scroll-margin 2)
+  (switch-to-buffer-in-dedicated-window 'pop)
+  (tool-bar-mode nil)
+
+  ;; Corfu for Emacs 30+ (Disable Ispell completion function, try `cape-dict` instead)
+  (text-mode-ispell-word-completion nil))
 
 ;; Custom File
 
