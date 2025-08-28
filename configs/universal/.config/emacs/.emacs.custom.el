@@ -1,25 +1,12 @@
 (custom-set-variables
- '(auto-save-default nil)
- '(auto-save-list-file-prefix nil)
- '(column-number-mode t)
- '(company-minimum-prefix-length 2)
- '(delete-selection-mode nil)
- '(display-line-numbers-type 'relative)
- '(eglot-autoshutdown t)
- '(eglot-ignored-server-capabilities '(:inlayHintProvider))
- '(global-display-line-numbers-mode t)
- '(global-git-gutter-mode t)
- '(indent-tabs-mode nil)
- '(inhibit-startup-screen t)
- '(make-backup-files nil)
- '(menu-bar-mode nil)
- '(org-safe-remote-resources
-      '("\\`https://fniessen\\.github\\.io/org-html-themes/org/theme-bigblow\\.setup\\'"))
- '(org-startup-truncated nil)
- '(pop-up-windows t)
- '(scroll-margin 2)
- '(switch-to-buffer-in-dedicated-window 'pop)
- '(tab-width 4)
- '(tool-bar-mode nil))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages nil))
 (custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )
