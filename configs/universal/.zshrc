@@ -56,6 +56,7 @@ alias c='cl'
 alias b='bt'
 alias t='tm'
 alias q='exit 0'
+alias cdd='cd $(readlink -f .)'
 alias rr='rm -rf'
 alias rrs="$SUDO_CMD rm -rf"
 alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"
