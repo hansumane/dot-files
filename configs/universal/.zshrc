@@ -241,6 +241,20 @@ rfmt () {
   fi
 }
 
+gfmt () {
+  if (( $# == 0 )); then
+    echo 'ERROR: No source file given!'; return 1
+  else
+    if [[ ! -f "$1" ]]; then
+      echo "Error: No such file: $1"; return 1
+    fi
+    local TEMP_FN="$(basename "$1" .go)~.go"
+    gofmt "$1" > "$TEMP_FN"
+    diff -u "$1" "$TEMP_FN" | bat --tabs=8
+    rm -rf "$TEMP_FN"
+  fi
+}
+
 export PTCHK_IGNORES="SPDX_LICENSE_TAG,FILE_PATH_CHANGES,COMMIT_MESSAGE"
 export PTCHK_MAX_LL=80
 ptchk() {
