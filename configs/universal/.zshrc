@@ -241,6 +241,21 @@ rfmt () {
   fi
 }
 
+zfmt () {
+  if (( $# == 0 )); then
+    echo 'ERROR: No source file given!'; return 1
+  else
+    if [[ ! -f "$1" ]]; then
+      echo "Error: No such file: $1"; return 1
+    fi
+    local TEMP_FN="$(basename "$1" .zig)~.zig"
+    cp "$1" "$TEMP_FN"
+    zig fmt "$TEMP_FN"
+    diff -u "$1" "$TEMP_FN" | bat --tabs=8
+    rm -rf "$TEMP_FN"
+  fi
+}
+
 gfmt () {
   if (( $# == 0 )); then
     echo 'ERROR: No source file given!'; return 1
