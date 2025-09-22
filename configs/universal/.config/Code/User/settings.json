@@ -2,10 +2,8 @@
     "window.zoomLevel": 1,
     "update.showReleaseNotes": false,
     "workbench.startupEditor": "none",
-    "workbench.colorTheme": "Monokai Pro",
-    "workbench.iconTheme": "Monokai Pro Icons",
     "editor.lineHeight": 1.65,
-    "editor.fontWeight": 400,
+    "editor.fontWeight": 500,
     "editor.fontFamily": "MonoLisa Nerd Font",
     "editor.fontLigatures": "'liga', 'ss02', 'ss07', 'ss08', 'ss11'",
     "editor.rulers": [80, 90],
@@ -16,31 +14,42 @@
     "explorer.confirmDragAndDrop": false,
     "security.workspace.trust.enabled": false,
 
+    /* https://marketplace.visualstudio.com/items?itemName=Catppuccin.catppuccin-vsc */
+    "workbench.colorTheme": "Catppuccin Macchiato",
+    /* https://marketplace.visualstudio.com/items?itemName=Catppuccin.catppuccin-vsc-icons */
+    "workbench.iconTheme": "catppuccin-macchiato",
+
+    /* https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens */
+    "gitlens.codeLens.enabled": false,
+
     /* https://marketplace.visualstudio.com/items?itemName=naumovs.color-highlight */
     "color-highlight.markerType": "dot-before",
 
     /* https://marketplace.visualstudio.com/items?itemName=vscodevim.vim */
     "vim.useSystemClipboard": true,
 
-    /* https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight                      *
-     * for https://marketplace.visualstudio.com/items?itemName=monokai.theme-monokai-pro-vscode colorscheme */
+    /* https://marketplace.visualstudio.com/items?itemName=SeungukShin.cscope-code */
+    "cscope-code.auto": false,
+
+    /* https://marketplace.visualstudio.com/items?itemName=wayou.vscode-todo-highlight *
+     * for Catppuccin Macchiato colorscheme                                            */
     "todohighlight.keywords": [
-        { "text": "TODO",    "color": "#2d2a2e", "backgroundColor": "#ab9df2", "overviewRulerColor": "rgba(171,157,242,0.8)" },
-        { "text": "FIXME",   "color": "#2d2a2e", "backgroundColor": "#ff6188", "overviewRulerColor": "rgba(255,97,136,0.8)" },
-        { "text": "ERROR",   "color": "#2d2a2e", "backgroundColor": "#ff6188", "overviewRulerColor": "rgba(255,97,136,0.8)" },
-        { "text": "ISSUE",   "color": "#2d2a2e", "backgroundColor": "#ff6188", "overviewRulerColor": "rgba(255,97,136,0.8)" },
-        { "text": "BUG",     "color": "#2d2a2e", "backgroundColor": "#ff6188", "overviewRulerColor": "rgba(255,97,136,0.8)" },
-        { "text": "WARNING", "color": "#2d2a2e", "backgroundColor": "#fc9867", "overviewRulerColor": "rgba(252,152,103,0.8)" },
-        { "text": "WARN",    "color": "#2d2a2e", "backgroundColor": "#fc9867", "overviewRulerColor": "rgba(252,152,103,0.8)" },
-        { "text": "NOTE",    "color": "#2d2a2e", "backgroundColor": "#78dce8", "overviewRulerColor": "rgba(120,220,232,0.8)" },
-        { "text": "INFO",    "color": "#2d2a2e", "backgroundColor": "#78dce8", "overviewRulerColor": "rgba(120,220,232,0.8)" },
-        { "text": "REVIEW",  "color": "#2d2a2e", "backgroundColor": "#b3f6c0", "overviewRulerColor": "rgba(179,246,192,0.8)" },
-        { "text": "REV",     "color": "#2d2a2e", "backgroundColor": "#b3f6c0", "overviewRulerColor": "rgba(179,246,192,0.8)" },
+        { "text": "TODO",    "color": "#1e2030", "backgroundColor": "#c6a0f6", "overviewRulerColor": "rgba(198,169,246,0.8)" },
+        { "text": "FIXME",   "color": "#1e2030", "backgroundColor": "#ed8796", "overviewRulerColor": "rgba(237,135,150,0.8)" },
+        { "text": "ERROR",   "color": "#1e2030", "backgroundColor": "#ed8796", "overviewRulerColor": "rgba(237,135,150,0.8)" },
+        { "text": "ISSUE",   "color": "#1e2030", "backgroundColor": "#ed8796", "overviewRulerColor": "rgba(237,135,150,0.8)" },
+        { "text": "BUG",     "color": "#1e2030", "backgroundColor": "#ed8796", "overviewRulerColor": "rgba(237,135,150,0.8)" },
+        { "text": "WARNING", "color": "#1e2030", "backgroundColor": "#eed49f", "overviewRulerColor": "rgba(238,212,159,0.8)" },
+        { "text": "WARN",    "color": "#1e2030", "backgroundColor": "#eed49f", "overviewRulerColor": "rgba(238,212,159,0.8)" },
+        { "text": "NOTE",    "color": "#1e2030", "backgroundColor": "#91d7e3", "overviewRulerColor": "rgba(145,215,227,0.8)" },
+        { "text": "INFO",    "color": "#1e2030", "backgroundColor": "#91d7e3", "overviewRulerColor": "rgba(145,215,227,0.8)" },
+        { "text": "REVIEW",  "color": "#1e2030", "backgroundColor": "#b7bdf8", "overviewRulerColor": "rgba(183,189,248,0.8)" },
+        { "text": "REV",     "color": "#1e2030", "backgroundColor": "#b7bdf8", "overviewRulerColor": "rgba(183,189,248,0.8)" },
     ],
 
     /* https://marketplace.visualstudio.com/items?itemName=idanp.checkpatch */
     "checkpatch.checkpatchArgs": [
-        "--max-line-length=80",
+        "--max-line-length=120",
         "--show-types",
         "--no-signoff",
         "--no-tree",
@@ -48,4 +57,11 @@
         "--ignore",
         "SPDX_LICENSE_TAG,FILE_PATH_CHANGES,COMMIT_MESSAGE,PREFER_KERNEL_TYPES"
     ],
+
+    /* https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer */
+    "rust-analyzer.check.command": "clippy",
+    "rust-analyzer.diagnostics.enable": true,
+    "rust-analyzer.diagnostics.experimental.enable": true,
+    "rust-analyzer.lens.implementations.enable": false,
+    "workbench.editor.empty.hint": "hidden",
 }
