@@ -37,3 +37,6 @@ indent_size = 8
 [*.{diff,patch}]
 insert_final_newline = false
 trim_trailing_whitespace = false
+
+[{.emacs*,*.el}]
+indent_size = 2
