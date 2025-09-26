@@ -1,0 +1,98 @@
+return {
+  'echasnovski/mini.nvim',
+  lazy = false, priority = 1000,
+  config = function()
+    local globals = require('config.globals');
+    local funcs = globals.funcs;
+    local vars = globals.vars;
+
+    local mini_statusline = require('mini.statusline')
+    local mini_statusline_combine_groups = mini_statusline.combine_groups
+
+    mini_statusline.setup()
+    mini_statusline.combine_groups = function(groups)
+      table.insert(groups, 2, {
+        hl = 'MiniStatuslineModeVisual',
+        strings = { funcs.get_vselected() }
+      })
+      table.insert(groups, 7, {
+        hl = 'MiniStatuslineFilename',
+        strings = { funcs.get_indent() }
+      })
+      table.insert(groups, 8, {
+        hl = 'MiniStatuslineFilename',
+        strings = { funcs.get_language() }
+      })
+      --
+      --  { hl = mode_hl,                    strings = { mode } },
+      --> { hl = 'MiniStatuslineModeVisual', strings = { funcs.get_vselected() } },
+      --  { hl = 'MiniStatuslineDevinfo',    strings = { git, diff, diagnostics, lsp } },
+      --  '%<', -- Mark general truncate point
+      --  { hl = 'MiniStatuslineFilename',   strings = { filename } },
+      --  '%=', -- End left alignment
+      --> { hl = 'MiniStatuslineFilename',   strings = { funcs.get_indent() } },
+      --> { hl = 'MiniStatuslineFilename',   strings = { funcs.get_language() } },
+      --  { hl = 'MiniStatuslineFileinfo',   strings = { fileinfo } },
+      --  { hl = mode_hl,                    strings = { search, location } },
+      --
+      return mini_statusline_combine_groups(groups)
+    end
+
+    if vars.indentlines.mini then
+      require('mini.indentscope').setup {
+        symbol = vars.ibl_char,
+        options = { border = 'top' },
+        mappings = {
+          object_scope_with_border = '',
+          object_scope = '',
+          goto_bottom = '',
+          goto_top = ''
+        }
+      }
+    end
+
+    require('config.globals').funcs.au {
+      name = 'User',
+      data = {
+        pattern = 'VeryLazy',
+        callback = function()
+          -- mini.clue
+
+          local miniclue = require('mini.clue')
+
+          miniclue.setup {
+            window = { config = { border = 'double', width = 'auto' } },
+
+            triggers = {
+              { mode = { 'n', 'x' }, keys = '<Leader>' },
+              { mode = { 'n', 'x' }, keys = '<C-c>' },
+              { mode = { 'n', 'x' }, keys = 'g' },
+              { mode = { 'n', 'x' }, keys = 'z' },
+              { mode = 'n', keys = '<C-w>' },
+              { mode = 'x', keys = 's' }
+            },
+
+            clues = {
+              {
+                { mode = 'n', keys = '<Leader>s', desc = '+Search' },
+                { mode = 'n', keys = '<Leader>g', desc = '+Gitsigns' },
+                { mode = 'n', keys = '<Leader>l', desc = '+Lsp' }
+              },
+
+              miniclue.gen_clues.builtin_completion(),
+              miniclue.gen_clues.g(),
+              miniclue.gen_clues.marks(),
+              miniclue.gen_clues.registers(),
+              miniclue.gen_clues.windows(),
+              miniclue.gen_clues.z()
+            }
+          }
+
+          -- mini.surround
+
+          require('mini.surround').setup{}
+        end
+      }
+    }
+  end
+}
