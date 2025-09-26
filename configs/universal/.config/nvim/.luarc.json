@@ -1,0 +1,40 @@
+{
+  "workspace": {
+    "library": [
+      "$VIMRUNTIME/lua/vim",
+      "${3rd}/luv/library",
+      "${3rd}/busted/library",
+      "$XDG_CONFIG_HOME/lua",
+      "$XDG_DATA_HOME/nvim/lazy/LuaSnip/lua",
+      "$XDG_DATA_HOME/nvim/lazy/blink.cmp/lua",
+      "$XDG_DATA_HOME/nvim/lazy/cscope_maps.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/fzf-lua/lua",
+      "$XDG_DATA_HOME/nvim/lazy/gitsigns.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/indent-blankline.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/lazy.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/lua-utils.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/mason-lspconfig.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/mason.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/mini.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/neorg/lua",
+      "$XDG_DATA_HOME/nvim/lazy/noice.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/nui.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/nvim-lint/lua",
+      "$XDG_DATA_HOME/nvim/lazy/nvim-lspconfig/lua",
+      "$XDG_DATA_HOME/nvim/lazy/nvim-nio/lua",
+      "$XDG_DATA_HOME/nvim/lazy/nvim-treesitter/lua",
+      "$XDG_DATA_HOME/nvim/lazy/nvim-web-devicons/lua",
+      "$XDG_DATA_HOME/nvim/lazy/oil.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/pathlib.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/plenary.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/snacks.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/todo-comments.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/tokyonight.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/trouble.nvim/lua",
+      "$XDG_DATA_HOME/nvim/lazy/ultimate-autopair.nvim/lua"
+    ]
+  },
+  "diagnostics": {
+    "globals": []
+  }
+}
