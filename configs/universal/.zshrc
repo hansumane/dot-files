@@ -25,13 +25,13 @@ export LESS_TERMCAP_me=$'\e[0m'
 export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_ue=$'\e[0m'
 
-# fzf colors (rose-pine main)
+# fzf colors (catppuccin mocha)
 export FZF_DEFAULT_OPTS=" \
---color=fg:#908CAA,bg:#191724,hl:#EBBCBA \
---color=fg+:#E0DEF4,bg+:#26233A,hl+:#EBBCBA \
---color=border:#403D52,header:#31748F,gutter:#191724 \
---color=spinner:#F6C177,info:#9CCFD8 \
---color=pointer:#C4A7E7,marker:#EB6F92,prompt:#908CAA"
+--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
+--color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
+--color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
+--color=selected-bg:#45475A \
+--color=border:#6C7086,label:#CDD6F4"
 
 # sudo
 export SUDO_CMD='sudo'
