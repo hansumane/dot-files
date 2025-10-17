@@ -56,7 +56,6 @@ alias c='cl'
 alias b='bt'
 alias t='tm'
 alias q='exit 0'
-alias cdd='cd $(readlink -f .)'
 alias rr='rm -rf'
 alias rrs="$SUDO_CMD rm -rf"
 alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"
@@ -155,6 +154,14 @@ ded () {
   emacsclient -e '(kill-emacs)' > /dev/null 2>&1
   (( $# == 0 )) && doom run --daemon
   cd -
+}
+
+cdd () {
+  if (( $# == 0 )) ; then
+    cd $(readlink -f .)
+  else
+    cd $(readlink -f $@)
+  fi
 }
 
 alias gitd='git diff'
