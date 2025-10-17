@@ -108,6 +108,17 @@ br () {
   find . '(' -type f -iname $@ ')' -exec bat --tabs=8 {} '+'
 }
 
+bip () {
+  setopt shwordsplit
+  echo -e "\n==== ip a ====\n"
+  ip $@
+  for NS in $(ip netns ls | cut -d' ' -f1) ; do
+    echo "\n==== ip a (netns '$NS') ====\n"
+    ip netns exec $NS ip -c=auto $@
+  done
+  unsetopt shwordsplit
+}
+
 _hxl () {
   setopt shwordsplit
   if (( $# == 0 )); then
