@@ -3,6 +3,7 @@
 	safecrlf = warn
 	quotepath = off
 	pager = bat --tabs=8
+	editor = nvim
 [init]
 	defaultBranch = main
 [credential]
