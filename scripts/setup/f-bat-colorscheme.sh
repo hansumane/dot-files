@@ -4,6 +4,7 @@ set -e
 PROMPT="\
 Choose theme [1]:
 1. Catppuccin Mocha
+2. Tokyonight Moon
 "
 
 if command -v bat &> /dev/null; then
@@ -23,6 +24,12 @@ if command -v bat &> /dev/null; then
       THEME="catppuccin-mocha"
       curl -fL \
         https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Mocha.tmTheme \
+        -o "$THEME".tmTheme
+      ;;
+    *2*)
+      THEME="tokyonight-moon"
+      curl -fL \
+        https://raw.githubusercontent.com/enkia/enki-theme//master/scheme/Enki-Tokyo-Night.tmTheme \
         -o "$THEME".tmTheme
       ;;
   esac
