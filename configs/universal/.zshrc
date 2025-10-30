@@ -426,7 +426,7 @@ fcp () {
     echo 'ERROR: No source file(s) given!'; return 1
   else
     $CXX -O2 -pipe -std='c++20' \
-         -Wall -Wextra -Wformat -Wpedantic -Winline -Werror=inline \
+         -Wall -Wextra -Wformat -Wpedantic -pedantic \
          -o out-$(basename "$1" .cpp) $@
   fi
 }
