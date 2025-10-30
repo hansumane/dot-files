@@ -435,9 +435,8 @@ frs () {
   if (( $# == 0 )); then
     echo 'ERROR: No source file(s) given!'; return 1
   else
-    rustc -C debuginfo=0 -C opt-level=3 \
-          -C codegen-units=1 \
-          -C lto=fat -C strip=symbols \
+    rustc -C opt-level=3 -C codegen-units=1 \
+          -C debuginfo=none -C lto=fat -C strip=symbols \
           -o out-$(basename $1 .rs) $@
   fi
 }
