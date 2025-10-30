@@ -1,5 +1,6 @@
 git:
   autoFetch: false
+  disableAutoEditor: false
 
 gui:
   nerdFontsVersion: "3"
