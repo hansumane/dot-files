@@ -39,8 +39,8 @@ fi
 # /usr/lib/jvm/java-<XX>-openjdk/lib  # and add this path to LD_LIBRARY_PATH
 sudo pacman -S --needed \
   tmux calc tree openssh man-db man-pages nodejs npm yarn \
-  fastfetch base-devel clang cmake colorgcc jdk-openjdk jdk17-openjdk jre17-openjdk \
-  wireguard-tools indent python-pip
+  fastfetch base-devel clang cmake colorgcc jdk-openjdk \
+  indent python-pip
 
 mkdir -p ~/Downloads; cd ~/Downloads
 git clone --depth=1 --recursive https://aur.archlinux.org/yay-bin.git
