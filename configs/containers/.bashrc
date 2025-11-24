@@ -1,4 +1,4 @@
-export PS1="(chr) $PS1"
+export PS1="\n\e[1;34m(chr)\e[0m\n$PS1"
 export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin'
 
 alias q='exit'
