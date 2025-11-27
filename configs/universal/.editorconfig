@@ -16,7 +16,7 @@ max_line_length = 120
 [*.rs]
 max_line_length = 100
 
-[*.{lua,xml,html,build,sh*,zsh*,bash*,yang*}]
+[*.{lua,xml,html,y{,a}ml,build,sh*,zsh*,bash*,yang*}]
 indent_size = 2
 
 [{go.mod,go.sum,go.work,*.{go}}]
