@@ -64,7 +64,6 @@ alias t='tm'
 alias q='exit 0'
 alias rr='rm -rf'
 alias rrs="$SUDO_CMD rm -rf"
-alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"
 
 alias v="$EDITOR"
 alias vd="$EDITOR ."
@@ -77,19 +76,6 @@ alias ds="doom sync --jobs $(getconf _NPROCESSORS_ONLN)"
 alias dsu="ds -u"
 alias dsnou="ds -U"
 alias eza="$LOCAL_LANG eza"
-
-alias la='eza -a'
-alias lx="eza $EZA_ICONS -albh --classify --group --group-directories-first"
-alias ll="eza $EZA_ICONS -albh --classify --no-user --group-directories-first"
-alias lt="eza $EZA_ICONS -albh --classify --no-user --group-directories-first -T"
-alias cla='cpwd;la'
-alias cll='cpwd;ll'
-alias clx='cpwd;lx'
-alias cxl='cpwd;lx'
-alias glx='cpwd;lx --git'
-alias gxl='cpwd;lx --git'
-alias clt='cpwd;lt'
-alias glt='cpwd;lt --git'
 
 alias edM="$EDITOR Makefile"
 alias edcr="$EDITOR ~/.git-credentials"
@@ -180,6 +166,46 @@ cdd () {
     cd $(readlink -f $@)
   fi
 }
+
+alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"
+
+alias la='eza -a'
+alias lx="eza $EZA_ICONS -albh --classify --group --group-directories-first"
+alias ll="eza $EZA_ICONS -albh --classify --no-user --group-directories-first"
+alias lt="eza $EZA_ICONS -albh --classify --no-user --group-directories-first -T"
+
+alias cla='cpwd;la'
+alias cll='cpwd;ll'
+
+_clx () {
+  if [[ "$1" = 'tree' ]] ; then
+    local ARGS=("${@:2}")
+    local CMD=lt
+  else
+    local ARGS=("${@}")
+    local CMD=lx
+  fi
+
+  cpwd
+
+  if ! command -v git &> /dev/null ; then eval $CMD ${ARGS[@]} ; return ; fi
+
+  local GIT_TOPLEVEL=$(git rev-parse --show-toplevel 2>/dev/null)
+  local GIT_INSIDE=$?
+
+  if (( $GIT_INSIDE != 0 )) ; then eval $CMD ${ARGS[@]} ; return ; fi
+  if [[ -f "$GIT_TOPLEVEL/.hide_ls_git" ]] ; then eval $CMD ${ARGS[@]} ; return ; fi
+
+  eval $CMD --git ${ARGS[@]}
+}
+
+alias clx='_clx'
+alias cxl='_clx'
+alias clt='_clx tree'
+
+alias glx='cpwd;lx --git'
+alias gxl='cpwd;lx --git'
+alias glt='cpwd;lt --git'
 
 alias gitd='git diff'
 alias gitdc='git diff --cached'
