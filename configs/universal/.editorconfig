@@ -19,11 +19,6 @@ max_line_length = 100
 [*.{lua,xml,html,y{,a}ml,build,sh*,zsh*,bash*,yang*}]
 indent_size = 2
 
-# [*.lua]
-# indent_style = tab
-# indent_size = 4
-# tab_width = 4
-
 [{go.mod,go.sum,go.work,*.{go}}]
 indent_style = tab
 max_line_length = 100
@@ -33,10 +28,6 @@ indent_size = 8
 indent_style = tab
 max_line_length = 80
 indent_size = 8
-
-# [*.{c,h}]
-# indent_style = space
-# indent_size = 2
 
 [*.{i,d}ts*]
 indent_style = tab
@@ -49,3 +40,18 @@ trim_trailing_whitespace = false
 
 [{.emacs*,*.el}]
 indent_size = 2
+
+# optional styles:
+
+# [*.lua]
+# indent_style = tab
+# indent_size = 4
+# tab_width = 4
+
+# [*.{sh*,zsh*,bash*}]
+# indent_style = tab
+# indent_size = 8
+
+# [*.{c,h}]
+# indent_style = space
+# indent_size = 2
