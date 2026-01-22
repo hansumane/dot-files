@@ -1,0 +1,7 @@
+[font]
+normal = ["MonoLisa Nerd Font"]
+bold = [["MonoLisa Nerd Font", "Medium Regular"]]
+size = 14.0
+
+[font.features]
+"MonoLisa Nerd Font" = ["+ss07", "+ss08", "+ss11", "-liga"]
