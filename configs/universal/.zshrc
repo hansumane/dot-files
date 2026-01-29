@@ -72,6 +72,7 @@ alias gg='lazygit'
 alias cr='cargo run'
 alias crr='cargo run -rq'
 alias tl='clear; tmux list-sessions'
+alias cb="cbonsai -S --life=40 --multiplier=5 --time=20 --wait=3600 --leaf='&,&,&,#'"
 alias ds="doom sync --jobs $(getconf _NPROCESSORS_ONLN)"
 alias dsu="ds -u"
 alias dsnou="ds -U"
