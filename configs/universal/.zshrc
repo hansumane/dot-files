@@ -445,7 +445,7 @@ fcc () {
     $CC -O3 -pipe -std='gnu17' \
         -Wall -Wextra -Wformat -Wpedantic -pedantic -Winline -Werror=inline \
         -Wno-variadic-macros \
-        -o out-$(basename $1 .c) $@
+        -o "out-$(basename "$1" .c)" $@
   fi
 }
 
@@ -455,7 +455,7 @@ fcp () {
   else
     $CXX -O2 -pipe -std='c++20' \
          -Wall -Wextra -Wformat -Wpedantic -pedantic \
-         -o out-$(basename "$1" .cpp) $@
+         -o "out-$(basename "$1" .cpp)" $@
   fi
 }
 
@@ -465,7 +465,7 @@ frs () {
   else
     rustc -C opt-level=3 -C codegen-units=1 \
           -C debuginfo=none -C lto=fat -C strip=symbols \
-          -o out-$(basename $1 .rs) $@
+          -o "out-$(basename "$1" .rs)" $@
   fi
 }
 
