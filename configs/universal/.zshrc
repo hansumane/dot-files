@@ -180,24 +180,24 @@ alias cll='cpwd;ll'
 
 _clx () {
   if [[ "$1" = 'tree' ]] ; then
-    local ARGS=("${@:2}")
-    local CMD=lt
+    local args=("${@:2}")
+    local cmd=lt
   else
-    local ARGS=("${@}")
-    local CMD=lx
+    local args=("${@}")
+    local cmd=lx
   fi
 
   cpwd
 
-  if ! command -v git &> /dev/null ; then eval $CMD ${ARGS[@]} ; return ; fi
+  if ! command -v git &> /dev/null ; then eval $cmd ${args[@]} ; return ; fi
 
-  local GIT_TOPLEVEL=$(git rev-parse --show-toplevel 2>/dev/null)
-  local GIT_INSIDE=$?
+  local git_toplevel=$(git rev-parse --show-toplevel 2>/dev/null)
+  local git_inside=$?
 
-  if (( $GIT_INSIDE != 0 )) ; then eval $CMD ${ARGS[@]} ; return ; fi
-  if [[ -f "$GIT_TOPLEVEL/.hide_ls_git" ]] ; then eval $CMD ${ARGS[@]} ; return ; fi
+  if (( git_inside != 0 )) ; then eval $cmd ${args[@]} ; return ; fi
+  if [[ -f "$git_toplevel/.hide_ls_git" ]] ; then eval $cmd ${args[@]} ; return ; fi
 
-  eval $CMD --git ${ARGS[@]}
+  eval $cmd --git ${args[@]}
 }
 
 alias clx='_clx'
@@ -231,10 +231,11 @@ giti () {
     return 1
   fi
 
-  local GIT_IGNORE_DIR_PATH="$(git rev-parse --show-toplevel)"
-  local GIT_IGNORE_FILE_PATH="$GIT_IGNORE_DIR_PATH/.gitignore"
-  cd "$GIT_IGNORE_DIR_PATH"
-  $SUDO_CMD rm -rf $(git ls-files --others --ignored --exclude-from="$GIT_IGNORE_FILE_PATH" --directory)
+  local git_ignore_dir_path="$(git rev-parse --show-toplevel)"
+  local git_ignore_file_path="$git_ignore_dir_path/.gitignore"
+
+  cd "$git_ignore_dir_path"
+  $SUDO_CMD rm -rf $(git ls-files --others --ignored --exclude-from="$git_ignore_file_path" --directory)
   cd -
 }
 
@@ -284,11 +285,11 @@ rfmt () {
     if [[ ! -f "$1" ]]; then
       echo "Error: No such file: $1"; return 1
     fi
-    local TEMP_FN="$(basename "$1" .rs)~.rs"
-    cp "$1" "$TEMP_FN"
-    rustfmt "$TEMP_FN"
-    diff -u "$1" "$TEMP_FN" | bat --tabs=8
-    rm -rf "$TEMP_FN"
+    local temp_fn="$(basename "$1" .rs)~.rs"
+    cp "$1" "$temp_fn"
+    rustfmt "$temp_fn"
+    diff -u "$1" "$temp_fn" | bat --tabs=8
+    rm -rf "$temp_fn"
   fi
 }
 
@@ -299,11 +300,11 @@ zfmt () {
     if [[ ! -f "$1" ]]; then
       echo "Error: No such file: $1"; return 1
     fi
-    local TEMP_FN="$(basename "$1" .zig)~.zig"
-    cp "$1" "$TEMP_FN"
-    zig fmt "$TEMP_FN"
-    diff -u "$1" "$TEMP_FN" | bat --tabs=8
-    rm -rf "$TEMP_FN"
+    local temp_fn="$(basename "$1" .zig)~.zig"
+    cp "$1" "$temp_fn"
+    zig fmt "$temp_fn"
+    diff -u "$1" "$temp_fn" | bat --tabs=8
+    rm -rf "$temp_fn"
   fi
 }
 
@@ -314,10 +315,10 @@ gfmt () {
     if [[ ! -f "$1" ]]; then
       echo "Error: No such file: $1"; return 1
     fi
-    local TEMP_FN="$(basename "$1" .go)~.go"
-    gofmt "$1" > "$TEMP_FN"
-    diff -u "$1" "$TEMP_FN" | bat --tabs=8
-    rm -rf "$TEMP_FN"
+    local temp_fn="$(basename "$1" .go)~.go"
+    gofmt "$1" > "$temp_fn"
+    diff -u "$1" "$temp_fn" | bat --tabs=8
+    rm -rf "$temp_fn"
   fi
 }
 
@@ -395,14 +396,14 @@ edC () {
   (( $# == 0 )) && return 0
   ! git rev-parse --show-toplevel &> /dev/null && return 0
 
-  local TRUE_PATH="$(readlink -f "$PWD")"
-  local GIT_TOPDIR="$(git rev-parse --show-toplevel)"
-  local GIT_INFODIR="$GIT_TOPDIR/.git/info"
-  local GIT_WDDIFF="${TRUE_PATH#"$GIT_TOPDIR"}"
+  local true_path="$(readlink -f "$PWD")"
+  local git_topdir="$(git rev-parse --show-toplevel)"
+  local git_infodir="$git_topdir/.git/info"
+  local git_wddiff="${true_path#"$git_topdir"}"
 
-  mkdir -p "$GIT_INFODIR" && touch "$GIT_INFODIR/exclude"
-  if ! grep -Fxq "$GIT_WDDIFF/compile_flags.txt" "$GIT_INFODIR/exclude"; then
-    echo "$GIT_WDDIFF/compile_flags.txt" >> "$GIT_INFODIR/exclude"
+  mkdir -p "$git_infodir" && touch "$git_infodir/exclude"
+  if ! grep -Fxq "$git_wddiff/compile_flags.txt" "$git_infodir/exclude"; then
+    echo "$git_wddiff/compile_flags.txt" >> "$git_infodir/exclude"
   fi
 }
 
@@ -477,11 +478,11 @@ mvnew () {
     echo 'ERROR: No groupId and artifactId was set! (example: mvnew com.example.com:my-app)'; return 1
   fi
 
-  local GROUP_ID=$(echo "$1" | cut -d':' -f1)
-  local ARTIFACT_ID=$(echo "$1" | cut -d':' -f2)
+  local group_id=$(echo "$1" | cut -d':' -f1)
+  local artifact_id=$(echo "$1" | cut -d':' -f2)
 
-  mvn archetype:generate -DgroupId="$GROUP_ID" -DartifactId="$ARTIFACT_ID" -DarchetypeArtifactId=maven-archetype-quickstart
-  $SED_CMD -i '/<url>.*<\/url>/a \  <properties>\n    <maven\.compiler\.source>21<\/maven\.compiler\.source>\n    <maven\.compiler\.target>21<\/maven\.compiler\.target>\n    <project\.build\.sourceEncoding>UTF\-8<\/project\.build\.sourceEncoding>\n  <\/properties>' "$ARTIFACT_ID/pom.xml"
+  mvn archetype:generate -DgroupId="$group_id" -DartifactId="$artifact_id" -DarchetypeArtifactId=maven-archetype-quickstart
+  $SED_CMD -i '/<url>.*<\/url>/a \  <properties>\n    <maven\.compiler\.source>21<\/maven\.compiler\.source>\n    <maven\.compiler\.target>21<\/maven\.compiler\.target>\n    <project\.build\.sourceEncoding>UTF\-8<\/project\.build\.sourceEncoding>\n  <\/properties>' "$artifact_id/pom.xml"
 }
 
 mvnrun () {
@@ -489,43 +490,43 @@ mvnrun () {
     echo 'ERROR: No main class specified'; return 1
   fi
 
-  local JAVA_INDEX="$(echo "$1" | $AWK_CMD -F 'java/' '{print length($1) + 6}')"
-  local CLASS_PATH="$(echo "$1" | cut -c "$JAVA_INDEX-" | tr '/' '.')"
-  local RESULT="$(basename "$CLASS_PATH" .java)"
+  local java_index="$(echo "$1" | $AWK_CMD -F 'java/' '{print length($1) + 6}')"
+  local class_path="$(echo "$1" | cut -c "$java_index-" | tr '/' '.')"
+  local result="$(basename "$class_path" .java)"
 
-  echo "classpath: $RESULT"
-  mvn exec:java -Dexec.mainClass="$RESULT"
+  echo "classpath: $result"
+  mvn exec:java -Dexec.mainClass="$result"
 }
 
 update_path () {
   setopt shwordsplit
 
-  local TOBPATH="/bin /usr/sbin /usr/bin"
-       TOBPATH+=" /usr/local/sbin /usr/local/bin"
-       TOBPATH+=" $HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin"
+  local tobpath="/bin /usr/sbin /usr/bin"
+       tobpath+=" /usr/local/sbin /usr/local/bin"
+       tobpath+=" $HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin"
 
-  for DIR in $TOBPATH; do
-    if [[ -d $DIR ]]; then
-      export PATH="$(echo -n ":$PATH:" | $SED_CMD "s/:$(echo -n "$DIR" | $SED_CMD 's/\//\\\//g'):/:/g")"
-      export PATH="$DIR:$PATH"
+  for dir in $tobpath; do
+    if [[ -d "$dir" ]]; then
+      export PATH="$(echo -n ":$PATH:" | $SED_CMD "s/:$(echo -n "$dir" | $SED_CMD 's/\//\\\//g'):/:/g")"
+      export PATH="$dir:$PATH"
     fi
   done
   export PATH="$(echo -n ":$PATH:" | $SED_CMD 's/:\+/:/g' | $SED_CMD 's/^:\(.*\):$/\1/g')"
 
-  local TOLPATH="/libexec /lib /lib64"
-       TOLPATH+=" /usr/libexec /usr/lib /usr/lib64"
-       TOLPATH+=" /usr/local/libexec /usr/local/lib /usr/local/lib64"
-#      TOLPATH+=" /usr/lib/jvm/java-21-openjdk/lib"
-#      TOLPATH+=" /usr/lib64/jvm/java-21-openjdk/lib"
-       TOLPATH+=" $HOME/.local/lib"
+  local tolpath="/libexec /lib /lib64"
+       tolpath+=" /usr/libexec /usr/lib /usr/lib64"
+       tolpath+=" /usr/local/libexec /usr/local/lib /usr/local/lib64"
+#      tolpath+=" /usr/lib/jvm/java-21-openjdk/lib"
+#      tolpath+=" /usr/lib64/jvm/java-21-openjdk/lib"
+       tolpath+=" $HOME/.local/lib"
      if command -v rustc &> /dev/null; then
-       TOLPATH+=" $(rustc --print sysroot)/lib/rustlib/x86_64-unknown-linux-gnu/lib"
+       tolpath+=" $(rustc --print sysroot)/lib/rustlib/x86_64-unknown-linux-gnu/lib"
      fi
 
-  for DIR in $TOLPATH; do
-    if [[ -d $DIR ]]; then
-      export LD_LIBRARY_PATH="$(echo -n ":$LD_LIBRARY_PATH:" | $SED_CMD "s/:$(echo -n "$DIR" | $SED_CMD 's/\//\\\//g'):/:/g" | $SED_CMD 's/^:\(.*\):$/\1/g')"
-      export LD_LIBRARY_PATH="$DIR:$LD_LIBRARY_PATH"
+  for dir in $tolpath; do
+    if [[ -d "$dir" ]]; then
+      export LD_LIBRARY_PATH="$(echo -n ":$LD_LIBRARY_PATH:" | $SED_CMD "s/:$(echo -n "$dir" | $SED_CMD 's/\//\\\//g'):/:/g" | $SED_CMD 's/^:\(.*\):$/\1/g')"
+      export LD_LIBRARY_PATH="$dir:$LD_LIBRARY_PATH"
     fi
   done
   export LD_LIBRARY_PATH="$(echo -n ":$LD_LIBRARY_PATH:" | $SED_CMD 's/:\+/:/g' | $SED_CMD 's/^:\(.*\):$/\1/g')"
