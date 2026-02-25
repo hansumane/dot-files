@@ -505,7 +505,7 @@ update_path () {
 
   local tobpath="/bin /usr/sbin /usr/bin"
        tobpath+=" /usr/local/sbin /usr/local/bin"
-       tobpath+=" $HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin"
+       tobpath+=" $HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin $HOME/.go/bin"
 
   for dir in $tobpath; do
     if [[ -d "$dir" ]]; then
