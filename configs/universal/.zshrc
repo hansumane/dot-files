@@ -69,18 +69,20 @@ alias v="$EDITOR"
 alias vd="$EDITOR ."
 alias z='zathura'
 alias gg='lazygit'
-alias cr='cargo run'
-alias crr='cargo run -rq'
 alias tl='clear; tmux list-sessions'
 alias cb="cbonsai -S --life=40 --multiplier=5 --time=20 --wait=3600 --leaf='&,&,&,#'"
-alias ds="doom sync --jobs $(getconf _NPROCESSORS_ONLN)"
-alias dsu="ds -u"
-alias dsnou="ds -U"
 alias eza="$LOCAL_LANG eza"
 
 alias edM="$EDITOR Makefile"
 alias edcr="$EDITOR ~/.git-credentials"
 alias edrc="$EDITOR ~/.zshrc && . ~/.zshrc"
+
+alias cr='cargo run'
+alias crr='cargo run -rq'
+
+alias ds="doom sync --jobs $(getconf _NPROCESSORS_ONLN)"
+alias dsu="ds -u"
+alias dsnou="ds -U"
 
 gr () {
   $@ &> /dev/null &
