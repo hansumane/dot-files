@@ -170,13 +170,14 @@ cdd () {
   fi
 }
 
+unalias la
+unalias ll
+la () { eza -a $@ }
+lx () { eza $EZA_ICONS -albh --classify --group --group-directories-first $@ }
+ll () { eza $EZA_ICONS -albh --classify --no-user --group-directories-first $@ }
+lt () { eza $EZA_ICONS -albh --classify --no-user --group-directories-first -T $@ }
+
 alias cpwd="c;echo -n '${FOLDER_ICON}PWD in ';pwd"
-
-alias la='eza -a'
-alias lx="eza $EZA_ICONS -albh --classify --group --group-directories-first"
-alias ll="eza $EZA_ICONS -albh --classify --no-user --group-directories-first"
-alias lt="eza $EZA_ICONS -albh --classify --no-user --group-directories-first -T"
-
 alias cla='cpwd;la'
 alias cll='cpwd;ll'
 
@@ -191,15 +192,15 @@ _clx () {
 
   cpwd
 
-  if ! command -v git &> /dev/null ; then eval $cmd ${args[@]} ; return ; fi
+  if ! command -v git &> /dev/null ; then $cmd ${args[@]} ; return ; fi
 
   local git_toplevel=$(git rev-parse --show-toplevel 2>/dev/null)
   local git_inside=$?
 
-  if (( git_inside != 0 )) ; then eval $cmd ${args[@]} ; return ; fi
-  if [[ -f "$git_toplevel/.hide_ls_git" ]] ; then eval $cmd ${args[@]} ; return ; fi
+  if (( git_inside != 0 )) ; then $cmd ${args[@]} ; return ; fi
+  if [[ -f "$git_toplevel/.hide_ls_git" ]] ; then $cmd ${args[@]} ; return ; fi
 
-  eval $cmd --git ${args[@]}
+  $cmd --git ${args[@]}
 }
 
 alias clx='_clx'
