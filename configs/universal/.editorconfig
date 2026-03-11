@@ -41,6 +41,10 @@ trim_trailing_whitespace = false
 [{.emacs*,*.el}]
 indent_size = 2
 
+[*.bb{,append}]
+indent_style = tab
+indent_size = 8
+
 # optional styles:
 
 # [*.lua]
