@@ -53,7 +53,7 @@ case $OSTYPE in
         echo "${NYELLOW}Running ${BGREEN}OpenSUSE Tumbleweed${NYELLOW} updates.${NRST}"
         PIP_FLAGS="--break-system-packages $PIP_FLAGS"
         sudo systemctl stop packagekit
-        sudo zypper ref && sudo zypper dup
+        sudo zypper ref && sudo zypper dup --no-allow-vendor-change
         ;;
 
       *)
