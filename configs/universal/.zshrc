@@ -504,7 +504,7 @@ mvnrun () {
 update_path () {
   setopt shwordsplit
 
-  local tobpath="/bin /usr/sbin /usr/bin"
+  local tobpath="/sbin /bin /usr/sbin /usr/bin"
        tobpath+=" /usr/local/sbin /usr/local/bin"
        tobpath+=" $HOME/.local/bin $HOME/.cargo/bin $HOME/.config/emacs/bin $HOME/.go/bin"
 
