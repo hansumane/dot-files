@@ -4,7 +4,7 @@
 " 	" - functional -
 " 	Plug 'cohama/lexima.vim'
 " 	Plug 'preservim/nerdtree'
-" 	Plug 'airblade/vim-rooter'
+" 	Plug 'hansumane/vim-rooter'
 " 	Plug 'ctrlpvim/ctrlp.vim'
 " 	Plug 'tpope/vim-fugitive'
 " 	Plug 'airblade/vim-gitgutter'
