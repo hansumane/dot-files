@@ -56,6 +56,7 @@ set imsearch=0
 
 set signcolumn=yes
 set background=dark
+set t_ut=
 
 set termguicolors
 filetype plugin indent on
