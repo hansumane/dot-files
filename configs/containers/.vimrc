@@ -65,7 +65,7 @@ colorscheme molokai
 
 if has('nvim')
 	set clipboard+=unnamedplus
-elseif has('clipboard')
+elseif has('clipboard') || has('wayland_clipboard')
 	nnoremap dd "+dd
 	vnoremap d "+d
 	nnoremap D "+D
