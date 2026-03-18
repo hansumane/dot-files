@@ -22,7 +22,6 @@
 " 	Plug 'prabirshrestha/vim-lsp'
 " 	Plug 'mattn/vim-lsp-settings'
 " 	Plug 'prabirshrestha/asyncomplete.vim'
-" 	Plug 'prabirshrestha/asyncomplete-buffer.vim'
 " 	Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " call plug#end()
 
@@ -196,13 +195,6 @@ inoremap <silent><expr> <TAB> exists('*coc#pum#visible') && coc#pum#visible()
 			    \ ? coc#_select_confirm()
 			  \ : exists('*asyncomplete#close_popup') && pumvisible()
 			    \ ? asyncomplete#close_popup() : "\<TAB>"
-
-call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
-	\ 'name': 'buffer',
-	\ 'allowlist': ['*'],
-	\ 'blocklist': [],
-	\ 'completor': function('asyncomplete#sources#buffer#completor'),
-	\ }))
 
 function SetNumbersFunction(enable)
 	if a:enable
