@@ -1,3 +1,10 @@
 #!/bin/sh
 set -e
-exec grub-mkconfig -o /boot/grub/grub.cfg $@
+
+if command -v grub-mkconfig > /dev/null 2>&1 ; then
+  exec grub-mkconfig -o /boot/grub/grub.cfg $@
+fi
+
+if command -v grub2-mkconfig > /dev/null 2>&1 ; then
+  exec grub2-mkconfig -o /boot/grub2/grub.cfg $@
+fi
