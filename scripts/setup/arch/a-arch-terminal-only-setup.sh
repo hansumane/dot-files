@@ -5,15 +5,15 @@ if [[ ! $(pwd | rev | cut -d'/' -f4 | rev) = 'dot-files' ]] ||
    [[ ! $(pwd | rev | cut -d'/' -f3 | rev) = 'scripts' ]] ||
    [[ ! $(pwd | rev | cut -d'/' -f2 | rev) = 'setup' ]] ||
    [[ ! $(pwd | rev | cut -d'/' -f1 | rev) = 'arch' ]]; then
-  echo 'please go to /scripts/setup/arch folder and run script from there!'
+  echo 'please go to /scripts/setup/arch folder and run script from there!' >&2
   exit 1
 else
-  cd $(git rev-parse --show-toplevel)
-  CURRENT_DIR=$(pwd)
+  cd "$(git rev-parse --show-toplevel)"
+  CURRENT_DIR="$(pwd)"
 fi
 
-sudo pacman -Sy --needed \
-  curl lazygit git zip unzip tar gzip bzip2 xz \
+sudo pacman -Sy --needed base base-devel \
+  curl wget git lazygit unzip tar cpio gzip bzip2 xz \
   neovim zsh eza bat btop hexyl ripgrep fd fzf
 
 if ( lscpu | grep Intel &> /dev/null ); then
@@ -21,14 +21,14 @@ if ( lscpu | grep Intel &> /dev/null ); then
 elif ( lscpu | grep AMD &> /dev/null ); then
   sudo pacman -S --needed amd-ucode
 else
-  echo 'your CPU is neither Intel nor AMD =['
+  echo 'Your CPU is neither Intel nor AMD, so do not install any ucode' >&2
 fi
 
 # archlinux-java status               # command for changing default java version
 # /usr/lib/jvm/java-<XX>-openjdk/lib  # and add this path to LD_LIBRARY_PATH
 sudo pacman -S --needed \
-  tmux calc tree openssh man-db man-pages nodejs npm yarn \
-  fastfetch base-devel clang cmake colorgcc jdk-openjdk \
+  tmux calc bc tree openssh man-db man-pages nodejs npm yarn \
+  fastfetch clang cmake mason ninja colorgcc jdk-openjdk \
   indent python-pip
 
 mkdir -p ~/Downloads; cd ~/Downloads
