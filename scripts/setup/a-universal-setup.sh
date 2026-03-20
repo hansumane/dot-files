@@ -4,7 +4,7 @@ set -e
 if [[ ! $(pwd | rev | cut -d'/' -f3 | rev) = 'dot-files' ]] ||
    [[ ! $(pwd | rev | cut -d'/' -f2 | rev) = 'scripts' ]] ||
    [[ ! $(pwd | rev | cut -d'/' -f1 | rev) = 'setup' ]]; then
-  echo 'please go to /scripts/setup/ and run script from there!'
+  echo 'please go to /scripts/setup/ and run script from there!' >&2
   exit 1
 else
   cd "$(git rev-parse --show-toplevel)"
@@ -37,16 +37,19 @@ cp -f  ${CURRENT_DIR}/themes/zsh_themes/* .
 
 # install configs
 mkdir -p ~/.local/bin ~/.config/nvim
+rm -rf ~/.config/nvim
 cp -f  ${CURRENT_DIR}/scripts/newup.sh ~
 cp -f  ${CURRENT_DIR}/configs/universal/.zshrc ~
 cp -f  ${CURRENT_DIR}/configs/universal/.gitconfig ~
 cp -f  ${CURRENT_DIR}/configs/universal/.tmux.conf ~
 cp -f  ${CURRENT_DIR}/configs/universal/.editorconfig ~
-cp -rf ${CURRENT_DIR}/configs/universal/.config/nvim/* ~/.config/nvim
+cp -rf ${CURRENT_DIR}/configs/universal/.config/nvim ~/.config
 
 case $OSTYPE in
   *linux-gnu*)
-    cp -rf ${CURRENT_DIR}/configs/universal/.config/doom ~/.config
+    if command -v doom &> /dev/null; then
+      cp -rf ${CURRENT_DIR}/configs/universal/.config/doom ~/.config
+    fi
 
     mkdir -p ~/Desktop ~/Downloads ~/Others; cd ~/Others
     mkdir -p etc Coding Documents Music Pictures Shared Templates Videos
@@ -72,7 +75,9 @@ case $OSTYPE in
     ;;
 
   *darwin*)
-    cp -rf ${CURRENT_DIR}/configs/universal/.config/doom ~/.config
+    if command -v doom &> /dev/null; then
+      cp -rf ${CURRENT_DIR}/configs/universal/.config/doom ~/.config
+    fi
 
     mkdir -p ~/Others/Coding
     ;;
