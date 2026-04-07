@@ -135,6 +135,11 @@ fi
 if command -v rustup &> /dev/null; then
   echo "${NYELLOW}Running ${BRED}Rust${NYELLOW} update.${NRST}"
   rustup update
+
+  if command -v cargo &> /dev/null; then
+    echo "${NYELLOW}Running ${BRED}Cargo${NYELLOW} updates.${NRST}"
+    cargo install tree-sitter-cli
+  fi
 fi
 
 if command -v doom &> /dev/null; then
