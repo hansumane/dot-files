@@ -1,4 +1,4 @@
-[[ ! -f ~/.config/fzf/solarized-osaka.sh ]] || source ~/.config/fzf/solarized-osaka.sh
+[[ ! -f ~/.config/fzf/catppuccin-latte.sh ]] || source ~/.config/fzf/catppuccin-latte.sh
 
 # base defines
 case "$TERM" in
