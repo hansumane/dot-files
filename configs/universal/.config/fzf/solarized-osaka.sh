@@ -1,4 +1,3 @@
-# fzf colors (solarized-osaka)
 export FZF_DEFAULT_OPTS=" \
   --highlight-line \
   --info=inline-right \
