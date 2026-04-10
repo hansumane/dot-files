@@ -1,0 +1,18 @@
+git:
+  autoFetch: false
+  disableAutoEditor: false
+
+gui:
+  nerdFontsVersion: "3"
+  theme:
+    activeBorderColor:
+      - '#666666'
+      - bold
+    inactiveBorderColor:
+      - '#3a3a3a'
+    searchingActiveBorderColor:
+      - '#aa6666'
+    selectedLineBgColor:
+      - '#3a3a3a'
+    inactiveViewSelectedLineBgColor:
+      - '#2a2a2a'
