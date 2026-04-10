@@ -1,0 +1,11 @@
+git:
+  autoFetch: false
+  disableAutoEditor: false
+
+gui:
+  nerdFontsVersion: "3"
+  theme:
+    selectedLineBgColor:
+      - '#3a3a3a'
+    inactiveViewSelectedLineBgColor:
+      - '#2a2a2a'
