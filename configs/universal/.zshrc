@@ -526,7 +526,7 @@ update_path () {
 }
 
 if command -v fzf &> /dev/null; then
-  source <(fzf --zsh)
+  source <(fzf --zsh | $SED_CMD 's/^  BUFFER="builtin cd --/  BUFFER="cd/')
 fi
 
 update_path
