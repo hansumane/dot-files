@@ -128,6 +128,16 @@ if command -v zsh &> /dev/null; then
       cd - &> /dev/null
     done
 
+    if [[ -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]]; then
+      echo "${NYELLOW}Running ${BGREEN}oh-my-zsh${NYELLOW}:${BWHITE}powerlevel10k${NYELLOW} theme update.${NRST}"
+
+      cd "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
+      git reset --hard HEAD &> /dev/null
+      git fetch --all &> /dev/null
+      git pull --rebase
+      cd - &> /dev/null
+    fi
+
     zsh -c '. ~/.zshrc; omz update'
   fi
 fi
