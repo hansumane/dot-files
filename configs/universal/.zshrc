@@ -57,7 +57,7 @@ alias pwdc='echo -n $(readlink -f .) | clipcopy'
 alias v="$EDITOR"
 alias vd="$EDITOR ."
 alias z='zathura'
-alias gg='lazygit'
+alias gg='lazygit;cd ..;cd -'
 alias tl='clear; tmux list-sessions'
 alias cb="cbonsai -S --life=40 --multiplier=5 --time=20 --wait=3600 --leaf='&,&,&,#'"
 alias eza="$LOCAL_LANG eza"
