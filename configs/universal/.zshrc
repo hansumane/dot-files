@@ -52,6 +52,7 @@ alias t='tm'
 alias q='exit 0'
 alias rr='rm -rf'
 alias rrs="$SUDO_CMD rm -rf"
+alias pwdc='echo -n $(readlink -f .) | clipcopy'
 
 alias v="$EDITOR"
 alias vd="$EDITOR ."
