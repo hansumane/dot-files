@@ -4,6 +4,13 @@
 	quotepath = off
 	editor = nvim
 	pager = delta
+[credential]
+	helper = store
+[init]
+	defaultBranch = main
+[merge]
+	conflictStyle = zdiff3
+
 [interactive]
 	diffFilter = delta --color-only
 [delta]
@@ -20,9 +27,3 @@
 	plus-empty-line-marker-style	= syntax "#2a4556"
 	line-numbers-plus-style		= "#b8db87"
 	line-numbers-zero-style		= "#3b4261"
-[merge]
-	conflictStyle = zdiff3
-[init]
-	defaultBranch = main
-[credential]
-	helper = store
