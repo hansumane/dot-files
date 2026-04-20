@@ -6,6 +6,8 @@
 	pager = delta
 [credential]
 	helper = store
+[format]
+	filenameMaxLength = 100
 [init]
 	defaultBranch = main
 [merge]
