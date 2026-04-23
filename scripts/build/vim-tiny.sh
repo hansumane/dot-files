@@ -5,9 +5,10 @@ THREADS=$(getconf _NPROCESSORS_ONLN)
 
 VIM_PREFIX="/usr/local"
 VIM_REPO="https://github.com/vim/vim.git"
-VIM_GIT_BRANCH=$(git -c 'versionsort.suffix=-' ls-remote --tags \
-                 --sort='v:refname' "$VIM_REPO" | tail -n1 \
-                 | cut -d'/' -f3 | cut -d'^' -f1)
+VIM_GIT_BRANCH=$(git -c 'versionsort.suffix=-' ls-remote \
+                 --tags --sort='v:refname' "$VIM_REPO" \
+                 | tail -n4 | head -n1 \
+                 | cut -d'/' -f3)
 VIM_FOLDER="vim-$VIM_GIT_BRANCH"
 VIM_ARCHIVE="$VIM_FOLDER.cpio.xz"
 
