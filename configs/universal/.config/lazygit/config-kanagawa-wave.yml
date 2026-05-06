@@ -1,0 +1,33 @@
+git:
+  autoFetch: false
+  disableAutoEditor: false
+
+gui:
+  nerdFontsVersion: "3"
+  theme:
+    activeBorderColor:
+      - "#7e9cd8"
+      - "bold"
+    inactiveBorderColor:
+      - "#54546d"
+    searchingActiveBorderColor:
+      - "#e6c384"
+      - "bold"
+    optionsTextColor:
+      - "#957fb8"
+    selectedLineBgColor:
+      - "#2d4f67"
+    inactiveViewSelectedLineBgColor:
+      - "#1f1f28"
+    cherryPickedCommitFgColor:
+      - "#7e9cd8"
+    cherryPickedCommitBgColor:
+      - "#2d4f67"
+    markedBaseCommitFgColor:
+      - "#e6c384"
+    markedBaseCommitBgColor:
+      - "#2d4f67"
+    unstagedChangesColor:
+      - "#c34043"
+    defaultFgColor:
+      - "#dcd7ba"
