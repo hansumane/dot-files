@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # chmount.sh - shell script to mount, chroot, and umount easily
 
@@ -10,62 +10,60 @@
 # - /net/sunrpc/sunrpc.ko
 # - /net/sunrpc/auth_gss/auth_rpcgss.ko
 
-if [ "$(id -u)" -eq 0 ] ; then
-  SUDO_CMD=''
-  HOME_PATH=''
-else
-  SUDO_CMD='sudo'
-  HOME_PATH='HOME=/home/root'
-fi
+# NOTE: to mount 'projects', '.placeholder' file must be inside 'projects'
 
-# MOUNT_PARAMS="-t nfs4 192.168.0.1:/srv/shared/image"
-MOUNT_PARAMS="image.ext4"
-# CHROOT_DIR="/alternate"
-CHROOT_DIR="rootfs"
+(( EUID != 0 )) && SUDO=sudo || SUDO=
 
-if [ "$1" = "umount" ] ; then
-  if [ -f "$CHROOT_DIR/swap" ] ; then
-    $SUDO_CMD swapoff "$CHROOT_DIR/swap"
+# MOUNT_PARAMS='-t nfs4 192.168.0.1:/srv/shared/image'
+MOUNT_PARAMS='image.ext4'
+# CHROOT_DIR='/alternate'
+CHROOT_DIR='rootfs'
+
+ENV=('HOME=/home/root')
+
+if [[ "$1" = 'umount' ]] ; then
+  if [[ -f "$CHROOT_DIR/swap" ]] ; then
+    $SUDO swapoff "$CHROOT_DIR/swap"
   fi
 
-  if ! $SUDO_CMD umount -R "$CHROOT_DIR" > /dev/null 2>&1 ; then
-    echo "ERROR: Failed to umount -R; trying to umount everything w/o -R..."
+  if ! $SUDO umount -R "$CHROOT_DIR" > /dev/null 2>&1 ; then
+    echo 'ERROR: Failed to umount -R; trying to umount everything w/o -R...'
 
-    if [ -f "$CHROOT_DIR/home/root/projects/.placeholder" ] ; then
-      $SUDO_CMD umount "$CHROOT_DIR/home/root/projects"
+    if [[ -f "$CHROOT_DIR/home/root/projects/.placeholder" ]] ; then
+      $SUDO umount "$CHROOT_DIR/home/root/projects"
     fi
 
-    $SUDO_CMD umount "$CHROOT_DIR/tmp"
-    $SUDO_CMD umount "$CHROOT_DIR/run"
+    $SUDO umount "$CHROOT_DIR/tmp"
+    $SUDO umount "$CHROOT_DIR/run"
 
-    $SUDO_CMD umount "$CHROOT_DIR/dev/shm"
-    $SUDO_CMD umount "$CHROOT_DIR/dev/pts"
-    $SUDO_CMD umount "$CHROOT_DIR/dev"
+    $SUDO umount "$CHROOT_DIR/dev/shm"
+    $SUDO umount "$CHROOT_DIR/dev/pts"
+    $SUDO umount "$CHROOT_DIR/dev"
 
-    $SUDO_CMD umount "$CHROOT_DIR/sys/kernel/config"
-    $SUDO_CMD umount "$CHROOT_DIR/sys/kernel/debug"
-    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/fuse/connections"
-    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/pstore"
-    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/debug"
-    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/misc"
-    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/rdma"
-    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/pids"
-    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/perf_event"
-    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/freezer"
-    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/devices"
-    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/memory"
-    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/blkio"
-    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/cpuacct"
-    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/cpu"
-    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/cpuset"
-    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/unified"
-    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup/openrc"
-    $SUDO_CMD umount "$CHROOT_DIR/sys/fs/cgroup"
-    $SUDO_CMD umount "$CHROOT_DIR/sys"
+    $SUDO umount "$CHROOT_DIR/sys/kernel/config"
+    $SUDO umount "$CHROOT_DIR/sys/kernel/debug"
+    $SUDO umount "$CHROOT_DIR/sys/fs/fuse/connections"
+    $SUDO umount "$CHROOT_DIR/sys/fs/pstore"
+    $SUDO umount "$CHROOT_DIR/sys/fs/cgroup/debug"
+    $SUDO umount "$CHROOT_DIR/sys/fs/cgroup/misc"
+    $SUDO umount "$CHROOT_DIR/sys/fs/cgroup/rdma"
+    $SUDO umount "$CHROOT_DIR/sys/fs/cgroup/pids"
+    $SUDO umount "$CHROOT_DIR/sys/fs/cgroup/perf_event"
+    $SUDO umount "$CHROOT_DIR/sys/fs/cgroup/freezer"
+    $SUDO umount "$CHROOT_DIR/sys/fs/cgroup/devices"
+    $SUDO umount "$CHROOT_DIR/sys/fs/cgroup/memory"
+    $SUDO umount "$CHROOT_DIR/sys/fs/cgroup/blkio"
+    $SUDO umount "$CHROOT_DIR/sys/fs/cgroup/cpuacct"
+    $SUDO umount "$CHROOT_DIR/sys/fs/cgroup/cpu"
+    $SUDO umount "$CHROOT_DIR/sys/fs/cgroup/cpuset"
+    $SUDO umount "$CHROOT_DIR/sys/fs/cgroup/unified"
+    $SUDO umount "$CHROOT_DIR/sys/fs/cgroup/openrc"
+    $SUDO umount "$CHROOT_DIR/sys/fs/cgroup"
+    $SUDO umount "$CHROOT_DIR/sys"
 
-    $SUDO_CMD umount "$CHROOT_DIR/proc"
+    $SUDO umount "$CHROOT_DIR/proc"
 
-    $SUDO_CMD umount "$CHROOT_DIR"
+    $SUDO umount "$CHROOT_DIR"
   fi
 
   exit 0
@@ -73,35 +71,38 @@ fi
 
 set -e
 
-if [ ! -d "$CHROOT_DIR/bin" ] ; then
+if [[ ! -d "$CHROOT_DIR/bin" ]] ; then
   mkdir -p "$CHROOT_DIR"
 
-  $SUDO_CMD mount $MOUNT_PARAMS "$CHROOT_DIR"
-  if [ -f '/etc/resolv.conf' ] ; then
-    $SUDO_CMD cp '/etc/resolv.conf' "$CHROOT_DIR/etc"
+  $SUDO mount $MOUNT_PARAMS "$CHROOT_DIR"
+
+  if [[ -f '/etc/resolv.conf' ]] ; then
+    $SUDO cp '/etc/resolv.conf' "$CHROOT_DIR/etc"
   fi
 
-  $SUDO_CMD mount -t proc       '/proc' "$CHROOT_DIR/proc"
+  $SUDO mount -t proc       '/proc' "$CHROOT_DIR/proc"
 
-  $SUDO_CMD mount --rbind       '/sys'  "$CHROOT_DIR/sys"
-  $SUDO_CMD mount --make-rslave         "$CHROOT_DIR/sys"
+  $SUDO mount --rbind       '/sys'  "$CHROOT_DIR/sys"
+  $SUDO mount --make-rslave         "$CHROOT_DIR/sys"
 
-  $SUDO_CMD mount --rbind       '/dev'  "$CHROOT_DIR/dev"
-  $SUDO_CMD mount --make-rslave         "$CHROOT_DIR/dev"
+  $SUDO mount --rbind       '/dev'  "$CHROOT_DIR/dev"
+  $SUDO mount --make-rslave         "$CHROOT_DIR/dev"
 
-  $SUDO_CMD mount --bind        '/run'  "$CHROOT_DIR/run"
-  $SUDO_CMD mount --make-slave          "$CHROOT_DIR/run"
+  $SUDO mount --bind        '/run'  "$CHROOT_DIR/run"
+  $SUDO mount --make-slave          "$CHROOT_DIR/run"
 
-  $SUDO_CMD mount --bind        '/tmp'  "$CHROOT_DIR/tmp"
-  $SUDO_CMD mount --make-slave          "$CHROOT_DIR/tmp"
+  $SUDO mount --bind        '/tmp'  "$CHROOT_DIR/tmp"
+  $SUDO mount --make-slave          "$CHROOT_DIR/tmp"
 
-  if [ -f 'projects/.placeholder' ] && [ -d "$CHROOT_DIR/home/root/projects" ] ; then
-    $SUDO_CMD mount --bind       'projects' "$CHROOT_DIR/home/root/projects"
-    $SUDO_CMD mount --make-slave            "$CHROOT_DIR/home/root/projects"
+  if [[ -f 'projects/.placeholder' ]] ; then
+    $SUDO mkdir -p                      "$CHROOT_DIR/home/root/projects"
+    $SUDO mount --bind       'projects' "$CHROOT_DIR/home/root/projects"
+    $SUDO mount --make-slave            "$CHROOT_DIR/home/root/projects"
   fi
-  if [ -f "$CHROOT_DIR/swap" ] ; then
-    $SUDO_CMD swapon "$CHROOT_DIR/swap"
+
+  if [[ -f "$CHROOT_DIR/swap" ]] ; then
+    $SUDO swapon "$CHROOT_DIR/swap"
   fi
 fi
 
-$SUDO_CMD $HOME_PATH chroot "$CHROOT_DIR" /bin/bash
+$SUDO ${ENV[@]} chroot "$CHROOT_DIR" /bin/bash
