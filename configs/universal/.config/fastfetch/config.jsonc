@@ -1,0 +1,9 @@
+{
+    "logo": { "type": "small" },
+    "modules": [
+        { "type": "os" },
+        { "type": "kernel", "format": "{release} {arch}" },
+        { "type": "uptime", "format": "since {boot-time} for {days}, {hours}:{minutes}:{seconds}" },
+        { "type": "colors" }
+    ]
+}
