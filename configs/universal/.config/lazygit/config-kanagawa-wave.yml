@@ -1,6 +1,8 @@
 git:
   autoFetch: false
   disableAutoEditor: false
+  pagers:
+    - pager: delta --dark --paging=never --color-only --line-numbers --hyperlinks --hyperlinks-file-link-format="lazygit-edit://{path}:{line}";
 
 gui:
   nerdFontsVersion: "3"
