@@ -1,3 +1,5 @@
+[[ -f ~/.config/fzf/catppuccin-mocha.sh ]] && source ~/.config/fzf/catppuccin-mocha.sh
+
 # base defines
 case "$TERM" in
   *screen* ) ;;
