@@ -1,1 +1,3 @@
---theme-dark="catppuccin-latte"
+# bat cache --clear
+# bat cache --build
+--theme-dark="catppuccin-mocha"
