@@ -118,8 +118,9 @@ let g:syntastic_c_checkpatch_args = join([
 	\ 'SPDX_LICENSE_TAG,PREFER_KERNEL_TYPES',
 	\ ])
 
-cnoremap <C-\> <C-6>
-inoremap <C-\> <C-6>
+" Nul = C-Space
+cnoremap <Nul> <C-6>
+inoremap <Nul> <C-6>
 inoremap <C-r> <C-v><C-i>
 tnoremap <Esc> <C-\><C-n>
 
