@@ -1,0 +1,16 @@
+theme = "catppuccin_mocha"
+
+[editor]
+editor-config = true
+
+[keys.normal]
+0 = "goto_line_start"
+"$" = "goto_line_end"
+G = "goto_file_end"
+"%" = "match_brackets"
+
+[keys.select]
+0 = "goto_line_start"
+"$" = "goto_line_end"
+G = "goto_file_end"
+"%" = "match_brackets"

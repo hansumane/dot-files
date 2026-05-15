@@ -1,0 +1,11 @@
+[[language]]
+name = "c"
+rulers = [80, 90]
+
+[[language]]
+name = "lua"
+rulers = [90]
+
+[[language]]
+name = "python"
+language-servers = ["pyright"]
