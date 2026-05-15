@@ -3,3 +3,5 @@
 /wallpapers
 /scripts/**/test.*
 /configs/universal/.config/nvim/lazy-lock.json
+/configs/universal/.config/helix/runtime/*
+!/configs/universal/.config/helix/runtime/.placeholder
