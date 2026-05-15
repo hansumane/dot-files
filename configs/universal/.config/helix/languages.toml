@@ -1,0 +1,127 @@
+# go install github.com/dhananjaylatkar/cscope_lsp@latest
+# my version: github.com/hansumane/cscope_lsp (supports replaceMethods)
+[language-server.cscope_lsp]
+command = "cscope_lsp"
+config = { replaceMethods = true }
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+config = {
+    check = { command = "clippy" },
+    files = { watcher = "server" },
+    inlayHints = {
+        bindingModeHints = { enable = false },
+        closingBraceHints = { minLines = 10 },
+        closureReturnTypeHints = { enable = "with_block" },
+        discriminantHints = { enable = "fieldless" },
+        lifetimeElisionHints = { enable = "skip_trivial" },
+        typeHints = { hideClosureInitialization = false }
+    }
+}
+
+[[language]]
+name = "c"
+rulers = [80, 90]
+file-types = ["c", "h", "C", "H"]
+language-servers = ["clangd", "cscope_lsp"]
+indent = { tab-width = 8, unit = "\t" }
+
+[[language]]
+name = "cpp"
+rulers = [80, 90]
+file-types = ["cc", "hh", "c++", "cpp", "hpp", "ipp", "tpp", "cxx", "hxx", "ixx", "txx", "ino", "cu", "cuh", "cppm", "h++", "ii", "inl", { glob = ".hpp.in" }, { glob = ".h.in" }]
+language-servers = ["clangd", "cscope_lsp"]
+indent = { tab-width = 8, unit = "    " }
+
+[[language]]
+name = "lua"
+rulers = [90]
+
+[[language]]
+name = "bash"
+file-types = [
+  "sh",
+  "bash",
+  "ash",
+  "dash",
+  "ksh",
+  "mksh",
+  "zsh",
+  "zshenv",
+  "zlogin",
+  "zlogout",
+  "zprofile",
+  "zshrc",
+  "eclass",
+  "ebuild",
+  "bazelrc",
+  "Renviron",
+  "zsh-theme",
+  "cshrc",
+  "tcshrc",
+  "bashrc_Apple_Terminal",
+  "zshrc_Apple_Terminal",
+  { glob = "ap.conf" },
+  { glob = "i3/config" },
+  { glob = "sway/config" },
+  { glob = ".tmux.conf" },
+  { glob = "tmux.conf" },
+  { glob = ".sh_history" },
+  { glob = ".bash_history" },
+  { glob = ".bash_login" },
+  { glob = ".bash_logout" },
+  { glob = ".bash_profile" },
+  { glob = ".bashrc" },
+  { glob = ".profile" },
+  { glob = ".zshenv" },
+  { glob = ".zlogin" },
+  { glob = ".zlogout" },
+  { glob = ".zprofile" },
+  { glob = ".zshrc" },
+  { glob = ".zimrc" },
+  { glob = "APKBUILD" },
+  { glob = ".bash_aliases" },
+  { glob = "bash_completion" },
+  { glob = "bash-completion/completions/*" },
+  { glob = "bash_completion.d/*" },
+  { glob = "bin/activate" },
+  { glob = ".Renviron" },
+  { glob = ".xprofile" },
+  { glob = ".xsession" },
+  { glob = ".xsessionrc" },
+  { glob = ".yashrc" },
+  { glob = ".yash_profile" },
+  { glob = ".hushlogin" },
+  { glob = ".xinitrc" }, # ~/.xinitrc
+  { glob = "xinitrc" }, # /etc/X11/xinit/xinitrc
+  { glob = ".xserverrc" }, # ~/.xserverrc
+  { glob = "xserverrc" }, # /etc/X11/xinit/xserverrc
+  { glob = "direnvrc" }, # ~/.config/direnv/direnvrc
+]
+
+[[language]]
+name = "devicetree"
+file-types = ["dts", "dtsi", "its"]
+
+[[language]]
+name = "python"
+rulers = [120]
+language-servers = ["basedpyright"]
+
+[[language]]
+name = "rust"
+rulers = [100]
+auto-format = false
+
+[[language]]
+name = "go"
+rulers = [100]
+auto-format = false
+
+[[language]]
+name = "odin"
+auto-format = false
+
+[[language]]
+name = "fish"
+auto-format = false
