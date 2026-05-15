@@ -16,15 +16,25 @@ max_line_length = 120
 [*.rs]
 max_line_length = 100
 
-[*.{lua,xml,html,y{,a}ml,build,sh*,zsh*,bash*,yang*}]
+[*.{lua,xml,html,yml,yaml,build,sh*,zsh*,bash*,yang*}]
 indent_size = 2
 
-[{go.mod,go.sum,go.work,*.{go}}]
+[go.{mod,sum,work}]
 indent_style = tab
 max_line_length = 100
 indent_size = 8
 
-[{configure.ac,Makefile*,*.{asm,s,c,h,ld,vim*,git*}}]
+[*.go]
+indent_style = tab
+max_line_length = 100
+indent_size = 8
+
+[{configure.ac,Makefile*}]
+indent_style = tab
+max_line_length = 80
+indent_size = 8
+
+[*.{asm,s,c,h,ld,vim*,git*}]
 indent_style = tab
 max_line_length = 80
 indent_size = 8
@@ -41,7 +51,7 @@ trim_trailing_whitespace = false
 [{.emacs*,*.el}]
 indent_size = 2
 
-[*.bb{,append}]
+[*{bb,bbappend}]
 indent_style = tab
 indent_size = 8
 
