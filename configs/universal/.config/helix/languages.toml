@@ -1,0 +1,48 @@
+# go install github.com/dhananjaylatkar/cscope_lsp@latest
+[language-server.cscope_lsp]
+command = "cscope_lsp"
+
+[[language]]
+name = "c"
+rulers = [80, 90]
+file-types = ["c", "h", "C", "H"]
+language-servers = ["clangd", "cscope_lsp"]
+indent = { tab-width = 8, unit = "\t" }
+
+[[language]]
+name = "cpp"
+rulers = [80, 90]
+file-types = ["cc", "hh", "c++", "cpp", "hpp", "ipp", "tpp", "cxx", "hxx", "ixx", "txx", "ino", "cu", "cuh", "cppm", "h++", "ii", "inl", { glob = ".hpp.in" }, { glob = ".h.in" }]
+language-servers = ["clangd", "cscope_lsp"]
+indent = { tab-width = 8, unit = "    " }
+
+[[language]]
+name = "lua"
+rulers = [90]
+
+[[language]]
+name = "devicetree"
+file-types = ["dts", "dtsi", "its"]
+
+[[language]]
+name = "python"
+rulers = [120]
+language-servers = ["pyright"]
+
+[[language]]
+name = "rust"
+rulers = [100]
+auto-format = false
+
+[[language]]
+name = "go"
+rulers = [100]
+auto-format = false
+
+[[language]]
+name = "odin"
+auto-format = false
+
+[[language]]
+name = "fish"
+auto-format = false

@@ -1,0 +1,78 @@
+# akari-dawn, catppuccin, ferra, hazyland, molokai
+theme = "catppuccin_mocha"
+
+[editor]
+editor-config = true
+clipboard-provider = "wayland"
+
+[editor.workspace-trust]
+level = "insecure"
+
+[editor.indent-guides]
+render = false
+# character = "┆"
+
+[editor.word-completion]
+enable = true
+trigger-length = 3
+
+[editor.file-picker]
+git-ignore = false
+git-global = false
+parents = false
+hidden = false
+
+[keys.insert]
+esc = ["collapse_selection", "normal_mode"]
+"C-t" = [":insert-output printf '\\t'", "move_char_right"]
+
+[keys.normal]
+D = ["extend_to_line_bounds", "delete_selection"]
+esc = ["collapse_selection", "keep_primary_selection"]
+i = ["collapse_selection", "insert_mode"]
+a = ["collapse_selection", "append_mode"]
+G = ["goto_last_line", "goto_line_end_newline"]
+0 = "goto_line_start"
+X = "extend_line_above"
+"$" = "goto_line_end"
+"%" = "match_brackets"
+";" = "flip_selections"
+"," = "collapse_selection"
+"A-;" = "keep_primary_selection"
+S = "split_selection_on_newline"
+"A-s" = "split_selection"
+
+[keys.normal.m]
+m = "select_all"
+
+[keys.normal.space]
+# "." = "no_op"
+# E = "file_explorer_in_current_buffer_directory"
+x = ":toggle whitespace.render all none"
+"=" = "increment"
+"-" = "decrement"
+
+[keys.select]
+esc = ["collapse_selection", "keep_primary_selection", "normal_mode"]
+i = ["collapse_selection", "insert_mode"]
+a = ["collapse_selection", "append_mode"]
+G = ["goto_last_line", "goto_line_end_newline"]
+0 = "goto_line_start"
+X = "extend_line_above"
+"$" = "goto_line_end"
+"%" = "match_brackets"
+";" = "flip_selections"
+"," = "collapse_selection"
+"A-;" = "keep_primary_selection"
+S = "split_selection_on_newline"
+"A-s" = "split_selection"
+
+[keys.select.m]
+m = "select_all"
+
+[keys.select.space]
+# "." = "no_op"
+# E = "file_explorer_in_current_buffer_directory"
+x = ":toggle whitespace.render all none"
+"=" = "increment"
+"-" = "decrement"
