@@ -1,0 +1,10 @@
+.git/
+.venv/
+target/
+
+*.a
+*.o
+*.so
+*.ko
+*.cmd
+cscope.*
