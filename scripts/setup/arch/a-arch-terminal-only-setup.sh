@@ -28,7 +28,7 @@ fi
 # /usr/lib/jvm/java-<XX>-openjdk/lib  # and add this path to LD_LIBRARY_PATH
 sudo pacman -S --needed \
   tmux calc bc tree openssh man-db man-pages nodejs npm yarn \
-  fastfetch clang cmake mason ninja colorgcc jdk-openjdk \
+  fastfetch clang cmake meson ninja colorgcc jdk-openjdk \
   indent python-pip
 
 mkdir -p ~/Downloads; cd ~/Downloads
