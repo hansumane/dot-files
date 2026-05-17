@@ -42,8 +42,9 @@ cp -f  ${CURRENT_DIR}/scripts/newup.sh ~
 cp -f  ${CURRENT_DIR}/configs/universal/.zshrc ~
 cp -f  ${CURRENT_DIR}/configs/universal/.gitconfig ~
 cp -f  ${CURRENT_DIR}/configs/universal/.tmux.conf ~
-cp -f  ${CURRENT_DIR}/configs/universal/.editorconfig ~
 cp -rf ${CURRENT_DIR}/configs/universal/.config/nvim ~/.config
+sudo cp -f ${CURRENT_DIR}/configs/universal/.editorconfig /
+sudo chown -R $EUID:$EUID /.editorconfig
 
 case $OSTYPE in
   *linux-gnu*)
