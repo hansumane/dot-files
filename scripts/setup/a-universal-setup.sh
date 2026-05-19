@@ -63,7 +63,8 @@ case $OSTYPE in
       'XDG_DOCUMENTS_DIR="$HOME/Others/Documents"' $'\n' \
       'XDG_MUSIC_DIR="$HOME/Others/Music"' $'\n' \
       'XDG_PICTURES_DIR="$HOME/Others/Pictures"' $'\n' \
-      'XDG_VIDEOS_DIR="$HOME/Others/Videos"' $'\n' > ~/.config/user-dirs.dirs
+      'XDG_VIDEOS_DIR="$HOME/Others/Videos"' $'\n' \
+      'XDG_PROJECTS_DIR="$HOME/Others/Projects"' $'\n' > ~/.config/user-dirs.dirs
     ;;
 
   *linux-android*)
