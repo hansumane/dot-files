@@ -399,14 +399,19 @@ edC () {
   fi
 }
 
-CSB_DO_CSCOPE=0  # true
-CSB_DO_CTAGS=1  # false
 csb () {
-  command -v cscope &> /dev/null ; local have_cscope=$?
-  command -v ctags &> /dev/null ; local have_ctags=$?
-
-  if (( have_cscope != 0 )) && (( have_ctags != 0 )) ; then
-    echo "ERROR: 'cscope' and 'ctags' are not available"
+  if [[ "$1" = 'cscope' ]] ; then
+    if ! command -v cscope &> /dev/null; then
+      echo "ERROR: 'cscope' no such executable in PATH"
+      return 1
+    fi
+  elif [[ "$1" = 'ctags' ]] || [[ "$1" = 'tags' ]] ; then
+    if ! command -v ctags &> /dev/null; then
+      echo "ERROR: 'ctags' no such executable in PATH"
+      return 1
+    fi
+  else
+    echo "USAGE: csb <cscope|ctags/tags> [kernel]"
     return 1
   fi
 
@@ -419,12 +424,14 @@ csb () {
   find . -type f -iname '*.hpp' -exec realpath --relative-to="$PWD" {} '+' | uniq >> cscope.files
   find . -type f -iname '*.hxx' -exec realpath --relative-to="$PWD" {} '+' | uniq >> cscope.files
 
-  if (( have_cscope == 0 )) && (( CSB_DO_CSCOPE == 0 )) ; then
+  if [[ "$1" = 'cscope' ]] ; then
     find . -type f -name 'cscope.out*' -delete
-    cscope -b -q $@ -f cscope.out  # csb -k to build in kernel mode
-  fi
-
-  if (( have_ctags == 0 )) && (( CSB_DO_CTAGS == 0 )) ; then
+    if [[ "$2" = 'kernel' ]] ; then
+      cscope -b -q -k -f cscope.out
+    else
+      cscope -b -q -f cscope.out
+    fi
+  elif [[ "$1" = 'ctags' ]] || [[ "$1" = 'tags' ]] ; then
     find . -type f -name 'tags' -delete
     ctags -a -L cscope.files -h '.h.H.hpp.hxx.h++'
     rm -f cscope.files
