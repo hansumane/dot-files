@@ -427,6 +427,7 @@ csb () {
   if (( have_ctags == 0 )) && (( CSB_DO_CTAGS == 0 )) ; then
     find . -type f -name 'tags' -delete
     ctags -a -L cscope.files -h '.h.H.hpp.hxx.h++'
+    rm -f cscope.files
   fi
 }
 
