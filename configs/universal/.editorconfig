@@ -29,12 +29,12 @@ indent_style = tab
 max_line_length = 100
 indent_size = 8
 
-[{configure.ac,Makefile*}]
+[*.{asm,s,c,h,ld,vim*,git*}]
 indent_style = tab
 max_line_length = 80
 indent_size = 8
 
-[*.{asm,s,c,h,ld,vim*,git*}]
+[{configure.ac,Makefile*}]
 indent_style = tab
 max_line_length = 80
 indent_size = 8
