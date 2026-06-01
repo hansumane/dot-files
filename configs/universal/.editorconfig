@@ -16,6 +16,9 @@ max_line_length = 120
 [*.rs]
 max_line_length = 100
 
+[*.md]
+max_line_length = 100
+
 [*.{lua,xml,html,yml,yaml,build,sh*,zsh*,bash*,yang*}]
 indent_size = 2
 
