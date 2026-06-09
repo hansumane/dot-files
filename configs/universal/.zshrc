@@ -309,7 +309,7 @@ gfmt () {
     fi
     local temp_fn="$(basename "$1" .go)~.go"
     gofmt "$1" > "$temp_fn"
-    diff -u "$1" "$temp_fn" | bat --tabs=8
+    diff -u "$1" "$temp_fn" | bat --tabs=4 --paging=never
     rm -rf "$temp_fn"
   fi
 }
