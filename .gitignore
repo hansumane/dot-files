@@ -2,4 +2,5 @@
 /fonts
 /wallpapers
 /scripts/**/test.*
+/configs/universal/.config/nvim/parser
 /configs/universal/.config/nvim/lazy-lock.json
