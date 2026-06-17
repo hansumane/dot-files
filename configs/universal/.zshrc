@@ -277,11 +277,7 @@ rfmt () {
     if [[ ! -f "$1" ]]; then
       echo "Error: No such file: $1"; return 1
     fi
-    local temp_fn="$(basename "$1" .rs)~.rs"
-    cp "$1" "$temp_fn"
-    rustfmt "$temp_fn"
-    diff -u "$1" "$temp_fn" | bat --tabs=8
-    rm -rf "$temp_fn"
+    rustfmt --check "$1" | bat --tabs=4 --paging=never
   fi
 }
 
