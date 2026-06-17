@@ -310,14 +310,14 @@ gfmt () {
   fi
 }
 
-export PTCHK_IGNORES="SPDX_LICENSE_TAG,FILE_PATH_CHANGES,COMMIT_MESSAGE"
+export PTCHK_IGNORES="COMMIT_MESSAGE,FILE_PATH_CHANGES,PREFER_KERNEL_TYPES,SPDX_LICENSE_TAG,SPLIT_STRING"
 export PTCHK_MAX_LL=80
 ptchk() {
   echo "checkpatch.pl PTCHK_MAX_LL=$PTCHK_MAX_LL; PTCHK_IGNORES='$PTCHK_IGNORES'"
   if (( $# == 0 )); then
     echo 'Error: No source file(s) given!'; return 1
   else
-    checkpatch.pl --no-tree --no-signoff --show-types --strict --file \
+    checkpatch.pl --no-tree --no-signoff --show-types --strict \
                   --max-line-length="$PTCHK_MAX_LL" \
                   --ignore "$PTCHK_IGNORES" $@
   fi
