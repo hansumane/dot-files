@@ -19,7 +19,7 @@ max_line_length = 100
 [*.md]
 max_line_length = 100
 
-[*.{lua,xml,html,yml,yaml,build,sh*,zsh*,bash*,yang*}]
+[*.{xml,html,yml,yaml,build,sh*,zsh*,bash*,yang*}]
 indent_size = 2
 
 [*.{vim*,git*}]
@@ -69,14 +69,8 @@ max_line_length = 50
 # optional styles:
 
 # [*.lua]
-# indent_style = tab
-# indent_size = 4
-# tab_width = 4
-
-# [*.{sh*,zsh*,bash*}]
-# indent_style = tab
-# indent_size = 8
-
-# [*.{c,h}]
-# indent_style = space
 # indent_size = 2
+[*.lua]
+indent_style = tab
+indent_size = 4
+tab_width = 4
