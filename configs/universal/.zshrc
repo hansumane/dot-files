@@ -10,6 +10,7 @@ export CXX='g++'
 export AWK_CMD='awk'
 export SED_CMD='sed'
 export EDITOR='nvim'
+export EDITOR2='hx'
 export PYTHONDONTWRITEBYTECODE='1'
 
 export HISTSIZE=131072
@@ -380,7 +381,7 @@ edC () {
     echo '-I/usr/include' >> ./compile_flags.txt
   fi
 
-  "$EDITOR" ./compile_flags.txt
+  $EDITOR2 ./compile_flags.txt
   (( $# == 0 )) && return 0
   ! git rev-parse --show-toplevel &> /dev/null && return 0
 
