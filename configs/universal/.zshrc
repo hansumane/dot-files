@@ -160,6 +160,27 @@ cdd () {
   fi
 }
 
+rgf() {
+  mkdir -p ~/.cache/rgf
+
+  rg --hyperlink-format=none --color=never --line-number --no-heading --smart-case . $@ \
+    | fzf --ansi --delimiter=':' --preview-window='bottom:50%' \
+          --preview='bat --color=always --tabs=8 --style=numbers --line-range {2}::7 --highlight-line {2} -- {1}' \
+    > ~/.cache/rgf/selection.txt
+
+  (( $? != 0 )) && return
+
+  local selected="$(cat ~/.cache/rgf/selection.txt)"
+  rm -f ~/.cache/rgf/selection.txt
+
+  [[ -z "$selected" ]] && return
+
+  local file="$(echo "$selected" | sed 's/\x1b\[[0-9;]*m//g' | cut -d':' -f1)"
+  local line="$(echo "$selected" | sed 's/\x1b\[[0-9;]*m//g' | cut -d':' -f2)"
+
+  $EDITOR2 "+$line" -- "$file"
+}
+
 unalias la
 unalias ll
 la () { eza -a $@ }
