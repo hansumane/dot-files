@@ -4,4 +4,5 @@
 /scripts/**/test.*
 /configs/universal/.config/nvim/parser
 /configs/universal/.config/nvim/lazy-lock.json
+/configs/universal/.config/nvim/.test-deps
 /configs/universal/.config/helix/runtime
