@@ -68,9 +68,9 @@ max_line_length = 50
 
 # optional styles:
 
-# [*.lua]
-# indent_size = 2
 [*.lua]
-indent_style = tab
-indent_size = 4
-tab_width = 4
+indent_size = 2
+# [*.lua]
+# indent_style = tab
+# indent_size = 4
+# tab_width = 4
