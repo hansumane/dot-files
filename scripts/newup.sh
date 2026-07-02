@@ -21,7 +21,22 @@ echo "${NYELLOW}You may need to enter your ${BRED}sudo${NYELLOW} password.${NRST
 
 case $OSTYPE in
 
-  *linux-gnu*)
+  *linux-android*)
+
+    echo "${NYELLOW}Running ${BGREEN}Android (Termux)${NYELLOW} updates.${NRST}"
+    pkg upgrade -y && apt update && apt full-upgrade -y
+    pkg autoclean -y && apt autoremove -y && apt autoclean -y
+
+    ;;
+
+  *darwin*)
+
+    echo "${NYELLOW}Running ${BWHITE}MacOS${NYELLOW} updates.${NRST}"
+    brew update && brew upgrade
+
+    ;;
+
+  *linux*)
 
     source /etc/os-release
 
@@ -62,21 +77,6 @@ case $OSTYPE in
         ;;
 
     esac
-
-    ;;
-
-  *linux-android*)
-
-    echo "${NYELLOW}Running ${BGREEN}Android (Termux)${NYELLOW} updates.${NRST}"
-    pkg upgrade -y && apt update && apt full-upgrade -y
-    pkg autoclean -y && apt autoremove -y && apt autoclean -y
-
-    ;;
-
-  *darwin*)
-
-    echo "${NYELLOW}Running ${BWHITE}MacOS${NYELLOW} updates.${NRST}"
-    brew update && brew upgrade
 
     ;;
 
