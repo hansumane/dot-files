@@ -38,6 +38,11 @@ case $OSTYPE in
 
   *linux*)
 
+    if [[ ! -f /etc/os-release ]] && [[ ! -L /etc/os-release ]] ; then
+      echo "${NYELLOW}${OSTYPE} must have ${BRED}/etc/os-release${NYELLOW}.${NRST}"
+      exit 1;
+    fi
+
     source /etc/os-release
 
     case $NAME in
