@@ -75,10 +75,10 @@ case $OSTYPE in
 
   *darwin*)
 
-  echo "${NYELLOW}Running ${BWHITE}MacOS${NYELLOW} updates.${NRST}"
-  brew update && brew upgrade
+    echo "${NYELLOW}Running ${BWHITE}MacOS${NYELLOW} updates.${NRST}"
+    brew update && brew upgrade
 
-  ;;
+    ;;
 
   *)
 
