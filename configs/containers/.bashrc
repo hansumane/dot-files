@@ -4,6 +4,8 @@ export PATH='/home/root/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr
 export COLORTERM='truecolor'
 export EDITOR='hx'
 
+export CDB_CLI_PRIVILEGE=15
+
 alias q='exit'
 alias rr='rm -rf'
 alias ls='LC_COLLATE=C ls --color'
