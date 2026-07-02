@@ -24,18 +24,6 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
 
-export EDITOR='vi'
-v () {
-	"$EDITOR" $@
-	rm -rf "$HOME/.cache/ctrlp/" "$HOME/.vifm/" "$HOME/.viminfo"
-}
-
-export REAL_LESS="$(readlink -f $(which less))"
-less () {
-	"$REAL_LESS" $@
-	rm -rf "$HOME/.lesshst"
-}
-
 c () {
   if command -v clear > /dev/null 2>&1 ; then
     clear
