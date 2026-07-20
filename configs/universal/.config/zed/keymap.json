@@ -1,0 +1,24 @@
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-shift-i": "editor::FormatSelections"
+    }
+  },
+  {
+    "context": "Editor && (vim_mode == normal || vim_mode == visual)",
+    "bindings": {
+      "g shift-i": null,
+      "g i": "editor::GoToImplementation",
+      "g r": "editor::FindAllReferences",
+      "space f": [ "file_finder::Toggle", { "include_ignored": true } ]
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-j": null,
+      "ctrl-t": null
+    }
+  }
+]
