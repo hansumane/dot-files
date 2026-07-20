@@ -1,0 +1,56 @@
+{
+  // Global:
+  "use_system_path_prompts": false,
+  "use_system_prompts": false,
+  "project_panel": { "dock": "left" },
+  "which_key": { "enabled": true },
+  "session": { "trust_all_worktrees": true },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+    "anthropic_retention": false
+  },
+  // Theme:
+  "icon_theme": "Zed (Default)",
+  "theme": {
+    "mode": "dark",
+    "dark": "Catppuccin Mocha",
+    "light": "One Light",
+  },
+  // Fonts:
+  "ui_font_size": 18.0,
+  "ui_font_weight": 500.0,
+  "buffer_font_family": "MonoLisa Nerd Font",
+  "buffer_font_size": 17,
+  "buffer_font_weight": 400.0,
+  "buffer_font_features": { "ss07": true, "ss08": true, "ss11": true, "liga": false },
+  "terminal": {
+    "font_size": 16.0,
+    "font_weight": 500.0
+  },
+  // Editing:
+  "base_keymap": "VSCode",
+  "minimap": { "show": "auto" },
+  "vim_mode": true,
+  "vim": {
+    "gdefault": true,
+    "use_smartcase_find": true
+  },
+  // Formatting:
+  "line_ending": "prefer_lf",
+  "hard_tabs": false,
+  "tab_size": 4,
+  // Languages:
+  "languages": {
+    "C": { "tab_size": 8, "hard_tabs": true, "wrap_guides": [ 80, 90 ] },
+    "C++": { "tab_size": 8, "hard_tabs": true, "wrap_guides": [ 80, 90 ] },
+    "Lua": { "tab_size": 4, "hard_tabs": true, "wrap_guides": [ 90 ] },
+    "Devicetree": { "tab_size": 8, "hard_tabs": true },
+    "YANG": { "tab_size": 2, "hard_tabs": false, "language_servers": [] },
+    "Go": { "tab_size": 4, "hard_tabs": true, "format_on_save": "off" },
+    "Go Mod": { "tab_size": 4, "hard_tabs": true, "format_on_save": "off" },
+    "Go Work": { "tab_size": 4, "hard_tabs": true, "format_on_save": "off" },
+    "JSON": { "tab_size": 2, "hard_tabs": false },
+    "JSONC": { "tab_size": 2, "hard_tabs": false },
+  }
+}
