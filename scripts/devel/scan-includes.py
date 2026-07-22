@@ -108,6 +108,9 @@ def main(args: list[str]):
             else:
                 others.add(arg)
 
+    if "-nostdinc" in others:
+        others.add("-nostdinc++")
+
     def warns_sort_key(warn: str) -> int:
         if warn.startswith("-Wno"):
             return 2
