@@ -2,6 +2,8 @@
 from os import linesep
 from sys import argv, exit as sys_exit
 from pathlib import Path
+
+import re
 import json
 
 
@@ -60,7 +62,8 @@ def main(args: list[str]):
                 includes.add(f"-I{Path(arg).resolve()}  # system")
                 next_isystem = False
             elif next_include:
-                auto_includes.add(f"-include {Path(arg).resolve()}")
+                arg = re.sub(r"^.*?include/linux/", "linux/", str(Path(arg).resolve()))
+                auto_includes.add(f"-include {arg}")
                 next_include = False
             elif arg.startswith("-I"):
                 includes.add(f"-I{Path(arg[2:]).resolve()}")
