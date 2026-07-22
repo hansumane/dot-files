@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from os import linesep
 from sys import argv, exit as sys_exit
+from pathlib import Path
 import json
 
 
@@ -56,17 +57,19 @@ def main(args: list[str]):
             elif arg == "-include":
                 next_include = True
             elif next_isystem:
-                includes.add("-I" + arg + "  # system")
+                includes.add(f"-I{Path(arg).resolve()}  # system")
                 next_isystem = False
             elif next_include:
-                auto_includes.add("-include " + arg)
+                auto_includes.add(f"-include {Path(arg).resolve()}")
                 next_include = False
-
-            elif not arg.startswith("-") or arg in ("-c", "-o"):
-                pass
-
             elif arg.startswith("-I"):
-                includes.add(arg)
+                includes.add(f"-I{Path(arg[2:]).resolve()}")
+
+            elif not arg.startswith("-") or arg in {"-c", "-o", "-O2"}:
+                pass
+            elif arg == "-Uarm":
+                others.add("--target=arm")
+                others.add("-Uarm")
 
             elif arg.startswith("-DKBUILD_BASENAME"):
                 defines.add("-DKBUILD_BASENAME=\"MODULE_BASENAME\"")
