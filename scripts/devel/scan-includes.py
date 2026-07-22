@@ -80,9 +80,22 @@ def main(args: list[str]):
                 defines.add(arg)
 
             elif arg.startswith("-f"):
-                functs.add(arg)
+                if (arg.startswith("-fconserve-stack")
+                        or arg.startswith("-fmin-function-alignment")
+                        or arg.startswith("-fzero-init-padding-bits")
+                        or arg.startswith("-fno-allow-store-data-races")
+                        or arg.startswith("-fno-ipa-sra")):
+                    pass  # skip unsupported options
+                else:
+                    functs.add(arg)
             elif arg.startswith("-m"):
-                ms.add(arg)
+                if (arg.startswith("-mindirect-branch-register")
+                        or arg.startswith("-mindirect-branch=thunk-extern")
+                        or arg.startswith("-mpreferred-stack-boundary")
+                        or arg.startswith("-mno-fdpic")):
+                    pass  # skip unsupported options
+                else:
+                    ms.add(arg)
 
             elif arg.startswith("-Wa,") or arg.startswith("-Wp,"):
                 pass
