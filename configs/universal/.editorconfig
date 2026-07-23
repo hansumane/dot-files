@@ -19,7 +19,7 @@ max_line_length = 100
 [*.md]
 max_line_length = 100
 
-[*.{xml,html,yml,yaml,build,sh*,zsh*,bash*,yang*}]
+[*.{build,xml,html,yml,yaml,yang*,sh*,zsh*,bash*}]
 indent_size = 2
 
 [*.{vim*,git*}]
