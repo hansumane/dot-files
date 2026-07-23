@@ -144,7 +144,10 @@ def main(args: list[str]):
 
 if __name__ == "__main__":
     try:
-        main(argv[1:])
+        if len(argv) > 1:
+            main(argv[1:])
+        else:
+            raise ValueError("not enough arguments")
     except Exception as e:
         print(f'ERROR: {e}')
         usage()
