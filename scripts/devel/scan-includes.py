@@ -8,12 +8,14 @@ import json
 
 
 def usage():
-    print(f"Usage: scan-includes.py /path/to/compile_commands.json [filter1 [filter2 [... [filter N]]]]{linesep}"
-          f"       - str:filterN = \"file\" startswith filter if filter[0] == '/' or{linesep}"
-          f"       - str:filterN = filter in \"file\" if filter[0] != '/'{linesep}"
-          f"Example:{linesep}"
-          f"  scan-includes.py ./build/compile_commands.json '/home/kid/virtual/projects/wireshark/epan/dissectors'{linesep}"
-          f"  scan-includes.py ./build/compile_commands.json 'drivers/net/ethernet/intel/igb'{linesep}")
+    print(
+        "Usage: scan-includes.py /path/to/compile_commands.json [filter1 [filter2 [... [filterN]]]]" f"{linesep}"
+        "       - str:filterN = `\"file\".startswith(filter)` if filter[0] == '/' else"              f"{linesep}"
+        "       - str:filterN = `filter in \"file\"`"                                                f"{linesep}"
+        "Example:"                                                                                   f"{linesep}"
+        "  scan-includes.py ./build/compile_commands.json '/home/user/wireshark/epan/dissectors'"    f"{linesep}"
+        "  scan-includes.py ./build/compile_commands.json 'drivers/net/ethernet/intel/igb'"          f"{linesep}"
+    )
     sys_exit(1)
 
 
