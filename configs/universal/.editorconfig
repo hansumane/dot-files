@@ -18,6 +18,7 @@ max_line_length = 100
 
 [*.md]
 max_line_length = 100
+tab_width = 4
 
 [*.{build,xml,html,yml,yaml,yang*,sh*,zsh*,bash*}]
 indent_size = 2
