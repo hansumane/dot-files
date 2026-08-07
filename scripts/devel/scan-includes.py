@@ -88,24 +88,28 @@ def main(args: list[str]):
                 defines.add(arg)
 
             elif arg.startswith("-f"):
-                if (arg.startswith("-fconserve-stack")
-                        or arg.startswith("-fmin-function-alignment")
-                        or arg.startswith("-fzero-init-padding-bits")
-                        or arg.startswith("-fno-allow-store-data-races")
-                        or arg.startswith("-fno-ipa-sra")):
+                if arg.startswith((
+                    "-fconserve-stack",
+                    "-fmin-function-alignment",
+                    "-fzero-init-padding-bits",
+                    "-fno-allow-store-data-races",
+                    "-fno-ipa-sra"
+                )):
                     pass  # skip unsupported options
                 else:
                     functs.add(arg)
             elif arg.startswith("-m"):
-                if (arg.startswith("-mindirect-branch-register")
-                        or arg.startswith("-mindirect-branch=thunk-extern")
-                        or arg.startswith("-mpreferred-stack-boundary")
-                        or arg.startswith("-mno-fdpic")):
+                if arg.startswith((
+                    "-mindirect-branch-register",
+                    "-mindirect-branch=thunk-extern",
+                    "-mpreferred-stack-boundary",
+                    "-mno-fdpic"
+                )):
                     pass  # skip unsupported options
                 else:
                     ms.add(arg)
 
-            elif arg.startswith("-Wa,") or arg.startswith("-Wp,"):
+            elif arg.startswith(("-Wa,", "-Wp,")):
                 pass
             elif arg.startswith("-W"):
                 warns.add(arg)
@@ -124,14 +128,14 @@ def main(args: list[str]):
         else:
             return 0
 
-    others        = sorted(list(others))
-    includes      = sorted(list(includes))
-    auto_includes = sorted(list(auto_includes))
-    defines       = sorted(list(defines))
-    functs        = sorted(list(functs))
-    ms            = sorted(list(ms))
-    warns         = sorted(list(warns))
-    warns         = sorted(list(warns), key=warns_sort_key)
+    others        = sorted(others)
+    includes      = sorted(includes)
+    auto_includes = sorted(auto_includes)
+    defines       = sorted(defines)
+    functs        = sorted(functs)
+    ms            = sorted(ms)
+    warns         = sorted(warns)
+    warns         = sorted(warns, key=warns_sort_key)
 
     print(*others,        "", sep=linesep)
     print(*includes,      "", sep=linesep)
