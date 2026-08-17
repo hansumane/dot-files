@@ -6,18 +6,43 @@
     "editor.fontWeight": 500,
     "editor.fontFamily": "MonoLisa Nerd Font",
     "editor.fontLigatures": "'liga', 'ss02', 'ss07', 'ss08', 'ss11'",
-    "editor.rulers": [80, 90],
     "editor.smoothScrolling": true,
     "editor.cursorSmoothCaretAnimation": "on",
     "editor.inlayHints.enabled": "off",
+    "editor.formatOnSave": false,
     "explorer.enableDragAndDrop": true,
     "explorer.confirmDragAndDrop": false,
     "security.workspace.trust.enabled": false,
 
+    "chat.disableAIFeatures": true,
+
+    "editor.colorDecorators": false,
+    "editor.defaultColorDecorators": "never",
+    "editor.colorDecoratorsLimit": 1,
+
+    "workbench.editor.empty.hint": "hidden",
+    "diffEditor.ignoreTrimWhitespace": true,
+    "jupyter.askForKernelRestart": false,
+
+    "files.exclude": { "**/.git": false },
+    "search.exclude": { "**/.git": false },
+
+    /* https://marketplace.visualstudio.com/items?itemName=jeff-hykin.better-c-syntax */
+    "[c]": {
+        "editor.rulers": [80, 90],
+        /* https://marketplace.visualstudio.com/items?itemName=xaver.clang-format */
+        "editor.defaultFormatter": "xaver.clang-format"
+    },
+
+    /* https://marketplace.visualstudio.com/items?itemName=golang.Go */
+    "[go]": {
+        "editor.formatOnSave": false
+    },
+
     /* https://marketplace.visualstudio.com/items?itemName=Catppuccin.catppuccin-vsc */
-    "workbench.colorTheme": "Catppuccin Macchiato",
+    "workbench.colorTheme": "Catppuccin Mocha",
     /* https://marketplace.visualstudio.com/items?itemName=Catppuccin.catppuccin-vsc-icons */
-    "workbench.iconTheme": "catppuccin-macchiato",
+    "workbench.iconTheme": "catppuccin-mocha",
 
     /* https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens */
     "gitlens.codeLens.enabled": false,
@@ -62,6 +87,5 @@
     "rust-analyzer.check.command": "clippy",
     "rust-analyzer.diagnostics.enable": true,
     "rust-analyzer.diagnostics.experimental.enable": true,
-    "rust-analyzer.lens.implementations.enable": false,
-    "workbench.editor.empty.hint": "hidden",
+    "rust-analyzer.lens.implementations.enable": false
 }

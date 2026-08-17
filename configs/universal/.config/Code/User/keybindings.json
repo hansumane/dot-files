@@ -1,7 +1,12 @@
 [
     {
-        "key": "tab",
-        "command": "emacs-tab.reindentCurrentLine",
-        "when": "editorTextFocus && !editorReadonly && !editorTabMovesFocus"
+        "key": "ctrl+j",
+        "command": "noop",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "noop",
+        "when": "terminalFocus"
     }
 ]

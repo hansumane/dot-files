@@ -6,3 +6,6 @@
 /configs/universal/.config/nvim/lazy-lock.json
 /configs/universal/.config/nvim/.test-deps
 /configs/universal/.config/helix/runtime
+/configs/universal/.config/Code/User/*
+!/configs/universal/.config/Code/User/keybindings.json
+!/configs/universal/.config/Code/User/settings.json
