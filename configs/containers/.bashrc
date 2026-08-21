@@ -27,8 +27,9 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
 
-alias vi='resize;vi'
-alias vim='resize;vim'
+alias v='vi'
+alias vi='resize;/bin/vi'
+alias vim='resize;/usr/bin/vim'
 
 c () {
   if command -v clear > /dev/null 2>&1 ; then
