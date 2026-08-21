@@ -31,6 +31,8 @@ alias v='vi'
 alias vi='resize;/bin/vi'
 alias vim='resize;/usr/bin/vim'
 
+alias bip='ip'
+
 c () {
   if command -v clear > /dev/null 2>&1 ; then
     clear
