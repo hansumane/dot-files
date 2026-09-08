@@ -28,7 +28,7 @@ alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
 
 alias v='vi'
-alias vi='resize;/bin/vi'
+alias vi='resize;/bin/busybox.nosuid vi'
 alias vim='resize;/usr/bin/vim'
 
 alias bip='ip'
