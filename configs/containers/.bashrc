@@ -30,6 +30,7 @@ alias .......='cd ../../../../../..'
 alias v='vi'
 alias vi='resize;/bin/busybox.nosuid vi'
 alias vim='resize;/usr/bin/vim'
+alias hx='resize;hx'
 
 alias bip='ip'
 
