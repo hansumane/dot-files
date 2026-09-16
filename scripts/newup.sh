@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck disable=2034
 set -e
 
 NYELLOW=$'\e[0;33m'
@@ -11,10 +12,10 @@ BMAGENTA=$'\e[1;35m'
 BWHITE=$'\e[1;37m'
 NRST=$'\e[0m'
 
-# pynvim pylint jedi 'python-lsp-server[all]'
-PIP_PACKAGES=""
-SU_PIP_PACKAGES=""
-PIP_FLAGS="-U"
+# (pynvim pylint jedi 'python-lsp-server[all]')
+PIP_PACKAGES=()
+SU_PIP_PACKAGES=()
+PIP_FLAGS=(-U)
 
 clear
 echo "${NYELLOW}You may need to enter your ${BRED}sudo${NYELLOW} password.${NRST}"
@@ -49,7 +50,7 @@ case $OSTYPE in
 
       *Debian* | *Ubuntu*)
         echo "${NYELLOW}Running ${BRED}Debian-based${NYELLOW} updates.${NRST}"
-        PIP_FLAGS="--break-system-packages $PIP_FLAGS"
+        PIP_FLAGS=(--break-system-packages "${PIP_FLAGS[@]}")
         sudo apt update && sudo apt full-upgrade -y &&
         sudo apt autoremove -y && sudo apt autoclean -y
         ;;
@@ -61,7 +62,7 @@ case $OSTYPE in
 
       *Arch*)
         echo "${NYELLOW}Running ${BCYAN}Arch${NYELLOW} updates.${NRST}"
-        PIP_FLAGS="--break-system-packages $PIP_FLAGS"
+        PIP_FLAGS=(--break-system-packages "${PIP_FLAGS[@]}")
         sudo timedatectl set-ntp true && sleep 10 && sudo hwclock --systohc
         yay -Syyu
         sudo mkinitcpio -P && sudo chmod 600 /boot/initramfs-linux* && sudo update-grub
@@ -71,7 +72,7 @@ case $OSTYPE in
 
       *"openSUSE Tumbleweed"*)
         echo "${NYELLOW}Running ${BGREEN}OpenSUSE Tumbleweed${NYELLOW} updates.${NRST}"
-        PIP_FLAGS="--break-system-packages $PIP_FLAGS"
+        PIP_FLAGS=(--break-system-packages "${PIP_FLAGS[@]}")
         sudo systemctl stop packagekit
         sudo zypper ref && sudo zypper dup --no-allow-vendor-change
         ;;
@@ -107,13 +108,23 @@ if command -v snap &> /dev/null; then
   sudo snap refresh && sleep 1 && sudo snap refresh
 fi
 
-[[ ! -z $PIP_PACKAGES ]] && bash -c "pip3 install $PIP_PACKAGES $PIP_FLAGS" ||
-echo "${NYELLOW}Skipping user ${BBLUE}Python${NYELLOW} updates.${NRST}"
+if (( "${#PIP_PACKAGES[@]}" > 0 )) ; then
+  bash -c 'pip3 install "$@"' _ \
+    "${PIP_PACKAGES[@]}" \
+    "${PIP_FLAGS[@]}"
+else
+  echo "${NYELLOW}Skipping user ${BBLUE}Python${NYELLOW} updates.${NRST}"
+fi
 
 case $OSTYPE in
   *linux-gnu*|*darwin*)
-    [[ ! -z $SU_PIP_PACKAGES ]] && sudo bash -c "pip3 install $PIP_PACKAGES $PIP_FLAGS" ||
-    echo "${NYELLOW}Skipping root ${BBLUE}Python${NYELLOW} updates.${NRST}"
+    if (( "${#SU_PIP_PACKAGES[@]}" > 0 )) ; then
+      sudo bash -c 'pip3 install "$@"' _ \
+        "${PIP_PACKAGES[@]}" \
+        "${PIP_FLAGS[@]}"
+    else
+      echo "${NYELLOW}Skipping root ${BBLUE}Python${NYELLOW} updates.${NRST}"
+    fi
     ;;
 esac
 
@@ -121,26 +132,26 @@ if command -v zsh &> /dev/null; then
   if [[ -d $HOME/.oh-my-zsh ]]; then
     echo "${NYELLOW}Running ${BGREEN}oh-my-zsh${NYELLOW} update.${NRST}"
 
-    for PLUGIN_PATH in $HOME/.oh-my-zsh/custom/plugins/zsh-*; do
-      PLUGIN_NAME="$(basename "$PLUGIN_PATH")"
+    for plugin_path in "$HOME"/.oh-my-zsh/custom/plugins/zsh-*; do
+      plugin_name="$(basename "$plugin_path")"
 
-      echo "${NYELLOW}Running ${BGREEN}oh-my-zsh${NYELLOW}:${BWHITE}${PLUGIN_NAME}${NYELLOW} plugin update.${NRST}"
+      echo "${NYELLOW}Running ${BGREEN}oh-my-zsh${NYELLOW}:${BWHITE}${plugin_name}${NYELLOW} plugin update.${NRST}"
 
-      cd "$PLUGIN_PATH"
+      cd "$plugin_path"
       git reset --hard HEAD &> /dev/null
       git fetch --all &> /dev/null
       git pull --rebase
       cd - &> /dev/null
     done
 
-    if [[ -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]]; then
+    if [[ -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]] ; then
       echo "${NYELLOW}Running ${BGREEN}oh-my-zsh${NYELLOW}:${BWHITE}powerlevel10k${NYELLOW} theme update.${NRST}"
 
       cd "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
       git reset --hard HEAD &> /dev/null
       git fetch --all &> /dev/null
       git pull --rebase
-      cd - &> /dev/null
+      cd - > /dev/null
     fi
 
     zsh -c '. ~/.zshrc; omz update'
@@ -160,12 +171,12 @@ fi
 if command -v doom &> /dev/null; then
   echo "${NYELLOW}Running ${BMAGENTA}DOOM Emacs${NYELLOW} update.${NRST}"
 
-  cd "$(dirname $(dirname $(which doom)))"
+  cd "$(dirname "$(dirname "$(which doom)")")"
   git reset --hard HEAD &> /dev/null
   git fetch --all &> /dev/null
   git pull --rebase
 
-  doom upgrade --jobs $(getconf _NPROCESSORS_ONLN)
+  doom upgrade --jobs "$(getconf _NPROCESSORS_ONLN)"
 fi
 
 if command -v nvim &> /dev/null; then
