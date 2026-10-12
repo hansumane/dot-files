@@ -33,6 +33,7 @@ alias vim='resize;/usr/bin/vim'
 alias hx='resize;hx'
 
 alias bip='ip'
+alias cli='cdb-cli2'
 
 c () {
   if command -v clear > /dev/null 2>&1 ; then
