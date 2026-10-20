@@ -71,11 +71,8 @@ def main(args: list[str]):
             elif arg.startswith("-I"):
                 includes.add(f"-I{Path(arg[2:]).resolve()}")
 
-            elif not arg.startswith("-") or arg in {"-c", "-o", "-O2"}:
+            elif not arg.startswith("-") or arg in {"-c", "-o", "-O2", "-G", "-EL", "-pipe"}:
                 pass
-            elif arg == "-Uarm":
-                others.add("--target=arm")
-                others.add("-Uarm")
 
             elif arg.startswith("-DKBUILD_BASENAME"):
                 defines.add("-DKBUILD_BASENAME=\"MODULE_BASENAME\"")
@@ -89,25 +86,25 @@ def main(args: list[str]):
                 defines.add(arg)
 
             elif arg.startswith("-f"):
-                if arg.startswith((
+                if not arg.startswith((
                     "-fconserve-stack",
                     "-fmin-function-alignment",
                     "-fzero-init-padding-bits",
                     "-fno-allow-store-data-races",
                     "-fno-ipa-sra"
                 )):
-                    pass  # skip unsupported options
-                else:
                     functs.add(arg)
             elif arg.startswith("-m"):
-                if arg.startswith((
+                if not arg.startswith((
                     "-mindirect-branch-register",
                     "-mindirect-branch=thunk-extern",
                     "-mpreferred-stack-boundary",
                     "-mno-fdpic"
                 )):
-                    pass  # skip unsupported options
-                else:
+                    if arg.startswith("-march=mips"):
+                        others.add("--target=mips")
+                    elif arg.startswith("-march=arm"):
+                        others.add("--target=arm")
                     ms.add(arg)
 
             elif arg.startswith(("-Wa,", "-Wp,")):
