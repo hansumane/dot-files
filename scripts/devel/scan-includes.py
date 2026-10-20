@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-from os import linesep
+
+from os import linesep  # noqa: I001
 from sys import argv, exit as sys_exit
 from pathlib import Path
 
@@ -152,6 +153,6 @@ if __name__ == "__main__":
             main(argv[1:])
         else:
             raise ValueError("not enough arguments")
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         print(f'ERROR: {e}')
         usage()
