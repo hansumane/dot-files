@@ -43,6 +43,10 @@ c () {
   fi
 }
 
+sudo () {
+  "$@"
+}
+
 _hxl () {
   for f in "$@" ; do
     echo "$f"
