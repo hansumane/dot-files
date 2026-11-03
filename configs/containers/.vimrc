@@ -1,25 +1,25 @@
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 " call plug#begin()
-" 	" - themes -
-" 	Plug 'tomasr/molokai'
 " 	" - functional -
 " 	Plug 'cohama/lexima.vim'
-" 	Plug 'preservim/nerdtree'
+" 	Plug 'tpope/vim-vinegar'
 " 	Plug 'hansumane/vim-rooter'
 " 	Plug 'ctrlpvim/ctrlp.vim'
 " 	Plug 'tpope/vim-fugitive'
 " 	Plug 'airblade/vim-gitgutter'
+" 	Plug 'vim-scripts/autoload_cscope.vim'
 " 	" - code -
 " 	Plug 'hansumane/c.vim'
-" 	Plug 'vim-syntastic/syntastic'
 " 	Plug 'editorconfig/editorconfig-vim'
 " 	" - LSP -
 " 	" Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 " 	" --== alternative ==--
+" 	" - themes -
+" 	" Plug 'tomasr/molokai'
 " 	" - functional -
 " 	" Plug 'vifm/vifm.vim'
-" 	Plug 'vim-scripts/autoload_cscope.vim'
+" 	" Plug 'preservim/nerdtree'
 " 	" - LSP -
 " 	Plug 'prabirshrestha/vim-lsp'
 " 	Plug 'mattn/vim-lsp-settings'
@@ -63,7 +63,7 @@ set termguicolors
 filetype plugin indent on
 syntax enable
 
-colorscheme molokai
+colorscheme catppuccin
 
 if has('nvim')
 	set clipboard+=unnamedplus
@@ -92,16 +92,12 @@ let g:vifm_embed_term = 1
 let g:vifm_embed_split = 1
 let g:vifm_exec_args = '-c :only'
 
-let NERDTreeShowHidden=1
-let g:NERDTreeDirArrowExpandable="+"
-let g:NERDTreeDirArrowCollapsible="~"
-
 let g:rooter_change_directory_for_non_project_files = 'current'
 let g:rooter_resolve_links = 1
 let g:rooter_silent_chdir = 1
 let g:rooter_patterns = [
-	\ '.vi_project_root', '.git', '.luarc.json', 'compile_flags.txt',
-	\ 'Cargo.toml' ]
+	\ '.project_root', '.helix', '.zed', '.git',
+	\ '.luarc.json', 'compile_flags.txt' ]
 
 let g:lexima_enable_basic_rules = 1
 let g:lexima_enable_newline_rules = 1
@@ -111,12 +107,11 @@ let g:lsp_diagnostics_virtual_text_enabled = 1
 let g:lsp_diagnostics_virtual_text_align = 'right'
 let g:lsp_settings_enable_suggestions = 0
 
-let g:syntastic_c_checkpatch_exec = '/usr/local/bin/checkpatch.pl'
-let g:syntastic_c_checkpatch_args = join([
-	\ '--no-tree', '--no-signoff', '--show-types', '--strict',
-	\ '--max-line-length=90', '--ignore',
-	\ 'SPDX_LICENSE_TAG,PREFER_KERNEL_TYPES',
-	\ ])
+let g:ctrlp_map = ''
+let g:ctrlp_cmd = ''
+let g:ctrlp_root_markers = [
+	\ '.project_root', '.helix', '.zed',
+	\ '.luarc.json', 'compile_flags.txt' ]
 
 " Nul = C-Space
 cnoremap <Nul> <C-6>
@@ -127,6 +122,7 @@ tnoremap <Esc> <C-\><C-n>
 let mapleader = ' '
 
 nnoremap <silent> <leader>b :CtrlPBuffer<CR>
+nnoremap <silent> <leader>f :CtrlP<CR>
 nnoremap <silent> <leader>j :noh<CR>
 nnoremap <silent> <leader>c :bd<CR>
 vnoremap <leader>k :sort<CR>
@@ -157,7 +153,7 @@ endfunction
 nnoremap <leader>1 :call SplitTerm('b')<CR>
 nnoremap <leader>2 :call SplitTerm('r')<CR>
 
-nnoremap <silent> <C-k> :call SetListFunction(!g:is_list_full)<CR>
+nnoremap <silent> <leader>x :call SetListFunction(!g:is_list_full)<CR>
 
 nnoremap <silent><expr> K exists('*CocHasProvider') && CocHasProvider('hover')
 			\ ? CocActionAsync('doHover')
@@ -318,6 +314,5 @@ set statusline+=%#MyCustomStatus#
 set statusline+=\ %{GetLang()}
 
 autocmd VimEnter * call SetNumbersFunction(v:true) | call SetListFunction(v:false)
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 autocmd BufNewFile,BufRead *.its set filetype=dts
 autocmd FileType c,cpp call CheckGNUStyle()
