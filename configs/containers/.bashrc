@@ -35,6 +35,8 @@ alias hx='resize;hx'
 alias bip='ip'
 alias cli='cdb-cli2'
 
+alias psgrep='/bin/busybox.nosuid ps | grep -v grep | grep -iE'
+
 c () {
   if command -v clear > /dev/null 2>&1 ; then
     clear
