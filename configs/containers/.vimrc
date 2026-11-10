@@ -41,8 +41,9 @@ set nowritebackup
 set noswapfile
 set noshowmode
 
-set undofile
+call mkdir($HOME . '/.vim/undodir', 'p')
 set undodir=~/.vim/undodir
+set undofile
 
 set mouse=nv
 set scrolloff=3
