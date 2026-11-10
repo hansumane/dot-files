@@ -49,14 +49,15 @@ case $OSTYPE in
     case $NAME in
 
       *Debian* | *Ubuntu*)
-        echo "${NYELLOW}Running ${BRED}Debian-based${NYELLOW} updates.${NRST}"
+        echo "${NYELLOW}Running ${BRED}apt-based${NYELLOW} updates.${NRST}"
         PIP_FLAGS=(--break-system-packages "${PIP_FLAGS[@]}")
         sudo apt update && sudo apt full-upgrade -y &&
         sudo apt autoremove -y && sudo apt autoclean -y
         ;;
 
-      *Fedora*)
-        echo "${NYELLOW}Running ${BBLUE}Fedora${NYELLOW} updates.${NRST}"
+      *Fedora* | *Rocky*)
+        echo "${NYELLOW}Running ${BBLUE}dnf-based${NYELLOW} updates.${NRST}"
+        # sudo dnf upgrade -y --allowerasing --nobest
         sudo dnf upgrade -y --refresh && sudo dnf autoremove -y
         ;;
 
