@@ -46,7 +46,11 @@ c () {
 }
 
 sudo () {
-  "$@"
+  if command -v sudo &> /dev/null ; then
+    command sudo "$@"
+  else
+    command "$@"
+  fi
 }
 
 _hxl () {
